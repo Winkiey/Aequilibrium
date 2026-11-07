@@ -1,0 +1,10 @@
+{
+  "id": "cao",
+  "kind": "character",
+  "path": "/art/characters/cao.webp",
+  "source": "exec-f6e12dbe-21f4-4fc3-9ac3-00166b892f6a.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

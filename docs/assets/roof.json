@@ -1,0 +1,10 @@
+{
+  "id": "roof",
+  "kind": "background",
+  "path": "/art/backgrounds/roof.webp",
+  "source": "exec-8e5f7bb2-6075-4bf2-9217-7e2331fcff6a.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

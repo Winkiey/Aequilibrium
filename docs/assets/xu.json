@@ -1,0 +1,10 @@
+{
+  "id": "xu",
+  "kind": "character",
+  "path": "/art/characters/xu.webp",
+  "source": "exec-176af0b8-bff4-4270-9605-cc24bf7a5436.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

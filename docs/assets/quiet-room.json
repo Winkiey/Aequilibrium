@@ -1,0 +1,10 @@
+{
+  "id": "quiet-room",
+  "kind": "background",
+  "path": "/art/backgrounds/quiet-room.webp",
+  "source": "exec-7a52e008-193c-4d76-b941-ca21d2609955.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "yao",
+  "kind": "character",
+  "path": "/art/characters/yao.webp",
+  "source": "exec-01326a28-66ce-44df-aa48-cd68a01ded0a.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

@@ -1,0 +1,1663 @@
+{
+  "version": 2,
+  "summary": {
+    "events": 64,
+    "outcomes": 128,
+    "playableCompositions": 192,
+    "endings": 8,
+    "backgrounds": 17,
+    "characters": 10,
+    "poses": 30,
+    "missing": 0
+  },
+  "events": [
+    {
+      "id": "main-1",
+      "before": {
+        "scene": "bookshop-night",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 7,
+        "interaction": "拆开信封"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-night",
+          "focus": "key",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-night",
+          "focus": "letter",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "id": "main-10",
+      "before": {
+        "scene": "tea-room",
+        "cast": [
+          "xu",
+          "yao"
+        ],
+        "lines": 6,
+        "interaction": "核对原始凭证"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "tea-room",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "bank",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-11",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "tang"
+        ],
+        "lines": 6,
+        "interaction": "展开最后一季租约"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "reading-room",
+          "focus": "book",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "contract",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-12",
+      "before": {
+        "scene": "bookshop-night",
+        "cast": [
+          "cheng",
+          "tang",
+          "he"
+        ],
+        "lines": 6,
+        "interaction": "看一眼街对面的灯"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "reading-room",
+          "focus": "cup",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-night",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-2",
+      "before": {
+        "scene": "reading-room",
+        "cast": [
+          "tang",
+          "he"
+        ],
+        "lines": 6,
+        "interaction": "翻看桌上的书"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "reading-room",
+          "focus": "book",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "lamp",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-3",
+      "before": {
+        "scene": "printshop",
+        "cast": [
+          "tang"
+        ],
+        "lines": 6,
+        "interaction": "查看确认栏"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "printshop",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "archive",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-4",
+      "before": {
+        "scene": "coldstore",
+        "cast": [
+          "lu",
+          "he"
+        ],
+        "lines": 6,
+        "interaction": "翻到报纸下一页"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "coldstore",
+          "focus": "receipt",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-5",
+      "before": {
+        "scene": "roof",
+        "cast": [
+          "he",
+          "cao"
+        ],
+        "lines": 6,
+        "interaction": "看看雨水痕迹"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "roof",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "roof",
+          "focus": "window",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-6",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 6,
+        "interaction": "转一转陶碗"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-day",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "pottery",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-7",
+      "before": {
+        "scene": "printshop",
+        "cast": [
+          "tang"
+        ],
+        "lines": 6,
+        "interaction": "展开纸背"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "printshop",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "cup",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-8",
+      "before": {
+        "scene": "noodle-shop",
+        "cast": [
+          "he"
+        ],
+        "lines": 6,
+        "interaction": "看看未读消息"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "coastal-train",
+          "focus": "window",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "main-9",
+      "before": {
+        "scene": "coldstore",
+        "cast": [
+          "lu"
+        ],
+        "lines": 6,
+        "interaction": "移开旧报价"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "ledger",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s01",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "he"
+        ],
+        "lines": 3,
+        "interaction": "挪开桌上的稿纸"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "cup",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "lamp",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "before": {
+        "scene": "station",
+        "cast": [
+          "he"
+        ],
+        "lines": 3,
+        "interaction": "展开两个出发时间"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "coastal-train",
+          "focus": "window",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "he"
+        ],
+        "lines": 3,
+        "interaction": "照照松动的椅脚"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "he"
+        ],
+        "lines": 3,
+        "interaction": "取出抽屉里的票"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "cup",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "ticket",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "before": {
+        "scene": "attic",
+        "cast": [],
+        "lines": 3,
+        "interaction": "指住读了四遍的段落"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "window",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "lamp",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "before": {
+        "scene": "noodle-shop",
+        "cast": [
+          "he"
+        ],
+        "lines": 3,
+        "interaction": "看看她收藏的菜单"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "noodle-shop",
+          "focus": "cup",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "noodle-shop",
+          "focus": "receipt",
+          "lines": 3
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "before": {
+        "scene": "reading-room",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "比一比桌子和书架的位置"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "reading-room",
+          "focus": "cup",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "展开签名那一栏"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "翻看箱里的一本旧书"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-day",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s10",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "对照两张付款单"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "contract",
+          "lines": 3
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "before": {
+        "scene": "bookshop-night",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "看一眼门外的灯"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-night",
+          "focus": "lamp",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-night",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "cheng",
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "抽出进货单"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-day",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "before": {
+        "scene": "printshop",
+        "cast": [
+          "gu"
+        ],
+        "lines": 3,
+        "interaction": "掂一掂整本样张"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "noodle-shop",
+          "focus": "cup",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-night",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "before": {
+        "scene": "printshop",
+        "cast": [
+          "gu"
+        ],
+        "lines": 3,
+        "interaction": "并排放好两组数字"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "factory",
+          "focus": "cup",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "翻到合同最后一行"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "book",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "before": {
+        "scene": "factory",
+        "cast": [
+          "gu"
+        ],
+        "lines": 3,
+        "interaction": "展开培训通知"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "factory",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "book",
+          "lines": 3
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "before": {
+        "scene": "factory",
+        "cast": [
+          "gu"
+        ],
+        "lines": 3,
+        "interaction": "指一指两个领取金额"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "gu",
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "看看晚间交付安排"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "key",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-night",
+          "focus": "cup",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "before": {
+        "scene": "coldstore",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "看一排亮着的冷库灯"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "coldstore",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "coldstore",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "before": {
+        "scene": "archive",
+        "cast": [],
+        "lines": 3,
+        "interaction": "翻开设备检修表"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "看看新贴的招聘纸"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "before": {
+        "scene": "archive",
+        "cast": [
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "翻到验收单背面"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "letter",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s23",
+      "before": {
+        "scene": "archive",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "展开十年付款安排"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "翻到续贷说明"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s25",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "放大一张群聊截图"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s26",
+      "before": {
+        "scene": "attic",
+        "cast": [],
+        "lines": 3,
+        "interaction": "找那笔假设的成交单"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s27",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "xu"
+        ],
+        "lines": 3,
+        "interaction": "看看截图的日期边缘"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s28",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "再看一眼当前报价"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "window",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s29",
+      "before": {
+        "scene": "tea-room",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "展开入场说明"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "tea-room",
+          "focus": "cup",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s30",
+      "before": {
+        "scene": "archive",
+        "cast": [],
+        "lines": 3,
+        "interaction": "拉开公告附注"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "letter",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "contract",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s31",
+      "before": {
+        "scene": "bank",
+        "cast": [
+          "yao"
+        ],
+        "lines": 3,
+        "interaction": "对齐两个付款总额"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "contract",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s32",
+      "before": {
+        "scene": "old-street",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "展开结算便条"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s33",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "zhou"
+        ],
+        "lines": 3,
+        "interaction": "看看不可退的那一行"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s34",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "核对送货回单"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bookshop-day",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "phone",
+          "lines": 3
+        }
+      ]
+    },
+    {
+      "id": "s35",
+      "before": {
+        "scene": "tea-room",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "写下能承担的数额"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "coldstore",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "cup",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s36",
+      "before": {
+        "scene": "attic",
+        "cast": [],
+        "lines": 3,
+        "interaction": "把账单按日期摊开"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "before": {
+        "scene": "archive",
+        "cast": [
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "对照实际支出"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "factory",
+          "focus": "receipt",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "contract",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s38",
+      "before": {
+        "scene": "tea-room",
+        "cast": [
+          "xu"
+        ],
+        "lines": 3,
+        "interaction": "查看签名与授权位置"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "bank",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s39",
+      "before": {
+        "scene": "archive",
+        "cast": [
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "核对唯一原件"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "phone",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "archive",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s40",
+      "before": {
+        "scene": "archive",
+        "cast": [
+          "xu"
+        ],
+        "lines": 3,
+        "interaction": "翻看未完成的项目"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "archive",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s41",
+      "before": {
+        "scene": "archive",
+        "cast": [],
+        "lines": 3,
+        "interaction": "记下来电要求"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "letter",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bank",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s42",
+      "before": {
+        "scene": "tea-room",
+        "cast": [
+          "xu"
+        ],
+        "lines": 3,
+        "interaction": "对照借款原栏"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "factory",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bank",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s43",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 3,
+        "interaction": "抽出目录便条"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "receipt",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s44",
+      "before": {
+        "scene": "reading-room",
+        "cast": [
+          "tang",
+          "ning"
+        ],
+        "lines": 3,
+        "interaction": "翻到书签那一页"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "reading-room",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s45",
+      "before": {
+        "scene": "attic",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 3,
+        "interaction": "找出备用钥匙"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s46",
+      "before": {
+        "scene": "attic",
+        "cast": [],
+        "lines": 3,
+        "interaction": "摊开三种收款"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "attic",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "factory",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s47",
+      "before": {
+        "scene": "pottery",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 3,
+        "interaction": "看看碗口的起伏"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "pottery",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "pottery",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s48",
+      "before": {
+        "scene": "noodle-shop",
+        "cast": [
+          "lu"
+        ],
+        "lines": 3,
+        "interaction": "放下手里的杯子"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "noodle-shop",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "old-street",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s49",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "tang",
+          "cao"
+        ],
+        "lines": 3,
+        "interaction": "查看渗水的木梁"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "roof",
+          "focus": "book",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "bookshop-day",
+          "focus": "window",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s50",
+      "before": {
+        "scene": "attic",
+        "cast": [],
+        "lines": 3,
+        "interaction": "翻到计息条款"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "bank",
+          "focus": "contract",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "receipt",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s51",
+      "before": {
+        "scene": "archive",
+        "cast": [],
+        "lines": 3,
+        "interaction": "抽出最新公告"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "archive",
+          "focus": "ledger",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "attic",
+          "focus": "letter",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s52",
+      "before": {
+        "scene": "bookshop-day",
+        "cast": [
+          "tang"
+        ],
+        "lines": 3,
+        "interaction": "比一比两张时间表"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "old-street",
+          "focus": "key",
+          "lines": 3
+        },
+        {
+          "branch": 1,
+          "scene": "reading-room",
+          "focus": "cup",
+          "lines": 4
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "name": "执念入狱",
+      "scene": "quiet-room",
+      "cast": []
+    },
+    {
+      "name": "重新开始",
+      "scene": "attic",
+      "cast": [
+        "he"
+      ]
+    },
+    {
+      "name": "传奇操盘手",
+      "scene": "tea-room",
+      "cast": [
+        "lu"
+      ]
+    },
+    {
+      "name": "激流勇退",
+      "scene": "coastal-train",
+      "cast": [
+        "he"
+      ]
+    },
+    {
+      "name": "守住一盏灯",
+      "scene": "bookshop-day",
+      "cast": [
+        "cheng",
+        "tang"
+      ]
+    },
+    {
+      "name": "另一种富有",
+      "scene": "reading-room",
+      "cast": [
+        "tang",
+        "zhou"
+      ]
+    },
+    {
+      "name": "独自抵达",
+      "scene": "bookshop-night",
+      "cast": []
+    },
+    {
+      "name": "平淡一生",
+      "scene": "old-street",
+      "cast": [
+        "he"
+      ]
+    }
+  ]
+}

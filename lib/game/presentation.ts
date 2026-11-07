@@ -1,0 +1,19 @@
+import type { Game } from './engine';
+export type ReadingProgress={eventId:string;phase:'story'|'choice'|'outcome';index:number;choice:0|1|null;inspected:boolean};
+export const PRESENTATION_KEY='aequilibrium.presentation.v2';
+export type Presentation={version:2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;reading:ReadingProgress|null;seenScenes:string[]};
+export function freshPresentation(game:Game):Presentation{return{version:2,seed:game.seed,introSeen:game.history.length>0,tutorial:game.quarter>1||game.finished?6:game.mainChoice!==null?3:0,speed:30,reducedMotion:false,reading:null,seenScenes:[]};}
+export function validPresentation(value:unknown,game:Game):value is Presentation{
+ if(!value||typeof value!=='object')return false;const p=value as Presentation;
+ if(p.version!==2||p.seed!==game.seed||typeof p.introSeen!=='boolean'||!Number.isInteger(p.tutorial)||p.tutorial<0||p.tutorial>6||![15,30,50].includes(p.speed)||typeof p.reducedMotion!=='boolean'||!Array.isArray(p.seenScenes)||!p.seenScenes.every(s=>typeof s==='string'))return false;
+ if(p.reading!==null&&(!p.reading||typeof p.reading!=='object'||!['story','choice','outcome'].includes(p.reading.phase)||!Number.isInteger(p.reading.index)||p.reading.index<0||typeof p.reading.eventId!=='string'||![null,0,1].includes(p.reading.choice)||typeof p.reading.inspected!=='boolean'))return false;
+ return true;
+}
+export const TUTORIAL_STEPS=[
+ {title:'先看看柜台上的信',text:'程姨把信封留在灯旁。点击发亮的位置，拆开它。',target:'letter'},
+ {title:'像对话一样，慢慢往下读',text:'点击画面或按空格继续。字还没显示完时，点一下会显示全句。',target:'dialogue'},
+ {title:'这一次，由你来答复',text:'先看清两个选择旁的费用与约定。它们都会留下不同的回声。',target:'decision'},
+ {title:'答复以后，翻开账本',text:'找到柜台上的账本，看看还剩多少现金、有哪些未来约定。',target:'ledger'},
+ {title:'报纸里，也有街道的另一面',text:'打开今日报纸，再看看公司资料。可以买一小笔，也可以今天先不买。',target:'market'},
+ {title:'准备好，就让这一季过去',text:'你已回复来信并看过账目。点击“结束这一季”，收支和市场才会推进。',target:'quarter'},
+];

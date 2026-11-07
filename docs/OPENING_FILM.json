@@ -1,0 +1,17 @@
+{
+  "file": "/video/prologue.mp4",
+  "durationSeconds": 33,
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "source": "Original generated hand-painted scene art, original fixed character atlas, local FFmpeg camera and dissolve montage. In-game atmosphere is synthesized by Web Audio.",
+  "shots": [
+    "old-street",
+    "factory",
+    "attic",
+    "bookshop-night",
+    "reading-room",
+    "bookshop-night"
+  ],
+  "bytes": 8791605
+}

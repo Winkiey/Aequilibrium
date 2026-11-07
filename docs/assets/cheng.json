@@ -1,0 +1,10 @@
+{
+  "id": "cheng",
+  "kind": "character",
+  "path": "/art/characters/cheng.webp",
+  "source": "exec-6a3cb45e-88c8-417e-bade-0e63d0fcf606.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

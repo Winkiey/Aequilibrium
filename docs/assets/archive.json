@@ -1,0 +1,10 @@
+{
+  "id": "archive",
+  "kind": "background",
+  "path": "/art/backgrounds/archive.webp",
+  "source": "exec-ce277ee2-ce3c-4bf4-921c-bbea4ce0fdf4.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

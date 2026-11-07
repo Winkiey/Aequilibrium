@@ -1,0 +1,10 @@
+{
+  "id": "factory",
+  "kind": "background",
+  "path": "/art/backgrounds/factory.webp",
+  "source": "exec-26c2ad3c-90e8-456a-aa08-37922076f4ba.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

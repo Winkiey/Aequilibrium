@@ -1,0 +1,10 @@
+{
+  "id": "printshop",
+  "kind": "background",
+  "path": "/art/backgrounds/printshop.webp",
+  "source": "exec-ef33227a-1c8d-4150-a06a-9f7047838c42.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

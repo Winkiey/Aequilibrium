@@ -1,0 +1,295 @@
+{
+  "version": 2,
+  "assets": {
+    "cast-main-reference": {
+      "id": "cast-main-reference",
+      "kind": "reference",
+      "path": "/art/references/cast-main-reference.webp",
+      "source": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": false,
+      "status": "ready"
+    },
+    "bookshop-night": {
+      "id": "bookshop-night",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-night.webp",
+      "source": "exec-d19773f0-d7ba-4a19-a4a3-e2776177bd3f.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "reading-room": {
+      "id": "reading-room",
+      "kind": "background",
+      "path": "/art/backgrounds/reading-room.webp",
+      "source": "exec-612c4538-9b98-4150-8717-8016af7a8ca4.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "bookshop-day": {
+      "id": "bookshop-day",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-day.webp",
+      "source": "exec-10b177af-c2ac-4b72-93bd-9f0ad49c7d48.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "attic": {
+      "id": "attic",
+      "kind": "background",
+      "path": "/art/backgrounds/attic.webp",
+      "source": "exec-a33f2950-d40c-4de2-898c-b0ace89314e0.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "old-street": {
+      "id": "old-street",
+      "kind": "background",
+      "path": "/art/backgrounds/old-street.webp",
+      "source": "exec-14d2a2a7-830c-4d35-a3ef-f8c28079982b.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "factory": {
+      "id": "factory",
+      "kind": "background",
+      "path": "/art/backgrounds/factory.webp",
+      "source": "exec-26c2ad3c-90e8-456a-aa08-37922076f4ba.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "cheng": {
+      "id": "cheng",
+      "kind": "character",
+      "path": "/art/characters/cheng.webp",
+      "source": "exec-6a3cb45e-88c8-417e-bade-0e63d0fcf606.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "tang": {
+      "id": "tang",
+      "kind": "character",
+      "path": "/art/characters/tang.webp",
+      "source": "exec-354eff99-ddfd-42f2-b8b8-94517660f0d1.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "lu": {
+      "id": "lu",
+      "kind": "character",
+      "path": "/art/characters/lu.webp",
+      "source": "exec-5212def1-39fa-4633-bc0e-0da6d0c2b5ed.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "he": {
+      "id": "he",
+      "kind": "character",
+      "path": "/art/characters/he.webp",
+      "source": "exec-e81ef300-5b43-44a4-908a-3cf52f7be457.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "yao": {
+      "id": "yao",
+      "kind": "character",
+      "path": "/art/characters/yao.webp",
+      "source": "exec-01326a28-66ce-44df-aa48-cd68a01ded0a.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "zhou": {
+      "id": "zhou",
+      "kind": "character",
+      "path": "/art/characters/zhou.webp",
+      "source": "exec-ff925a68-290c-4a24-8a72-b53accee1132.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "gu": {
+      "id": "gu",
+      "kind": "character",
+      "path": "/art/characters/gu.webp",
+      "source": "exec-c68594cc-8959-490c-9af0-1c645ef51307.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "printshop": {
+      "id": "printshop",
+      "kind": "background",
+      "path": "/art/backgrounds/printshop.webp",
+      "source": "exec-ef33227a-1c8d-4150-a06a-9f7047838c42.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "coldstore": {
+      "id": "coldstore",
+      "kind": "background",
+      "path": "/art/backgrounds/coldstore.webp",
+      "source": "exec-eeddc9d9-7112-4135-8757-599bd2bc3de6.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "objects": {
+      "id": "objects",
+      "kind": "prop",
+      "path": "/art/props/objects.webp",
+      "source": "exec-54e16057-a93f-4be5-a68b-91f726f71864.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "noodle-shop": {
+      "id": "noodle-shop",
+      "kind": "background",
+      "path": "/art/backgrounds/noodle-shop.webp",
+      "source": "exec-637bd593-449a-474e-ac60-0a4d894dfcd9.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "coastal-train": {
+      "id": "coastal-train",
+      "kind": "background",
+      "path": "/art/backgrounds/coastal-train.webp",
+      "source": "exec-0c8283e0-d601-48ac-940f-e22601c69269.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "bank": {
+      "id": "bank",
+      "kind": "background",
+      "path": "/art/backgrounds/bank.webp",
+      "source": "exec-48bf2f07-46e0-4a47-b7b9-6f619d298e80.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "station": {
+      "id": "station",
+      "kind": "background",
+      "path": "/art/backgrounds/station.webp",
+      "source": "exec-31116c28-ef01-436a-9312-b10f1da60ed2.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "tea-room": {
+      "id": "tea-room",
+      "kind": "background",
+      "path": "/art/backgrounds/tea-room.webp",
+      "source": "exec-494c5f28-74db-442a-95b5-d2284aecab8a.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "xu": {
+      "id": "xu",
+      "kind": "character",
+      "path": "/art/characters/xu.webp",
+      "source": "exec-176af0b8-bff4-4270-9605-cc24bf7a5436.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "cao": {
+      "id": "cao",
+      "kind": "character",
+      "path": "/art/characters/cao.webp",
+      "source": "exec-f6e12dbe-21f4-4fc3-9ac3-00166b892f6a.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "ning": {
+      "id": "ning",
+      "kind": "character",
+      "path": "/art/characters/ning.webp",
+      "source": "exec-aff471f1-99af-4bda-885d-57f7491c4807.png",
+      "width": 1536,
+      "height": 1024,
+      "alpha": true,
+      "status": "ready"
+    },
+    "roof": {
+      "id": "roof",
+      "kind": "background",
+      "path": "/art/backgrounds/roof.webp",
+      "source": "exec-8e5f7bb2-6075-4bf2-9217-7e2331fcff6a.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "pottery": {
+      "id": "pottery",
+      "kind": "background",
+      "path": "/art/backgrounds/pottery.webp",
+      "source": "exec-d84907b6-20d8-446d-9e83-a7442ad97b62.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "archive": {
+      "id": "archive",
+      "kind": "background",
+      "path": "/art/backgrounds/archive.webp",
+      "source": "exec-ce277ee2-ce3c-4bf4-921c-bbea4ce0fdf4.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    },
+    "quiet-room": {
+      "id": "quiet-room",
+      "kind": "background",
+      "path": "/art/backgrounds/quiet-room.webp",
+      "source": "exec-7a52e008-193c-4d76-b941-ca21d2609955.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready"
+    }
+  }
+}

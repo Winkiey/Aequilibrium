@@ -1,0 +1,10 @@
+{
+  "id": "noodle-shop",
+  "kind": "background",
+  "path": "/art/backgrounds/noodle-shop.webp",
+  "source": "exec-637bd593-449a-474e-ac60-0a4d894dfcd9.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

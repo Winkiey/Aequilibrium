@@ -1,0 +1,10 @@
+{
+  "id": "he",
+  "kind": "character",
+  "path": "/art/characters/he.webp",
+  "source": "exec-e81ef300-5b43-44a4-908a-3cf52f7be457.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

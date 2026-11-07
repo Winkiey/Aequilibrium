@@ -1,0 +1,10 @@
+{
+  "id": "bookshop-day",
+  "kind": "background",
+  "path": "/art/backgrounds/bookshop-day.webp",
+  "source": "exec-10b177af-c2ac-4b72-93bd-9f0ad49c7d48.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

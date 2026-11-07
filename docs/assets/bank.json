@@ -1,0 +1,10 @@
+{
+  "id": "bank",
+  "kind": "background",
+  "path": "/art/backgrounds/bank.webp",
+  "source": "exec-48bf2f07-46e0-4a47-b7b9-6f619d298e80.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

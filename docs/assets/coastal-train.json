@@ -1,0 +1,10 @@
+{
+  "id": "coastal-train",
+  "kind": "background",
+  "path": "/art/backgrounds/coastal-train.webp",
+  "source": "exec-0c8283e0-d601-48ac-940f-e22601c69269.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

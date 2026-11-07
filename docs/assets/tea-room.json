@@ -1,0 +1,10 @@
+{
+  "id": "tea-room",
+  "kind": "background",
+  "path": "/art/backgrounds/tea-room.webp",
+  "source": "exec-494c5f28-74db-442a-95b5-d2284aecab8a.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

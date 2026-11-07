@@ -5,7 +5,7 @@ export type Asset = { id: string; name: string; industry: string; code: string; 
 export type CashEntry = { quarter: number; amount: number; label: string; category: string };
 export type PromiseEntry = { id: string; label: string; due: number; amount: number; status: 'pending' | 'paid' | 'missed' | 'cancelled'; kind: 'payment' | 'receipt'; person?: Person; chance?: number; principal?: number };
 export type Transaction = { quarter: number; asset: string; side: 'buy' | 'sell'; amount: number; fee: number; slippage: number; units: number; realized?: number };
-export type ChoiceLog = { quarter: number; title: string; choice: string; response: string; principle: string; cash: number };
+export type ChoiceLog = { quarter: number; title: string; choice: string; response: string; principle: string; cash: number; eventId?:string; optionIndex?:0|1; snapshot?:StoryEvent };
 export type QuarterLog = { quarter: number; wealth: number; cash: number; investment: number; text: string };
 export type Game = { version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
 export type Effects = { cash?: number; stress?: number; confidence?: number; fatigue?: number; relations?: Partial<Record<Person, number>>; flags?: Record<string, number>; promises?: Omit<PromiseEntry, 'id' | 'status'>[]; buy?: { asset: string; budget: number }; sell?: { asset: string; value: number }; closeClaim?: string; extendClaim?: string; cancelPayment?: string; fraud?: number };
@@ -98,7 +98,7 @@ export function choose(state: Game, event: StoryEvent, index: number, kind: 'mai
   if(e.cancelPayment) s.promises.filter(p => p.id.includes(e.cancelPayment!) && p.kind === 'payment' && p.status === 'pending').forEach(p => p.status = 'cancelled');
   for(const [i,p] of (e.promises ?? []).entries()) s.promises.push({...p, id: `${event.id}-${i}`, status:'pending'});
   if(e.fraud) s.flags.fraud = (s.flags.fraud ?? 0) + e.fraud;
-  s.used.push(event.id); s.history.push({quarter: s.quarter, title: event.title, choice: option.label, response: option.response, principle:event.principle, cash:e.cash ?? 0});
+  s.used.push(event.id); s.history.push({quarter: s.quarter, title: event.title, choice: option.label, response: option.response, principle:event.principle, cash:e.cash ?? 0,eventId:event.id,optionIndex:index as 0|1,snapshot:structuredClone({...event,when:undefined,weight:undefined})});
   if(kind === 'main') s.mainChoice = index; else s.sideChoice = index;
   return s;
 }

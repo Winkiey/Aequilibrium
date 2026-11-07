@@ -1,0 +1,356 @@
+{
+  "tool": "built-in imagegen",
+  "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+  "assets": [
+    {
+      "id": "zhou",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Zhou, a male neighbour aged 62. Lean long face with ordinary age lines, balding on top with short gray hair at the temples, quiet attentive eyes. Wears a muted olive quilted jacket over a plain faded neutral shirt, brown straight trousers, old dark cloth shoes. Preserve his balding top and lean older facial structure in all three poses. His small paper prop is a folded plain household note. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-ff925a68-290c-4a24-8a72-b53accee1132.png",
+      "finalPath": "/art/characters/zhou.webp",
+      "publicPath": "/art/characters/zhou.webp",
+      "sourceBytes": 1873309,
+      "finalBytes": 169304,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 992364,
+        "visiblePixels": 580500,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              108,
+              44,
+              434,
+              991
+            ],
+            "visiblePixels": 184463,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              83,
+              44,
+              414,
+              991
+            ],
+            "visiblePixels": 183717,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              104,
+              45,
+              376,
+              991
+            ],
+            "visiblePixels": 176526,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    },
+    {
+      "id": "gu",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Gu, a woman factory colleague aged 24. Short straight black bob, young ordinary face, understated attentive expression. Wears a faded gray cotton sweatshirt under a faded navy apron with a few ink stains, dark straight trousers and worn simple sneakers. This is a different woman from both women in the reference. Preserve her bob, face and the same ink stains and apron in every pose. Her small paper prop is a plain folded proof sheet without visible print. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-c68594cc-8959-490c-9af0-1c645ef51307.png",
+      "finalPath": "/art/characters/gu.webp",
+      "publicPath": "/art/characters/gu.webp",
+      "sourceBytes": 1884886,
+      "finalBytes": 173360,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 1008159,
+        "visiblePixels": 564705,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              140,
+              52,
+              407,
+              992
+            ],
+            "visiblePixels": 175166,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              96,
+              50,
+              456,
+              991
+            ],
+            "visiblePixels": 175633,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              117,
+              53,
+              378,
+              991
+            ],
+            "visiblePixels": 168272,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    },
+    {
+      "id": "yao",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Yao, a woman bank clerk aged 34. Black hair in a neat low ponytail, individual oval face, calm professional expression, no glasses. Wears a simple charcoal blazer over a white blouse, straight navy trousers and black flat shoes. Modest work clothing, no uniform logo and no badge. This is a different woman from the women in the reference. Preserve the identical face, ponytail and outfit across all poses. Her small paper prop is one plain blank form. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-01326a28-66ce-44df-aa48-cd68a01ded0a.png",
+      "finalPath": "/art/characters/yao.webp",
+      "publicPath": "/art/characters/yao.webp",
+      "sourceBytes": 1765667,
+      "finalBytes": 148204,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 1015523,
+        "visiblePixels": 557341,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              142,
+              33,
+              415,
+              1002
+            ],
+            "visiblePixels": 177287,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              109,
+              33,
+              471,
+              1003
+            ],
+            "visiblePixels": 174418,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              116,
+              33,
+              369,
+              1002
+            ],
+            "visiblePixels": 167744,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    },
+    {
+      "id": "xu",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Xu, a male intermediary aged 42. Neatly slicked short black hair, narrow rectangular dark-framed glasses, narrow mature face, measured ordinary expression. Wears a charcoal tieless suit, cream shirt with collar open, dark shoes. He is neither sinister nor glamorous: an ordinary middle-aged Chinese adult, a different man from the men in the reference. Preserve his face, hairline, glasses and entire outfit across all poses. His small paper prop is a plain folded document without writing. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-176af0b8-bff4-4270-9605-cc24bf7a5436.png",
+      "finalPath": "/art/characters/xu.webp",
+      "publicPath": "/art/characters/xu.webp",
+      "sourceBytes": 1810218,
+      "finalBytes": 157592,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 1013761,
+        "visiblePixels": 559103,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              123,
+              43,
+              431,
+              986
+            ],
+            "visiblePixels": 177936,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              97,
+              43,
+              411,
+              986
+            ],
+            "visiblePixels": 173218,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              114,
+              45,
+              381,
+              987
+            ],
+            "visiblePixels": 165999,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    },
+    {
+      "id": "cao",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Cao, a male roofer aged 50. Sturdy build, weathered tan face, short dark hair under a plain navy work cap, naturally strong hands. Wears a gray cotton work jacket over a faded shirt, worn dark trousers and practical worn work boots. This is a different man from the reference: older, sturdier and with a cap. Preserve his same facial anatomy, cap, jacket and boots across all poses. His small paper prop is a plain folded work estimate without text. No tools or safety gear beyond the described cap and clothing. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-f6e12dbe-21f4-4fc3-9ac3-00166b892f6a.png",
+      "finalPath": "/art/characters/cao.webp",
+      "publicPath": "/art/characters/cao.webp",
+      "sourceBytes": 1989827,
+      "finalBytes": 188592,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 964098,
+        "visiblePixels": 608766,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              92,
+              56,
+              436,
+              983
+            ],
+            "visiblePixels": 194887,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              60,
+              57,
+              417,
+              984
+            ],
+            "visiblePixels": 193637,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              99,
+              63,
+              395,
+              983
+            ],
+            "visiblePixels": 184169,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    },
+    {
+      "id": "ning",
+      "prompt": "Use case: illustration-story. Asset type: recurring character sprite atlas for Aequilibrium, a grounded Chinese coastal-city narrative game. Input image 1 is a STYLE AND LIGHTING REFERENCE ONLY. Match its restrained realistic hand-painted film-storyboard rendering, fine matte pigment, dry-gouache and oil-brush texture, natural soft neutral light, muted slate/moss/tobacco palette. Create a NEW DIFFERENT person, not any of the four characters pictured in the reference. Ordinary Chinese adult, believable individual face, natural anatomy and proportions, lived-in everyday clothes. No beauty filter, no anime, no cartoon, no glossy CGI, no photoreal photograph, no exaggerated emotion, no cinematic bloom. Subject: Ning, a woman customer aged 40. Softly angular individual face, black hair in a loose low bun, ordinary thoughtful expression. Wears a muted burgundy cardigan over a gray blouse, dark straight knee-to-mid-calf skirt, simple flat shoes and a plain cream canvas tote hanging from the shoulder. She is a NEW different woman from the reference. Preserve her same face, loose bun, cardigan, skirt and tote across all poses. Her small paper prop is one plain receipt without writing. Keep the tote close to the body inside each column. Composition and transparency: Create exactly ONE 1536x1024 landscape PNG sprite atlas with genuine transparent alpha background. Exactly THREE full-body depictions of this SAME new person, left to right, each in its own equal 512px-wide column: neutral relaxed pose / explaining with a small plain paper prop held at waist height and the other hand making a small open gesture / quietly concerned with hands loosely together and shoulders slightly lowered. All three show the identical facial anatomy, age, hairstyle and clothing; do not create three different people. Face and body turn slightly toward camera-left, same eye-level camera and figure scale across all three. Put each figure centered at x=256,768,1280 respectively. Top of head at 8% image height, bottoms of BOTH visible feet at 96%. Full head, hands, legs and both shoes visible, never cropped. Keep all limbs and props strictly within own column, with at least 20px transparent space on both sides. No figures overlap. Exactly three figures total and no other characters. No column lines, panels, labels, text, numbers, logos or watermark. Background must be actually transparent, not white, gray, or a painted checkerboard. No scenery, no ground plane, no floor, no detached or wide cast shadow. Matte hand-painted cutout edges.",
+      "reference": "exec-a82c017c-b058-4faf-9aea-19ce52e1f344.png",
+      "transparentBackground": true,
+      "status": "ready",
+      "source": "exec-aff471f1-99af-4bda-885d-57f7491c4807.png",
+      "finalPath": "/art/characters/ning.webp",
+      "publicPath": "/art/characters/ning.webp",
+      "sourceBytes": 1851080,
+      "finalBytes": 187240,
+      "verification": {
+        "width": 1536,
+        "height": 1024,
+        "sourceHasAlpha": true,
+        "finalHasAlpha": true,
+        "transparentPixels": 969887,
+        "visiblePixels": 602977,
+        "alphaMax": 254,
+        "poses": [
+          {
+            "pose": 0,
+            "boundsAtAlpha64": [
+              125,
+              41,
+              421,
+              993
+            ],
+            "visiblePixels": 175909,
+            "contained": true
+          },
+          {
+            "pose": 1,
+            "boundsAtAlpha64": [
+              91,
+              41,
+              449,
+              993
+            ],
+            "visiblePixels": 178090,
+            "contained": true
+          },
+          {
+            "pose": 2,
+            "boundsAtAlpha64": [
+              79,
+              46,
+              361,
+              993
+            ],
+            "visiblePixels": 170496,
+            "contained": true
+          }
+        ],
+        "visualInspection": "Three full-body consistent-person poses visible, both shoes inside each column; no baked checkerboard, scenery or wide shadows."
+      }
+    }
+  ],
+  "verification": {
+    "assets": 6,
+    "poses": 18,
+    "status": "ready",
+    "failures": [],
+    "tool": "built-in imagegen",
+    "registerCommand": "node scripts/register-art.mjs <id> <source PNG> character"
+  }
+}

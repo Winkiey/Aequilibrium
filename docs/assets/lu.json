@@ -1,0 +1,10 @@
+{
+  "id": "lu",
+  "kind": "character",
+  "path": "/art/characters/lu.webp",
+  "source": "exec-5212def1-39fa-4633-bc0e-0da6d0c2b5ed.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

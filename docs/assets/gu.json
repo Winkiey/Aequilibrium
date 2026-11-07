@@ -1,0 +1,10 @@
+{
+  "id": "gu",
+  "kind": "character",
+  "path": "/art/characters/gu.webp",
+  "source": "exec-c68594cc-8959-490c-9af0-1c645ef51307.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

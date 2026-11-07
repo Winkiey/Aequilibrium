@@ -1,0 +1,10 @@
+{
+  "id": "coldstore",
+  "kind": "background",
+  "path": "/art/backgrounds/coldstore.webp",
+  "source": "exec-eeddc9d9-7112-4135-8757-599bd2bc3de6.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

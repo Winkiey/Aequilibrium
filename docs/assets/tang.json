@@ -1,0 +1,10 @@
+{
+  "id": "tang",
+  "kind": "character",
+  "path": "/art/characters/tang.webp",
+  "source": "exec-354eff99-ddfd-42f2-b8b8-94517660f0d1.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "reading-room",
+  "kind": "background",
+  "path": "/art/backgrounds/reading-room.webp",
+  "source": "exec-612c4538-9b98-4150-8717-8016af7a8ca4.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

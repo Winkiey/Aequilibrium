@@ -1,0 +1,10 @@
+{
+  "id": "zhou",
+  "kind": "character",
+  "path": "/art/characters/zhou.webp",
+  "source": "exec-ff925a68-290c-4a24-8a72-b53accee1132.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}

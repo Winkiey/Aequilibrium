@@ -1,0 +1,10 @@
+{
+  "id": "bookshop-night",
+  "kind": "background",
+  "path": "/art/backgrounds/bookshop-night.webp",
+  "source": "exec-d19773f0-d7ba-4a19-a4a3-e2776177bd3f.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

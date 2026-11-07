@@ -1,0 +1,10 @@
+{
+  "id": "station",
+  "kind": "background",
+  "path": "/art/backgrounds/station.webp",
+  "source": "exec-31116c28-ef01-436a-9312-b10f1da60ed2.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

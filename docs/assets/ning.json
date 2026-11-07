@@ -1,0 +1,10 @@
+{
+  "id": "ning",
+  "kind": "character",
+  "path": "/art/characters/ning.webp",
+  "source": "exec-aff471f1-99af-4bda-885d-57f7491c4807.png",
+  "width": 1536,
+  "height": 1024,
+  "alpha": true,
+  "status": "ready"
+}
