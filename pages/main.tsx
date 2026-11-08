@@ -6,6 +6,7 @@ import '../app/experience.css';
 import '../app/film.css';
 import '../app/onboarding.css';
 import '../app/staging.css';
+import '../app/library.css';
 import type {} from '../lib/game/public-path';
 
 window.__AEQUILIBRIUM_ASSET_BASE__=import.meta.env.BASE_URL;

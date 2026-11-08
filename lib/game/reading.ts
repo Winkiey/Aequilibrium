@@ -1,6 +1,6 @@
 /** Original editorial summaries. Only `quote` fields contain verbatim source text. */
 export const READING_SOURCES={
- economics:{author:'Steven A. Greenlaw、David Shapiro、Daniel MacDonald',title:'Principles of Economics 3e',year:'2022',kind:'教材',note:'第2、6、16、17章',url:'https://openstax.org/details/books/principles-economics-3e'},
+ economics:{author:'Steven A. Greenlaw、David Shapiro、Daniel MacDonald',title:'Principles of Economics 3e',year:'2022',kind:'教材',note:'第2、3、5、6、12、16、17、22、33章',url:'https://openstax.org/details/books/principles-economics-3e'},
  fisher:{author:'Irving Fisher',title:'The Theory of Interest',year:'1930',kind:'著作',note:'时间偏好与投资机会',url:'https://www.econlib.org/library/YPDBooks/Fisher/fshToI.html'},
  dixit:{author:'Avinash K. Dixit、Robert S. Pindyck',title:'Investment under Uncertainty',year:'1994',kind:'著作',note:'不可逆投资与等待的价值',url:'https://press.princeton.edu/books/hardcover/9780691034102/investment-under-uncertainty'},
  accounting:{author:'Mitchell Franklin、Patty Graybeal、Dixon Cooper',title:'Principles of Accounting, Volume 1: Financial Accounting',year:'2019',kind:'教材',note:'第3、16章与财务分析附录',url:'https://openstax.org/books/principles-financial-accounting/pages/16-summary'},
@@ -13,6 +13,10 @@ export const READING_SOURCES={
  ostrom:{author:'Elinor Ostrom',title:'Governing the Commons',year:'1990',kind:'著作',note:'结合2009年诺贝尔演讲中的制度研究',url:'https://www.cambridge.org/core/books/governing-the-commons/7AB7AE11BADA84409C34815CC288CD79/listing'},
  reciprocity:{author:'Ernst Fehr、Simon Gächter',title:'Fairness and Retaliation: The Economics of Reciprocity',year:'2000',kind:'论文',note:'Journal of Economic Perspectives 14(3), 159–181',url:'https://www.aeaweb.org/articles?id=10.1257%2Fjep.14.3.159'},
  zero:{author:'Kristina Shampanier、Nina Mazar、Dan Ariely',title:'Zero as a Special Price: The True Value of Free Products',year:'2007',kind:'论文',note:'Marketing Science 26(6), 742–757',url:'https://pubsonline.informs.org/doi/abs/10.1287/mksc.1060.0254'},
+ markowitz:{author:'Harry Markowitz',title:'Portfolio Selection',year:'1952',kind:'论文',note:'The Journal of Finance 7(1), 77–91；尤其79–81、89–91页',url:'https://traders.berkeley.edu/papers/Markowitz.pdf'},
+ coase:{author:'Ronald H. Coase',title:'The Institutional Structure of Production',year:'1991',kind:'演讲',note:'12月9日诺贝尔演讲：交易成本、企业与制度安排',url:'https://www.nobelprize.org/prizes/economic-sciences/1991/coase/lecture/'},
+ north:{author:'Douglass C. North',title:'Economic Performance through Time',year:'1993',kind:'演讲',note:'12月9日诺贝尔演讲，第II、III、VII节',url:'https://www.nobelprize.org/prizes/economic-sciences/1993/north/lecture/'},
+ ecb:{author:'European Central Bank',title:'Transmission mechanism of monetary policy',year:'未署年',kind:'机构说明',note:'官方传导机制说明；核对日期2026-11-08',url:'https://www.ecb.europa.eu/mopo/intro/transmission/html/index.en.html'},
 } as const;
 export type ReadingChapter={id:string;title:string;subtitle:string;terms:string[];summary:string[];exampleTitle:string;example:string[];question:string;sources:(keyof typeof READING_SOURCES)[];quote?:{text:string;translation:string;source:keyof typeof READING_SOURCES;locator:string}};
 export const READING_CHAPTERS:ReadingChapter[]=[
@@ -89,6 +93,46 @@ export const READING_CHAPTERS:ReadingChapter[]=[
   '一个下午没有买卖，不能单凭后来涨跌判断它浪费了。它也许用来核对资料、休息，或者与人完成已经答应的安排。',
   '反过来，有温度的理由也不会免除付款责任。把收入、生活和关系放在同一张时间表上，才能更具体地理解取舍。'],question:'如果最终只记一个财富数字，我会遗漏这三年里的哪些重要事情？',sources:['economics','reciprocity','keynes'],quote:{text:'it is better for reputation to fail conventionally than to succeed unconventionally.',translation:'就声誉而言，循常规而失败，胜过不循常规而成功。',source:'keynes',locator:'第12章第五节；原文短引，译文为编者译'}},
 ];
+
+// New chapters append here to keep the original twelve saved chapter indexes stable.
+READING_CHAPTERS.push(
+ {id:'prices',title:'街角的纸，为什么涨价',subtitle:'供需、均衡与弹性',terms:['需求','供给','均衡','价格弹性','相对价格'],summary:[
+ '供需分析先固定一组条件，再问买卖双方在不同价格下愿意交易多少。同一商品因价格变化而多买或少买，与收入、偏好改变导致整条需求关系移动，并不是同一件事。供给也要区分沿曲线移动与生产条件变化。',
+ '雨季阻断运输，可能使同一价格下能够送达的纸张减少；开学增加用纸，则可能使同一价格下的购买意愿增加。两种情形都可能涨价，成交数量的变化却可能不同。只看一个涨价结果，不能反推出唯一的原因。',
+ '弹性用百分比比较反应的大小，还受替代品、时间与支出比重影响。均衡是特定条件下供需相容的描述，不是公平的证明；普通商品的静态图解也不能机械用于预测股票的未来报价。'],exampleTitle:'编者例子 · 同样的涨价，两种来由',example:[
+ '印厂能按时收到的纸减少，需求暂时不变。店主愿付更高价格，却可能仍买到更少纸。这与读书季突然多出一批订单、价格和销量一同增加，不是同一条路径。',
+ '如果同时出现替代材料、延期订单和新供货商，就要重新核对各项条件。图解帮助整理问题，并不替代对实际约束的观察。'],question:'看到价格变化时，先问：变的是购买意愿、生产条件，还是两者都变了？',sources:['economics','hayek']},
+ {id:'trade',title:'校对的人，与修书的人',subtitle:'比较优势、分工与交换',terms:['比较优势','绝对优势','专业化','贸易收益','分配'],summary:[
+ '绝对优势比较完成工作的效率，比较优势则比较机会成本。一个人即使两件事都做得更快，也不表示包办一切最好；把时间用于相对更有优势的任务，再通过交换，可能扩大双方可获得的组合。',
+ '交换是否对双方有吸引力，要看交换比例是否落在彼此机会成本之间，还要计入协调、运输和转换工作的成本。若这些成本很高，理论上可见的收益可能不足以支持实际分工。',
+ '总体产出增加，并不保证收益平均分配，也不保证每个受到影响的人都获得补偿。专业化还可能增加对特定客户、技能和供应链的依赖。效率、分配与韧性需要分别讨论，而不能由一个总数代替。'],exampleTitle:'编者例子 · 每本书，换几页校对',example:[
+ '甲一晚能校20页或修4本；乙能校10页或修5本。甲修一本的机会成本是5页校对，乙是2页，因此乙在修书上有比较优势。',
+ '以每本换3页的比例，乙交出一本相当于放弃2页，却得到3页；甲付出3页，省下原本修书要放弃的5页。此例忽略运送、质量和协调差异，现实比较还要补上它们。'],question:'我正在比较谁做得更快，还是谁为此放弃得更少？',sources:['economics','coase']},
+ {id:'portfolio',title:'几只篮子，同一场雨',subtitle:'相关性、分散化与预期收益',terms:['分散化','相关性','期望收益','方差','共同风险'],summary:[
+ '马科维茨把组合选择从逐个比较资产，推进到同时考察收益与共同变动。组合波动不仅取决于各项资产本身，还取决于它们是否经常同涨同跌；资产名字的数量并不能直接代表风险来源的数量。',
+ '若几家公司都依赖同一类客户、原材料或融资渠道，它们可能在同一冲击下受损。组合不同风险来源，可以降低部分个别风险，却不保证免受共同市场冲击，也不保证在需要用钱时恰好没有损失。',
+ '期望收益是按概率加权的平均结果，实际路径可能偏离它很远。均值和方差是有用的模型尺度，但不能概括违约、流动性与极端损失等所有风险；未来收益和相关性也无法从过去精确抄来。'],exampleTitle:'编者例子 · 五间店，一位大客户',example:[
+ '表面上，你支持了五间不同书店。如果它们主要依靠同一所学校采购，一次采购暂停可能同时影响五家。分散了店名，并未分散客户来源。',
+ '另一个收入来源若不依赖学校，可能改变组合的共同波动。但还要核对它自己的经营与支付风险，不能仅凭“看起来不同”就当作安全。'],question:'我拥有几种资产，和我承担几种共同冲击，是同一个数字吗？',sources:['markowitz','economics']},
+ {id:'institutions',title:'约定之外，还有什么',subtitle:'交易成本、组织与制度',terms:['交易成本','制度','组织','产权','执行','路径依赖'],summary:[
+ '科斯追问，既然市场能协调活动，企业为什么还会存在？寻找对象、了解价格、谈判、拟约、核实和处理争议，本身都占用资源。把一部分活动留在组织内部，可能减少一些交易成本，同时产生新的管理与协调成本。',
+ '诺斯区分制度与组织：制度涉及正式规则、非正式规范及执行方式，组织则是在这些约束下行动的参与者。写出一张规则，并不保证所有人理解、愿意遵守或有能力执行。',
+ '现实比较应在可行安排之间进行，而非用毫无摩擦的理想市场对比有缺点的现实机构。历史形成的习惯与权力会影响规则变化；一种安排能存续，不代表它最有效率，也不代表它让所有人受益。'],exampleTitle:'编者例子 · 同一位修书师傅',example:[
+ '每次换一位师傅，都要重新说明装订方式、核对质量和追修。固定合作可以节省这些资源，却也可能减少比较报价的机会，并增加依赖。',
+ '选择雇佣、长期合同或临时外包，需要把这些成本与风险摆在一起。门口贴着的规章，还要配合可执行的排班、验收和争议处理程序。'],question:'这条规则由谁执行，执行一次又需要花多少时间？',sources:['coase','north','contracts']},
+ {id:'cycle',title:'数字没变，日子变贵了',subtitle:'通胀、购买力与利率传导',terms:['通胀','价格指数','实际购买力','名义回报','货币传导','时滞'],summary:[
+ '名义金额按货币单位记录，实际购买力还取决于物价。通胀通常指总体价格水平上升；个别商品涨价不必然说明总体通胀，公布的平均消费篮子也不一定等于一个人的实际支出结构。',
+ '名义回报与实际回报不能混为一谈。一期精确换算是把一加名义回报除以一加同期通胀，再减去一；两者简单相减只是近似。通胀率下降也不等于价格已经下降。',
+ '利率变化会通过融资、储蓄、投资、信贷与预期等渠道影响经济，传导存在可变且不确定的时滞。政策利率、银行报价和个人固定利率合同不是同一个数字，一则公告也不能直接翻译成所有股票的涨跌答案。'],exampleTitle:'编者例子 · 同一篮东西',example:[
+ '一年后账户从100元变成105元，同一篮商品从100元涨到108元。实际购买力变动约为105÷108−1，即下降2.78%；账户有更多钱，却买不到原来的整篮商品。',
+ '如果印厂新贷款报价变化，店主可能重新安排扩建。是否调整、何时影响招工与订单，仍取决于合同、需求与经营判断，不能写成一个立即生效的开关。'],question:'报纸上的好消息，改变的是名义金额、购买力，还是对未来的预期？',sources:['economics','ecb','fisher']},
+ {id:'externalities',title:'一场热闹，传到了楼上',subtitle:'外部性、社会成本与协商',terms:['外部性','社会成本','私人成本','内部化','公共物品'],summary:[
+ '一项活动可能影响没有参与这笔交易的人。夜间活动的收入归主办者，噪声却影响楼上居民；若这部分影响没有充分进入决策和价格，私人比较就可能漏掉一部分社会成本。外部收益也有相似的边界问题。',
+ '外部性不等于所有人际冲突，也不等于任何由价格变化带来的损失。分析时要辨认影响通过什么机制发生、谁受到影响、已有权利与责任是什么；否则容易把不同问题混在一起。',
+ '解决办法可能涉及时段、技术、收费、责任或共同规则。科斯强调现实中的交易成本：多人协调、举证与执行都可能昂贵，不能直接假定双方总能无成本协商。比较方案时也要计入治理本身的成本和分配影响。'],exampleTitle:'编者例子 · 九点以后的声音',example:[
+ '读书会对到场的人有价值，楼上居民却没有参与决定结束时间。只看门票和茶水开支，会漏掉居民休息受到的影响。',
+ '提前结束、换场地、增加隔音各有成本。让受影响者参与讨论有助于发现遗漏，但具体能否执行仍取决于权利、人数和监督安排。'],question:'这份账上没有出现的人，是否仍在为它付出代价？',sources:['economics','coase','ostrom']},
+);
 
 /** Internal coverage index, not shown beside live story choices. */
 export const EVENT_READING:Record<string,string[]>={

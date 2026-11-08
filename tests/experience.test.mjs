@@ -55,7 +55,7 @@ test('painting coordinates remain inside the same cover geometry in desktop and 
  }
 });
 test('the book covers every event, contains substantial original summaries, and keeps short quotes attributed',()=>{
- assert.equal(READING_CHAPTERS.length,12);assert.equal(Object.keys(READING_SOURCES).length,13);assert.deepEqual(Object.keys(EVENT_READING).sort(),Object.keys(STORYBOARDS).sort());const ids=new Set(READING_CHAPTERS.map(c=>c.id));
+ assert.equal(READING_CHAPTERS.length,18);assert.equal(Object.keys(READING_SOURCES).length,17);assert.deepEqual(Object.keys(EVENT_READING).sort(),Object.keys(STORYBOARDS).sort());const ids=new Set(READING_CHAPTERS.map(c=>c.id));
  for(const references of Object.values(EVENT_READING))assert.ok(references.length&&references.every(id=>ids.has(id)));
  for(const chapter of READING_CHAPTERS){assert.ok(chapter.summary.length>=3);assert.ok(chapter.example.length>=2);assert.ok(chapter.summary.join('').length>=180);assert.ok(chapter.sources.every(id=>READING_SOURCES[id]));if(chapter.quote){assert.ok(chapter.quote.text.split(/\s+/).length<=25);assert.ok(chapter.quote.locator&&chapter.quote.translation&&READING_SOURCES[chapter.quote.source]);}}
  assert.doesNotMatch(readFileSync('components/game/EconomicsBook.tsx','utf8'),/href=/);

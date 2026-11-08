@@ -1,10 +1,23 @@
 # 阅读册的资料与编辑说明
 
-游戏内提供12章、24页原创梳理，覆盖64个事件涉及的原理。下列13项是相关阅读材料，其中包括著作、教材、论文和一份研究综述，并非全部都是独著。正文与生活例子由本作编写；只有明确标出的两段英语短引属于逐字摘录，各不超过25词。中文短引译文由编者翻译。书目在游戏内直接排版，不作为外部网页跳转入口。
+游戏内提供六卷、18章、36个阅读页，维护76个事件的内部原理索引。相关阅读共17项，包含著作、教材、论文、演讲与机构说明，并非全部都是独著。每章提供分节正文、原创生活例子、概念区分、关系图、思考题与可展开的答题思路、关联章节和原著札记。供需、相关性与购买力另有可交互图解。正文与生活例子由本作编写；只有明确标出的两段英语短引属于逐字摘录，各不超过25词。中文短引译文由编者翻译。书目在游戏内直接排版，不作为外部网页跳转入口。以下链接供开发者复核，游戏内可直接读到整理内容。
+
+本轮核对日期：2026-11-08。保留原12章的存档索引；新增章节追加存储，通过独立的六卷阅读顺序呈现。阅读不改变剧情、价格或选择结果，也不在进行中的选择旁标注偏差名称。
+
+## 六卷知识路径
+
+| 卷 | 章节 | 核心联系 |
+| --- | --- | --- |
+| 有限的日子 | 选择、时间、生活 | 预算约束 → 跨期取舍 → 非货币价值 |
+| 街上的价格 | 供需、比较优势、信息 | 相对稀缺 → 分工交换 → 分散知识 |
+| 钱的去处 | 企业、流动性、杠杆 | 营收/利润/现金 → 到期支付 → 风险敞口 |
+| 心中的刻度 | 心理账户、参照点、组合 | 决策框架 → 判断偏差 → 共同波动 |
+| 信任的条件 | 信用、激励、制度 | 隐藏质量 → 隐藏行动 → 规则与执行 |
+| 共同的远处 | 物价与传导、外部性、共同资源 | 购买力 → 他人影响 → 可持续合作 |
 
 ## 核对来源
 
-- **Steven A. Greenlaw、David Shapiro、Daniel MacDonald**，*Principles of Economics 3e*，2022。教材。第2、6、16、17章。[核对材料](https://openstax.org/details/books/principles-economics-3e)
+- **Steven A. Greenlaw、David Shapiro、Daniel MacDonald**，*Principles of Economics 3e*，2022。教材。第2、3、5、6、12、16、17、22、33章。[核对材料](https://openstax.org/details/books/principles-economics-3e)
 - **Irving Fisher**，*The Theory of Interest*，1930。著作。时间偏好与投资机会。[核对材料](https://www.econlib.org/library/YPDBooks/Fisher/fshToI.html)
 - **Avinash K. Dixit、Robert S. Pindyck**，*Investment under Uncertainty*，1994。著作。不可逆投资与等待的价值。[核对材料](https://press.princeton.edu/books/hardcover/9780691034102/investment-under-uncertainty)
 - **Mitchell Franklin、Patty Graybeal、Dixon Cooper**，*Principles of Accounting, Volume 1: Financial Accounting*，2019。教材。第3、16章与财务分析附录。[核对材料](https://openstax.org/books/principles-financial-accounting/pages/16-summary)
@@ -17,6 +30,22 @@
 - **Elinor Ostrom**，*Governing the Commons*，1990。著作。结合2009年诺贝尔演讲中的制度研究。[核对材料](https://www.cambridge.org/core/books/governing-the-commons/7AB7AE11BADA84409C34815CC288CD79/listing)
 - **Ernst Fehr、Simon Gächter**，*Fairness and Retaliation: The Economics of Reciprocity*，2000。论文。Journal of Economic Perspectives 14(3), 159–181。[核对材料](https://www.aeaweb.org/articles?id=10.1257%2Fjep.14.3.159)
 - **Kristina Shampanier、Nina Mazar、Dan Ariely**，*Zero as a Special Price: The True Value of Free Products*，2007。论文。Marketing Science 26(6), 742–757。[核对材料](https://pubsonline.informs.org/doi/abs/10.1287/mksc.1060.0254)
+- **Harry Markowitz**，*Portfolio Selection*，1952。论文。The Journal of Finance 7(1), 77–91，重点79–81、89–91页。[原始论文](https://traders.berkeley.edu/papers/Markowitz.pdf)
+- **Ronald H. Coase**，*The Institutional Structure of Production*，1991。12月9日本人诺贝尔演讲。[演讲原文](https://www.nobelprize.org/prizes/economic-sciences/1991/coase/lecture/)
+- **Douglass C. North**，*Economic Performance through Time*，1993。12月9日本人诺贝尔演讲，第II、III、VII节。[演讲原文](https://www.nobelprize.org/prizes/economic-sciences/1993/north/lecture/)
+- **European Central Bank**，*Transmission mechanism of monetary policy*，未署年。机构说明，访问日期2026-11-08。[官方材料](https://www.ecb.europa.eu/mopo/intro/transmission/html/index.en.html)
+
+### 新增主题的具体核对位置
+
+- 供需曲线与曲线移动：[§3.1](https://openstax.org/books/principles-economics-3e/pages/3-1-demand-supply-and-equilibrium-in-markets-for-goods-and-services)、[§3.2](https://openstax.org/books/principles-economics-3e/pages/3-2-shifts-in-demand-and-supply-for-goods-and-services)。普通商品的比较静态不直接作为证券报价预测器。
+- 绝对/比较优势：[§33.1](https://openstax.org/books/principles-economics-3e/pages/33-1-absolute-and-comparative-advantage)。游戏内校对/修书与交换比例是编者原创例子。
+- 外部成本：[§12.1](https://openstax.org/books/principles-economics-3e/pages/12-1-the-economics-of-pollution)；补充核对科斯1937年[《企业的性质》原刊](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1468-0335.1937.tb00002.x)及1960年[《社会成本问题》原刊记录](https://chicagounbound.uchicago.edu/jle/vol3/iss1/2/)。不将无交易成本的假设直接移用于现实协商。
+- 物价与生活成本：[§22.2](https://openstax.org/books/principles-economics-3e/pages/22-2-how-to-measure-changes-in-the-cost-of-living)、[§22.4](https://openstax.org/books/principles-economics-3e/pages/22-4-the-confusion-over-inflation)。实际回报用比值式，差额式明确只是近似。
+- 相关性与分散化：马科维茨原文的均值—方差框架。不把方差当作全部风险，也不声称历史相关性固定。
+- 制度与组织：诺斯演讲第II、III节；制度存续不代表有效率或对所有人有利。
+- 传导时滞：ECB官方说明开头与储蓄、投资、信贷相关段落。保持可变、不确定的传导，不写“降息必然涨股价”。
+
+这些材料只用于事实核对与概念整理；没有复制教材图表、书封、习题或大段译文。游戏内图形、数字场景、例子和思考题独立编写。原著札记标明主题选读范围，不声称替代原书。游戏未模拟CPI统计或完整货币政策体系，拓展阅读也不意味着引擎新增这些参数。
 
 ## 补充原始研究与教材篇章
 
