@@ -1,3 +1,5 @@
+import {publicPath} from './public-path';
+export {publicPath} from './public-path';
 import {ASSETS} from './assets.generated';
 import {CAST,SCENES} from './visuals';
 import type {CastId,SceneId,FocusObject} from './cinematic-content';
@@ -7,7 +9,7 @@ const sources:Record<string,Source>=ASSETS;
 const decoded=new Set<string>();const pending=new Map<string,Promise<void>>();
 export function assetSource(path:string):Source{return sources[path]??{src:path,width:1672,height:941,bytes:0};}
 export function imageURL(path:string):string{
- const a=assetSource(path);return typeof window!=='undefined'&&window.innerWidth<=1100&&window.innerHeight<=600&&a.small?a.small.src:a.src;
+ const a=assetSource(path);return publicPath(typeof window!=='undefined'&&window.innerWidth<=1100&&window.innerHeight<=600&&a.small?a.small.src:a.src);
 }
 export function imageReady(path:string){return decoded.has(imageURL(path));}
 export function prepareImage(path:string):Promise<void>{

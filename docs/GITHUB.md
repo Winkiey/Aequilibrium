@@ -1,13 +1,15 @@
-# GitHub 私有仓库
+# GitHub 与在线游玩
 
-目标仓库：https://github.com/Winkiey/Aequilibrium。可见性为私有；只向有权限的账号展示源码与素材。
+- 源码仓库：https://github.com/Winkiey/Aequilibrium
+- GitHub Pages游戏网址：https://winkiey.github.io/Aequilibrium/
+- 当前仓库可见性：公开。账号套餐不支持私有仓库Pages，用户明确授权必要时改为公开，已按此授权完成设置。
 
-2026-11-08用户明确选择新建私有仓库Aequilibrium，随后取消“整局浏览器试玩通过后才上传”的前提，授权直接上传。本版本此前已通过TypeScript、230项自动检查与生产构建；真实整局浏览器操作因工具无法可靠确认URL而未完成，不声明已经亲自玩通。
+主分支更新后，`.github/workflows/pages.yml`构建静态游戏并自动部署。既有Sites项目绑定和站点访问范围保持原样；两种部署使用同一游戏组件。
 
-现有Sites项目绑定保持在 `.openai/hosting.json` 中，`github` remote用于GitHub源码上传。游戏现有站点访问范围保持原样。仓库公开/私有与游戏网站是否允许其他玩家访问是两项设置。
+2026-11-08用户取消整局浏览器试玩作为上传前提。本版本此前通过TypeScript、230项自动检查与原生产构建；本轮增加Pages静态发布构建，没有重跑整局试玩或全套测试。不能把发布成功称为已亲自玩通。
 
-仓库包含开发说明、锁文件、固定人物与背景原画、运行时轻量素材、绘图提示词/来源和GitHub Actions。正常开发不需要付费模型密钥。个人存档、环境文件、密钥、依赖、构建与本地工具输出由 `.gitignore` 排除。
+仓库包含开发说明、锁文件、人物/背景原画、运行时素材、绘图提示词/来源与CI。个人存档、环境文件、密钥、依赖与本地输出由`.gitignore`排除。
 
-尚未指定整体开源许可证，不代替作者授予MIT等许可；字体继续遵循 `public/fonts/OFL.txt`。公开仓库也不自动等于授予开源许可。
+尚未指定整体开源许可证，不代替作者授予MIT等许可；字体遵循`public/fonts/OFL.txt`。公开仓库不自动等于授予开源许可。
 
-本项目采用Cloudflare Worker构建，GitHub托管源码与CI，现有可玩版本继续部署在Sites；不能直接把整个仓库当成GitHub Pages静态站点。
+GitHub Pages使用`npm run build:pages`，输出`dist-pages/`；原Sites仍使用`npm run build`的Worker输出。详见`GITHUB_PAGES.md`。

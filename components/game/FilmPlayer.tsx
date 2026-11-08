@@ -2,6 +2,7 @@
 import{useEffect,useMemo,useRef,useState}from'react';
 import{ArrowRight,BookOpen,Pause,Play,RotateCcw,Subtitles,Volume2,VolumeX}from'lucide-react';
 import{currentFilmCue,subtitlesForFilm,type FilmMedia}from'@/lib/game/films';
+import{publicPath,imageURL}from'@/lib/game/assets';
 import type{FilmScript}from'@/lib/game/film-scripts';
 const clock=(seconds:number)=>`${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;
 
@@ -18,7 +19,7 @@ export function FilmPlayer({media,script,onFinish,onFallback,sound=false,onSound
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(paused||e.repeat||(e.target as HTMLElement)?.closest('input,button,select,textarea,a'))return;if(e.code==='Space'){e.preventDefault();toggle();}else if(e.code==='Escape'){video.current?.pause();setBlocked(true);}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);});
  function retry(){setError(false);setBlocked(false);attempted.current=false;video.current?.load();}
  return <section className="motion-film" aria-label={`${script.title} · 影片`} data-film={script.id}>
-  <video ref={video} src={media.src} poster={media.poster} muted={!sound} playsInline preload="metadata" onLoadedMetadata={e=>{const d=e.currentTarget.duration;if(Number.isFinite(d)&&d>0)setDuration(d);}} onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onWaiting={()=>setBuffering(true)} onPlaying={()=>{setBuffering(false);setPlaying(true);setBlocked(false);}} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onCanPlay={()=>{setBuffering(false);if(!attempted.current){attempted.current=true;if(!reducedMotion&&!paused)play();else setBlocked(true);}}} onEnded={onFinish} onError={()=>{setError(true);setBuffering(false);setPlaying(false);}}/>
+  <video ref={video} src={publicPath(media.src)} poster={imageURL(media.poster)} muted={!sound} playsInline preload="metadata" onLoadedMetadata={e=>{const d=e.currentTarget.duration;if(Number.isFinite(d)&&d>0)setDuration(d);}} onTimeUpdate={e=>setTime(e.currentTarget.currentTime)} onWaiting={()=>setBuffering(true)} onPlaying={()=>{setBuffering(false);setPlaying(true);setBlocked(false);}} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)} onCanPlay={()=>{setBuffering(false);if(!attempted.current){attempted.current=true;if(!reducedMotion&&!paused)play();else setBlocked(true);}}} onEnded={onFinish} onError={()=>{setError(true);setBuffering(false);setPlaying(false);}}/>
   <div className="motion-film-shade"/>
   <header><span>{script.kind==='opening'?'均衡之渊':script.title}<small>{script.kind==='opening'?'AEQUILIBRIUM':'三年以后'}</small></span><button onClick={onFinish}>{script.kind==='opening'?'跳过片头':'跳至复盘'}<ArrowRight size={15}/></button></header>
   {error?<div className="film-play-prompt" role="alert"><p>影片暂时无法播放。</p><button onClick={retry}><RotateCcw size={18}/>重新载入</button><button onClick={onFallback}>用文字继续<ArrowRight size={16}/></button></div>:<>
