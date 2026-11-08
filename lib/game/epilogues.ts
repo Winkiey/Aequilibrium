@@ -13,7 +13,7 @@ export const EPILOGUES:Record<string,Epilogue>={
  '独自抵达':{scene:'bookshop-night',cast:[],beats:[{speaker:'narrator',text:'你把清好的账目放在桌上，伸手去拿电话。',camera:'wide'},{speaker:'self',text:'号码还在。只是第一句话，想了很久。',camera:'detail',focus:'phone'},{speaker:'narrator',text:'雨停了一会儿。你拿起笔，先写下一个称呼。',camera:'detail',focus:'letter'}]},
  '平淡一生':{scene:'old-street',cast:['he'],beats:[{speaker:'narrator',text:'周末的敲门声，把你从书页里叫了出来。',camera:'wide'},{speaker:'he',text:'菜市场那边新开了家面馆。一起去吗？',pose:1,camera:'medium'},{speaker:'self',text:'你把书反扣在桌上。说，好。',camera:'detail',focus:'book'}]},
 };
-export function epilogueScript(game:Game,name=ending(game).name):VisualScript{
+export function epilogueScript(game:Game,name=ending(game).name,recordedText?:string):VisualScript{
  const e=EPILOGUES[name];if(!e)throw new Error(`缺少结局分镜：${name}`);
- return{...e,beats:[...e.beats,...shortLines(ending(game).name===name?ending(game).text:'这也是澄港的一种后来。').map(text=>({speaker:'narrator' as const,text,camera:'wide' as const}))],outcomes:[[],[]],outcomeFocus:['letter','book'],interaction:{object:'window',label:'再看一眼窗外',line:'光从窗边移过。你在这里，安静地停留了一会儿。'}};
+ return{...e,beats:[...e.beats,...shortLines(recordedText??(ending(game).name===name?ending(game).text:'这也是澄港的一种后来。')).map(text=>({speaker:'narrator' as const,text,camera:'wide' as const}))],outcomes:[[],[]],outcomeFocus:['letter','book'],interaction:{object:'window',label:'再看一眼窗外',line:'光从窗边移过。你在这里，安静地停留了一会儿。'}};
 }

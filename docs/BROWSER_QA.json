@@ -1,17 +1,17 @@
 {
-  "version": 3,
+  "version": 4,
   "current": {
     "browserAutomation": "Stopped: Windows browser URL could not be determined confidently. No further browser operations attempted.",
     "checks": [
       "TypeScript",
-      "31 automated tests",
+      "39 automated tests, including collection unlocks, persistence and actual collection static markup",
       "500 full playthroughs",
       "12 painting-coordinate desk compositions",
       "All 128 responses checked for orphan quotation fragments",
       "Independent street/bank/brokerage painting hashes"
     ],
     "limits": [
-      "Current interactive UI and page-turn animation are not browser-verified in this run.",
+      "Current interactive UI, collection replay clicks and page-turn animation are not browser-verified in this run.",
       "Desk composition images are diagnostic composites, not screenshots."
     ]
   },
