@@ -1,17 +1,20 @@
 {
-  "version": 4,
+  "version": 5,
   "current": {
     "browserAutomation": "Stopped: Windows browser URL could not be determined confidently. No further browser operations attempted.",
     "checks": [
       "TypeScript",
-      "39 automated tests, including collection unlocks, persistence and actual collection static markup",
+      "210 automated tests, including all 152 legal branch executions through year three",
+      "16 continuation combinations and 12 normal-start ending routes with seeded daily selection",
+      "Four-season prop positions across 33 scenes and desktop/landscape cover crops",
+      "Actual collection static markup, unlock persistence and old ending-name migration",
       "500 full playthroughs",
       "12 painting-coordinate desk compositions",
-      "All 128 responses checked for orphan quotation fragments",
+      "All 152 responses checked for orphan quotation fragments",
       "Independent street/bank/brokerage painting hashes"
     ],
     "limits": [
-      "Current interactive UI, collection replay clicks and page-turn animation are not browser-verified in this run.",
+      "Current interactive UI, new story/season animation, collection replay clicks and page-turn animation are not browser-verified in this run.",
       "Desk composition images are diagnostic composites, not screenshots."
     ]
   },

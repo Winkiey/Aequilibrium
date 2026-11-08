@@ -1,6 +1,8 @@
 export class RoomAudio {
   private context: AudioContext | null = null;
   private rain: GainNode | null = null;
+  private filter: BiquadFilterNode | null = null;
+  private seasonIndex=0;
   private music: GainNode | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
   private notes = 0;
@@ -17,6 +19,7 @@ export class RoomAudio {
       for (let c = 0; c < 2; c++) { const data = buffer.getChannelData(c); for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * 0.5; }
       const noise = ctx.createBufferSource(); noise.buffer = buffer; noise.loop = true;
       const filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 1500; filter.Q.value = 0.4;
+      this.filter=filter;this.season(this.seasonIndex);
       noise.connect(filter); filter.connect(this.rain); noise.start();
     }
     await this.context.resume(); this.on = true; this.levels(this.rainLevel, this.musicLevel);
@@ -25,9 +28,10 @@ export class RoomAudio {
   levels(rain: number, music: number) {
     this.rainLevel = rain; this.musicLevel = music;
     if (!this.context || !this.on) return;
-    this.rain?.gain.setTargetAtTime(rain * 0.6, this.context.currentTime, 1.2);
+    this.rain?.gain.setTargetAtTime(rain * [0.6,0.35,0.46,0.27][this.seasonIndex], this.context.currentTime, 1.2);
     this.music?.gain.setTargetAtTime(music * 0.32, this.context.currentTime, 1.2);
   }
+  season(index:number){this.seasonIndex=((index%4)+4)%4;if(this.context&&this.filter){this.filter.frequency.setTargetAtTime([1500,620,1200,2100][this.seasonIndex],this.context.currentTime,2);this.levels(this.rainLevel,this.musicLevel);}}
   private note() {
     if (!this.context || !this.music || !this.on) return;
     const ctx = this.context, notes = [196, 293.66, 220, 261.63, 174.61, 261.63, 220, 293.66];

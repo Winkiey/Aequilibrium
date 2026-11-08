@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createGame,choose,debtTotal} from '../.sites-runtime/test-modules/engine.mjs';
-import {mainEvent,materialize,SIDE_EVENTS} from '../.sites-runtime/test-modules/stories.mjs';
+import {CHAPTER_EVENTS,mainEvent,materialize,SIDE_EVENTS} from '../.sites-runtime/test-modules/stories.mjs';
 import {shortLines,responseDialogue} from '../.sites-runtime/test-modules/dialogue.mjs';
 import {STORYBOARDS} from '../.sites-runtime/test-modules/cinematic-content.mjs';
 import {outcomeBeats} from '../.sites-runtime/test-modules/visuals.mjs';
@@ -21,8 +21,8 @@ test('spoken replies and following narration remain separate; inline quoted word
  const word=responseDialogue('你给程姨回了一个「好」字。过了片刻，又补上一句。','程姨',['cheng']);assert.ok(word.every(b=>b.speaker==='narrator'));assert.ok(word[0].text.includes('「好」字'));
  assert.deepEqual(shortLines('她写道：「先放在这里。明天再来。」你点了点头。'),['她写道：「先放在这里。明天再来。」','你点了点头。']);
 });
-test('all 128 responses avoid orphan quote fragments and one-character tail lines',()=>{
- const s=createGame(7);const events=[...Array.from({length:12},(_,i)=>{s.quarter=i+1;return materialize(mainEvent(s),s);}),...SIDE_EVENTS];
+test('all 152 responses avoid orphan quote fragments and one-character tail lines',()=>{
+ const s=createGame(7);const events=[...Array.from({length:12},(_,i)=>{s.quarter=i+1;return materialize(mainEvent(s),s);}),...SIDE_EVENTS,...CHAPTER_EVENTS];
  for(const event of events)for(const branch of [0,1])for(const beat of outcomeBeats(event,STORYBOARDS[event.id],branch)){
   assert.doesNotMatch(beat.text,/^[」”』，。！？；]/u,`${event.id}: ${beat.text}`);assert.ok(Array.from(beat.text).length>1,`${event.id}: ${beat.text}`);
  }

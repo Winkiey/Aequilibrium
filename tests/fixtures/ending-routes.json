@@ -1,0 +1,2930 @@
+{
+  "method": "Legal createGame/choose/trade/borrow/endQuarter actions; daily events selected by actual seeded selector before quarter choices.",
+  "routes": {
+    "寻常岁月": {
+      "seed": 0,
+      "plan": "paper",
+      "name": "寻常岁月",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s06",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s47",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s22",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s10",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 0
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s46",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s18",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s21",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s12",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s20",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "激流勇退": {
+      "seed": 0,
+      "plan": "retire",
+      "name": "激流勇退",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s06",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s47",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s22",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s10",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s45",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s18",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 0
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s21",
+          "index": 0
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s12",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s20",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "泊灯长明": {
+      "seed": 0,
+      "plan": "shop",
+      "name": "泊灯长明",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 0
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s06",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s46",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s21",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s10",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 0
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s48",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s18",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s22",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s13",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s08",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s26",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "铁窗四季": {
+      "seed": 1,
+      "plan": "fraud",
+      "name": "铁窗四季",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s15",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s39",
+          "index": 0
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s35",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s21",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s20",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s37",
+          "index": 0
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s30",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s45",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s05",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s55",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "同灯共守": {
+      "seed": 2,
+      "plan": "mutual",
+      "name": "同灯共守",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s58",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s38",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s59",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s29",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s40",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s55",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s02",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s44",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s06",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s21",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "纸上春秋": {
+      "seed": 3,
+      "plan": "paper",
+      "name": "纸上春秋",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s38",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s57",
+          "index": 0
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s37",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s32",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 0
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s13",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s43",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s26",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s17",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s03",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "长桌人间": {
+      "seed": 3,
+      "plan": "community",
+      "name": "长桌人间",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 0
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s38",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s57",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s37",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s32",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s13",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s43",
+          "index": 0
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s26",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s17",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 0
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s03",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "归途有约": {
+      "seed": 5,
+      "plan": "family",
+      "name": "归途有约",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 0
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s02",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s01",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s55",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s53",
+          "index": 0
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s22",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s16",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s23",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s26",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s13",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s32",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "知止乘潮": {
+      "seed": 5,
+      "plan": "urban",
+      "name": "知止乘潮",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "trade",
+          "asset": "urban",
+          "side": "buy",
+          "amount": 119000
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s02",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s01",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s51",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s05",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s47",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s21",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s15",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s20",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s30",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "潮声入梦": {
+      "seed": 8,
+      "plan": "coast",
+      "name": "潮声入梦",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s44",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s15",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s38",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s12",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s34",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s29",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s03",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s22",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s14",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s54",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s32",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "独自抵达": {
+      "seed": 2,
+      "plan": "lonely",
+      "name": "独自抵达",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 0
+        },
+        {
+          "quarter": 1,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 1,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 122000
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s58",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 2,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 23623.89
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s35",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 329.21
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "trade",
+          "asset": "power",
+          "side": "sell",
+          "amount": 19956.6512
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s59",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 2066.22
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "trade",
+          "asset": "power",
+          "side": "sell",
+          "amount": 4949.9890000000005
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 0
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s02",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 5,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 26333.44
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 0
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s31",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 6,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 20000.01
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s37",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 1404.54
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s52",
+          "index": 0
+        },
+        {
+          "quarter": 8,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 237.23
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "trade",
+          "asset": "power",
+          "side": "sell",
+          "amount": 11209.988800000001
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s01",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 2068.93
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s36",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 4938.36
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s04",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 500.06
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "trade",
+          "asset": "power",
+          "side": "buy",
+          "amount": 19.87
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "余烬重燃": {
+      "seed": 247,
+      "plan": "ruin",
+      "name": "余烬重燃",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 0
+        },
+        {
+          "quarter": 1,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 1,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 122000
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s34",
+          "index": 0
+        },
+        {
+          "quarter": 2,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 2,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 129686.39374522664
+        },
+        {
+          "quarter": 2,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 149085.14
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 22409.988800000003
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 0
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s18",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 139642.40462509537
+        },
+        {
+          "quarter": 3,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 140840.92
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 17705.988800000003
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s31",
+          "index": 0
+        },
+        {
+          "quarter": 4,
+          "kind": "trade",
+          "asset": "harbor",
+          "side": "sell",
+          "amount": 17928.664700824716
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 5,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 98829.51377828741
+        },
+        {
+          "quarter": 5,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 118157.68
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 0
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s05",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "borrow"
+        },
+        {
+          "quarter": 6,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 97281.01482610087
+        },
+        {
+          "quarter": 6,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 117424.35
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 13449.988800000001
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 0
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s35",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 94099.54078448178
+        },
+        {
+          "quarter": 7,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 95106.91
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 89045.43826727587
+        },
+        {
+          "quarter": 8,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 87667.39
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 793.9888000000001
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 0
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s01",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 55898.58751354681
+        },
+        {
+          "quarter": 9,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 56078.71
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s07",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 18439.65359162193
+        },
+        {
+          "quarter": 10,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 18200.47
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 8567.8976
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s06",
+          "index": 0
+        },
+        {
+          "quarter": 11,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 6944.493775284383
+        },
+        {
+          "quarter": 11,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 7737.15
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "sell",
+          "amount": 7879.871714044736
+        },
+        {
+          "quarter": 12,
+          "kind": "trade",
+          "asset": "signal",
+          "side": "buy",
+          "amount": 8379.92
+        },
+        {
+          "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    }
+  }
+}

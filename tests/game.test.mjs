@@ -1,16 +1,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createGame, trade, quoteTrade, choose, endQuarter, borrow, repay, selectSide, optionError, validateSave, investmentProfit, investments, ending, debtTotal } from '../.sites-runtime/test-modules/engine.mjs';
-import { mainEvent, SIDE_EVENTS, materialize } from '../.sites-runtime/test-modules/stories.mjs';
+import { createGame, trade, quoteTrade, choose, endQuarter as settleQuarter, pendingChapter, borrow, repay, selectSide, optionError, validateSave, investmentProfit, investments, ending, debtTotal } from '../.sites-runtime/test-modules/engine.mjs';
+import { CHAPTER_EVENTS, mainEvent, SIDE_EVENTS, materialize } from '../.sites-runtime/test-modules/stories.mjs';
+function endQuarter(s){if(s.mainChoice!==null&&pendingChapter(s)){const e=CHAPTER_EVENTS.find(e=>e.id===`chapter-${s.quarter}`);s=choose(s,materialize(e,s),0,'chapter');}return settleQuarter(s);}
 const near=(a,b)=>assert.ok(Math.abs(a-b)<0.1,`${a} != ${b}`);
 function decision(s,index=1){const e=mainEvent(s);const chosen=optionError(s,e.options[index])?1-index:index;return choose(s,e,chosen,'main');}
 function next(s,index=1){return endQuarter(decision(s,index));}
 function balance(s){near(s.cash,s.journal.reduce((n,e)=>n+e.amount,0));assert.ok(validateSave(s),'state remains valid');assert.ok(s.assets.every(a=>a.units>=0&&a.basis>=0&&a.price>0));}
-test('64 independent event nodes, two choices each, no bereavement premise',()=>{
- assert.equal(SIDE_EVENTS.length,52);const ids=SIDE_EVENTS.map(e=>e.id);let s=createGame(1);
+test('76 independent event nodes, two choices each, no bereavement premise',()=>{
+ assert.equal(SIDE_EVENTS.length,60);assert.equal(CHAPTER_EVENTS.length,4);const ids=[...SIDE_EVENTS,...CHAPTER_EVENTS].map(e=>e.id);let s=createGame(1);
  for(let q=1;q<=12;q++){s.quarter=q;ids.push(mainEvent(s).id);assert.equal(mainEvent(s).options.length,2);}
- assert.equal(new Set(ids).size,64);assert.ok(SIDE_EVENTS.every(e=>e.options.length===2&&e.paragraphs.join('').length>30));
+ assert.equal(new Set(ids).size,76);assert.ok(SIDE_EVENTS.every(e=>e.options.length===2&&e.paragraphs.join('').length>30));
  const source=readFileSync('lib/game/stories.ts','utf8');assert.doesNotMatch(source,/父亲去世|父亲留下|父亲年轻|父亲的遗/);
 });
 test('buy / sell charges actual fees and keeps cash and basis consistent',()=>{
@@ -62,7 +63,7 @@ test('low-cash shop expenses leave explicit arrears instead of negative money',(
  let arrears=0;for(let seed=0;seed<30;seed++){let s=createGame(seed);s.cash=0;s.journal[0].amount=0;s.flags.shop=1;s.mainChoice=1;s=endQuarter(s);if(s.debt.length)arrears++;balance(s);assert.ok(s.cash>=0);}assert.ok(arrears>0);
 });
 test('ordinary losses never imply imprisonment, explicit misconduct requires a chain',()=>{
- const s=createGame(17);s.cash=0;assert.notEqual(ending(s).name,'执念入狱');s.flags.fraud=3;s.investigation=2;assert.notEqual(ending(s).name,'执念入狱');s.investigation=3;assert.equal(ending(s).name,'执念入狱');
+ const s=createGame(17);s.cash=0;assert.notEqual(ending(s).name,'铁窗四季');s.flags.fraud=3;s.investigation=2;assert.notEqual(ending(s).name,'铁窗四季');s.investigation=3;assert.equal(ending(s).name,'铁窗四季');
 });
 test('500 full playthroughs preserve money, nonnegative positions and finish in 12 seasons',()=>{
  for(let seed=0;seed<100;seed++)for(const strategy of ['cash','diversified','churn','leveraged','random']){

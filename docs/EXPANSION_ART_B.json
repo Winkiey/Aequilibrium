@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "tool": "built-in image_gen.imagegen",
+  "date": "2026-11-08",
+  "scope": "Six independent new daily-event backgrounds. Original generated PNGs retained; WebP conversion only, no replacement of existing art.",
+  "assets": [
+    {
+      "id": "repair-summer",
+      "name": "夏日修理铺",
+      "kind": "background",
+      "path": "/art/backgrounds/repair-summer.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-884b79a1-d1c3-4cde-adf0-f74a13835693.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: a full-screen 16:9 background painting for Aequilibrium, a quiet Chinese coastal town narrative game. Paint one complete scene, not a collage. Scene: a modest bicycle and household appliance repair shop on an old coastal Chinese street, a humid summer afternoon. The left foreground wooden workbench holds one old metal electric fan waiting to be repaired, a screwdriver, neat loose screws, and a chipped enamel parts tray. A rolled bamboo blind casts soft broken stripes of light. Through the open entrance on the right is deep green leafy shade and a worn stone lane, no bright signage. Background has a restrained shelving unit for real repair tools, not books. Eye-level wide cinematic composition, empty central floor and right midground for later game characters and dialogue. Style: realistic hand-painted film storyboard, extremely fine yet restrained gouache and oil brushwork, natural perspective, worn wood, limewashed walls, subtle paper grain. Same art direction as an old harbor bookshop: slate-gray, tobacco-brown, muted moss green, small warm highlights, low contrast natural light, calm and lived-in. Natural adult scale. High detail but no glossy AI fantasy lighting. No people or silhouettes, no text, lettering, UI, frames, logos, watermarks, anime, 3D render or financial dashboards. Request horizontal 1672 by 941 or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    },
+    {
+      "id": "osmanthus-yard",
+      "name": "秋日桂花院",
+      "kind": "background",
+      "path": "/art/backgrounds/osmanthus-yard.webp",
+      "width": 1672,
+      "height": 940,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-98f2d794-a9bb-4967-8b94-764d12f43c2f.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: a complete full-screen 16:9 background painting for Aequilibrium, a restrained Chinese coastal town narrative game. Scene: the small autumn courtyard behind an old harbor bookshop. A low stone wall, a mature osmanthus tree with tiny muted golden flowers, a wooden rack holding open book pages to air, a low worktable on the left with a small shallow dish of osmanthus blossoms and one plain ceramic cup. Only a few dry leaves gather at the base of the wall. Eye-level wide composition: central courtyard and right midground left clear for later characters and dialogue. Old lime plaster, irregular stone paving, timber window and gray tiled eaves. Style: realistic hand-painted cinematic storyboard, fine restrained gouache/oil brushwork and tactile paper grain, true perspective, natural adult proportions, no decorative exaggeration. Match the quiet worn wood and slate/moss/tobacco palette of an old harbor bookshop. Gentle late-autumn afternoon side light, gray-green shadows, subdued golden foliage, calm lived-in atmosphere, not a fantasy garden. No people, no silhouettes, no readable text, lettering, UI, frames, logos, watermarks, anime, glossy 3D or AI bloom. One independent horizontal 1672x941 illustration or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    },
+    {
+      "id": "proof-morning",
+      "name": "春晨校样室",
+      "kind": "background",
+      "path": "/art/backgrounds/proof-morning.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-ebd4d144-59bd-45c5-bb0a-00106230aaa9.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: one full-screen 16:9 environmental background painting for Aequilibrium, an intimate Chinese coastal town narrative game. Scene: a small publisher's proofreading office on a fresh spring morning. Left foreground desk: a neat stack of sample books and blank-looking title/credit pages, red and blue proofreader pencils, simple metal paper clips, one plain cup. In a modest vase by the timber window is a sparse budding branch, pale spring green. Beyond the window are old gray tiled rooftops and a quiet pale sea sky. Rear wall is worn warm-gray lime plaster; a few closed brown paper files on a low cabinet. Eye-level wide shot, genuine adult-scale furniture. Midground center and right must have clear usable floor space for later character sprites, with calm low-detail wall surfaces suitable behind dialogue. Realistic hand-painted film storyboard, fine restrained brush texture, true perspective and materials, subtle paper grain, soft daylight on cream paper. Muted slate, tobacco, moss green and ivory palette with no bright artificial accent. Same quiet precise harbor-town illustration style as old bookshop paintings. No people, silhouettes, readable text or printed lettering, UI, typography, logos, watermarks, anime, 3D rendering, glossy fantasy lighting. Not a stock-trading dashboard or modern corporate office. One independent horizontal 1672x941 scene or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    },
+    {
+      "id": "post-winter",
+      "name": "冬日小邮局",
+      "kind": "background",
+      "path": "/art/backgrounds/post-winter.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-76a6b3d2-6d3d-485b-900a-03adc128692f.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: a full-screen horizontal 16:9 background painting for Aequilibrium, a Chinese coastal-town narrative game. One complete independent scene. Scene: the small old neighborhood post office at dusk in winter. The left foreground is a worn wooden counter with several tidy bundles of plain envelopes tied with string, an open brown canvas mail sack and a folded muted wool scarf. Behind it, a simple wall of narrow timber letter cubbies. Beyond old wooden-framed glass windows lies a quiet coastal street in cold mist, no snowstorm. One modest old electric wall lamp lends a small pool of amber warmth to an otherwise slate-gray and moss-brown room. Broad clear center floor and right midground for game characters, calm unbroken wall surfaces behind dialogue. Eye-level cinematic wide framing with natural perspective and realistically sized everyday furniture. Realistic hand-painted film storyboard, fine understated gouache/oil brushwork, weathered timber, plaster and canvas texture, restrained paper grain, low saturation, quiet lived-in harbor atmosphere. Same rendering style as a worn bookshop with natural light and true materials, no hyper-gloss or artificial bloom. No people, silhouettes, readable text, labels, legible postage, typography, UI, logos, watermarks, anime, 3D render, bank counters or bookshelves. Target 1672x941 or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    },
+    {
+      "id": "noodle-blackout",
+      "name": "夏夜停电面馆",
+      "kind": "background",
+      "path": "/art/backgrounds/noodle-blackout.webp",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-07053e64-9d04-469a-b4fd-9cd7f1af3f25.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: one complete horizontal 16:9 cinematic background painting for Aequilibrium, the quiet realistic hand-painted Chinese coastal-town game. Scene: the small rear courtyard of an old neighborhood noodle shop during a summer evening power cut. A cold, unlit cooking stove and several stacked chipped enamel bowls on a worktop at left; vegetable baskets, bamboo stools, a few ordinary pots and a simple wooden drying rack. Leafy green vines hang over the courtyard wall. A single modest safe rechargeable lantern sits on the side worktop, casting a small warm pool of light; the remainder is soft deep slate-blue summer dusk, a little pale blue still in the sky above old tiled roofs. Air feels humid and still. Absolutely no fire, smoke, disaster, candles or spectacle. Eye-level wide shot with an empty central floor and right midground reserved for later game characters and dialogue. Precise natural perspective, worn timber, limewash, stone paving and enamel textures, subtle paper grain, finely controlled gouache/oil brushwork. Muted slate, moss-green, tobacco-brown and dim amber palette, intimate everyday film storyboard mood, matching an old harbor bookshop's dignified restrained realism. No people, silhouettes, text, lettering, signage, UI, logos, frames, watermark, anime, glossy 3D or artificial bloom. Target 1672x941 or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    },
+    {
+      "id": "debt-autumn",
+      "name": "秋日借据办事处",
+      "kind": "background",
+      "path": "/art/backgrounds/debt-autumn.webp",
+      "width": 1672,
+      "height": 940,
+      "alpha": false,
+      "status": "ready",
+      "tool": "built-in image_gen.imagegen",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-c3c1aa82-14e5-4f64-9297-43934772e363.png",
+      "referenceStyle": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "prompt": "Use case: illustration-story. Asset: a complete 16:9 scene background painting for Aequilibrium, a quiet Chinese coastal town narrative game. Scene: the plain little paperwork office beside a neighborhood bank on an autumn afternoon. A narrow worn wooden desk in the left foreground holds two neatly aligned blank-looking promissory-note sheets, a sealed brown envelope, a simple ceramic cup and an ordinary pen. On the old timber window sill lie just a few yellow ginkgo leaves brought in by the breeze. Through the window is a quiet narrow coastal-town lane in gentle golden slanting autumn light. A small filing cabinet against the rear limewashed wall, a modest chair, simple real working room. Broad clear center floor and right midground for later character sprites and dialogue. Eye-level cinematic wide shot, natural adult proportions, accurate perspective. Style must be realistic hand-painted film storyboard: tiny controlled gouache/oil brushwork, tactile worn wood, paper, lime plaster, muted slate-gray, moss, tobacco-brown, ivory and restrained amber; low saturation and gentle contrast, same dignified lived-in harbor bookshop art direction. No luxury bank or modern boardroom. No people or silhouettes, no readable text or numbers, signatures, logos, watermarks, UI, frames, anime, 3D render or glossy artificial bloom. One independent horizontal 1672x941 illustration or nearest 16:9.",
+      "visualQA": {
+        "checked": true,
+        "people": false,
+        "readableText": false,
+        "style": "Realistic restrained hand-painted film storyboard; muted harbor-town slate/moss/tobacco palette; independent setting; clear center/right for actors"
+      }
+    }
+  ]
+}

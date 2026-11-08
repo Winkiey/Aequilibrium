@@ -1,5 +1,7 @@
 import type { Effects, Game, Option, StoryEvent } from './engine';
 import { debtTotal, investments } from './engine';
+import { SIDE_ADDITIONS } from './expansion';
+export { CHAPTER_EVENTS } from './expansion';
 
 const o=(label:string,detail:string,response:string,effects:Effects={}):Option=>({label,detail,response,effects});
 const event=(id:string,title:string,sender:string,location:string,category:string,paragraphs:string[],options:[Option,Option],principle:string,when?:StoryEvent['when'],weight?:StoryEvent['weight']):StoryEvent=>({id,title,sender,location,category,paragraphs,options,principle,when,weight});
@@ -227,11 +229,12 @@ const secondReplies=[
  '旧买价仍圈在那里。公司下一次公告的日期，你又写了一遍。',
  '周五多开了一个晚上。最后一位客人离开后，你和阿棠一起收起了杯子。',
 ];
-export const SIDE_EVENTS:StoryEvent[]=specs.map(([id,title,sender,category,text,label,detail,response,effects,label2,detail2,effects2,principle,when],index)=>event(id,title,sender,'澄港 · 日常片段',category,[text,...(extraScenes[id]?[extraScenes[id]]:[])],[o(label,detail,response,effects),o(label2,detail2,secondReplies[index],effects2)],principle,when,(s)=>1+(category==='期限'&&s.cash<30000?2:0)+(category==='传闻'&&s.confidence>55?2:0)+(category==='生活'&&s.stress>45?2:0)));
+export const SIDE_EVENTS:StoryEvent[]=[...specs.map(([id,title,sender,category,text,label,detail,response,effects,label2,detail2,effects2,principle,when],index)=>event(id,title,sender,'澄港 · 日常片段',category,[text,...(extraScenes[id]?[extraScenes[id]]:[])],[o(label,detail,response,effects),o(label2,detail2,secondReplies[index],effects2)],principle,when,(s)=>1+(category==='期限'&&s.cash<30000?2:0)+(category==='传闻'&&s.confidence>55?2:0)+(category==='生活'&&s.stress>45?2:0))),...SIDE_ADDITIONS];
 
 // Relative event dates are materialized before display, and remain stable until answered.
 export function materialize(e:StoryEvent,s:Game):StoryEvent {
  const result=structuredClone({...e,when:undefined,weight:undefined});
+ result.atQuarter=s.quarter;
  for(const option of result.options)for(const p of option.effects.promises??[]){if(p.due===0)p.due=s.quarter+1;else if(p.due<0)p.due=s.quarter-p.due;}
  return result;
 }

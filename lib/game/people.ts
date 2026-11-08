@@ -2,7 +2,7 @@ import type {CastId} from './cinematic-content';
 import {STORYBOARDS} from './cinematic-content';
 import type {Game,ChoiceLog,StoryEvent} from './engine';
 import type {Encounter} from './presentation';
-import {SIDE_EVENTS} from './stories';
+import {CHAPTER_EVENTS,SIDE_EVENTS} from './stories';
 
 export const PEOPLE:Record<CastId,{introduction:string;details:string[]}>={
  cheng:{introduction:'把泊灯书屋的钥匙交到你手里的人。她正在南方学做陶器，仍惦记着书架和那扇关不严的后窗。',details:['做事细致，会把生活里的小事另写一行。','她给你留下选择的时间，也在等待一个明确的答复。']},
@@ -17,7 +17,7 @@ export const PEOPLE:Record<CastId,{introduction:string;details:string[]}>={
  ning:{introduction:'与印刷和稿件往来的顾宁。报价、工作量与下一次合作，是你们谈话中常常出现的词。',details:['长期合作的承诺，需要和眼前这份合同一起看。','你怎样答复，会成为之后往来的起点。']},
 };
 const MAIN_TITLES=['雨夜续租','星期五的空椅子','没有盖章的订单','他们都已经上车','瓦匠来的那一天','南方寄来的陶碗','机器停下来的下午','没有谈行情的晚饭','一份不太好看的报表','有人愿意替你改日期','最后一个营业的夏天之前','把灯留到九点'];
-export function historyEventId(h:ChoiceLog){return h.eventId??h.snapshot?.id??(h.title===MAIN_TITLES[h.quarter-1]||h.title==='再借我一个春天'?`main-${h.quarter}`:SIDE_EVENTS.find(e=>e.title===h.title)?.id);}
+export function historyEventId(h:ChoiceLog){return h.eventId??h.snapshot?.id??(h.title===MAIN_TITLES[h.quarter-1]||h.title==='再借我一个春天'?`main-${h.quarter}`:[...CHAPTER_EVENTS,...SIDE_EVENTS].find(e=>e.title===h.title)?.id);}
 export function encounterPeople(people:Partial<Record<CastId,Encounter>>={},event:Pick<StoryEvent,'id'>,quarter:number){
  const next={...people};for(const id of STORYBOARDS[event.id]?.cast??[]){const previous=next[id];next[id]={quarter:previous?.quarter??quarter,events:[...new Set([...(previous?.events??[]),event.id])]};}return next;
 }

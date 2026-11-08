@@ -330,6 +330,182 @@
       "height": 941,
       "alpha": false,
       "status": "ready"
+    },
+    "winter-roster": {
+      "id": "winter-roster",
+      "kind": "background",
+      "path": "/art/backgrounds/winter-roster.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-b243af05-3a6b-45cf-9293-c091393e3e30.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "seawall-evening": {
+      "id": "seawall-evening",
+      "kind": "background",
+      "path": "/art/backgrounds/seawall-evening.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-4202e541-63ee-4115-98fb-9b6d6428a0c4.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "proof-night": {
+      "id": "proof-night",
+      "kind": "background",
+      "path": "/art/backgrounds/proof-night.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-541a23c2-0c53-4514-a4df-f5e8db0d1978.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "shared-keys": {
+      "id": "shared-keys",
+      "kind": "background",
+      "path": "/art/backgrounds/shared-keys.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-f77c2053-ba54-4a82-94d3-95f42d4282af.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "winter-cloakroom": {
+      "id": "winter-cloakroom",
+      "kind": "background",
+      "path": "/art/backgrounds/winter-cloakroom.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-102247ea-1551-44af-8677-9231fdb87695.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "ferry-spring": {
+      "id": "ferry-spring",
+      "kind": "background",
+      "path": "/art/backgrounds/ferry-spring.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-725f3b50-0340-49a0-859a-0da701c37316.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_A.json"
+    },
+    "repair-summer": {
+      "id": "repair-summer",
+      "kind": "background",
+      "path": "/art/backgrounds/repair-summer.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-884b79a1-d1c3-4cde-adf0-f74a13835693.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "osmanthus-yard": {
+      "id": "osmanthus-yard",
+      "kind": "background",
+      "path": "/art/backgrounds/osmanthus-yard.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-98f2d794-a9bb-4967-8b94-764d12f43c2f.png",
+      "width": 1672,
+      "height": 940,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "proof-morning": {
+      "id": "proof-morning",
+      "kind": "background",
+      "path": "/art/backgrounds/proof-morning.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-ebd4d144-59bd-45c5-bb0a-00106230aaa9.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "post-winter": {
+      "id": "post-winter",
+      "kind": "background",
+      "path": "/art/backgrounds/post-winter.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-76a6b3d2-6d3d-485b-900a-03adc128692f.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "noodle-blackout": {
+      "id": "noodle-blackout",
+      "kind": "background",
+      "path": "/art/backgrounds/noodle-blackout.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-07053e64-9d04-469a-b4fd-9cd7f1af3f25.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "debt-autumn": {
+      "id": "debt-autumn",
+      "kind": "background",
+      "path": "/art/backgrounds/debt-autumn.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b990-1e6c-7d01-a41f-1debc3ca1251\\exec-c3c1aa82-14e5-4f64-9297-43934772e363.png",
+      "width": 1672,
+      "height": 940,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/EXPANSION_ART_B.json"
+    },
+    "season-autumn": {
+      "id": "season-autumn",
+      "kind": "seasonal-prop",
+      "path": "/art/seasons/season-autumn.webp",
+      "source": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-122aa644-dfd4-4204-bb53-2cd400ffe6fd.png",
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "status": "ready",
+      "promptSource": "docs/SEASON_ART_PROMPTS.json"
+    },
+    "season-winter": {
+      "id": "season-winter",
+      "kind": "seasonal-prop",
+      "path": "/art/seasons/season-winter.webp",
+      "source": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-976f48f6-9e05-4061-99b8-571ad4d40852.png",
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "status": "ready",
+      "promptSource": "docs/SEASON_ART_PROMPTS.json"
+    },
+    "season-spring": {
+      "id": "season-spring",
+      "kind": "seasonal-prop",
+      "path": "/art/seasons/season-spring.webp",
+      "source": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-3d48d83d-b43c-46a1-a586-00fe423e486b.png",
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "status": "ready",
+      "promptSource": "docs/SEASON_ART_PROMPTS.json"
+    },
+    "season-summer": {
+      "id": "season-summer",
+      "kind": "seasonal-prop",
+      "path": "/art/seasons/season-summer.webp",
+      "source": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-0c36da32-e635-46df-8152-d362814361b7.png",
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "status": "ready",
+      "promptSource": "docs/SEASON_ART_PROMPTS.json"
     }
   }
 }

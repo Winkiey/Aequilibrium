@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "tool": "image_gen__imagegen",
+  "mode": "builtin",
+  "styleReferences": [
+    "/art/backgrounds/bookshop-day.webp",
+    "/art/props/objects.webp"
+  ],
+  "assets": [
+    {
+      "id": "season-autumn",
+      "path": "/art/seasons/season-autumn.webp",
+      "kind": "seasonal-prop",
+      "sourceFile": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-122aa644-dfd4-4204-bb53-2cd400ffe6fd.png",
+      "prompt": "Use case: illustration-story.\nAsset type: transparent foreground still-life for the realistic hand-painted narrative game Aequilibrium.\nInput images: Image 1 is only a style reference (quiet Chinese coastal bookshop, restrained cinematic oil/watercolor brushwork); Image 2 is only a material and game-prop painting reference. Do not reproduce either background.\nPrimary request: one complete small autumn still-life: a narrow-neck muted gray-green ceramic vase holding one delicate osmanthus branch with tiny muted golden flowers, two ochre gingko leaves near its foot, and one natural orange persimmon alongside.\nStyle: finely painted realistic cinematic storyboard, restrained gouache/oil detail, natural adult-scale objects, quiet worn everyday materials, moss green, tobacco brown and desaturated ochre palette, subtle natural side light, slight contact shadow only.\nComposition: entire still-life isolated, three-quarter view at modest eye level suitable for standing on a desk or ledge. Wide approximately 4:3 asset around 800x600. All branches, leaves and fruit fully inside frame with breathing space. No additional objects.\nBackground: genuinely transparent alpha, no wall, no tabletop, no ground plane, no beige or white rectangle, no painted scenery. No people, letters, logos, text, frames, UI or watermark. Avoid glossy 3D rendering, cartoon outlines, anime, dramatic bloom.",
+      "visualInspection": true,
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "bytes": 188318,
+      "alphaAudit": {
+        "transparentPixels": 380866,
+        "partialPixels": 97858,
+        "opaquePixels": 1276,
+        "totalPixels": 480000
+      },
+      "backgroundResidual": "No rectangular or broad painted background remains; only faint contact shadow/antialiasing."
+    },
+    {
+      "id": "season-winter",
+      "path": "/art/seasons/season-winter.webp",
+      "kind": "seasonal-prop",
+      "sourceFile": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-976f48f6-9e05-4061-99b8-571ad4d40852.png",
+      "prompt": "Use case: illustration-story.\nAsset type: transparent winter foreground still-life for Aequilibrium, the realistic hand-painted coastal-city narrative game.\nInput images: Image 1 is a reference only for restrained cinematic hand-painted bookshop light and texture. Image 2 is a reference only for worn everyday objects. Do not reproduce their backgrounds.\nPrimary request: one coherent winter still-life: an old dark slate-blue wool scarf loosely folded, a small off-white enamel mug with a dark rim beside it, barely visible wisps of warm steam, and one short pine twig resting beside the mug.\nStyle/medium: realistic finely painted gouache and oil cinematic storyboard, quiet, refined, light natural dry-brush material detail, not an isolated shiny product photograph. Muted slate gray, warm cream, tobacco and moss colors. Soft natural side light and very restrained contact shadow.\nComposition: entire object group isolated, a grounded three-quarter view suitable for a desk or window ledge; approximately 4:3 asset near 800x600. Do not crop scarf ends, mug or twig, leave clear margins.\nBackground: true transparent alpha, no paper/beige rectangle, no floor, no tabletop, no wall, no scene. No snow, gifts, Christmas decorations or extra objects. No people, writing, branding, UI, frame or watermark. No cartoon, anime, plastic 3D surfaces or cinematic bloom.",
+      "visualInspection": true,
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "bytes": 278560,
+      "alphaAudit": {
+        "transparentPixels": 317302,
+        "partialPixels": 162067,
+        "opaquePixels": 631,
+        "totalPixels": 480000
+      },
+      "backgroundResidual": "No rectangular or broad painted background remains; only faint contact shadow/antialiasing."
+    },
+    {
+      "id": "season-spring",
+      "path": "/art/seasons/season-spring.webp",
+      "kind": "seasonal-prop",
+      "sourceFile": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-3d48d83d-b43c-46a1-a586-00fe423e486b.png",
+      "prompt": "Use case: illustration-story.\nAsset type: transparent spring foreground still-life for the realistic hand-painted narrative game Aequilibrium.\nInput images: Image 1 is only a reference for quiet coastal bookshop lighting and muted cinematic hand-painted style; Image 2 is only a reference for everyday materials and game props. Do not reproduce their scenes.\nPrimary request: a small low gray ceramic jar holding one graceful willow sprig with fresh pale green buds and a few tiny white spring blossoms, with two plain blank aged-paper bookmarks lying beside its foot.\nStyle: refined realistic oil/gouache cinematic storyboard, tiny restrained brush marks, slightly worn ceramic and natural botanical detail, low saturation slate gray, moss green and warm ivory. Gentle natural side light, quiet stillness, subtle contact shadow only.\nComposition: one complete coherent still-life, three-quarter view suited for a desk or ledge. Approximately 4:3 asset around 800x600. The entire sprig, flowers, jar and bookmarks remain within the frame with clear margins.\nBackground: truly transparent alpha, absolutely no rectangular paper/beige/white backdrop, no tabletop, wall or floor plane. No additional objects. No people, text on the bookmarks, branding, UI, border or watermark. Avoid glossy 3D, bright fantasy color, anime and cartoon outlines.",
+      "initialSourceFile": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-51e95674-bafc-49bd-8d15-9f1dfc7f7f36.png",
+      "repairPrompt": "Use case: background-extraction.\nEdit target: the spring jar, willow/floral sprig and two blank bookmarks in the supplied image.\nChange only the background alpha extraction: REMOVE ALL of the large gray/cream/green haze, painted glow and background wash surrounding and between the branch, jar and bookmarks. Make the surrounding space fully transparent, including every gap between leaves and flowers. Keep the exact ceramic jar, twigs, buds, tiny white blossoms, leaves and two bookmarks, their positions, proportions, colors, natural brush detail and lighting unchanged. Do not add a backdrop, tabletop, vignette, halo, frame or extra objects. At most a tiny subtle contact shadow directly beneath the base and bookmarks may remain. The entire branch must be visible with a little transparent margin; do not crop it. The output is a clean hand-painted game sprite on genuine transparent alpha, no beige rectangle.",
+      "repairReason": "Initial spring sprite had a broad painted halo. Built-in alpha-extraction edit removed it while retaining the objects.",
+      "visualInspection": true,
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "bytes": 214428,
+      "alphaAudit": {
+        "transparentPixels": 361259,
+        "partialPixels": 117186,
+        "opaquePixels": 1555,
+        "totalPixels": 480000
+      },
+      "backgroundResidual": "No rectangular or broad painted background remains; only faint contact shadow/antialiasing."
+    },
+    {
+      "id": "season-summer",
+      "path": "/art/seasons/season-summer.webp",
+      "kind": "seasonal-prop",
+      "sourceFile": "C:/Users/王智睿/.codex/generated_images/01a1b990-71d5-7ad1-9878-08be2d279e70/exec-0c36da32-e635-46df-8152-d362814361b7.png",
+      "prompt": "Use case: illustration-story.\nAsset type: one transparent summer foreground still-life for Aequilibrium, a quiet realistic hand-painted coastal-city narrative game.\nInput images: Image 1 is only a reference for cinematic hand-painted texture, natural light and low saturation; Image 2 only for the material rendering of game objects. Never reproduce their backgrounds.\nPrimary request: a worn bamboo woven round hand fan resting against a squat muted gray-green ceramic cool-water jug, with one simple small cup of clear water and one fresh green leaf beside the group.\nStyle: finely painted realistic gouache/oil cinematic storyboard with subtle dry brush details, weathered everyday materials and restrained natural side light. Quiet moss green, tobacco bamboo, slate gray and warm ivory palette. Modest realistic proportions, no product shine.\nComposition: entire coherent object group seen in three-quarter view, isolated, suitable for a desk or low ledge, wide 4:3 asset around 800x600. Fan handle, vessel and leaf all fit comfortably within clear transparent margins. Subtle very small contact shadow only.\nBackground: perfectly transparent alpha around the objects; no tabletop, floor, wall, scene, gray halo, painted rectangle or background wash. No ice cubes, ice mountain, tropical cocktails, writing, people, brands, UI, frames or watermark. No extra objects, no cartoon or glossy 3D.",
+      "visualInspection": true,
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "width": 800,
+      "height": 600,
+      "alpha": true,
+      "bytes": 326194,
+      "alphaAudit": {
+        "transparentPixels": 287084,
+        "partialPixels": 191843,
+        "opaquePixels": 1073,
+        "totalPixels": 480000
+      },
+      "backgroundResidual": "No rectangular or broad painted background remains; only faint contact shadow/antialiasing."
+    }
+  ]
+}

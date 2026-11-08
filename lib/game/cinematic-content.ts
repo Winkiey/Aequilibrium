@@ -3,8 +3,9 @@
  * settlement stay in stories.ts / engine.ts; these shots never settle a promise.
  * A character may speak through a letter, photograph or phone in the scene.
  */
+import { EXPANSION_STORYBOARDS } from './expansion-visuals';
 export type CastId = 'cheng' | 'tang' | 'lu' | 'he' | 'zhou' | 'gu' | 'yao' | 'xu' | 'cao' | 'ning';
-export type SceneId = 'bookshop-night' | 'bookshop-day' | 'reading-room' | 'attic' | 'noodle-shop' | 'coldstore' | 'printshop' | 'bank' | 'tea-room' | 'old-street' | 'coastal-train' | 'station' | 'roof' | 'factory' | 'pottery' | 'archive' | 'quiet-room' | 'brokerage' | 'district-street' | 'neighborhood-bank' | 'securities-office';
+export type SceneId = 'bookshop-night' | 'bookshop-day' | 'reading-room' | 'attic' | 'noodle-shop' | 'coldstore' | 'printshop' | 'bank' | 'tea-room' | 'old-street' | 'coastal-train' | 'station' | 'roof' | 'factory' | 'pottery' | 'archive' | 'quiet-room' | 'brokerage' | 'district-street' | 'neighborhood-bank' | 'securities-office' | 'winter-roster' | 'seawall-evening' | 'proof-night' | 'shared-keys' | 'winter-cloakroom' | 'ferry-spring' | 'repair-summer' | 'osmanthus-yard' | 'proof-morning' | 'post-winter' | 'noodle-blackout' | 'debt-autumn';
 export type FocusObject = 'key' | 'letter' | 'ledger' | 'cup' | 'receipt' | 'book' | 'window' | 'phone' | 'ticket' | 'contract' | 'lamp';
 export type Beat = {
   speaker: CastId | 'narrator' | 'self';
@@ -27,6 +28,7 @@ export type VisualScript = {
 const b = (speaker: Beat['speaker'], text: string, camera: Beat['camera'] = 'medium', focus?: FocusObject, pose: Beat['pose'] = 0, emotion: Beat['emotion'] = 'quiet'): Beat => ({ speaker, text, camera, focus, pose, emotion });
 
 export const STORYBOARDS: Record<string, VisualScript> = {
+  ...EXPANSION_STORYBOARDS,
   'main-1': {
     scene: 'bookshop-night', cast: ['cheng'],
     beats: [

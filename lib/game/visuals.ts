@@ -3,6 +3,7 @@ import { shortLines, responseDialogue } from './dialogue';
 export { shortLines } from './dialogue';
 import { STORYBOARDS } from './cinematic-content';
 import type { Game, StoryEvent } from './engine';
+import { EXPANSION_OUTCOMES } from './expansion-visuals';
 
 export const CAST:Record<CastId,{name:string;role:string;accent:string;sprite:string}>={
  cheng:{name:'程姨',role:'泊灯书屋的旧主人',accent:'#b4beb0',sprite:'/art/characters/cheng.webp'},
@@ -17,6 +18,18 @@ export const CAST:Record<CastId,{name:string;role:string;accent:string;sprite:st
  ning:{name:'顾宁',role:'往来的客户',accent:'#b9a2a4',sprite:'/art/characters/ning.webp'},
 };
 export const SCENES:Record<SceneId,{name:string;image:string;weather:'rain'|'dust'|'none';origin:[number,number]}>={
+ 'winter-roster':{name:'书屋后间 · 冬夜值班台',image:'/art/backgrounds/winter-roster.webp',weather:'none',origin:[55,50]},
+ 'seawall-evening':{name:'澄港堤岸 · 夏日晚风',image:'/art/backgrounds/seawall-evening.webp',weather:'none',origin:[55,50]},
+ 'proof-night':{name:'印刷厂 · 春夜返工',image:'/art/backgrounds/proof-night.webp',weather:'none',origin:[55,50]},
+ 'shared-keys':{name:'共用阅览厅 · 冬日',image:'/art/backgrounds/shared-keys.webp',weather:'none',origin:[55,50]},
+ 'winter-cloakroom':{name:'车站寄物角 · 冬日',image:'/art/backgrounds/winter-cloakroom.webp',weather:'none',origin:[55,50]},
+ 'ferry-spring':{name:'澄港渡口 · 春潮',image:'/art/backgrounds/ferry-spring.webp',weather:'none',origin:[55,50]},
+ 'repair-summer':{name:'街角修理铺 · 夏日',image:'/art/backgrounds/repair-summer.webp',weather:'dust',origin:[55,50]},
+ 'osmanthus-yard':{name:'书屋后院 · 桂花',image:'/art/backgrounds/osmanthus-yard.webp',weather:'dust',origin:[55,50]},
+ 'proof-morning':{name:'校样室 · 春晨',image:'/art/backgrounds/proof-morning.webp',weather:'dust',origin:[55,50]},
+ 'post-winter':{name:'澄港邮局 · 冬日',image:'/art/backgrounds/post-winter.webp',weather:'none',origin:[55,50]},
+ 'noodle-blackout':{name:'面馆后院 · 夏夜',image:'/art/backgrounds/noodle-blackout.webp',weather:'none',origin:[55,50]},
+ 'debt-autumn':{name:'银行旁办事处 · 秋日',image:'/art/backgrounds/debt-autumn.webp',weather:'dust',origin:[55,50]},
  'bookshop-night':{name:'泊灯书屋 · 雨夜',image:'/art/backgrounds/bookshop-night.webp',weather:'rain',origin:[58,49]},
  'bookshop-day':{name:'泊灯书屋 · 午后',image:'/art/backgrounds/bookshop-day.webp',weather:'dust',origin:[54,49]},
  'reading-room':{name:'书店后间 · 长桌',image:'/art/backgrounds/reading-room.webp',weather:'dust',origin:[55,48]},
@@ -60,6 +73,7 @@ export function outcomeBeats(event:StoryEvent,script:VisualScript,index:0|1):Bea
 }
 export function hubScene(s:Game):SceneId {return s.quarter===1?'bookshop-night':(s.quarter-1)%4===1?'bookshop-night':(s.quarter-1)%4===2?'bookshop-day':'reading-room';}
 export const OUTCOME_SCENES:Record<string,[SceneId,SceneId]>={
+ ...EXPANSION_OUTCOMES,
  'main-1':['bookshop-night','bookshop-night'],'main-2':['reading-room','attic'],'main-3':['printshop','archive'],'main-4':['coldstore','attic'],
  'main-5':['roof','roof'],'main-6':['bookshop-day','pottery'],'main-7':['printshop','old-street'],'main-8':['coastal-train','attic'],
  'main-9':['archive','attic'],'main-10':['tea-room','bank'],'main-11':['reading-room','bookshop-day'],'main-12':['reading-room','bookshop-night'],

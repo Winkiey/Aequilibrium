@@ -21,7 +21,7 @@ export function PlaceScene({place,game,lesson,onGo,onAction,onTitle,onPause,onPe
   {hotspot('办理借款',28,55,()=>onAction('borrow'))}
   {hotspot('办理还款',54,55,()=>onAction('repay'))}
  </>;
- return <Stage scene={info.scene} cast={place==='bank'?['yao']:[]} speaker={place==='bank'?'yao':undefined} pose={1} shotId={`place-${place}-${game.quarter}`} sceneLayer={world}>
+ return <Stage quarter={game.quarter} scene={info.scene} cast={place==='bank'?['yao']:[]} speaker={place==='bank'?'yao':undefined} pose={1} shotId={`place-${place}-${game.quarter}`} sceneLayer={world}>
   <header className="game-hud place-hud"><nav className="hud-navigation"><button className="scene-tool" onClick={onTitle}><Home size={15}/>返回标题</button><button className="scene-tool" onClick={onPause}><Pause size={15}/>暂停</button></nav><div><span>{quarterName(game.quarter)}</span><strong>{info.name}</strong></div><button className="scene-tool" onClick={onPeople} aria-label="打开人物图鉴"><UsersRound size={18}/></button></header>
   <div className="place-caption"><span>{place==='street'?'出门走走':place==='bank'?'银行柜台':'营业室的下午'}</span><p>{info.line}</p>{place==='bank'&&<small>{debtTotal(game)>0?'有未还本金，可以在柜台查看还款安排。':'目前没有未还本金。'}</small>}</div>
   <footer className="place-navigation"><button onClick={()=>onGo(place==='street'?'hub':'street')} onPointerEnter={()=>warmScene(place==='street'?'bookshop-night':'district-street')}><ArrowLeft size={15}/>{place==='street'?'回到书屋':'回到老街'}</button>{place!=='street'&&<button onClick={()=>onGo('hub')}>直接回书屋</button>}<span>走动与阅读不推进季度</span></footer>

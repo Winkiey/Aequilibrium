@@ -7,10 +7,17 @@ export type PromiseEntry = { id: string; label: string; due: number; amount: num
 export type Transaction = { quarter: number; asset: string; side: 'buy' | 'sell'; amount: number; fee: number; slippage: number; units: number; realized?: number };
 export type ChoiceLog = { quarter: number; title: string; choice: string; response: string; principle: string; cash: number; eventId?:string; optionIndex?:0|1; snapshot?:StoryEvent };
 export type QuarterLog = { quarter: number; wealth: number; cash: number; investment: number; text: string };
-export type Game = { version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
+export type Game = { version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; chapterSnapshot?:StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
 export type Effects = { cash?: number; stress?: number; confidence?: number; fatigue?: number; relations?: Partial<Record<Person, number>>; flags?: Record<string, number>; promises?: Omit<PromiseEntry, 'id' | 'status'>[]; buy?: { asset: string; budget: number }; sell?: { asset: string; value: number }; closeClaim?: string; extendClaim?: string; cancelPayment?: string; fraud?: number };
 export type Option = { label: string; detail: string; response: string; effects: Effects };
-export type StoryEvent = { id: string; title: string; sender: string; location: string; category: string; paragraphs: string[]; options: [Option, Option]; principle: string; when?: (s: Game) => boolean; weight?: (s: Game) => number };
+export type StoryEvent = { id: string; title: string; sender: string; location: string; category: string; paragraphs: string[]; options: [Option, Option]; principle: string; atQuarter?:number; when?: (s: Game) => boolean; weight?: (s: Game) => number };
+export type StoryKind='main'|'side'|'chapter';
+export const CHAPTER_QUARTERS:Record<number,string>={2:'chapter-2',4:'chapter-4',7:'chapter-7',10:'chapter-10'};
+export const isMainStory=(id:string)=>id.startsWith('main-')||id.startsWith('chapter-');
+export const storyKind=(id:string):StoryKind=>id.startsWith('chapter-')?'chapter':id.startsWith('main-')?'main':'side';
+export const ENDING_ALIASES:Record<string,string>={'执念入狱':'铁窗四季','重新开始':'余烬重燃','传奇操盘手':'知止乘潮','守住一盏灯':'泊灯长明','另一种富有':'长桌人间','平淡一生':'寻常岁月'};
+export const normalizeEndingName=(name:string)=>Object.prototype.hasOwnProperty.call(ENDING_ALIASES,name)?ENDING_ALIASES[name]:name;
+export const pendingChapter=(s:Game)=>!s.finished&&!!CHAPTER_QUARTERS[s.quarter]&&!s.used.includes(CHAPTER_QUARTERS[s.quarter]);
 
 const COMPANIES = [
   ['harbor', '雾港冷链', '港务 · 物流', 'CG.016', '新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。', 24.8, 3860, 342, 46],
@@ -82,9 +89,10 @@ export function optionError(s: Game, option: Option): string | null {
   if (extra < 0 && s.cash + extra < -0.001) return `还需要 ¥${money(-extra - s.cash)} 现金。可以先到账本调整持仓，再回来作答。`;
   return null;
 }
-export function choose(state: Game, event: StoryEvent, index: number, kind: 'main' | 'side'): Game {
+export function choose(state: Game, event: StoryEvent, index: number, kind: StoryKind): Game {
   if(index !== 0 && index !== 1) throw new Error('没有这个选项。');
   if((kind === 'main' && state.mainChoice !== null) || (kind === 'side' && state.sideChoice !== null) || state.used.includes(event.id)) throw new Error('这封信已经回复过了。');
+  if(kind==='chapter'&&(state.mainChoice===null||CHAPTER_QUARTERS[state.quarter]!==event.id))throw new Error('请先读完本季来信，再继续这一段故事。');
   const option = event.options[index]; const problem = optionError(state, option); if(problem) throw new Error(problem);
   const s = clone(state), e = option.effects;
   if(e.buy) executeTrade(s, e.buy.asset, 'buy', e.buy.budget);
@@ -99,7 +107,7 @@ export function choose(state: Game, event: StoryEvent, index: number, kind: 'mai
   for(const [i,p] of (e.promises ?? []).entries()) s.promises.push({...p, id: `${event.id}-${i}`, status:'pending'});
   if(e.fraud) s.flags.fraud = (s.flags.fraud ?? 0) + e.fraud;
   s.used.push(event.id); s.history.push({quarter: s.quarter, title: event.title, choice: option.label, response: option.response, principle:event.principle, cash:e.cash ?? 0,eventId:event.id,optionIndex:index as 0|1,snapshot:structuredClone({...event,when:undefined,weight:undefined})});
-  if(kind === 'main') s.mainChoice = index; else s.sideChoice = index;
+  if(kind === 'main') s.mainChoice = index; else if(kind==='side') s.sideChoice = index;
   return s;
 }
 export function borrow(state: Game): Game {
@@ -123,6 +131,7 @@ function liquidateFor(s: Game, required: number) {
 }
 export function endQuarter(state: Game): Game {
   if(state.finished || state.mainChoice === null) throw new Error('请先回复本季的来信。');
+  if(pendingChapter(state))throw new Error('这一季的故事还没有说完，请先读完主线续章。');
   const s=clone(state);s.notices=[];
   const q=s.quarter;
   if(random(s.seed,q,'cycle')<0.36) s.regime=(s.regime+1)%4;
@@ -168,11 +177,11 @@ export function endQuarter(state: Game): Game {
   s.stress=clamp(s.stress*0.9+(s.cash<15000?8:0));s.fatigue=clamp(s.fatigue*0.88+3);
   const text=s.notices[0]??(s.regime===3?'港口的夜班少了。街上比上季安静一些。':'柜台上的日历，又薄了三张。');
   s.quarters.push({quarter:q,wealth:round(netWealth(s)),cash:s.cash,investment:round(profit),text});
-  if(q===12){s.finished=true;}else{s.quarter++;s.mainChoice=null;s.sideChoice=null;s.sideId=null;delete s.mainSnapshot;delete s.sideSnapshot;}
+  if(q===12){s.finished=true;}else{s.quarter++;s.mainChoice=null;s.sideChoice=null;s.sideId=null;delete s.mainSnapshot;delete s.sideSnapshot;delete s.chapterSnapshot;}
   return s;
 }
 export function selectSide(s: Game, pool: StoryEvent[]): StoryEvent | null {
-  if(s.quarter===1||s.quarter%4===0) return null;
+  if(s.quarter===1) return null;
   const candidates=pool.filter(e=>!s.used.includes(e.id)&&(!e.when||e.when(s)));
   if(!candidates.length)return null;
   const weights=candidates.map(e=>Math.max(0.1,e.weight?.(s)??1));let point=random(s.seed,s.quarter,'side-event')*weights.reduce((a,b)=>a+b,0);
@@ -180,14 +189,18 @@ export function selectSide(s: Game, pool: StoryEvent[]): StoryEvent | null {
 }
 export function ending(s: Game) {
   const profit=investmentProfit(s), broken=s.promises.filter(p=>p.kind==='payment'&&p.status==='missed').length;
-  if((s.flags.fraud??0)>=3&&s.investigation>=3)return{title:'窗外的四季',name:'执念入狱',text:'调查结束后，你在一间固定的房间里看完了这一年的四季。账本上那些被改动的日期，最终都有了自己的日期。',tone:'dark'};
-  if(netWealth(s)<10000||debtTotal(s)>netWealth(s)+20000)return{title:'潮水退去之后',name:'重新开始',text:'你把还能带走的东西装进两个纸箱。校对的工作仍在，下个月的房租也有了着落。你开始知道，重新开始也是一件具体的事。',tone:'quiet'};
-  if(profit>65000&&s.drawdown<0.18)return{title:'潮汐的名字',name:'传奇操盘手',text:'城里的报纸想请你谈谈诀窍。你想起的却是几次没有买入的下午，以及那些终于等到回款的公司。你答应采访，但把时间排在了书店打烊以后。',tone:'light'};
+  if((s.flags.fraud??0)>=3&&s.investigation>=3)return{title:'窗外的四季',name:'铁窗四季',text:'调查结束后，你在一间固定的房间里看完了这一年的四季。账本上那些被改动的日期，最终都有了自己的日期。',tone:'dark'};
+  if(netWealth(s)<10000||debtTotal(s)>netWealth(s)+20000)return{title:'潮水退去之后',name:'余烬重燃',text:'你把还能带走的东西装进两个纸箱。校对的工作仍在，下个月的房租也有了着落。你开始知道，重新开始也是一件具体的事。',tone:'quiet'};
+  if(profit>65000&&s.drawdown<0.18)return{title:'潮汐的名字',name:'知止乘潮',text:'城里的报纸想请你谈谈诀窍。你想起的却是几次没有买入的下午，以及那些终于等到回款的公司。你答应采访，但把时间排在了书店打烊以后。',tone:'light'};
   if(s.flags.retired&&debtTotal(s)===0&&investments(s)<1)return{title:'把时间还给自己',name:'激流勇退',text:'最后一次卖出后，你关掉了报价页面。窗外的街道没有变化。周末，你终于坐上了那班一直说要去坐的沿海慢车。',tone:'light'};
-  if(s.flags.shop&&s.flags.keepShop&&broken<=1&&s.cash>15000)return{title:'泊灯，仍然亮着',name:'守住一盏灯',text:'程姨回来看过一次。她没有检查账本，只在靠窗的位置坐了一下午。阿棠换好了门上的营业时间。你下班经过那条街，已经能从远处认出自己的灯。',tone:'light'};
-  if(s.flags.community>=2&&s.relations.tang>60)return{title:'长桌旁边',name:'另一种富有',text:'周五晚上的长桌总有人坐。有人带来新书，有人只来喝一杯水。你仍要为账单盘算，但许多事情，已经可以开口与别人商量。',tone:'light'};
+  if((s.flags.proofCraft??0)>=2&&(s.flags.integrity??0)>=2&&broken<=1)return{title:'每一页都有来处',name:'纸上春秋',text:'新书寄到的那天，小顾在署名页上找到了自己的名字，也找到了你的。三年前你只想把稿费攒起来，后来开始在意一本书怎样抵达读者手里。晚春的光照过校样桌，你仍会为交期着急，却不再把那些没有立即收入的夜晚叫作白费。',tone:'light'};
+  if((s.flags.mutual??0)>=2&&s.relations.tang>=55&&broken<=1)return{title:'钥匙不只在你手里',name:'同灯共守',text:'冬天的最后一次轮值，是周伯来收杯子。你提前离开时，阿棠没有起身送，只问下周要不要换一班。账单仍按月到来，意见也未必一致，但这间屋子的开门与关门，终于不再只靠一个人。街灯亮起，你知道身后那盏灯会有人照看。',tone:'light'};
+  if((s.flags.familyTime??0)>=2&&s.relations.he>=65)return{title:'下一次已经写在日历里',name:'归途有约',text:'沈禾没有再问你什么时候有空。周六那一格已经留了三年，赶不上时，你会提前打电话。你仍做校对，仍偶尔看市场；不同的是，回家不再是所有事情做完以后才发生的事。车站的玻璃又起了雾，你们隔着人群，一眼就认出了对方。',tone:'light'};
+  if((s.flags.coast??0)>=2&&debtTotal(s)===0&&s.relations.lu>=60)return{title:'潮汐之外也有下午',name:'潮声入梦',text:'陆川又约你去对岸。没有新项目，也不用赶回来核对报价。你带了一本薄书，到了船上却一直没有翻开。钱的事并没有从生活里消失，只是终于有一些下午，不需要先证明自己值得。海风翻过空白的票背，你把它夹进了还没读完的那一页。',tone:'light'};
+  if(s.flags.shop&&s.flags.keepShop&&broken<=1&&s.cash>15000)return{title:'泊灯，仍然亮着',name:'泊灯长明',text:'程姨回来看过一次。她没有检查账本，只在靠窗的位置坐了一下午。阿棠换好了门上的营业时间。你下班经过那条街，已经能从远处认出自己的灯。',tone:'light'};
+  if(s.flags.community>=2&&s.relations.tang>60)return{title:'长桌旁边',name:'长桌人间',text:'周五晚上的长桌总有人坐。有人带来新书，有人只来喝一杯水。你仍要为账单盘算，但许多事情，已经可以开口与别人商量。',tone:'light'};
   if(broken>=3||Object.values(s.relations).filter(v=>v<35).length>=2)return{title:'没有回音的信箱',name:'独自抵达',text:'账目终于整理清楚了。你想把结果告诉几个人，却发现很久没有给他们写信。街道依旧热闹，你还需要学着重新走进去。',tone:'quiet'};
-  return{title:'普通的一年，又一年',name:'平淡一生',text:'三年过去，工作、吃饭、回家。你偶尔还会看一眼市场，更多时候是在读一本没读完的书。某个周末，沈禾来敲门，问你要不要出去走走。',tone:'light'};
+  return{title:'普通的一年，又一年',name:'寻常岁月',text:'三年过去，工作、吃饭、回家。你偶尔还会看一眼市场，更多时候是在读一本没读完的书。某个周末，沈禾来敲门，问你要不要出去走走。',tone:'light'};
 }
 export function validateSave(value: unknown): value is Game {
   if(!value||typeof value!=='object')return false;const s=value as Game;
@@ -204,10 +217,11 @@ export function validateSave(value: unknown): value is Game {
   if(!s.debt.every(d=>Number.isFinite(d.principal)&&d.principal>=0&&Number.isFinite(d.rate)&&Number.isInteger(d.due)))return false;
   if(!s.history.every(h=>typeof h.title==='string'&&typeof h.choice==='string'&&typeof h.response==='string'&&typeof h.principle==='string'))return false;
   if(!Object.values(s.relations).every(v=>Number.isFinite(v)&&v>=0&&v<=100)||!Object.values(s.flags).every(Number.isFinite))return false;
-  for(const e of [s.mainSnapshot,s.sideSnapshot]){
+  for(const e of [s.mainSnapshot,s.sideSnapshot,s.chapterSnapshot]){
     if(!e)continue;
     if(!['id','title','sender','location','category','principle'].every(k=>typeof e[k as keyof StoryEvent]==='string')||!Array.isArray(e.paragraphs)||!e.paragraphs.every(p=>typeof p==='string')||!Array.isArray(e.options)||e.options.length!==2)return false;
     if(!e.options.every(o=>typeof o.label==='string'&&typeof o.detail==='string'&&typeof o.response==='string'&&o.effects&&typeof o.effects==='object'))return false;
+    if(e.atQuarter!==undefined&&(!Number.isInteger(e.atQuarter)||e.atQuarter<1||e.atQuarter>12))return false;
   }
   return true;
 }

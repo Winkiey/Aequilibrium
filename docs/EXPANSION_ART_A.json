@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "winter-roster",
+      "path": "/art/backgrounds/winter-roster.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-b243af05-3a6b-45cf-9293-c091393e3e30.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story.\nAsset type: full-screen 16:9 background painting for Aequilibrium, a quiet realistic narrative game.\nInput images: the referenced bookshop-day.webp and district-street.webp are STYLE REFERENCES ONLY, not edit targets.\nPrimary request: paint a DIFFERENT room in the same world: the rear duty desk of a modest old coastal Chinese bookshop on a winter night. A worn scarf hangs on a wall hook. On the left foreground wooden desk sit a tall old thermos, an enamel cup and a pale blank paper with a simple unlabeled grid, no writing. A small shaded desk lamp casts a confined warm pool. The wooden-framed window carries thin condensation, beyond it cold blue-grey night and subtle evergreen silhouettes. A few books on a low shelf, dark worn floorboards, plaster walls. Keep the center and right foreground open for later game characters and dialogue overlays. Eye-level human camera, believable single-point perspective, unoccupied.\nStyle/medium: restrained hand-painted cinematic storyboard realism, fine gouache/oil brushwork, subtle paper tooth, natural material detail; visual match to both references. Slate greys, tobacco brown, muted moss green, tiny warm amber light. Not photographic CGI, not anime.\nComposition: one complete landscape image, horizontal 16:9, 1672 by 941 or closest, no collage or frames.\nConstraints: absolutely NO people, readable text, lettering, UI, watermark, logos, fantasy effects, excessive bloom, orange/teal grading, dramatic light beams, stock-trading displays. Cozy but sober and lived-in. The thermos and scarf clearly signal winter without snow indoors.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    },
+    {
+      "id": "seawall-evening",
+      "path": "/art/backgrounds/seawall-evening.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-4202e541-63ee-4115-98fb-9b6d6428a0c4.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset type: a complete 16:9 game background painting.\nInput images: bookshop-day.webp and district-street.webp are STYLE references for the same coastal Chinese town, not edit targets.\nPrimary request: a quiet summer evening on Chenggang's seawall. Muted grey-green seawater, a modest cargo ship and sparse harbor cranes far away, humid silvery peach light near the horizon. Worn stone walkway in foreground, iron railing on the left, a simple timber bench and a small plain lunch tin placed on it. A few faded reeds at the edge. There are no people. Leave center-right foreground open for later character sprites. Eye-level realistic adult scale, long calm horizon, no spectacular sunset.\nStyle/medium: the same restrained hand-painted cinematic storyboard realism as the references, fine natural gouache/oil brushwork, sober lived-in materials, slate grey, tobacco brown, moss green, small warm late daylight accents. Detailed enough to read wood grain and salt marks but not glossy CGI or photography.\nComposition: one landscape 16:9 image, 1672x941 or closest; no panels, collage, text or UI.\nConstraints: no figures, logos, readable words, watermark, giant modern skyline, fantasy, anime, 3D render, excessive bloom or orange/teal film grading. Evoke summer with damp evening air, open water, soft long light and a light cotton towel beside the lunch tin.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    },
+    {
+      "id": "proof-night",
+      "path": "/art/backgrounds/proof-night.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-541a23c2-0c53-4514-a4df-f5e8db0d1978.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset type: a full-screen 16:9 background for a quiet coastal Chinese narrative game.\nInput images: bookshop-day.webp and district-street.webp are STYLE REFERENCES ONLY.\nPrimary request: a small old print factory proofreading room on a spring night. Rows of faded iron printing rollers recede at the back, a modest work desk at left foreground scattered with blank proof sheets with very faint non-linguistic layout lines, a blue pencil and a small warm task lamp. An open side window looks toward a damp courtyard and a young budding branch. Paper stacks, grey plaster, dark worn wood and old grey-green machinery. No workers, no people; leave center-right foreground floor area open for composited characters. Eye-level realistic perspective, sober adult setting.\nStyle/medium: restrained hand-painted cinematic storyboard realism matching the reference images, fine opaque gouache and oil-like brushwork with natural texture; slate grey, faded moss green, tobacco brown, quiet cold spring night with one warm lamp. Not flat cartoon, not photorealistic CGI.\nComposition: single complete horizontal 16:9 painting, 1672x941 or nearest, cinematic yet ordinary.\nConstraints: no readable writing, Chinese characters, letters, logo, watermark, interface, modern computers, neon, visible people or faces; no dream fantasy, heavy bloom, anime, impossible machine details. Spring is suggested by the half-open window, wet stone and young tender leaves.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    },
+    {
+      "id": "shared-keys",
+      "path": "/art/backgrounds/shared-keys.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-f77c2053-ba54-4a82-94d3-95f42d4282af.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset type: one full-screen 16:9 background for the game Aequilibrium.\nInput images: bookshop-day.webp and district-street.webp are visual STYLE references only, no object-preserving edit requested.\nPrimary request: a modest shared reading hall in an old coastal Chinese neighborhood, winter daylight. A long old wooden table, mismatched simple wooden chairs, a few low shelves; several worn brass keys hang separately on a plain wall hook board at left, beside an unlettered wooden schedule board. A small ordinary teapot and two cups on the foreground table have a barely visible wisp of steam. Large old windows to the right show evergreen branches and cold pale grey daylight. Worn lime plaster and dark wood flooring, real human scale, restrained quiet atmosphere. No people. Keep the center-right foreground open for later character sprites. Warmth is small and practical, no festive decoration.\nStyle/medium: hand-painted cinematic storyboard realism exactly compatible with the supplied references: subtle fine gouache/oil brushwork, slate grey, muted moss green, tobacco wood, aged paper, realistic subdued natural light, high craft, no digital polish.\nComposition: single horizontal 16:9 scene, 1672x941 or nearest, no panels.\nConstraints: no readable text, numbers, characters, logos, watermark, UI, faces, figures, large dramatic light shafts, CGI, anime, fantasy, all-white minimalist architecture. Clear visual cues: several brass keys, different chairs, shared table, cold window light and warm tea.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    },
+    {
+      "id": "winter-cloakroom",
+      "path": "/art/backgrounds/winter-cloakroom.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-102247ea-1551-44af-8677-9231fdb87695.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset type: one 16:9 game background for a quiet lived-in coastal Chinese town.\nInput images: bookshop-day.webp and district-street.webp are STYLE references, not edit targets.\nPrimary request: the simple timber cloakroom corner beside a small railway waiting corridor on a winter afternoon. A wooden bench in the left foreground holds a neatly folded old wool coat and a plain faded canvas shoulder bag. Wall pegs, a small wooden luggage shelf, aged plaster, dark wood trim and a worn stone floor. Large fog-white glazing to the right looks out on a grey quiet railway platform, winter branches and distant tracks, no train passengers. An ordinary warm wall lamp lights the coat softly. Open center-right floor area for later character sprites, authentic human proportions, gentle eye-level camera.\nStyle/medium: realistic hand-painted cinematic storyboard using the same fine restrained gouache/oil textures as reference, slate-grey ambient light, faded tobacco brown wood, moss-grey textiles, small practical warm lamp. Natural material texture and slight brushwork, no polished CGI.\nComposition: single complete horizontal 16:9 painting, 1672x941 or closest, no collage or border.\nConstraints: absolutely no people, faces, body parts, readable writing, signs, numbers, labels, logos, watermark or interface. No digital screens, anime, fantasy, excessive bloom. Winter is in heavy folded fabric, misted windows, cool light and bare branches, no snow inside.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    },
+    {
+      "id": "ferry-spring",
+      "path": "/art/backgrounds/ferry-spring.webp",
+      "source": "C:\\Users\\王智睿\\.codex\\generated_images\\01a1b98f-cc95-7003-bdbb-03fb16aa9a2f\\exec-725f3b50-0340-49a0-859a-0da701c37316.png",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: illustration-story. Asset type: an independent 16:9 game scene painting.\nInput images: bookshop-day.webp and district-street.webp are STYLE references only.\nPrimary request: a small old ferry waiting pavilion on Chenggang harbor in early spring. Weathered wooden bench at the left, a little timber ticket ledge with one plain blank pale ticket weighted beneath a smooth stone, rough old railing and a coiled mooring rope. Grey-green rippling river water and a modest ferry far away, budding fresh willow branches along the water edge. Worn coastal plaster buildings and a low quay, softly wet stone. A timber roof shades the foreground. No people or crowds. Keep center-right foreground open for later character sprites. Ordinary intimate scale, not a large tourist terminal. Eye-level, natural perspective.\nStyle/medium: restrained hand-painted cinematic storyboard realism matching the reference paintings, fine gouache/oil brush texture, subdued slate grey and pale moss green, aged warm timber, cool spring overcast natural light, no glossy photo or CGI.\nComposition: one complete wide horizontal 16:9 image, 1672x941 or nearest, no collage, no panels.\nConstraints: no readable text, typography, symbols, signs, UI, watermarks, logo, faces or people. No anime, fantasy, big saturation, excessive bloom, modern glass architecture. Tender willow buds, green water and a cool clear breeze signal spring.",
+      "references": [
+        "/art/backgrounds/bookshop-day.webp",
+        "/art/backgrounds/district-street.webp"
+      ],
+      "visuallyInspected": true,
+      "inspection": "Complete independent landscape painting; no people or readable text; painterly material and restrained palette matched to references.",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "kind": "background",
+      "status": "ready"
+    }
+  ]
+}

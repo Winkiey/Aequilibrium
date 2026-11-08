@@ -1,16 +1,119 @@
 {
-  "version": 2,
+  "version": 3,
   "summary": {
-    "events": 64,
-    "outcomes": 128,
-    "playableCompositions": 192,
-    "endings": 8,
-    "backgrounds": 21,
+    "events": 76,
+    "outcomes": 152,
+    "playableCompositions": 228,
+    "endings": 12,
+    "backgrounds": 33,
     "characters": 10,
     "poses": 30,
     "missing": 0
   },
   "events": [
+    {
+      "id": "chapter-10",
+      "before": {
+        "scene": "shared-keys",
+        "cast": [
+          "tang",
+          "cheng"
+        ],
+        "lines": 4,
+        "interaction": "翻看轮值约定"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "shared-keys",
+          "focus": "key",
+          "lines": 5
+        },
+        {
+          "branch": 1,
+          "scene": "shared-keys",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "chapter-2",
+      "before": {
+        "scene": "winter-roster",
+        "cast": [
+          "he",
+          "tang"
+        ],
+        "lines": 4,
+        "interaction": "靠近那杯热水"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "winter-roster",
+          "focus": "book",
+          "lines": 5
+        },
+        {
+          "branch": 1,
+          "scene": "winter-roster",
+          "focus": "ledger",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "chapter-4",
+      "before": {
+        "scene": "seawall-evening",
+        "cast": [
+          "lu"
+        ],
+        "lines": 4,
+        "interaction": "听一会儿潮声"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "seawall-evening",
+          "focus": "cup",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "seawall-evening",
+          "focus": "contract",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "id": "chapter-7",
+      "before": {
+        "scene": "proof-night",
+        "cast": [
+          "gu",
+          "ning"
+        ],
+        "lines": 4,
+        "interaction": "看工作灯下的纸边"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "proof-night",
+          "focus": "book",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "proof-night",
+          "focus": "receipt",
+          "lines": 5
+        }
+      ]
+    },
     {
       "id": "main-1",
       "before": {
@@ -1602,23 +1705,256 @@
           "lines": 4
         }
       ]
+    },
+    {
+      "id": "s53",
+      "before": {
+        "scene": "winter-cloakroom",
+        "cast": [
+          "he"
+        ],
+        "lines": 4,
+        "interaction": "看看玻璃上的水汽"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "winter-cloakroom",
+          "focus": "phone",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "winter-cloakroom",
+          "focus": "ticket",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s54",
+      "before": {
+        "scene": "ferry-spring",
+        "cast": [
+          "lu"
+        ],
+        "lines": 4,
+        "interaction": "看春潮留下的水线"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "ferry-spring",
+          "focus": "ticket",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "ferry-spring",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s55",
+      "before": {
+        "scene": "repair-summer",
+        "cast": [
+          "cao"
+        ],
+        "lines": 4,
+        "interaction": "看竹帘外的树影"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "repair-summer",
+          "focus": "receipt",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "repair-summer",
+          "focus": "contract",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s56",
+      "before": {
+        "scene": "osmanthus-yard",
+        "cast": [
+          "cheng",
+          "tang"
+        ],
+        "lines": 4,
+        "interaction": "闻一闻杯边的桂花"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "osmanthus-yard",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "osmanthus-yard",
+          "focus": "book",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s57",
+      "before": {
+        "scene": "proof-morning",
+        "cast": [
+          "gu",
+          "ning"
+        ],
+        "lines": 4,
+        "interaction": "核对校订记录"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "proof-morning",
+          "focus": "book",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "proof-morning",
+          "focus": "receipt",
+          "lines": 5
+        }
+      ]
+    },
+    {
+      "id": "s58",
+      "before": {
+        "scene": "post-winter",
+        "cast": [
+          "cheng"
+        ],
+        "lines": 4,
+        "interaction": "摸摸信纸的边缘"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "post-winter",
+          "focus": "letter",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "post-winter",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s59",
+      "before": {
+        "scene": "noodle-blackout",
+        "cast": [
+          "zhou",
+          "tang"
+        ],
+        "lines": 4,
+        "interaction": "把灯朝台阶挪一点"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "noodle-blackout",
+          "focus": "ledger",
+          "lines": 5
+        },
+        {
+          "branch": 1,
+          "scene": "noodle-blackout",
+          "focus": "phone",
+          "lines": 4
+        }
+      ]
+    },
+    {
+      "id": "s60",
+      "before": {
+        "scene": "debt-autumn",
+        "cast": [
+          "yao"
+        ],
+        "lines": 4,
+        "interaction": "看窗台上的叶子"
+      },
+      "after": [
+        {
+          "branch": 0,
+          "scene": "debt-autumn",
+          "focus": "contract",
+          "lines": 4
+        },
+        {
+          "branch": 1,
+          "scene": "debt-autumn",
+          "focus": "receipt",
+          "lines": 5
+        }
+      ]
     }
   ],
   "endings": [
     {
-      "name": "执念入狱",
+      "name": "纸上春秋",
+      "scene": "proof-morning",
+      "cast": [
+        "gu",
+        "ning"
+      ]
+    },
+    {
+      "name": "同灯共守",
+      "scene": "shared-keys",
+      "cast": [
+        "tang",
+        "zhou"
+      ]
+    },
+    {
+      "name": "归途有约",
+      "scene": "winter-cloakroom",
+      "cast": [
+        "he"
+      ]
+    },
+    {
+      "name": "潮声入梦",
+      "scene": "ferry-spring",
+      "cast": [
+        "lu"
+      ]
+    },
+    {
+      "name": "铁窗四季",
       "scene": "quiet-room",
       "cast": []
     },
     {
-      "name": "重新开始",
+      "name": "余烬重燃",
       "scene": "attic",
       "cast": [
         "he"
       ]
     },
     {
-      "name": "传奇操盘手",
+      "name": "知止乘潮",
       "scene": "tea-room",
       "cast": [
         "lu"
@@ -1632,7 +1968,7 @@
       ]
     },
     {
-      "name": "守住一盏灯",
+      "name": "泊灯长明",
       "scene": "bookshop-day",
       "cast": [
         "cheng",
@@ -1640,7 +1976,7 @@
       ]
     },
     {
-      "name": "另一种富有",
+      "name": "长桌人间",
       "scene": "reading-room",
       "cast": [
         "tang",
@@ -1653,7 +1989,7 @@
       "cast": []
     },
     {
-      "name": "平淡一生",
+      "name": "寻常岁月",
       "scene": "old-street",
       "cast": [
         "he"
