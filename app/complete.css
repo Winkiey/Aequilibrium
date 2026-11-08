@@ -1,0 +1,113 @@
+/* Narrative continuity and the reading room use the existing paper/ink palette. */
+.hub-scene-title .current-thread{font:12px/1.9 var(--serif);max-width:340px;color:#c6cbb9;margin-top:14px;text-shadow:0 2px 4px #12201d}
+.bookshelf-room{display:flex;flex-direction:column;height:100%;min-height:0;background:#e9e3d5;color:#414d3e}
+.bookshelf-navigation{display:flex;align-items:center;gap:30px;min-height:51px;padding:0 30px;border-bottom:1px solid #bdb39d;flex-shrink:0}
+.bookshelf-navigation>button{min-height:44px;font:12px var(--serif);position:relative;white-space:nowrap}
+.bookshelf-navigation>button[aria-current]:after{content:'';position:absolute;bottom:-4px;left:0;right:0;border-bottom:2px solid #84704f}
+.bookshelf-content{position:relative;flex:1;min-height:0;overflow:auto;overscroll-behavior:contain}
+.shelf-economics .bookshelf-content{overflow:hidden}
+.bookshelf-content>.people-book{padding:30px 45px}
+.bookshelf-index{padding:45px clamp(24px,6vw,90px)}
+.bookshelf-index>h2{font:400 32px/1.8 var(--serif);margin:10px 0 15px}
+.bookshelf-index>p{font:13px/2 var(--serif);color:#7a806a}
+.bookshelf-index>div{margin-top:35px;border-top:1px solid #b7af98}
+.bookshelf-index>div>button{display:flex;width:100%;gap:25px;text-align:left;align-items:center;border-bottom:1px solid #c4bba7;padding:24px 0}
+.bookshelf-index>div>button>span{flex:1}
+.bookshelf-index small{display:block;font:10px var(--sans);letter-spacing:.06em;color:#8b7a5c;margin-bottom:9px}
+.bookshelf-index strong{font:400 24px/1.6 var(--serif)}
+.bookshelf-index button p{font:12px/1.9 var(--serif);color:#7a806a;margin-top:6px}
+.bookshelf-content>.gallery-embedded{position:relative;inset:auto;height:100%;padding:0 25px 30px;min-height:0;background:#e9e3d5;overflow:auto}
+.gallery-embedded>header{position:sticky;top:0;z-index:3;background:#e9e3d5;padding:15px 0}
+.gallery-embedded .gallery-intro{padding:22px 0}
+.gallery-embedded .gallery-intro h1{font-size:27px}
+.choice-cash-fact{display:block;margin-top:9px}
+.choice-cash-fact>em{display:block;font:11px/1.8 var(--sans);font-style:normal;color:#c8cdbd}
+.choice-clarification{margin:4px 0 16px 35px;font:11px/1.9 var(--serif);color:#c4cbb9;max-width:100%;text-shadow:0 1px 3px #16231f}
+.choice-clarification summary{cursor:pointer;min-height:30px;display:flex;align-items:center;text-decoration:underline;text-underline-offset:4px}
+.choice-clarification p{margin:8px 0;padding-left:10px;border-left:1px solid #a9b59a55}
+.choice-clarification b{font-weight:400;color:#e4dcc7}
+.cinema-choices{max-height:calc(100dvh - 125px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a3ab9140 transparent;padding-right:8px}
+.learning-comparison>p,.trade-practice>p,.company-history p{font:13px/1.95 var(--serif);margin:12px 0;color:#68745c}
+.learning-comparison label{display:flex;justify-content:space-between;align-items:center;gap:12px;font:12px var(--sans);margin:15px 0}
+.learning-comparison select{font:12px var(--serif);background:transparent;border-bottom:1px solid #9eab8a;padding:7px;max-width:62%}
+.learning-comparison,.trade-practice{min-width:0;max-width:100%}
+.learning-comparison table,.comparison-scroll table{width:100%;border-collapse:collapse;font:11px/1.9 var(--sans);font-variant-numeric:tabular-nums}
+.learning-comparison caption{font:10px/1.8 var(--serif);text-align:left;padding:8px 0;color:#8a846f}
+.learning-comparison :is(th,td),.comparison-scroll :is(th,td){padding:10px 8px;text-align:right;border-bottom:1px solid #bdc2aa65;font-weight:400}
+.learning-comparison th:first-child,.comparison-scroll th:first-child{text-align:left}
+.learning-comparison thead,.comparison-scroll thead{color:#8c7958}
+.learning-comparison fieldset{border:0;margin-top:22px;padding:0}
+.learning-comparison legend{font:13px/1.8 var(--serif);margin-bottom:12px}
+.learning-comparison fieldset>button{display:block;width:100%;min-height:42px;text-align:left;padding:10px 12px;font:12px/1.8 var(--serif);border:1px solid #b7bda265;margin-top:8px}
+.learning-comparison fieldset>button[aria-pressed=true]{border-color:#8b9777;background:#b7c3a21a}
+.learning-feedback{padding-top:14px;border-top:1px solid #a5af9055;color:#596f4e!important}
+.trade-practice h3,.company-history h3{font:19px/1.7 var(--serif);margin:12px 0;color:#4d6041}
+.practice-scenarios{display:flex;gap:9px;margin:18px 0;flex-wrap:wrap}
+.practice-scenarios>button{font:11px var(--sans);min-height:40px;padding:8px 10px;border-bottom:1px solid #b2b99d}
+.practice-scenarios>button[aria-pressed=true]{border-bottom:2px solid #84714e;color:#6e5636}
+.trade-practice dl,.first-investment-review dl,.company-history dl{margin:18px 0;font:12px var(--serif)}
+.trade-practice dl>div,.first-investment-review dl>div,.company-history dl>div{display:flex;justify-content:space-between;gap:15px;padding:10px 0;border-bottom:1px solid #b5bea54d}
+.trade-practice dd,.first-investment-review dd,.company-history dd{font-family:var(--mono)}
+.trade-practice>small{display:block;font:10px/1.9 var(--sans);color:#7e8870}
+/* World hotspots stay above the scene click area, below dialogue and navigation. */
+.stage-runtime-ui{z-index:auto}
+.panel-trade .paper-sheet{width:min(920px,94vw)}
+.trade-learning-steps{gap:5px;overflow-x:auto}
+.trade-learning-steps>li{min-width:33px}
+.comparison-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;margin:20px 0}
+.comparison-scroll table{min-width:550px}
+.comparison-scroll th:first-child{position:sticky;left:0;background:#e9e4d6;z-index:1;white-space:nowrap}
+.all-company-comparison,.trade-history-drawer,.trade-practice-drawer{margin:24px 0;border-block:1px solid #b2bca05e;padding:15px 0}
+.all-company-comparison>summary,.trade-history-drawer>summary,.trade-practice-drawer>summary{font:13px/1.8 var(--serif);cursor:pointer;min-height:28px;color:#657653}
+.all-company-comparison>p{font:12px/1.9 var(--serif);color:#7c886d;margin:12px 0}
+.company-history section+section{border-top:1px solid #aeb99755;margin-top:25px;padding-top:18px}
+.company-history li{font:12px/1.9 var(--serif);margin:8px 0}
+.company-history li>b{float:right;font:12px var(--mono)}
+.human-order-amount>p,.human-order-amount>label+p{font:12px/1.9 var(--serif);color:#7e8a70;margin:12px 0}
+.human-order-amount .quick-amounts{flex-wrap:wrap;gap:8px}
+.human-order-amount .quick-amounts>button{min-height:40px;font:12px var(--sans);padding:8px 12px}
+.human-order-amount .quick-amounts>button[aria-pressed=true]{border-color:#85976e;background:#a9ba8e22}
+.sell-result-preview{display:grid;gap:12px;border-block:1px solid #aeb89a;padding:20px 0;font:12px/1.8 var(--serif);color:#687a59;margin:20px 0}
+.sell-result-preview b{font:16px var(--mono);color:#4e6344;float:right}
+.first-investment-review{border-block:1px solid #a1af895c;margin:25px 0;padding:22px 0}
+.first-investment-review h3{font:22px/1.7 var(--serif);margin:10px 0}
+.first-investment-review p{font:13px/1.9 var(--serif);color:#7c8a6c;margin:14px 0}
+.offline-pack>h2{font:30px/1.8 var(--serif);margin:10px 0 18px}
+.offline-pack>p,.offline-ready p,.offline-pack details p{font:13px/2 var(--serif);margin:15px 0;color:#768567}
+.offline-size{display:flex;gap:25px;align-items:center;border-block:1px solid #b9c0a6;padding:20px 0;margin:25px 0}
+.offline-size>strong{font:36px var(--serif);color:#586b48}
+.offline-size small{font:12px var(--mono)}
+.offline-size>span{font:11px/1.9 var(--sans);color:#899376}
+.offline-pack .ink-button{margin-top:18px}
+.offline-pack .paper-back-link{min-height:42px}
+.offline-pack details{margin-top:20px;border-top:1px solid #acb69866;padding-top:15px}
+.offline-pack summary{cursor:pointer;font:12px/1.8 var(--serif)}
+.offline-progress{margin:20px 0}
+.offline-progress progress{display:block;width:100%;height:6px;accent-color:#879c6e;margin-bottom:15px}
+.offline-progress span,.offline-progress button{font:11px/1.8 var(--sans);color:#7b8869}
+.offline-progress button{display:block;min-height:40px;text-decoration:underline}
+.offline-ready{margin:20px 0;padding-left:15px;border-left:2px solid #9aab81}
+.offline-ready h3{font:19px var(--serif)}
+.offline-ready small{display:block;font:10px/1.9 var(--sans);color:#8a9479}
+.offline-error{color:#90734d!important}
+@media(orientation:landscape) and (max-height:600px){
+ .hub-scene-title .current-thread{font-size:10px;max-width:230px;margin-top:8px}
+ .bookshelf-navigation{min-height:40px;padding:0 18px;gap:25px}
+ .bookshelf-navigation>button{min-height:36px;font-size:11px}
+ .bookshelf-index{padding:22px 30px}
+ .bookshelf-index>h2{font-size:25px}
+ .bookshelf-index>div{margin-top:18px}
+ .bookshelf-index>div>button{padding:17px 0}
+ .bookshelf-index strong{font-size:20px}
+ .bookshelf-content>.people-book{padding:20px 28px}
+ .cinema-choices{max-height:calc(100dvh - 100px);top:53%;}
+ .choice-cash-fact>em{font-size:9px}
+ .choice-clarification{font-size:10px;margin-bottom:9px}
+ .learning-comparison>p,.trade-practice>p{font-size:12px}
+ .learning-comparison :is(th,td){font-size:10px;padding:7px 4px}
+ .offline-pack>h2{font-size:25px}
+}
+
+.sale-input-mode{display:flex;gap:20px;border-bottom:1px solid #9ba68a55;margin:20px 0 18px}
+.sale-input-mode>button{font:13px/1.8 var(--serif);padding:8px 2px;color:#7d8871;border-bottom:2px solid transparent}
+.sale-input-mode>button[aria-pressed="true"]{border-bottom-color:#586d49;color:#465b3c}

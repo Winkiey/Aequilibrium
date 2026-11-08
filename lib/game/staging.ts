@@ -135,7 +135,7 @@ const ARRANGEMENTS:Record<Arrangement,Omit<ObjectMark,'focus'|'action'|'companio
 };
 
 const REMOTE_STORIES:Record<string,StageChannel>={'main-1':'letter','main-6':'phone',s45:'letter',s47:'phone',s58:'letter'};
-const REMOTE_SPEAKERS:Record<string,CastId[]>={'main-4':['lu']};
+const REMOTE_SPEAKERS:Record<string,CastId[]>={'main-4':['lu','he'],'chapter-10':['cheng']};
 const STORY_CAST:Record<string,CastId[]>={'main-10':['xu']};
 const DOCUMENT_WORDS=/照片|信纸|邮包|邮袋|语音|消息|屏幕|短信|聊天|转账通知|合照/;
 
@@ -162,7 +162,7 @@ function actorMarks(cast:CastId[],speaker:Beat['speaker'],pose:Beat['pose'],rela
 export function resolveStaging({eventId,phase,branch=0,beat,index,script,scene=script.scene}:{eventId:string;phase:'story'|'choice'|'outcome';branch?:0|1;beat:Beat;index:number;script:VisualScript;scene?:SceneId}):StageDirection {
  const profile=phase==='outcome'?STORY_DIRECTIONS[eventId]?.outcomes[branch]:undefined;
  const remoteSpeaker=beat.speaker!=='narrator'&&beat.speaker!=='self'&&REMOTE_SPEAKERS[eventId]?.includes(beat.speaker);
- const channel:StageChannel=profile?.channel??REMOTE_STORIES[eventId]??(remoteSpeaker?'phone':'room');
+ const channel:StageChannel=profile?.channel??REMOTE_STORIES[eventId]??(remoteSpeaker?(beat.speaker==='cheng'?'letter':'phone'):'room');
  const focus=beat.focus??(phase==='outcome'?script.outcomeFocus[branch]:undefined);
  const detail=beat.camera==='detail'&&!!focus;
  const documentary=(beat.speaker==='narrator'||beat.speaker==='self')&&DOCUMENT_WORDS.test(beat.text);

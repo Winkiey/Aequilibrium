@@ -7,6 +7,7 @@ import "./onboarding.css";
 import "./staging.css";
 import "./library.css";
 import "./composition.css";
+import "./complete.css";
 
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 

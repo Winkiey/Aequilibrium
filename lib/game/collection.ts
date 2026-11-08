@@ -1,4 +1,4 @@
-import { ending, normalizeEndingName, type Game, type StoryEvent } from './engine';
+import { ending, normalizeEndingName, validStoryOpening, type Game, type StoryEvent } from './engine';
 import { STORYBOARDS } from './cinematic-content';
 import { EPILOGUES } from './epilogues';
 import { historyEventId } from './people';
@@ -12,10 +12,10 @@ const owns=(object:object,key:string)=>Object.prototype.hasOwnProperty.call(obje
 export function freshCollection():Collection{return{version:1,stories:{},endings:{}};}
 
 // Replays keep the words that were actually encountered, never executable effects.
-function copyEvent(e:StoryEvent):StoryEvent{return{id:e.id,title:e.title,sender:e.sender,location:e.location,category:e.category,principle:e.principle,atQuarter:e.atQuarter,paragraphs:[...e.paragraphs],options:e.options.map(o=>({label:o.label,detail:o.detail,response:o.response,effects:{}})) as StoryEvent['options']};}
+function copyEvent(e:StoryEvent):StoryEvent{return{id:e.id,title:e.title,sender:e.sender,location:e.location,category:e.category,principle:e.principle,atQuarter:e.atQuarter,paragraphs:[...e.paragraphs],...(e.opening?{opening:e.opening.map(b=>({...b}))}:{}),options:e.options.map(o=>({label:o.label,detail:o.detail,response:o.response,effects:{}})) as StoryEvent['options']};}
 function validEvent(value:unknown,id:string):value is StoryEvent{
  if(!value||typeof value!=='object')return false;const e=value as StoryEvent;
- return e.id===id&&(e.atQuarter===undefined||(Number.isInteger(e.atQuarter)&&e.atQuarter>=1&&e.atQuarter<=12))&&['title','sender','location','category','principle'].every(k=>typeof e[k as keyof StoryEvent]==='string')&&Array.isArray(e.paragraphs)&&e.paragraphs.every(p=>typeof p==='string')&&Array.isArray(e.options)&&e.options.length===2&&e.options.every(o=>o&&['label','detail','response'].every(k=>typeof o[k as keyof typeof o]==='string'));
+ return (e.opening===undefined||validStoryOpening(e.opening))&&e.id===id&&(e.atQuarter===undefined||(Number.isInteger(e.atQuarter)&&e.atQuarter>=1&&e.atQuarter<=12))&&['title','sender','location','category','principle'].every(k=>typeof e[k as keyof StoryEvent]==='string')&&Array.isArray(e.paragraphs)&&e.paragraphs.every(p=>typeof p==='string')&&Array.isArray(e.options)&&e.options.length===2&&e.options.every(o=>o&&['label','detail','response'].every(k=>typeof o[k as keyof typeof o]==='string'));
 }
 export function readCollection(value:unknown):Collection{
  const result=freshCollection();if(!value||typeof value!=='object'||(value as Collection).version!==1)return result;

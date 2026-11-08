@@ -8,6 +8,7 @@ import '../app/onboarding.css';
 import '../app/staging.css';
 import '../app/library.css';
 import '../app/composition.css';
+import '../app/complete.css';
 import type {} from '../lib/game/public-path';
 
 window.__AEQUILIBRIUM_ASSET_BASE__=import.meta.env.BASE_URL;

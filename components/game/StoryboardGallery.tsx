@@ -10,7 +10,7 @@ import { CinematicPlayer } from './CinematicPlayer';
 import { EndingPlayer } from './EndingPlayer'; import { EPILOGUES } from '@/lib/game/epilogues';
 import { Prop } from './Stage';
 
-export function StoryboardGallery({game,collection,onClose,speed,reducedMotion,paused=false,sound=false,onSound,onAudioFocus}:{game:Game;collection:Collection;onClose:()=>void;speed:number;reducedMotion:boolean;paused?:boolean;sound?:boolean;onSound?:()=>void;onAudioFocus?:(active:boolean)=>void}){
+export function StoryboardGallery({game,collection,onClose,speed,reducedMotion,paused=false,sound=false,onSound,onAudioFocus,embedded=false}:{embedded?:boolean;game:Game;collection:Collection;onClose:()=>void;speed:number;reducedMotion:boolean;paused?:boolean;sound?:boolean;onSound?:()=>void;onAudioFocus?:(active:boolean)=>void}){
  const [endingName,setEndingName]=useState<string|null>(null);
  const [filter,setFilter]=useState('all'),[open,setOpen]=useState<{id:string;branch?:0|1}|null>(null);
  const total=Object.keys(STORYBOARDS).length,totalEndings=Object.keys(EPILOGUES).length,stats=collectionStats(collection),knownIds=Object.keys(STORYBOARDS).filter(id=>collection.stories[id]).sort((a,b)=>{const order=(id:string)=>id.startsWith('main-')?Number(id.slice(5))*2:id.startsWith('chapter-')?Number(id.slice(8))*2+1:100+Number(id.slice(1));return order(a)-order(b);});
@@ -20,7 +20,7 @@ export function StoryboardGallery({game,collection,onClose,speed,reducedMotion,p
  if(endingName&&end)return <EndingPlayer sound={sound} onSound={onSound} onAudioFocus={onAudioFocus} game={game} name={endingName} recordedText={end.text} preview paused={paused} speed={speed} reducedMotion={reducedMotion} onFinish={()=>setEndingName(null)}/>;
  const replay=open?collectionReplay(collection,open.id,open.branch):undefined;
  if(open&&replay)return <CinematicPlayer key={`${open.id}-${open.branch}`} game={game} event={replay} answered={null} preview introOnly={open.branch===undefined} paused={paused} previewBranch={open.branch} speed={speed} reducedMotion={reducedMotion} onChoose={()=>false} onFinish={()=>setOpen(null)} onLedger={()=>{}} onProgress={()=>{}}/>;
- return <div className="storyboard-gallery">
+ return <div className={`storyboard-gallery ${embedded?'gallery-embedded':''}`}>
   <header><button onClick={onClose}><ArrowLeft size={16}/>返回</button><span>往事收藏<small>随你的经历留存</small></span><span className="mono">{stats.stories} / {total} 故事 · {stats.branches} / {total*2} 回声</span></header>
   <div className="gallery-intro"><p>有些日子，值得再翻一遍。</p><h1>只收下，你走过的片段。</h1><p className="gallery-unlock-note">读完开场，收录故事；作出答复，留下回声。未走过的路，留给下一次相遇。</p><div className="gallery-filters">{[['all',`全部 ${stats.stories}`],['main',`主线 ${knownIds.filter(id=>isMainStory(id)).length}`],['side',`日常 ${knownIds.filter(id=>!isMainStory(id)).length}`]].map(([v,label])=><button key={v} className={filter===v?'active':''} onClick={()=>setFilter(v)}>{label}</button>)}</div></div>
   <div className="gallery-grid">{ids.map(id=>{
