@@ -12,25 +12,27 @@ const outside=(x=9,y=96,width=13,night=false):SeasonPlacement=>({outdoors:true,p
 // Positions are in painting coordinates so seasonal objects keep their place
 // through the same cover/camera transforms as the authored scene.
 export const SEASON_PLACEMENTS:Record<SceneId,SeasonPlacement>={
- 'bookshop-pledge':inside(63,78,10,[61,3,37,48],true),'attic-kept-letter':inside(48,72,10,[40,3,19,40],true),
- 'reading-gathering':inside(53,65,10,[63,2,35,50],true),'proof-solitary':inside(24,72,10,[39,7,20,39],true),
- 'bookshop-night':inside(30,70,10,[59,6,39,55],true),'bookshop-day':inside(30,70,10),
- 'reading-room':inside(29,67,11),'attic':inside(27,72,11,[59,6,38,54],true),
- 'noodle-shop':inside(24,70,11,[61,5,38,62],true),'coldstore':inside(12,75,10,[4,8,29,55]),
- 'printshop':inside(24,74,11),'bank':inside(20,70,11),'tea-room':inside(24,70,11),
- 'old-street':outside(8,98,14,true),'coastal-train':inside(12,74,10,[45,8,53,52]),
- 'station':inside(18,75,11,[55,4,43,64]),'roof':outside(9,98,13),'factory':inside(24,74,11),
- 'pottery':inside(25,72,11),'archive':inside(22,73,11),'quiet-room':inside(23,73,10,[65,10,30,45]),
- 'brokerage':inside(18,70,11),'district-street':outside(8,97,13),'neighborhood-bank':inside(18,64,11),
- 'securities-office':inside(18,72,11),'winter-roster':inside(13,70,11,[55,5,43,56],true),
- 'seawall-evening':outside(9,97,14),'proof-night':inside(15,73,11,[65,7,33,53],true),
- 'shared-keys':inside(18,65,11),'winter-cloakroom':inside(15,78,11,[38,7,59,52]),
- 'ferry-spring':outside(9,96,14),'repair-summer':inside(16,78,11,[55,3,42,62]),
- 'osmanthus-yard':outside(90,97,15),'proof-morning':inside(15,75,11),
- 'post-winter':inside(18,76,11,[61,7,36,58],true),'noodle-blackout':outside(9,97,14,true),
- 'debt-autumn':inside(15,75,11),
+ 'bookshop-pledge':inside(63,78,7,[61,3,37,48],true),'attic-kept-letter':inside(48,72,7,[40,3,19,40],true),
+ 'reading-gathering':inside(52,73,6,[63,2,35,50],true),'proof-solitary':inside(40,70,5,[39,7,20,39],true),
+ 'bookshop-night':inside(23.5,65,6.5,[59,6,39,55],true),'bookshop-day':inside(23.5,65,6.5,[59,6,39,55]),
+ 'reading-room':inside(39,54,4,[64,6,34,52]),'attic':inside(27,65,5.5,[39,12,19,36],true),
+ 'noodle-shop':inside(26,64,4,[39,12,55,39],true),'coldstore':outside(8,98,10),
+ 'printshop':inside(88,49,4.5,[56,1,42,43]),'bank':inside(32,53.5,4,[72,5,28,44]),'tea-room':inside(28,75,5,[33,15,32,33]),
+ 'old-street':outside(8,98,14,true),'coastal-train':inside(25,66,4,[4,7,40,52]),
+ 'station':outside(9,97,10),'roof':outside(9,98,13),'factory':inside(25,70,5,[65,6,33,51]),
+ 'pottery':inside(29,72,5,[80,4,18,45]),'archive':inside(28,65,5,[77,2,21,47]),'quiet-room':inside(31,66,4,[75,7,23,24]),
+ 'brokerage':inside(25,65,4,[65,6,33,51]),'district-street':outside(8,97,13),'neighborhood-bank':inside(8,61.5,5.5,[0,0,29,29]),
+ 'securities-office':inside(41.5,70,4.5,[64,4,34,49]),'winter-roster':inside(25,70,5,[40,3,25,39],true),
+ 'seawall-evening':outside(9,97,14),'proof-night':inside(28,72,5,[65,4,33,48],true),
+ 'shared-keys':inside(34,61,4,[65,7,32,55]),'winter-cloakroom':inside(24,76,4,[66,3,31,56]),
+ 'ferry-spring':outside(9,96,14),'repair-summer':inside(31,75,4,[0,12,30,49]),
+ 'osmanthus-yard':outside(90,97,15),'proof-morning':inside(38,75,4,[0,3,32,54]),
+ 'post-winter':inside(29,69,4,[24,3,42,48],true),'noodle-blackout':outside(9,97,14,true),
+ 'debt-autumn':inside(31,69,4,[0,0,29,57]),
 };
 export function seasonPropFrame(scene:SceneId,visible={left:0,right:100,top:0,bottom:100}){
- const [px,py,originalWidth]=SEASON_PLACEMENTS[scene].prop,width=Math.min(originalWidth,(visible.right-visible.left)*.24);
- return{x:Math.max(visible.left+width/2+5,Math.min(px,visible.right-width/2-5)),y:Math.min(py,visible.bottom-2),width};
+ const [x,y,width]=SEASON_PLACEMENTS[scene].prop;
+ // Cropping may hide a still life. It must never slide off its painted support.
+ const shown=x-width/2>=visible.left&&x+width/2<=visible.right&&y<=visible.bottom&&y-width*1.8>=visible.top;
+ return{x,y,width,shown};
 }

@@ -1,10 +1,11 @@
-import type {Beat, CastId, FocusObject, VisualScript} from './cinematic-content';
+import type {Beat, CastId, FocusObject, SceneId, VisualScript} from './cinematic-content';
+import {SCENE_LAYOUTS} from './composition';
 
 /**
  * Authored blocking, independent of finances, save data and random event weights.
  * This is limited scene composition, not a claim of fully animated characters.
- * All x/y values use the viewport (not the cropped background) in percent.
- * Actor y = distance from bottom. Object y = centre from top; width = vw.
+ * Actor marks use the painting: x/foot-y from top, height as percent of image H.
+ * Object arrangements are semantic; Stage maps them to each painted work surface.
  */
 export type ObjectAction = 'still'|'placed'|'offered'|'withdrawn'|'opened'|'turned'|'set-aside';
 type Relationship = 'together'|'apart'|'solo'|'formal'|'remote';
@@ -21,7 +22,7 @@ type BranchDirection = {
   cast?:CastId[];
 };
 type StoryDirection = {outcomes:[BranchDirection,BranchDirection]};
-export type ActorMark = {id:CastId;x:number;y:number;scale:number;pose:0|1|2;active:boolean};
+export type ActorMark = {id:CastId;x:number;y:number;height:number;scale:number;pose:0|1|2;active:boolean};
 export type ObjectMark = {focus?:FocusObject;x:number;y:number;width:number;rotate:number;action:ObjectAction;
   companion?:{focus:FocusObject;x:number;y:number;width:number;rotate:number}};
 export type StageDirection = {
@@ -133,10 +134,6 @@ const ARRANGEMENTS:Record<Arrangement,Omit<ObjectMark,'focus'|'action'|'companio
  away:{x:32,y:43,width:17,rotate:-5,other:[62,39,12,0]},
 };
 
-/** These scenes frame a person beside a window, bench or shared meal.
- * Paperwork and workshop scenes leave the left-hand work surface visible.
- */
-const LEFT_CONVERSATIONS = new Set(['noodle-shop','tea-room','coastal-train','pottery','seawall-evening','winter-cloakroom','ferry-spring','osmanthus-yard','noodle-blackout']);
 const REMOTE_STORIES:Record<string,StageChannel>={'main-1':'letter','main-6':'phone',s45:'letter',s47:'phone',s58:'letter'};
 const REMOTE_SPEAKERS:Record<string,CastId[]>={'main-4':['lu']};
 const STORY_CAST:Record<string,CastId[]>={'main-10':['xu']};
@@ -152,20 +149,17 @@ function objectAction(beat:Beat):ObjectAction {
  return'still';
 }
 
-function actorMarks(cast:CastId[],speaker:Beat['speaker'],pose:Beat['pose'],relationship:Relationship,left:boolean):ActorMark[]{
+function actorMarks(cast:CastId[],speaker:Beat['speaker'],pose:Beat['pose'],relationship:Relationship,scene:SceneId):ActorMark[]{
  if(relationship==='solo'||relationship==='remote')return[];
  // Keep people in their established places when the speaker changes.
  const ordered=cast;
  const ids=[...new Set(ordered)].slice(0,2) as CastId[];
- const primary=relationship==='together'?70:relationship==='formal'?75:77;
- const secondary=relationship==='together'?84:relationship==='formal'?25:23;
- return ids.map((id,i)=>({id,x:left?100-(i?secondary:primary):(i?secondary:primary),y:i?7:4,
-   scale:i?(relationship==='together'?.77:.75):(relationship==='formal'?.88:.93),
+ return ids.map((id,i)=>({id,...SCENE_LAYOUTS[scene].actors[i],scale:1,
    pose:id===speaker?(pose??1):(relationship==='apart'?2:0),active:id===speaker}));
 }
 
 /** Pure resolver: calling this cannot change an event, settlement or collection. */
-export function resolveStaging({eventId,phase,branch=0,beat,index,script}:{eventId:string;phase:'story'|'choice'|'outcome';branch?:0|1;beat:Beat;index:number;script:VisualScript}):StageDirection {
+export function resolveStaging({eventId,phase,branch=0,beat,index,script,scene=script.scene}:{eventId:string;phase:'story'|'choice'|'outcome';branch?:0|1;beat:Beat;index:number;script:VisualScript;scene?:SceneId}):StageDirection {
  const profile=phase==='outcome'?STORY_DIRECTIONS[eventId]?.outcomes[branch]:undefined;
  const remoteSpeaker=beat.speaker!=='narrator'&&beat.speaker!=='self'&&REMOTE_SPEAKERS[eventId]?.includes(beat.speaker);
  const channel:StageChannel=profile?.channel??REMOTE_STORIES[eventId]??(remoteSpeaker?'phone':'room');
@@ -176,13 +170,12 @@ export function resolveStaging({eventId,phase,branch=0,beat,index,script}:{event
  const baseRelation:Relationship=sceneCast.length>1?'together':'formal';
  const relation=profile?.relationship??baseRelation;
  const absent=channel!=='room'||detail||documentary||relation==='solo'||relation==='remote';
- const left=LEFT_CONVERSATIONS.has(script.scene);
- let actors=absent?[]:actorMarks(sceneCast,beat.speaker,beat.pose,relation,left);
+ let actors=absent?[]:actorMarks(sceneCast,beat.speaker,beat.pose,relation,scene);
  let composition:StageDirection['composition']=detail||documentary||channel!=='room'?'object':beat.camera==='wide'?'environment':actors.length>1?'conversation':'portrait';
  const active=actors.find(actor=>actor.active);
  let dialogueSide:StageDirection['dialogueSide']=beat.speaker==='narrator'||beat.speaker==='self'||!active?'center':active.x<50?'right':'left';
  if(phase==='choice'){
-  actors=channel==='room'?sceneCast.slice(0,2).map((id,i)=>({id,x:i?40:24,y:i?7:4,scale:i ? .73 : .88,pose:2,active:false})):[];
+  actors=channel==='room'&&relation!=='solo'&&relation!=='remote'?actorMarks(sceneCast,'self',2,relation,scene).map(actor=>({...actor,pose:2,active:false})):[];
   composition='decision';dialogueSide='center';
  }
  const arrangement=profile?.arrangement??(detail?'opened':'filed');

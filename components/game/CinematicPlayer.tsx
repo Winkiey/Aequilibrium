@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, X } from 'lucide-react';
-import { HUB_ANCHORS, SCENE_OBJECT_ANCHORS, warmScene } from '@/lib/game/assets';
+import { warmScene } from '@/lib/game/assets';
 import { Stage } from './Stage';
 import { CAST, getScript, OBJECTS, OBJECT_INSPECTIONS, outcomeBeats, outcomeScene } from '@/lib/game/visuals';
 import { optionError, type Game, type StoryEvent } from '@/lib/game/engine';
 import type { Beat, VisualScript } from '@/lib/game/cinematic-content';
+import {materialPlacement,SCENE_LAYOUTS,sceneFocusPoint} from '@/lib/game/composition';
 import {resolveStaging} from '@/lib/game/staging';
 import type { ReadingProgress } from '@/lib/game/presentation';
 
@@ -33,13 +34,14 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const location=phase==='outcome'?outcomeScene(event.id,choice??0,script.scene):script.scene;
  const focus=phase==='outcome'?(beat.focus??script.outcomeFocus[choice??0]):beat.focus;
  function select(i:0|1){if(introOnly)return;if(preview||onChoose(i)){setChoice(i);setPhase('outcome');setIndex(0);setInspection(null);}}
- const hotspotPoint=SCENE_OBJECT_ANCHORS[location]?.[interest]??(interest==='letter'&&HUB_ANCHORS[location]?HUB_ANCHORS[location]!.letter:OBJECTS[interest].point);
+ const hotspotPoint=sceneFocusPoint(location,interest);
+ const hasWorldObject=!!SCENE_LAYOUTS[location].painted[interest]||!!materialPlacement(location,interest);
  const inspectLabel=interest===script.interaction.object&&phase!=='outcome'?script.interaction.label:`查看${OBJECTS[interest].name}`;
- const direction=resolveStaging({eventId:event.id,phase,branch:choice??0,beat,index:safeIndex,script});
+ const direction=resolveStaging({eventId:event.id,phase,branch:choice??0,beat,index:safeIndex,script,scene:location});
  useEffect(()=>{if(phase==='choice'||(phase==='story'&&safeIndex>=script.beats.length-2)){for(const branch of [0,1] as const)warmScene(outcomeScene(event.id,branch,script.scene),script.cast);}},[event.id,phase,safeIndex,script]);
  const actors=direction.cast;
  return <div className="cinematic-player" data-event={event.id} data-phase={phase} data-branch={phase==='outcome'?choice:undefined}>
-  <Stage quarter={event.atQuarter??game.quarter} staging={direction} framing={HUB_ANCHORS[location]||SCENE_OBJECT_ANCHORS[location]?'desk':'center'} sceneLayer={phase!=='choice'&&interest!=='window'&&<button className={`story-object-hotspot ${!inspected?'undiscovered':''}`} style={{left:`${hotspotPoint[0]}%`,top:`${hotspotPoint[1]}%`}} onClick={()=>{setInspection(value=>value?null:interest);setInspected(true);}} aria-label={inspectLabel}><i/><span>{inspectLabel}{inspected&&<small>已查看</small>}</span></button>} onReadyChange={setSceneReady} scene={location} cast={actors} speaker={beat.speaker} pose={beat.pose??(phase==='outcome'?choice===0?1:2:0)} camera={beat.camera} focus={focus} emotion={beat.emotion} showObject={beat.camera==='detail'||phase==='outcome'} shotId={`${event.id}:${phase}:${phase==='outcome'?choice:'intro'}:${safeIndex}`}>
+  <Stage quarter={event.atQuarter??game.quarter} staging={direction} framing={SCENE_LAYOUTS[location].framing} sceneLayer={phase!=='choice'&&interest!=='window'&&hasWorldObject&&<button className={`story-object-hotspot ${!inspected?'undiscovered':''}`} style={{'--object-x':`${hotspotPoint[0]}%`,'--object-y':`${hotspotPoint[1]}%`} as React.CSSProperties} onClick={()=>{setInspection(value=>value?null:interest);setInspected(true);}} aria-label={inspectLabel}><i/><span>{inspectLabel}{inspected&&<small>已查看</small>}</span></button>} onReadyChange={setSceneReady} scene={location} cast={actors} speaker={beat.speaker} pose={beat.pose??(phase==='outcome'?choice===0?1:2:0)} camera={beat.camera} focus={focus} emotion={beat.emotion} showObject={beat.camera==='detail'||phase==='outcome'} shotId={`${event.id}:${phase}:${phase==='outcome'?choice:'intro'}:${safeIndex}`}>
    <button className="scene-advance-hit" aria-label={inspection?'收起物件，继续':complete?'下一句':'立即显示完整对白'} onClick={advance} disabled={phase==='choice'}/>
    <div className="cinema-letterbox top"/><div className="cinema-letterbox bottom"/>
    <header className="cinema-header"><button className="scene-tool" onClick={()=>onFinish('exit')}><ArrowLeft size={15}/>{preview?'返回往事':epilogue?'查看复盘':'回到书店'}</button><span>{event.title}<small>{event.sender}</small></span><div className="cinema-header-tools">{phase!=='choice'&&<button className="scene-tool" onClick={()=>{setInspection(value=>value?null:interest);setInspected(true);}} aria-label={inspectLabel}>{inspection?'收起物件':'查看物件'}</button>}<button className="scene-tool" onClick={()=>setTranscript(!transcript)}><BookOpen size={15}/>回看</button></div></header>

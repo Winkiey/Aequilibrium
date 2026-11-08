@@ -1,0 +1,46 @@
+/* Painting coordinates: every physical layer moves through the same camera. */
+.stage .stage-world .stage-set{position:absolute;inset:0;z-index:2;pointer-events:none}
+.stage .stage-world .stage-cast{position:absolute;inset:0;transform:none;transition:none;z-index:2}
+.stage .stage-world .actor.world-actor{position:absolute;left:var(--figure-x);top:var(--figure-y);bottom:auto;width:var(--figure-width);transform:translate(-50%,-100%);transform-origin:bottom center;animation:world-actor-arrive .35s ease-out both;transition:filter .35s ease;opacity:1}
+.stage .world-actor .actor-crop{animation:none!important;aspect-ratio:1/2;overflow:hidden}
+.stage .world-actor .actor-crop>img{display:block;position:relative;height:100%;width:300%;max-width:none;mask-image:none;transition:none}
+.stage .world-actor .actor-contact{left:32%;right:32%;bottom:-2px;height:5px;filter:blur(3px);background:#111c1959}
+.stage .stage-world .stage-color{z-index:4;pointer-events:none}
+.stage .stage-world .season-layer{z-index:5}
+.stage .stage-world .stage-rain,.stage .stage-world .stage-dust{z-index:6;pointer-events:none}
+.scene-pending .stage-set{opacity:0}
+.scene-material{position:absolute;z-index:3;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 2px 2px #0c171c42)}
+.scene-material[data-material=cup]{transform:translate(-50%,-100%)}
+.material-plane{transform:rotate(var(--material-angle,0deg)) scaleY(var(--material-flat,.56));transform-origin:center}
+.scene-material .painted-prop,.material-reading-insert .painted-prop{width:100%;height:auto;aspect-ratio:9/8}
+.scene-material.stage-object-placed .painted-prop{animation:material-place .45s ease-out both}
+.scene-material.stage-object-offered .painted-prop{animation:material-offer .55s ease-out both}
+.scene-material.stage-object-withdrawn .painted-prop,.scene-material.stage-object-set-aside .painted-prop{animation:material-return .55s ease-out both}
+.scene-material.stage-object-opened .painted-prop{animation:material-open .55s ease-out both}
+.scene-material.stage-object-turned .painted-prop{animation:material-turn .5s ease-out both}
+.material-reading-insert{position:absolute;z-index:5;left:50%;top:36%;transform:translate(-50%,-50%);width:clamp(150px,23vw,310px);padding:13px 18px 10px;background:#d4ccb9e8;border:1px solid #e8dec455;box-shadow:0 8px 30px #0a141c2b;pointer-events:none;color:#5f614f}
+.material-reading-insert>span{display:block;font:9px var(--sans);letter-spacing:.15em;border-bottom:1px solid #a69f874d;padding-bottom:9px}
+.material-reading-insert>div{display:flex;align-items:center;gap:10px;padding:10px 0}
+.material-reading-insert>div>.painted-prop{min-width:0;flex:1}
+.material-reading-insert>div>.painted-prop+span{flex:.65}
+.material-reading-insert>small{display:block;text-align:center;font:10px var(--serif);letter-spacing:.1em}
+/* The hit target is centred on the object; its label does not shift the ring. */
+.stage .scene-world-interactions .story-object-hotspot{left:var(--object-x)!important;top:var(--object-y)!important;transform:translate(-50%,-50%);display:grid;place-items:center;gap:0;padding:0;width:44px;height:44px;min-width:44px;min-height:44px;max-width:44px}
+.stage .scene-world-interactions .story-object-hotspot>i{position:relative;margin:0;width:24px;height:24px}
+.stage .scene-world-interactions .story-object-hotspot>i:before{margin:9px}
+.stage .scene-world-interactions .story-object-hotspot>span{position:absolute;left:calc(100% + 3px);top:50%;transform:translateY(-50%);font:10px/1.8 var(--serif);white-space:nowrap;max-width:none}
+.stage .scene-world-interactions .story-object-hotspot small{margin:0;display:block;font-size:8px}
+@keyframes world-actor-arrive{from{opacity:0}to{opacity:1}}
+@keyframes material-place{from{transform:translateY(-4px)}to{transform:none}}
+@keyframes material-offer{from{transform:translate(-8px,2px)}to{transform:none}}
+@keyframes material-return{from{transform:translate(8px,-2px)}to{transform:none}}
+@keyframes material-open{from{transform:scaleY(.86)}to{transform:scaleY(1)}}
+@keyframes material-turn{from{transform:rotate(-5deg)}to{transform:none}}
+@media(orientation:landscape) and (max-height:600px){
+ .material-reading-insert{top:33%;width:clamp(120px,20vw,200px);padding:8px 12px}
+ .material-reading-insert>span{font-size:8px;padding-bottom:5px}
+ .material-reading-insert>div{padding:5px 0}
+ .stage .scene-world-interactions .story-object-hotspot>span{font-size:9px}
+}
+.reduce-motion .stage .world-actor,.reduce-motion .scene-material .painted-prop{animation:none!important}
+@media(prefers-reduced-motion:reduce){.stage .world-actor,.scene-material .painted-prop{animation:none!important}}

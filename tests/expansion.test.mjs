@@ -44,7 +44,7 @@ test('all sixteen continuation combinations complete a real twelve-season life',
 test('every scene has four seasons with real transparent art and independent new story paintings',()=>{
  assert.deepEqual(Object.keys(SEASON_PLACEMENTS).sort(),Object.keys(SCENES).sort());
  for(let q=1;q<=12;q++)assert.equal(seasonForQuarter(q).id,SEASONS_VISUAL[(q-1)%4].id);
- for(const p of Object.values(SEASON_PLACEMENTS)){assert.ok(p.prop.every(Number.isFinite));assert.ok(p.prop[0]>0&&p.prop[0]<100&&p.prop[1]>0&&p.prop[1]<=100&&p.prop[2]>=10);}
+ for(const p of Object.values(SEASON_PLACEMENTS)){assert.ok(p.prop.every(Number.isFinite));assert.ok(p.prop[0]>0&&p.prop[0]<100&&p.prop[1]>0&&p.prop[1]<=100&&p.prop[2]>=4&&p.prop[2]<=15);}
  const manifest=JSON.parse(readFileSync('docs/ASSET_MANIFEST.json','utf8')).assets;for(const season of SEASONS_VISUAL){const a=manifest[`season-${season.id}`];assert.equal(a.path,season.art);assert.equal(a.alpha,true);assert.ok(readFileSync(`public${season.art}`).length>10000);}
  const newIds=[...CHAPTER_EVENTS,...SIDE_EVENTS.filter(e=>Number(e.id.slice(1))>=53)].map(e=>STORYBOARDS[e.id].scene);assert.equal(new Set(newIds).size,12);
  const hashes=newIds.map(id=>createHash('sha256').update(readFileSync(`public${SCENES[id].image}`)).digest('hex'));assert.equal(new Set(hashes).size,12);
@@ -52,10 +52,10 @@ test('every scene has four seasons with real transparent art and independent new
 test('old ending names migrate into four-character names without losing earned text',()=>{
  const saved={version:1,stories:{},endings:{'守住一盏灯':{text:'那一年的灯还亮着。'},'传奇操盘手':{text:'旧纪录'}}};const c=readCollection(saved);assert.deepEqual(Object.keys(c.endings),['泊灯长明','知止乘潮']);assert.equal(c.endings['泊灯长明'].text,saved.endings['守住一盏灯'].text);assert.equal(normalizeEndingName('激流勇退'),'激流勇退');
 });
-test('seasonal objects stay inside the visible painting in desktop and phone landscape crops',()=>{
+test('seasonal objects retain their support when cropped, and hidden still lifes never slide across the scene',()=>{
  for(const [w,h]of[[1440,1000],[844,390],[667,375],[2560,720]])for(const scene of Object.keys(SCENES))for(const [ax,ay]of[[0,1],[.5,.5]]){
   const f=coverFrame(w,h,1672,941,ax,ay),visible={left:-f.left/f.width*100,right:(w-f.left)/f.width*100,top:-f.top/f.height*100,bottom:(h-f.top)/f.height*100},p=seasonPropFrame(scene,visible);
-  assert.ok(p.x-p.width/2>=visible.left&&p.x+p.width/2<=visible.right);assert.ok(p.y<=visible.bottom);assert.ok(p.y-p.width*.75>=visible.top);
+  assert.deepEqual([p.x,p.y,p.width],SEASON_PLACEMENTS[scene].prop);if(p.shown){assert.ok(p.x-p.width/2>=visible.left&&p.x+p.width/2<=visible.right);assert.ok(p.y<=visible.bottom);assert.ok(p.y-p.width*1.8>=visible.top);}
  }
 });
 test('new seasonal daily events can actually be selected, including summer quarters',()=>{

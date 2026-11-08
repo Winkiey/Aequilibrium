@@ -33,5 +33,5 @@ export const SCENE_OBJECT_ANCHORS:Partial<Record<SceneId,Partial<Record<FocusObj
 export const HUB_ANCHORS:Partial<Record<SceneId,{letter:[number,number];ledger:[number,number];newspaper:[number,number];shelf:[number,number];paintedLetter?:boolean}>>={
  'bookshop-night':{letter:[11.2,77.5],ledger:[22,66.5],newspaper:[17.7,82],shelf:[46,42]},
  'bookshop-day':{letter:[11,77.5],ledger:[22,66.5],newspaper:[17.7,82],shelf:[46,42]},
- 'reading-room':{letter:[24,68],ledger:[15,75],newspaper:[29,60],shelf:[46,41],paintedLetter:true},
+ 'reading-room':{letter:[28,74],ledger:[21.5,75],newspaper:[18,80],shelf:[46,41],paintedLetter:true},
 };
