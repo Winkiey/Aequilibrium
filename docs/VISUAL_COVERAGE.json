@@ -5,7 +5,7 @@
     "outcomes": 152,
     "playableCompositions": 228,
     "endings": 12,
-    "backgrounds": 33,
+    "backgrounds": 37,
     "characters": 10,
     "poses": 30,
     "missing": 0
@@ -127,13 +127,13 @@
       "after": [
         {
           "branch": 0,
-          "scene": "bookshop-night",
+          "scene": "bookshop-pledge",
           "focus": "key",
           "lines": 4
         },
         {
           "branch": 1,
-          "scene": "bookshop-night",
+          "scene": "attic-kept-letter",
           "focus": "letter",
           "lines": 5
         }
@@ -231,13 +231,13 @@
       "after": [
         {
           "branch": 0,
-          "scene": "reading-room",
+          "scene": "reading-gathering",
           "focus": "book",
           "lines": 4
         },
         {
           "branch": 1,
-          "scene": "attic",
+          "scene": "proof-solitary",
           "focus": "lamp",
           "lines": 4
         }

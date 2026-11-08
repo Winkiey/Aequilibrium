@@ -1,0 +1,2912 @@
+{
+  "status": "prepared-not-generated",
+  "preferredModel": "Seedance, model/version and access to be confirmed in the chosen account",
+  "style": "Quiet realistic hand-painted cinematic animation, slate gray, tobacco brown and muted moss green, fine restrained gouache/oil texture, natural coastal light, realistic adult anatomy. Preserve the exact established character face, hair, age and clothing. The scene itself and people must move continuously; camera movement alone is not sufficient. No oscillating still photographs, cardboard cutout motion, fantasy glow, anime, lip-sync without speech, readable generated text, numbers, watermark, logos or financial dashboards. Text and subtitles are added separately after rendering.",
+  "styleChinese": "严格沿用所附游戏原画的写实手绘电影分镜风格，低饱和石板灰、烟草棕与苔绿，旧木、纸张和布料保留细微笔触，自然海港光，真实成人比例。角色脸型、年龄、发型、衣服配色与参考图完全一致。镜头稳定；画面内部有连续、符合物理的动作，人物有真实呼吸、眨眼、视线、手部接触与承重，衣料、水面、纸张和光影自然变化。不要把静态图片抖动、推拉或硬切换当作运动。不要卡纸人、照片真人化、动漫脸、3D塑料高光、夸张表演、生成文字、字幕、数字、品牌或水印。台词由后期字幕承接，角色以自然表情与手势演出，不做无声连续嘴型。音轨只生成贴合镜头的安静环境声，不生成陌生旁白与随机配乐。横屏16:9。",
+  "films": 13,
+  "shots": 128,
+  "parts": 51,
+  "seconds": 1024,
+  "references": {
+    "scene:old-street": {
+      "path": "references/backgrounds/old-street.webp",
+      "source": "/art/backgrounds/old-street.webp",
+      "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+    },
+    "scene:factory": {
+      "path": "references/backgrounds/factory.webp",
+      "source": "/art/backgrounds/factory.webp",
+      "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+    },
+    "scene:attic": {
+      "path": "references/backgrounds/attic.webp",
+      "source": "/art/backgrounds/attic.webp",
+      "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+    },
+    "scene:bookshop-day": {
+      "path": "references/backgrounds/bookshop-day.webp",
+      "source": "/art/backgrounds/bookshop-day.webp",
+      "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+    },
+    "scene:bookshop-night": {
+      "path": "references/backgrounds/bookshop-night.webp",
+      "source": "/art/backgrounds/bookshop-night.webp",
+      "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+    },
+    "scene:proof-morning": {
+      "path": "references/backgrounds/proof-morning.webp",
+      "source": "/art/backgrounds/proof-morning.webp",
+      "sha256": "b0214484a5d653fa4223085e2db16abaf80ba6b49c3f77a577f226c931f95c31"
+    },
+    "scene:proof-night": {
+      "path": "references/backgrounds/proof-night.webp",
+      "source": "/art/backgrounds/proof-night.webp",
+      "sha256": "08ef823295bab2bc9cc4896393a47e35618c2360ec0c178142e6d0f29d9b67ce"
+    },
+    "scene:shared-keys": {
+      "path": "references/backgrounds/shared-keys.webp",
+      "source": "/art/backgrounds/shared-keys.webp",
+      "sha256": "d85012a962a01b7f1e5c309f271189231f23b922fd763d660bc366c1998eec9a"
+    },
+    "scene:reading-room": {
+      "path": "references/backgrounds/reading-room.webp",
+      "source": "/art/backgrounds/reading-room.webp",
+      "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+    },
+    "scene:district-street": {
+      "path": "references/backgrounds/district-street.webp",
+      "source": "/art/backgrounds/district-street.webp",
+      "sha256": "572bd6378ea1188f7aa1cf95797d3a0baa16d6c45727624b629bc016084f286a"
+    },
+    "scene:winter-cloakroom": {
+      "path": "references/backgrounds/winter-cloakroom.webp",
+      "source": "/art/backgrounds/winter-cloakroom.webp",
+      "sha256": "d52a8c2ec42c5182a4854e1d8ec46e618183397c319900fea7843b223c825e45"
+    },
+    "scene:noodle-shop": {
+      "path": "references/backgrounds/noodle-shop.webp",
+      "source": "/art/backgrounds/noodle-shop.webp",
+      "sha256": "350fab010a026a4d1e8f1b191f520361a4bef1ebe520610c1683b727ccf69443"
+    },
+    "scene:ferry-spring": {
+      "path": "references/backgrounds/ferry-spring.webp",
+      "source": "/art/backgrounds/ferry-spring.webp",
+      "sha256": "d829baec4f8bf6e616a2ba8f698bfe4b066d7aa2bc321574b669a28443d845a1"
+    },
+    "scene:seawall-evening": {
+      "path": "references/backgrounds/seawall-evening.webp",
+      "source": "/art/backgrounds/seawall-evening.webp",
+      "sha256": "316eb635fcac863c25a4b4e308629ee7725d2a6259a75fd3954c12627bf72d04"
+    },
+    "scene:archive": {
+      "path": "references/backgrounds/archive.webp",
+      "source": "/art/backgrounds/archive.webp",
+      "sha256": "1c35f7a46d9a5def03c9392fdb229a69484f483be3df17cfce2df8b5e640f86c"
+    },
+    "scene:bank": {
+      "path": "references/backgrounds/bank.webp",
+      "source": "/art/backgrounds/bank.webp",
+      "sha256": "2643df88f153b59c2fadf5406b8a4ee3ed8d64491544ff04649f704853172a84"
+    },
+    "scene:quiet-room": {
+      "path": "references/backgrounds/quiet-room.webp",
+      "source": "/art/backgrounds/quiet-room.webp",
+      "sha256": "7e2021d5f957593164d7e3c58ac1cbe992d5a0543752a89db92f3923d9db128f"
+    },
+    "scene:tea-room": {
+      "path": "references/backgrounds/tea-room.webp",
+      "source": "/art/backgrounds/tea-room.webp",
+      "sha256": "392827be122fed14b3d098115df82472e525c6c66f487befe916605ab65a2248"
+    },
+    "scene:coldstore": {
+      "path": "references/backgrounds/coldstore.webp",
+      "source": "/art/backgrounds/coldstore.webp",
+      "sha256": "b0e33a6fab5c2080b320a5acfc137ed1e7e5b60d21c350670b9f5bccb04fad60"
+    },
+    "scene:station": {
+      "path": "references/backgrounds/station.webp",
+      "source": "/art/backgrounds/station.webp",
+      "sha256": "b44b6c38b3508a3d14ad03dfb328823433c5c0fa1cd03a4b648a889318530810"
+    },
+    "scene:coastal-train": {
+      "path": "references/backgrounds/coastal-train.webp",
+      "source": "/art/backgrounds/coastal-train.webp",
+      "sha256": "5203600b4af365c2279a43ee26c8096347f111b6835e9e828722874c04722acc"
+    },
+    "scene:post-winter": {
+      "path": "references/backgrounds/post-winter.webp",
+      "source": "/art/backgrounds/post-winter.webp",
+      "sha256": "94d300d287a8fc1939ea9937c7eecab415c0a710fa0203f0b2fcee339108c2a0"
+    },
+    "cast:cheng": {
+      "path": "references/characters/cheng.webp",
+      "source": "/art/characters/cheng.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+    },
+    "cast:gu": {
+      "path": "references/characters/gu.webp",
+      "source": "/art/characters/gu.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "d295693c98f53c75f4aec78476a6715f1bb84c5607be6b07d2114a2632826c18"
+    },
+    "cast:ning": {
+      "path": "references/characters/ning.webp",
+      "source": "/art/characters/ning.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "b472d5d6b55a4a5655f0604fc0034bd82c6f74be23562ee0434428793c4d8b63"
+    },
+    "cast:zhou": {
+      "path": "references/characters/zhou.webp",
+      "source": "/art/characters/zhou.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+    },
+    "cast:tang": {
+      "path": "references/characters/tang.webp",
+      "source": "/art/characters/tang.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+    },
+    "cast:he": {
+      "path": "references/characters/he.webp",
+      "source": "/art/characters/he.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+    },
+    "cast:lu": {
+      "path": "references/characters/lu.webp",
+      "source": "/art/characters/lu.webp",
+      "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+      "sha256": "0b661bdde91984c0b4ec1d25ed50743be451b47107515000978ffef86cac75a5"
+    }
+  },
+  "productions": [
+    {
+      "id": "opening",
+      "title": "雨夜来信",
+      "kind": "opening",
+      "quarter": 1,
+      "shots": [
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "雨滴接连打进水洼，路面积水顺着石缝流动；一扇店门合拢，门内灯光从宽缝收成细线。镜头固定，不靠抖动表现雨夜。",
+          "caption": "澄港，初秋。天黑以后，街上的声音慢了下来。",
+          "sound": "近处雨滴，远处一次门铃",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "factory",
+          "cast": [],
+          "action": "第一人称近景，手沿着校样逐行移动蓝铅笔，翻过一页，再把改好的纸推到另一摞；纸张与手指动作连续且正确。",
+          "caption": "你在印刷厂校对书稿，已经做了六年。",
+          "sound": "纸页、铅笔落纸、很远的机器声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "台灯下，一只手将稿件合起；手机轻轻振动亮起，另一只手没有立即拿它。后窗被风推开一条缝，毛巾一角被吹动。",
+          "caption": "十二万元，是一点一点留下来的。至于以后，你还没有想好。",
+          "sound": "手机一次短振、窗框轻响",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng"
+          ],
+          "action": "较早的白天，程姨把几本旧书装进帆布袋，回身望一眼书架；放下最后一本，把袋口折好。她神情平静，动作自然，不离开既定人物形象。",
+          "caption": "程姨准备去南方住一阵。书屋的租约，还剩三年。",
+          "sound": "布袋摩擦、窗外鸟声",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng"
+          ],
+          "action": "程姨在左侧木桌落笔写信，写完停一瞬，将纸折成三折，放进牛皮纸信封。画面中不生成可读字，关键信息由后期字幕承接。",
+          "caption": "她没有替你作决定，只留下一封信。",
+          "sound": "笔尖、折纸，旋律留白",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "回到雨夜，屋檐一滴水落入搪瓷盆，水面波纹向外展开；窗帘很轻地起落，灯丝亮度稳定。先有滴水的声音，再切到水面。",
+          "caption": "后窗还是关不严。雨水照旧落进那只盆里。",
+          "sound": "连续而不机械重复的滴水",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "第一人称走近柜台，画面稳定地向前移动；手伸向信封旁的黄铜钥匙，指尖触到钥匙后停住，暖灯在金属上产生真实移动反光。",
+          "caption": "信封下面，压着程姨常用的那把钥匙。",
+          "sound": "脚步、木地板，钥匙轻碰桌面",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手将钥匙轻轻挪到信封旁，收回。焦点从钥匙自然过渡到尚未拆开的信封，停留两秒后自然淡黑，衔接可交互书屋。",
+          "caption": "今晚，你又下了一层楼。接下来，由你亲自拆开这封信。",
+          "sound": "雨声留到交互场景，最后一枚钢琴音",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 64,
+      "subtitles": "opening/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "opening/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 2,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            },
+            {
+              "index": 3,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "opening/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 2,
+              "key": "cast:cheng",
+              "path": "references/characters/cheng.webp",
+              "source": "/art/characters/cheng.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+            },
+            {
+              "index": 3,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 16,
+          "shotStart": 7,
+          "shotEnd": 8,
+          "prompt": "opening/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-paper",
+      "title": "纸上春秋",
+      "kind": "ending",
+      "quarter": 11,
+      "shots": [
+        {
+          "scene": "proof-morning",
+          "cast": [],
+          "action": "春风吹动窗帘，枝头一片新叶轻轻转向窗外，桌上样书的书角抬起又落下。",
+          "caption": "又一个春天，新书寄到了。",
+          "sound": "纸角、鸟声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [
+            "gu"
+          ],
+          "action": "小顾拆开纸包，先托住书脊，再缓慢翻到署名页。",
+          "caption": "小顾没有先看封面。他翻到了最前面的那一页。",
+          "sound": "拆纸、翻书",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [
+            "gu"
+          ],
+          "action": "小顾用指尖点了两处空白署名位置，再抬头看你，轻轻笑一下。后期排字保持人名清楚。",
+          "caption": "「这一版都写全了。你看，名字在这里。」",
+          "sound": "自然短句、人声近而轻",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-night",
+          "cast": [],
+          "action": "过往返工的夜晚，铅笔圈过一处错字，另一只手将旧样与新样分开放好；工作灯下手的运动连续。",
+          "caption": "你想起那些没有立即收到报酬的夜晚。",
+          "sound": "铅笔、工作灯电流声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "factory",
+          "cast": [
+            "gu"
+          ],
+          "action": "小顾与画外的你把一叠新校样抬到晾纸架上，依次夹好，纸张在空气里轻晃。",
+          "caption": "没有一页纸，会自己走完从错处到书架的路。",
+          "sound": "纸夹轻响",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [
+            "ning"
+          ],
+          "action": "顾宁将一份确认单推过来，等你看完以后才把笔递出，不抢签。",
+          "caption": "顾宁把结算日期写好。这次，你们也把修改的时间留了出来。",
+          "sound": "纸在木桌滑动",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [],
+          "action": "手把到账凭证夹进账册，合起账册；另一边的书仍摊着，镜头不展示任意虚构收益数字。",
+          "caption": "稿费仍然要算，交期仍然会紧。",
+          "sound": "夹纸、合账本",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [
+            "gu",
+            "ning"
+          ],
+          "action": "小顾合上书，顾宁把刚拿起的排期表放下，两人起身让出门口；动作先后自然，不同时僵硬移动。",
+          "caption": "「下本书的排期，吃过饭再谈。」",
+          "sound": "椅脚、远处午间人声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "几个人的背影走出印厂门口，风抬起衣摆；店铺蒸汽缓缓飘散，阳光稳定。",
+          "caption": "三年前，你只想把稿费攒下来。",
+          "sound": "脚步、面馆锅声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "proof-morning",
+          "cast": [],
+          "action": "回到空桌，窗影在书页上缓慢移动，书页因真实风力翻过一页，停在新的一章。",
+          "caption": "后来，你开始在意，一本书怎样抵达另一个人手里。",
+          "sound": "一页书翻过，旋律收束",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-paper/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-paper/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:proof-morning",
+              "path": "references/backgrounds/proof-morning.webp",
+              "source": "/art/backgrounds/proof-morning.webp",
+              "sha256": "b0214484a5d653fa4223085e2db16abaf80ba6b49c3f77a577f226c931f95c31"
+            },
+            {
+              "index": 2,
+              "key": "cast:gu",
+              "path": "references/characters/gu.webp",
+              "source": "/art/characters/gu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d295693c98f53c75f4aec78476a6715f1bb84c5607be6b07d2114a2632826c18"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-paper/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:proof-night",
+              "path": "references/backgrounds/proof-night.webp",
+              "source": "/art/backgrounds/proof-night.webp",
+              "sha256": "08ef823295bab2bc9cc4896393a47e35618c2360ec0c178142e6d0f29d9b67ce"
+            },
+            {
+              "index": 2,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            },
+            {
+              "index": 3,
+              "key": "cast:gu",
+              "path": "references/characters/gu.webp",
+              "source": "/art/characters/gu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d295693c98f53c75f4aec78476a6715f1bb84c5607be6b07d2114a2632826c18"
+            },
+            {
+              "index": 4,
+              "key": "scene:proof-morning",
+              "path": "references/backgrounds/proof-morning.webp",
+              "source": "/art/backgrounds/proof-morning.webp",
+              "sha256": "b0214484a5d653fa4223085e2db16abaf80ba6b49c3f77a577f226c931f95c31"
+            },
+            {
+              "index": 5,
+              "key": "cast:ning",
+              "path": "references/characters/ning.webp",
+              "source": "/art/characters/ning.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "b472d5d6b55a4a5655f0604fc0034bd82c6f74be23562ee0434428793c4d8b63"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-paper/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:proof-morning",
+              "path": "references/backgrounds/proof-morning.webp",
+              "source": "/art/backgrounds/proof-morning.webp",
+              "sha256": "b0214484a5d653fa4223085e2db16abaf80ba6b49c3f77a577f226c931f95c31"
+            },
+            {
+              "index": 2,
+              "key": "cast:gu",
+              "path": "references/characters/gu.webp",
+              "source": "/art/characters/gu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d295693c98f53c75f4aec78476a6715f1bb84c5607be6b07d2114a2632826c18"
+            },
+            {
+              "index": 3,
+              "key": "cast:ning",
+              "path": "references/characters/ning.webp",
+              "source": "/art/characters/ning.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "b472d5d6b55a4a5655f0604fc0034bd82c6f74be23562ee0434428793c4d8b63"
+            },
+            {
+              "index": 4,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-paper/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:proof-morning",
+              "path": "references/backgrounds/proof-morning.webp",
+              "source": "/art/backgrounds/proof-morning.webp",
+              "sha256": "b0214484a5d653fa4223085e2db16abaf80ba6b49c3f77a577f226c931f95c31"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-shared-light",
+      "title": "同灯共守",
+      "kind": "ending",
+      "quarter": 10,
+      "shots": [
+        {
+          "scene": "shared-keys",
+          "cast": [],
+          "action": "冬日玻璃上水汽缓缓聚成一小滴，窗边灯在室内亮着，门帘被进门的气流带起。",
+          "caption": "冬天还没有过去，屋里已经有人来了。",
+          "sound": "门铃、杯子轻碰",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [
+            "zhou"
+          ],
+          "action": "周伯放下茶叶袋，脱下外套挂好，回身开始收桌上的空杯子。",
+          "caption": "今天轮到周伯收杯子。",
+          "sound": "布料、瓷杯",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [
+            "tang"
+          ],
+          "action": "阿棠在轮值表上移动一枚夹子，把一把钥匙从挂钩取下，交到画外的周伯手中。",
+          "caption": "那张表上，不再总是同一个人的名字。",
+          "sound": "金属钥匙、纸夹",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [],
+          "action": "两双手逐项对照电费单，一人把杯子挪开，让另一人标注日期；不生成可读金额。",
+          "caption": "电费要交，意见也未必一致。",
+          "sound": "低声商量、笔尖",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [
+            "tang",
+            "zhou"
+          ],
+          "action": "两人把长桌略微挪正，一个先抬一端，另一个随后调整椅子，真实承重和接触不漂浮。",
+          "caption": "可有些事，终于可以轮流做。",
+          "sound": "木桌、椅脚",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [
+            "tang"
+          ],
+          "action": "阿棠抬头和你说话，手还在擦最后一只杯子，讲完才把杯子倒放。",
+          "caption": "「下周那班，要不要换一下？」",
+          "sound": "轻声对白、毛巾",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [
+            "zhou"
+          ],
+          "action": "周伯朝门外点头，向你摊开手心，露出那把已经磨亮的钥匙。",
+          "caption": "「钥匙在呢。你先去吃饭。」",
+          "sound": "钥匙在掌心轻碰",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "district-street",
+          "cast": [],
+          "action": "第一人称走出屋门，门在身后缓缓合上；屋内有人接着说话，灯没有随你离开而灭。",
+          "caption": "你提前离开，没有再回头检查一次。",
+          "sound": "木门、屋内模糊交谈",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "district-street",
+          "cast": [],
+          "action": "街上风穿过店门口，窗内人影继续收拾；前景雨滴从檐角落下，远处灯火有层次。",
+          "caption": "这间屋子的开门与关门，终于不再只靠一个人。",
+          "sound": "冬风、远处碗筷",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "shared-keys",
+          "cast": [],
+          "action": "挂钩上的几把钥匙轻晃后逐渐静止，背景有人拉好椅子，最后关上里间灯，门灯保留。",
+          "caption": "你知道，身后那盏灯会有人照看。",
+          "sound": "钥匙止住，暖而克制的尾音",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-shared-light/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-shared-light/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:shared-keys",
+              "path": "references/backgrounds/shared-keys.webp",
+              "source": "/art/backgrounds/shared-keys.webp",
+              "sha256": "d85012a962a01b7f1e5c309f271189231f23b922fd763d660bc366c1998eec9a"
+            },
+            {
+              "index": 2,
+              "key": "cast:zhou",
+              "path": "references/characters/zhou.webp",
+              "source": "/art/characters/zhou.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+            },
+            {
+              "index": 3,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-shared-light/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:shared-keys",
+              "path": "references/backgrounds/shared-keys.webp",
+              "source": "/art/backgrounds/shared-keys.webp",
+              "sha256": "d85012a962a01b7f1e5c309f271189231f23b922fd763d660bc366c1998eec9a"
+            },
+            {
+              "index": 2,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            },
+            {
+              "index": 3,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            },
+            {
+              "index": 4,
+              "key": "cast:zhou",
+              "path": "references/characters/zhou.webp",
+              "source": "/art/characters/zhou.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-shared-light/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:shared-keys",
+              "path": "references/backgrounds/shared-keys.webp",
+              "source": "/art/backgrounds/shared-keys.webp",
+              "sha256": "d85012a962a01b7f1e5c309f271189231f23b922fd763d660bc366c1998eec9a"
+            },
+            {
+              "index": 2,
+              "key": "cast:zhou",
+              "path": "references/characters/zhou.webp",
+              "source": "/art/characters/zhou.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+            },
+            {
+              "index": 3,
+              "key": "scene:district-street",
+              "path": "references/backgrounds/district-street.webp",
+              "source": "/art/backgrounds/district-street.webp",
+              "sha256": "572bd6378ea1188f7aa1cf95797d3a0baa16d6c45727624b629bc016084f286a"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-shared-light/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:shared-keys",
+              "path": "references/backgrounds/shared-keys.webp",
+              "source": "/art/backgrounds/shared-keys.webp",
+              "sha256": "d85012a962a01b7f1e5c309f271189231f23b922fd763d660bc366c1998eec9a"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-homecoming",
+      "title": "归途有约",
+      "kind": "ending",
+      "quarter": 10,
+      "shots": [
+        {
+          "scene": "winter-cloakroom",
+          "cast": [],
+          "action": "候车廊有人经过，玻璃上的雾被袖口擦出一块清晰处，站台上列车缓慢入站。",
+          "caption": "这一次，你比约定早到了十分钟。",
+          "sound": "列车、低声广播",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "winter-cloakroom",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾从廊道走来，先看站台再看见你，肩膀放松，露出自然微笑。",
+          "caption": "隔着人群，你们一眼认出了对方。",
+          "sound": "脚步、帆布袋",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "winter-cloakroom",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾把刚拿出的手机放回口袋，将较重的袋子递向画外的你；手与袋柄接触正确。",
+          "caption": "「刚想给你打电话。走吧，菜还热着。」",
+          "sound": "短句、袋柄摩擦",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "日历近景，手翻过几页，每一页的周六都有同一个朴素铅笔圈，文字后期添加。",
+          "caption": "周六那一格，你们已经留了三年。",
+          "sound": "翻页",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "factory",
+          "cast": [],
+          "action": "校对桌上，一只手将尚未完成的稿件插入纸夹，再按灭工作灯；不是把纸丢弃。",
+          "caption": "工作仍然有做不完的时候。",
+          "sound": "纸夹、灯开关",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "手机接通，手拿起笔在日历上挪动一次日期，随后将新日期确认的便条夹好。",
+          "caption": "赶不上时，你学会提前说清楚。",
+          "sound": "电话接通、笔尖",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾与你的第一人称视角并肩走过老街，她调整围巾，转头指向街口，步态连贯。",
+          "caption": "回家不再是所有事情做完以后，才发生的事。",
+          "sound": "脚步、冬日街声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "noodle-shop",
+          "cast": [],
+          "action": "两只饭碗相继落桌，汤的热气上升，一双手把较近的碗推给对面的人。",
+          "caption": "有些安排很小，却要反复兑现。",
+          "sound": "碗筷、汤气",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "noodle-shop",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾边盛汤边笑着说一句话，说完低头吃面；动作克制，不做持续无声嘴型。",
+          "caption": "你们谈的事情，终于不总是下一次。",
+          "sound": "自然交谈留白",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "winter-cloakroom",
+          "cast": [],
+          "action": "记忆回到候车廊，两张票根被手收进同一个口袋，窗外列车驶过并逐渐远去。",
+          "caption": "日历会翻过去。约好的日子，还会再来。",
+          "sound": "列车远去、轻钢琴",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-homecoming/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-homecoming/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:winter-cloakroom",
+              "path": "references/backgrounds/winter-cloakroom.webp",
+              "source": "/art/backgrounds/winter-cloakroom.webp",
+              "sha256": "d52a8c2ec42c5182a4854e1d8ec46e618183397c319900fea7843b223c825e45"
+            },
+            {
+              "index": 2,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-homecoming/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-homecoming/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 2,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            },
+            {
+              "index": 3,
+              "key": "scene:noodle-shop",
+              "path": "references/backgrounds/noodle-shop.webp",
+              "source": "/art/backgrounds/noodle-shop.webp",
+              "sha256": "350fab010a026a4d1e8f1b191f520361a4bef1ebe520610c1683b727ccf69443"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-homecoming/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:winter-cloakroom",
+              "path": "references/backgrounds/winter-cloakroom.webp",
+              "source": "/art/backgrounds/winter-cloakroom.webp",
+              "sha256": "d52a8c2ec42c5182a4854e1d8ec46e618183397c319900fea7843b223c825e45"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-tide-dream",
+      "title": "潮声入梦",
+      "kind": "ending",
+      "quarter": 11,
+      "shots": [
+        {
+          "scene": "ferry-spring",
+          "cast": [],
+          "action": "潮水推过木桩，柳芽随风摇动，渡船靠岸时绳索慢慢绷紧。",
+          "caption": "又是春潮。陆川约你去对岸。",
+          "sound": "水声、缆绳",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [
+            "lu"
+          ],
+          "action": "陆川拿着两张船票走来，递出一张，然后把手机收进口袋。",
+          "caption": "这次没有新项目，也没有顺便要谈的事。",
+          "sound": "票纸、衣袋",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [],
+          "action": "画外的手接过票，翻到空白票背，又夹进一本薄书里。",
+          "caption": "你带了一本书，上船以后却一直没有翻开。",
+          "sound": "纸页、船体轻响",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "seawall-evening",
+          "cast": [
+            "lu"
+          ],
+          "action": "过往夏夜，陆川坐在长凳上拆开饭盒，讲到一半停下，海风吹起盒边的纸巾。",
+          "caption": "你想起那个饭已经凉了的晚上。",
+          "sound": "海风、远港轮船",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "seawall-evening",
+          "cast": [],
+          "action": "两个纸杯被放在长凳边，水面随着人坐下轻晃，手机屏幕一直朝下。",
+          "caption": "有些陪伴，不需要先替对方解决一个难题。",
+          "sound": "纸杯、凳面",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [
+            "lu"
+          ],
+          "action": "船上陆川扶着栏杆站稳，望向水面，再回头和你说话，衣角受风持续运动。",
+          "caption": "「回程不赶这班了。吃过饭再看。」",
+          "sound": "船外对白、风",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [],
+          "action": "渡船离岸，码头与绳桩真实后退，水面航迹持续展开；透视连贯，不只是背景横移。",
+          "caption": "岸慢慢远了。你没有急着查时间。",
+          "sound": "发动机远低频、水声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "noodle-shop",
+          "cast": [],
+          "action": "对岸小桌上，手将面碗移到窗边，两双筷子相继拿起，窗外树影缓慢摇动。",
+          "caption": "钱的事没有消失，只是暂时不用每句话都谈它。",
+          "sound": "碗筷、窗外日常",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [],
+          "action": "下午的船舷外，几片春叶掠过水面，远处岸线在薄雾里渐渐显出。",
+          "caption": "有一些下午，不需要先证明自己值得。",
+          "sound": "春水、风",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "ferry-spring",
+          "cast": [],
+          "action": "手翻开书，票背从页间露出一角，被拇指轻轻压住；停在留有空白的位置。",
+          "caption": "你把票夹好，决定下一页可以慢慢读。",
+          "sound": "翻页、旋律随潮声收尾",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-tide-dream/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-tide-dream/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:ferry-spring",
+              "path": "references/backgrounds/ferry-spring.webp",
+              "source": "/art/backgrounds/ferry-spring.webp",
+              "sha256": "d829baec4f8bf6e616a2ba8f698bfe4b066d7aa2bc321574b669a28443d845a1"
+            },
+            {
+              "index": 2,
+              "key": "cast:lu",
+              "path": "references/characters/lu.webp",
+              "source": "/art/characters/lu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "0b661bdde91984c0b4ec1d25ed50743be451b47107515000978ffef86cac75a5"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-tide-dream/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:seawall-evening",
+              "path": "references/backgrounds/seawall-evening.webp",
+              "source": "/art/backgrounds/seawall-evening.webp",
+              "sha256": "316eb635fcac863c25a4b4e308629ee7725d2a6259a75fd3954c12627bf72d04"
+            },
+            {
+              "index": 2,
+              "key": "cast:lu",
+              "path": "references/characters/lu.webp",
+              "source": "/art/characters/lu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "0b661bdde91984c0b4ec1d25ed50743be451b47107515000978ffef86cac75a5"
+            },
+            {
+              "index": 3,
+              "key": "scene:ferry-spring",
+              "path": "references/backgrounds/ferry-spring.webp",
+              "source": "/art/backgrounds/ferry-spring.webp",
+              "sha256": "d829baec4f8bf6e616a2ba8f698bfe4b066d7aa2bc321574b669a28443d845a1"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-tide-dream/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:ferry-spring",
+              "path": "references/backgrounds/ferry-spring.webp",
+              "source": "/art/backgrounds/ferry-spring.webp",
+              "sha256": "d829baec4f8bf6e616a2ba8f698bfe4b066d7aa2bc321574b669a28443d845a1"
+            },
+            {
+              "index": 2,
+              "key": "scene:noodle-shop",
+              "path": "references/backgrounds/noodle-shop.webp",
+              "source": "/art/backgrounds/noodle-shop.webp",
+              "sha256": "350fab010a026a4d1e8f1b191f520361a4bef1ebe520610c1683b727ccf69443"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-tide-dream/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:ferry-spring",
+              "path": "references/backgrounds/ferry-spring.webp",
+              "source": "/art/backgrounds/ferry-spring.webp",
+              "sha256": "d829baec4f8bf6e616a2ba8f698bfe4b066d7aa2bc321574b669a28443d845a1"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-four-seasons",
+      "title": "铁窗四季",
+      "kind": "ending",
+      "quarter": 10,
+      "shots": [
+        {
+          "scene": "archive",
+          "cast": [],
+          "action": "原始凭证从资料袋里逐份取出，按照日期摊开，手在一张曾经改过日期的纸边停住。",
+          "caption": "那些被改动过的日期，最终都有了自己的日期。",
+          "sound": "纸袋、纸张",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bank",
+          "cast": [],
+          "action": "一只手把签过名的原件推回桌面，另一人收起复印件，动作平静，不出现暴力或夸张警灯。",
+          "caption": "核查结束以后，能说明的事，已经逐项说完。",
+          "sound": "复印机停止、合文件夹",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "门在画外合上，光线从门缝收窄；窗下的信纸被轻微气流吹起一个角。",
+          "caption": "你在一间固定的房间里，住了下来。",
+          "sound": "门锁、走廊脚步",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "秋季斜光落到桌沿，窗外一片叶子落下；手将信纸压平，没有继续写。",
+          "caption": "第一季，窗外的叶子还没有落尽。",
+          "sound": "风、远处落叶",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "冬季窗沿结薄雾，手捧住温水杯，热气在冷光中消散。",
+          "caption": "后来，你学会从杯子的温度猜外面的天。",
+          "sound": "杯沿、冬风",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "春日一小束光移进窗内，窗外枝芽轻摇；手把收到的信拆开，展平。",
+          "caption": "再后来，信里的称呼，又回到了第一页。",
+          "sound": "拆信、春日远声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "手握笔，写下真实的当天日期，放下笔后把这一行再看一遍；字由后期精确添加。",
+          "caption": "你终于没有再改动它。",
+          "sound": "笔尖、放笔",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "夏日光影从窗格缓慢越过墙面，桌面上的纸张随风轻轻起伏，时间连续流动。",
+          "caption": "账本没有替你承担责任。它只留下了记录。",
+          "sound": "远处夏蝉，室内安静",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "信被折好，放到另一封尚未写完的信旁；手停留片刻，慢慢收回。",
+          "caption": "有些事不能撤销。有些话，仍然需要重新写。",
+          "sound": "折纸",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "quiet-room",
+          "cast": [],
+          "action": "镜头固定在窗边，一阵风过去，纸角落回桌面，光仍然缓慢移动；不黑屏制造悬念。",
+          "caption": "窗外还有四季。今天，你先把这一天过完。",
+          "sound": "风声与很轻的单音",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-four-seasons/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-four-seasons/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:archive",
+              "path": "references/backgrounds/archive.webp",
+              "source": "/art/backgrounds/archive.webp",
+              "sha256": "1c35f7a46d9a5def03c9392fdb229a69484f483be3df17cfce2df8b5e640f86c"
+            },
+            {
+              "index": 2,
+              "key": "scene:bank",
+              "path": "references/backgrounds/bank.webp",
+              "source": "/art/backgrounds/bank.webp",
+              "sha256": "2643df88f153b59c2fadf5406b8a4ee3ed8d64491544ff04649f704853172a84"
+            },
+            {
+              "index": 3,
+              "key": "scene:quiet-room",
+              "path": "references/backgrounds/quiet-room.webp",
+              "source": "/art/backgrounds/quiet-room.webp",
+              "sha256": "7e2021d5f957593164d7e3c58ac1cbe992d5a0543752a89db92f3923d9db128f"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-four-seasons/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:quiet-room",
+              "path": "references/backgrounds/quiet-room.webp",
+              "source": "/art/backgrounds/quiet-room.webp",
+              "sha256": "7e2021d5f957593164d7e3c58ac1cbe992d5a0543752a89db92f3923d9db128f"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-four-seasons/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:quiet-room",
+              "path": "references/backgrounds/quiet-room.webp",
+              "source": "/art/backgrounds/quiet-room.webp",
+              "sha256": "7e2021d5f957593164d7e3c58ac1cbe992d5a0543752a89db92f3923d9db128f"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-four-seasons/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:quiet-room",
+              "path": "references/backgrounds/quiet-room.webp",
+              "source": "/art/backgrounds/quiet-room.webp",
+              "sha256": "7e2021d5f957593164d7e3c58ac1cbe992d5a0543752a89db92f3923d9db128f"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-rekindle",
+      "title": "余烬重燃",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "纸箱展开，手将箱底压平，一小片胶带被拉开，动作带着现实阻力。",
+          "caption": "最后一天，纸箱并没有装满。",
+          "sound": "纸箱、胶带",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "几本旧书被平放进箱子，手停一下，取出一本留下，再把其余的排整齐。",
+          "caption": "能带走的东西，比你以为的少，也比账本上多。",
+          "sound": "书脊、纸箱",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "回忆里一串雨滴落到盆里，暖灯映着尚未签字的租约；第一人称手轻碰钥匙又收回。",
+          "caption": "你曾经以为，再撑一季就能补上所有缺口。",
+          "sound": "雨滴、金属轻响",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "手将最后一份账目与有效凭证分开装袋，旧草稿另放一边，不撕毁债务记录。",
+          "caption": "现在，欠什么、还剩什么，都要一件件说清楚。",
+          "sound": "文件袋封口",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾推开门，把饭盒放在空桌上，先望一眼你，再掀开盖子。",
+          "caption": "「先吃饭吧。」",
+          "sound": "门、饭盒",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾把一双筷子递过来，稍稍等你接住，随后坐下。",
+          "caption": "「明天的事，明天再一件件做。」",
+          "sound": "筷子、椅子",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "factory",
+          "cast": [],
+          "action": "第二天工作台上，一份新稿件被摊开，手拿起蓝铅笔，在页角写下校对日期。",
+          "caption": "校对的工作仍在。下个月的房租，也有了着落。",
+          "sound": "清晨机器、笔尖",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "搬运车缓慢离开街口，一只手抬起和屋里的人告别；画面保留真实步态与车轮运动。",
+          "caption": "你没有把这一段日子，叫作从未发生。",
+          "sound": "车轮、街声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "钥匙从掌心滑入衣袋，手顺势拉好袋口，再提起较轻的那只纸箱。",
+          "caption": "你点点头，把钥匙收进衣袋。",
+          "sound": "钥匙、布料",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "factory",
+          "cast": [],
+          "action": "新稿的第一张纸翻过，窗外天色逐渐亮起，手把完成的一页平整推开。",
+          "caption": "重新开始，不是一句话。是明天仍有一件具体的事可以做。",
+          "sound": "纸页、清晨环境声",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-rekindle/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-rekindle/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-rekindle/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-rekindle/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            },
+            {
+              "index": 2,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 3,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-rekindle/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-tide-master",
+      "title": "知止乘潮",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "tea-room",
+          "cast": [],
+          "action": "茶杯里的水面因杯子落桌轻晃，门外人影经过，时钟的秒针连续移动。",
+          "caption": "采访约在周二。记者迟到了一刻钟。",
+          "sound": "茶杯、墙钟",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "tea-room",
+          "cast": [
+            "lu"
+          ],
+          "action": "陆川把一张折好的报纸放到桌上，手指点向空白标题位置，然后抬头看你。",
+          "caption": "「他们都等着听，哪一次买得最漂亮。」",
+          "sound": "报纸、自然对白",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "tea-room",
+          "cast": [],
+          "action": "第一人称手摸到茶杯边缘，没有立刻拿起；窗影缓慢移过桌面。",
+          "caption": "你想了很久。",
+          "sound": "茶室底噪",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "回忆里，手将准备好的买入草稿移开，重新展开公司公告，屏幕上不展示预测收益。",
+          "caption": "先想起的，是几次什么也没有买的下午。",
+          "sound": "纸张、很轻的关屏声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "coldstore",
+          "cast": [],
+          "action": "货车倒入冷库装卸位，搬运人员远景连续移动，冷库门升起一半后停稳，不出现可读品牌。",
+          "caption": "再想起的，是那些终于等到回款的公司。",
+          "sound": "冷库风机、货车",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "tea-room",
+          "cast": [],
+          "action": "笔记本被推到手边，手在第一行写下一个真实日期而非股票代码；文字后期加入。",
+          "caption": "有些判断，要等很久才知道对不对。",
+          "sound": "笔尖",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "tea-room",
+          "cast": [
+            "lu"
+          ],
+          "action": "陆川听着，先笑一下，再把报纸折回去，腾出桌上的位置。",
+          "caption": "陆川没有再追问你当时敢不敢。",
+          "sound": "折报纸、轻笑",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "一双手把椅子摆回靠窗处，书店里有人翻书，风轻轻掀起一页。",
+          "caption": "报纸会把结果写成一个名字。",
+          "sound": "翻书、街边人声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "tea-room",
+          "cast": [],
+          "action": "手收起笔记本，拿起手机确认一个晚间约定，随即按灭屏幕。",
+          "caption": "你答应采访，把时间排在书店打烊以后。",
+          "sound": "合本、手机单次提示",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "门牌被手翻到打烊一面，屋内的灯依次暗下，只留下窗边一盏；画面稳定收束。",
+          "caption": "而你记得的，是这些没有标题的日子。",
+          "sound": "门铃、缓慢钢琴尾音",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-tide-master/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-tide-master/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:tea-room",
+              "path": "references/backgrounds/tea-room.webp",
+              "source": "/art/backgrounds/tea-room.webp",
+              "sha256": "392827be122fed14b3d098115df82472e525c6c66f487befe916605ab65a2248"
+            },
+            {
+              "index": 2,
+              "key": "cast:lu",
+              "path": "references/characters/lu.webp",
+              "source": "/art/characters/lu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "0b661bdde91984c0b4ec1d25ed50743be451b47107515000978ffef86cac75a5"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-tide-master/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "scene:coldstore",
+              "path": "references/backgrounds/coldstore.webp",
+              "source": "/art/backgrounds/coldstore.webp",
+              "sha256": "b0e33a6fab5c2080b320a5acfc137ed1e7e5b60d21c350670b9f5bccb04fad60"
+            },
+            {
+              "index": 3,
+              "key": "scene:tea-room",
+              "path": "references/backgrounds/tea-room.webp",
+              "source": "/art/backgrounds/tea-room.webp",
+              "sha256": "392827be122fed14b3d098115df82472e525c6c66f487befe916605ab65a2248"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-tide-master/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:tea-room",
+              "path": "references/backgrounds/tea-room.webp",
+              "source": "/art/backgrounds/tea-room.webp",
+              "sha256": "392827be122fed14b3d098115df82472e525c6c66f487befe916605ab65a2248"
+            },
+            {
+              "index": 2,
+              "key": "cast:lu",
+              "path": "references/characters/lu.webp",
+              "source": "/art/characters/lu.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "0b661bdde91984c0b4ec1d25ed50743be451b47107515000978ffef86cac75a5"
+            },
+            {
+              "index": 3,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-tide-master/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-step-ashore",
+      "title": "激流勇退",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "手确认完成最后一笔记录，把报价页关掉，屏幕熄灭后映出窗边的光。",
+          "caption": "最后一次卖出以后，你关掉了报价页面。",
+          "sound": "轻键声、关屏",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "窗帘随风慢慢起落，街上摊贩推车经过，屋里的东西没有突然变化。",
+          "caption": "窗外的街道，没有因为这件事改变。",
+          "sound": "街声、车轮",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "station",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾提着帆布袋走进站台，回头确认你跟上，再指向已经开门的车厢。",
+          "caption": "那个一直说要去的周末，终于定了下来。",
+          "sound": "车站广播、脚步",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "station",
+          "cast": [],
+          "action": "手把两张车票依次递出、接回；票据不变形，不生成错误文字。",
+          "caption": "你们没有再把日期往后挪。",
+          "sound": "检票、纸票",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾坐到窗边，把包放稳，挪出旁边的位置，朝你点头。",
+          "caption": "车开了。",
+          "sound": "车门、列车起步",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [],
+          "action": "列车窗外近处电杆有正确视差，远海移动缓慢，窗框保持稳定；水杯轻晃。",
+          "caption": "手机留在口袋里，没有亮。",
+          "sound": "车轮节律",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾转头望向窗外，指向弯道后的远海，再回头轻声说话。",
+          "caption": "「过了这个弯，应该就能看见海。」",
+          "sound": "列车中的自然短句",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [],
+          "action": "手把票根夹进书页，合上书，再向窗边挪近一点；动作前后接续。",
+          "caption": "你把车票夹进书里。",
+          "sound": "纸票、书页",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [],
+          "action": "列车驶过弯道，遮挡的山体逐渐让开海面，海上反光自然变化，不做突然背景切换。",
+          "caption": "有些风景，以前一直在路的另一边。",
+          "sound": "海风、车轮",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "coastal-train",
+          "cast": [],
+          "action": "第一人称视角落在窗边两个人的倒影，随后对焦窗外远海，镜头停稳。",
+          "caption": "这一次，你有时间看完它。",
+          "sound": "钢琴止住，留海与车轮",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-step-ashore/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-step-ashore/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "scene:station",
+              "path": "references/backgrounds/station.webp",
+              "source": "/art/backgrounds/station.webp",
+              "sha256": "b44b6c38b3508a3d14ad03dfb328823433c5c0fa1cd03a4b648a889318530810"
+            },
+            {
+              "index": 3,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-step-ashore/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:station",
+              "path": "references/backgrounds/station.webp",
+              "source": "/art/backgrounds/station.webp",
+              "sha256": "b44b6c38b3508a3d14ad03dfb328823433c5c0fa1cd03a4b648a889318530810"
+            },
+            {
+              "index": 2,
+              "key": "scene:coastal-train",
+              "path": "references/backgrounds/coastal-train.webp",
+              "source": "/art/backgrounds/coastal-train.webp",
+              "sha256": "5203600b4af365c2279a43ee26c8096347f111b6835e9e828722874c04722acc"
+            },
+            {
+              "index": 3,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-step-ashore/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:coastal-train",
+              "path": "references/backgrounds/coastal-train.webp",
+              "source": "/art/backgrounds/coastal-train.webp",
+              "sha256": "5203600b4af365c2279a43ee26c8096347f111b6835e9e828722874c04722acc"
+            },
+            {
+              "index": 2,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-step-ashore/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:coastal-train",
+              "path": "references/backgrounds/coastal-train.webp",
+              "source": "/art/backgrounds/coastal-train.webp",
+              "sha256": "5203600b4af365c2279a43ee26c8096347f111b6835e9e828722874c04722acc"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-lamp-stays",
+      "title": "泊灯长明",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "下午街道上，门口阴影缓慢移动，书屋的门被从外推开，铃舌真实晃动。",
+          "caption": "程姨回到澄港，挑了一个平常的下午。",
+          "sound": "熟悉的门铃",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng"
+          ],
+          "action": "程姨提着小袋子进门，停下来认一眼书架，放下袋子，轻轻摸过椅背。",
+          "caption": "门铃还是从前的声音。",
+          "sound": "布袋、椅背",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "手伸向桌上的账本，程姨的手温和示意暂且放下，不抢夺物件。",
+          "caption": "你想拿账本给她看。",
+          "sound": "手碰纸面",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng"
+          ],
+          "action": "程姨摇一下头，坐进靠窗的椅子，扶好衣角，抬头笑着说话。",
+          "caption": "「不用。我今天只是来坐坐。」",
+          "sound": "椅脚、轻声短句",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "tang"
+          ],
+          "action": "阿棠把水壶从后间提来，先试杯沿温度，再缓缓倒水，水流不穿模。",
+          "caption": "「靠窗的位置留着呢。水刚烧好。」",
+          "sound": "连续倒水声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [],
+          "action": "新书被逐本放上书架，最后一本略紧，手轻扶两侧书脊才放稳。",
+          "caption": "新一季的进书清单，仍有几处要商量。",
+          "sound": "书脊、纸张",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng",
+            "tang"
+          ],
+          "action": "程姨读书，阿棠在远处擦桌子，人物各自有自然小动作，不做同步摆动。",
+          "caption": "你们没有把店做成照片里那样的地方。",
+          "sound": "翻页、擦桌",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "district-street",
+          "cast": [],
+          "action": "黄昏第一人称沿街走近书屋，窗内灯先亮起，门口营业纸被手从里面扶正。",
+          "caption": "只是下班经过时，你已经认得远处那一盏灯。",
+          "sound": "脚步、门内人声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手关好后窗，在缝边放稳折叠毛巾；窗帘慢慢落定，灯保持稳定。",
+          "caption": "后窗终于修好了。下雨时，你仍会顺手去看一眼。",
+          "sound": "窗扣、雨声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [
+            "cheng"
+          ],
+          "action": "程姨把书签放进书里，没有急着起身，望着窗外的街道安静呼吸。",
+          "caption": "她在靠窗的位置，坐了整整一个下午。",
+          "sound": "街声与温暖的稀疏钢琴",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-lamp-stays/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-lamp-stays/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 2,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 3,
+              "key": "cast:cheng",
+              "path": "references/characters/cheng.webp",
+              "source": "/art/characters/cheng.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-lamp-stays/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 2,
+              "key": "cast:cheng",
+              "path": "references/characters/cheng.webp",
+              "source": "/art/characters/cheng.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+            },
+            {
+              "index": 3,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            },
+            {
+              "index": 4,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-lamp-stays/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 2,
+              "key": "cast:cheng",
+              "path": "references/characters/cheng.webp",
+              "source": "/art/characters/cheng.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+            },
+            {
+              "index": 3,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            },
+            {
+              "index": 4,
+              "key": "scene:district-street",
+              "path": "references/backgrounds/district-street.webp",
+              "source": "/art/backgrounds/district-street.webp",
+              "sha256": "572bd6378ea1188f7aa1cf95797d3a0baa16d6c45727624b629bc016084f286a"
+            },
+            {
+              "index": 5,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-lamp-stays/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 2,
+              "key": "cast:cheng",
+              "path": "references/characters/cheng.webp",
+              "source": "/art/characters/cheng.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "d4b5075050211d1e6983b119c568a0e1e04fb71d27f0a200dc795de42474eb98"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-long-table",
+      "title": "长桌人间",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "reading-room",
+          "cast": [],
+          "action": "几把款式不同的椅子被搬进屋，一把先落地，另一把绕过桌角才放好。",
+          "caption": "星期五，长桌两侧又添了两把椅子。",
+          "sound": "椅脚、屋内交谈",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [
+            "zhou"
+          ],
+          "action": "周伯从口袋拿出茶叶，解开绳结，闻一闻再把袋子递到桌中间。",
+          "caption": "「我带了茶叶。」",
+          "sound": "纸袋、绳结",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [
+            "tang"
+          ],
+          "action": "阿棠逐个摆杯子，给最靠门的位置也留一只，动作有先后与重量。",
+          "caption": "有人带来新书，有人只是来喝一杯水。",
+          "sound": "杯子与木桌",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [],
+          "action": "两双手交换一本旧书，另一人把便签从页间取出读完，慢慢点头。",
+          "caption": "同一本书，到了不同的人手里，总会多出一点意思。",
+          "sound": "纸页、轻声商量",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "账册被摊开，手核对一笔经营支出，窗边有人在整理归还的书。",
+          "caption": "账单没有少，盘算也没有结束。",
+          "sound": "笔尖、翻书",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [
+            "zhou"
+          ],
+          "action": "周伯指向轮值表，先看别人的回应，再用笔写上自己的下一次安排。",
+          "caption": "「下次轮到谁，咱们慢慢排。」",
+          "sound": "笔尖、短句",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [
+            "tang"
+          ],
+          "action": "阿棠走向门边，手碰到门把后停下，回头看向桌边。",
+          "caption": "「门先别关，还有个人在路上。」",
+          "sound": "门把、脚步",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "夜色里一个读者背影提着书走近，门缝透出暖光，脚步停在台阶前。",
+          "caption": "原来，许多事已经可以开口和别人商量。",
+          "sound": "夜间脚步、远车",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [],
+          "action": "门推开时，几个人先后抬头，有人向旁边挪椅子，让出一个位置。",
+          "caption": "没有人提前约好要把这一晚过得多重要。",
+          "sound": "门铃、椅子",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "reading-room",
+          "cast": [],
+          "action": "桌上半杯茶的蒸汽散开，一只手把最后一本书往旁边让了让，灯光落在空椅子上。",
+          "caption": "只是下一次来时，仍会有一张椅子。",
+          "sound": "茶杯、轻钢琴",
+          "camera": "detail",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-long-table/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-long-table/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            },
+            {
+              "index": 2,
+              "key": "cast:zhou",
+              "path": "references/characters/zhou.webp",
+              "source": "/art/characters/zhou.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+            },
+            {
+              "index": 3,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-long-table/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            },
+            {
+              "index": 2,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 3,
+              "key": "cast:zhou",
+              "path": "references/characters/zhou.webp",
+              "source": "/art/characters/zhou.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "27b31f80e00a5ea437ffc1fb6fcdcb795e50ae6161645c95c278efbb07c25817"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-long-table/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            },
+            {
+              "index": 2,
+              "key": "cast:tang",
+              "path": "references/characters/tang.webp",
+              "source": "/art/characters/tang.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "eb2d04233696845e73a47d36a1d7d1823c2bb2894319d172eec62638527650b9"
+            },
+            {
+              "index": 3,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-long-table/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:reading-room",
+              "path": "references/backgrounds/reading-room.webp",
+              "source": "/art/backgrounds/reading-room.webp",
+              "sha256": "1e250dfdf7954ae2c677ec3ce3cef723fa4eeb30b6c0da2094ec246591c6caae"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-alone",
+      "title": "独自抵达",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手把最后一页账目对齐，夹好，合上账册，桌面腾出一片空白。",
+          "caption": "账目终于整理清楚了。",
+          "sound": "合本、纸夹",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手拿起手机，屏幕亮起，拇指停在一个联系人位置，没有按下；界面文字后期添加。",
+          "caption": "你想把结果告诉几个人。",
+          "sound": "手机、雨声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "抽屉被慢慢拉开，几张旧票根和一封折过的信移到桌上。",
+          "caption": "才发现，很久没有认真写过一封信。",
+          "sound": "抽屉木轨、纸张",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "街上人们在摊前等餐，门里有人接过热碗，雨伞接连收起；生活照常进行。",
+          "caption": "街道依旧热闹。",
+          "sound": "街声、雨伞",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手机被轻轻放回桌面，手抽出一张干净信纸，将笔帽旋开。",
+          "caption": "号码还在。只是第一句话，想了很久。",
+          "sound": "放手机、开笔帽",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手写下一个称呼，停下，划掉的不是日期而是一句不合适的开头；文字后期清楚排入。",
+          "caption": "你没有写那些已经算清楚的数字。",
+          "sound": "笔尖停顿",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "窗外雨势渐小，水滴间隔拉长，窗帘落定，手重新落笔。",
+          "caption": "只写了一个具体的晚上，问对方是否有空。",
+          "sound": "雨声渐稀",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "post-winter",
+          "cast": [],
+          "action": "不改变室内冬景的回忆镜头：一封信被放进邮袋，袋口收拢；侧重手与纸，不出现季节不一致的外景。",
+          "caption": "把信送出去，不等于一定会收到回音。",
+          "sound": "信封、布袋",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-night",
+          "cast": [],
+          "action": "手把信纸放入封套，将尚未封口的一边压平，留到最后才轻轻封好。",
+          "caption": "可你还是决定，先把第一句话写完。",
+          "sound": "封信",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "雨停的街口，第一人称迈下书屋台阶，鞋跟踩过浅水，画面向街中稳定前行。",
+          "caption": "你还需要，学着重新走进去。",
+          "sound": "脚步、雨后街声",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-alone/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-alone/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            },
+            {
+              "index": 2,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-alone/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 2,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-alone/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-night",
+              "path": "references/backgrounds/bookshop-night.webp",
+              "source": "/art/backgrounds/bookshop-night.webp",
+              "sha256": "46cbad5ebfd47a3433851424213265972e33b17477c6309c467854c8bde0ca56"
+            },
+            {
+              "index": 2,
+              "key": "scene:post-winter",
+              "path": "references/backgrounds/post-winter.webp",
+              "source": "/art/backgrounds/post-winter.webp",
+              "sha256": "94d300d287a8fc1939ea9937c7eecab415c0a710fa0203f0b2fcee339108c2a0"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-alone/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    },
+    {
+      "id": "ending-ordinary-days",
+      "title": "寻常岁月",
+      "kind": "ending",
+      "quarter": 12,
+      "shots": [
+        {
+          "scene": "factory",
+          "cast": [],
+          "action": "手把一页校对好的稿件推开，再拿起下一页，窗外日常光线不夸张。",
+          "caption": "三年过去，工作、吃饭、回家。",
+          "sound": "纸页、远机器",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [],
+          "action": "一碗热面被端到街边桌上，筷子拿起又放下，手先喝一口汤。",
+          "caption": "日子并没有变成一个特别醒目的故事。",
+          "sound": "汤碗、街声",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "报价页面亮着，手扫过一眼后关掉，随后把未读完的书挪近灯下。",
+          "caption": "你偶尔还会看一眼市场。",
+          "sound": "一次点击、翻书",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "窗外由风推动的枝影落到书页，手跟着书签翻过一页，停下来读。",
+          "caption": "更多时候，是在读一本还没读完的书。",
+          "sound": "翻书、鸟声",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "周末，手伸向桌边的闹钟，停住，听见门外两次清晰的敲门声。",
+          "caption": "某个周末，敲门声把你叫了出来。",
+          "sound": "两次敲门",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾站在门边，收好手里的购物袋，向街口偏一下头，再看向你。",
+          "caption": "「菜市场那边新开了家面馆。一起去吗？」",
+          "sound": "自然短句、街声",
+          "camera": "medium",
+          "seconds": 8
+        },
+        {
+          "scene": "attic",
+          "cast": [],
+          "action": "书被轻轻反扣在木桌上，手拿走旁边的钥匙，灯暂时保留。",
+          "caption": "你把书反扣在桌上。说，好。",
+          "sound": "书页、钥匙",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "old-street",
+          "cast": [
+            "he"
+          ],
+          "action": "沈禾在前面等半步，等你的第一人称视角跟上后再继续走，步态连贯，不做漂浮人物。",
+          "caption": "不用先等一个更合适的时机。",
+          "sound": "两人脚步",
+          "camera": "wide",
+          "seconds": 8
+        },
+        {
+          "scene": "noodle-shop",
+          "cast": [],
+          "action": "两只碗相继端上桌，一双筷子替对面的人把纸套抽开，窗外有人骑车经过。",
+          "caption": "一顿普通的饭，也可以认真吃完。",
+          "sound": "碗筷、自行车铃",
+          "camera": "detail",
+          "seconds": 8
+        },
+        {
+          "scene": "bookshop-day",
+          "cast": [],
+          "action": "空屋里，微风让反扣书的一页轻动，书签仍留在原处。午后光线自然向前移动。",
+          "caption": "回来以后，那本书还会在那里。",
+          "sound": "午后环境声，旋律轻落",
+          "camera": "wide",
+          "seconds": 8
+        }
+      ],
+      "duration": 80,
+      "subtitles": "ending-ordinary-days/subtitles.srt",
+      "parts": [
+        {
+          "part": 1,
+          "seconds": 24,
+          "shotStart": 1,
+          "shotEnd": 3,
+          "prompt": "ending-ordinary-days/part-01.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:factory",
+              "path": "references/backgrounds/factory.webp",
+              "source": "/art/backgrounds/factory.webp",
+              "sha256": "1930e01834be39cad723c0af705937c0197a52302e7ec689a8f38c39182ab442"
+            },
+            {
+              "index": 2,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 3,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "seconds": 24,
+          "shotStart": 4,
+          "shotEnd": 6,
+          "prompt": "ending-ordinary-days/part-02.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            },
+            {
+              "index": 2,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 3,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 4,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "seconds": 24,
+          "shotStart": 7,
+          "shotEnd": 9,
+          "prompt": "ending-ordinary-days/part-03.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:attic",
+              "path": "references/backgrounds/attic.webp",
+              "source": "/art/backgrounds/attic.webp",
+              "sha256": "6455998251b496e152a1cae434ad4281981350e7887f7c0540664e1cf592f816"
+            },
+            {
+              "index": 2,
+              "key": "scene:old-street",
+              "path": "references/backgrounds/old-street.webp",
+              "source": "/art/backgrounds/old-street.webp",
+              "sha256": "84924decdea479c7b50882136472e5bc8e5fcef6c0e074b8917352f1104e2e7c"
+            },
+            {
+              "index": 3,
+              "key": "cast:he",
+              "path": "references/characters/he.webp",
+              "source": "/art/characters/he.webp",
+              "note": "Only the original neutral pose, cropped without redrawing. Do not upload the three-pose atlas as three different people.",
+              "sha256": "19dd449c43e4eab9fd00edca54a1a61090b8bc9e6af58c315fc21953c8c682ba"
+            },
+            {
+              "index": 4,
+              "key": "scene:noodle-shop",
+              "path": "references/backgrounds/noodle-shop.webp",
+              "source": "/art/backgrounds/noodle-shop.webp",
+              "sha256": "350fab010a026a4d1e8f1b191f520361a4bef1ebe520610c1683b727ccf69443"
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "seconds": 8,
+          "shotStart": 10,
+          "shotEnd": 10,
+          "prompt": "ending-ordinary-days/part-04.txt",
+          "references": [
+            {
+              "index": 1,
+              "key": "scene:bookshop-day",
+              "path": "references/backgrounds/bookshop-day.webp",
+              "source": "/art/backgrounds/bookshop-day.webp",
+              "sha256": "18bd31b5a14e0d4113f7e342c0770cbe3a1477ef420257292fce744b62afbb9d"
+            }
+          ]
+        }
+      ],
+      "status": "awaiting-real-video-generation"
+    }
+  ],
+  "pilot": {
+    "film": "opening",
+    "shots": [
+      1,
+      2,
+      4
+    ],
+    "purpose": "Check rain/water motion, hand-paper contact and Cheng identity before full production."
+  }
+}

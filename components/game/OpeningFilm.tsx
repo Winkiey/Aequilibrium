@@ -2,7 +2,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Pause, Play, Volume2, VolumeX } from 'lucide-react';
 import { INTRO_CAPTIONS } from '@/lib/game/visuals';
-export function OpeningFilm({onFinish,sound,onSound,paused=false}:{onFinish:()=>void;sound:boolean;onSound:()=>void;paused?:boolean}){
+import {filmMedia,OPENING_FILM_SCRIPT} from '@/lib/game/films';
+import {FilmPlayer} from './FilmPlayer';
+type OpeningProps={onFinish:()=>void;sound:boolean;onSound:()=>void;paused?:boolean;reducedMotion?:boolean;onAudioFocus?:(active:boolean)=>void};
+export function OpeningFilm(props:OpeningProps){const media=filmMedia('opening');return media?<FilmPlayer media={media} script={OPENING_FILM_SCRIPT} {...props} onFallback={props.onFinish}/>:<LegacyOpeningFilm {...props}/>;}
+function LegacyOpeningFilm({onFinish,sound,onSound,paused=false}:OpeningProps){
  const video=useRef<HTMLVideoElement>(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),[error,setError]=useState(false);
  const resume=useRef(false);
  useEffect(()=>{const v=video.current;if(!v)return;if(paused){resume.current=!v.paused;v.pause();}else if(resume.current){resume.current=false;void v.play().catch(()=>setPlaying(false));}},[paused]);

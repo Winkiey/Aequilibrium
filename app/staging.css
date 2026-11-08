@@ -1,0 +1,40 @@
+/* Viewport-safe, authored blocking. Load after cinematic/experience styles. */
+.stage-staged .actor.staged-actor{left:var(--mark-x);bottom:var(--mark-y);transform:translateX(-50%) scale(var(--mark-scale));width:clamp(235px,36vh,440px);opacity:1;transition:filter .35s ease,opacity .25s ease;animation:staged-actor-arrive .42s ease-out both}
+.stage-staged .actor.staged-actor.ensemble{left:var(--mark-x);bottom:var(--mark-y);width:clamp(235px,36vh,440px);opacity:1}
+.stage-staged .actor.staged-actor .actor-crop{animation:none!important}
+.stage-staged .actor.staged-actor:not(.speaking){filter:brightness(.85) saturate(.84)}
+.stage-staged .actor.staged-actor.speaking{filter:brightness(.98) saturate(.87)}
+.stage-staged .object-study.stage-object{left:var(--prop-x);top:var(--prop-y);bottom:auto;width:clamp(120px,var(--prop-width),310px);transform:translate(-50%,-50%) rotate(var(--prop-rotate));animation:none;z-index:5;filter:drop-shadow(0 9px 9px #07110c45)}
+.stage-staged .stage-companion{left:var(--companion-x);top:var(--companion-y);width:clamp(75px,var(--companion-width),170px);transform:translate(-50%,-50%) rotate(var(--companion-rotate));opacity:1;z-index:4;pointer-events:none;position:absolute;filter:drop-shadow(0 5px 6px #07110c38)}
+.stage-staged .stage-companion>.painted-prop{width:100%}
+.stage-staged .stage-object-still>.painted-prop{animation:none}
+.stage-staged .stage-object-placed>.painted-prop{animation:staged-paper-place .55s cubic-bezier(.21,.7,.35,1) both}
+.stage-staged .stage-object-offered>.painted-prop{animation:staged-paper-offer .65s cubic-bezier(.25,.65,.4,1) both}
+.stage-staged .stage-object-withdrawn>.painted-prop{animation:staged-paper-withdraw .65s ease-in-out both}
+.stage-staged .stage-object-opened>.painted-prop{transform-origin:50% 80%;animation:staged-paper-open .65s ease-out both}
+.stage-staged .stage-object-turned>.painted-prop{animation:staged-paper-turn .6s ease-in-out both}
+.stage-staged .stage-object-set-aside>.painted-prop{animation:staged-paper-aside .65s ease-out both}
+.cinema-dialogue.dialogue-side-right.character-dialogue{left:auto;right:10%;width:min(42vw,540px);border-left:0;border-right:2px solid var(--speaker-accent)}
+.cinema-dialogue.dialogue-side-center.character-dialogue{left:50%;right:auto;top:auto;bottom:16%;transform:translateX(-50%);width:min(58vw,720px);padding:22px 29px 17px;background:#e7e3d6ed}
+.stage-staged[data-composition="object"] .stage-cast{pointer-events:none}
+@keyframes staged-actor-arrive{from{translate:0 3px}to{translate:0 0}}
+@keyframes staged-paper-place{from{transform:translateY(-10px) rotate(-2deg)}to{transform:translateY(0) rotate(0)}}
+@keyframes staged-paper-offer{from{transform:translate(-16px,7px)}to{transform:translate(0,0)}}
+@keyframes staged-paper-withdraw{from{transform:translate(0,0)}to{transform:translate(-18px,5px) rotate(-3deg)}}
+@keyframes staged-paper-open{from{transform:scaleY(.88);clip-path:inset(9% 0 9% 0)}to{transform:scaleY(1);clip-path:inset(0)}}
+@keyframes staged-paper-turn{from{transform:rotate(-5deg)}to{transform:rotate(3deg)}}
+@keyframes staged-paper-aside{from{transform:translate(0,0)}to{transform:translate(-18px,7px) rotate(-4deg)}}
+@media(max-width:1100px){
+ .stage-staged .actor.staged-actor,.stage-staged .actor.staged-actor.ensemble{width:clamp(190px,35vh,360px)}
+ .cinema-dialogue.dialogue-side-right.character-dialogue{right:7%;width:44vw}
+}
+@media(orientation:landscape) and (max-height:600px) and (max-width:1100px){
+ .stage-staged .actor.staged-actor,.stage-staged .actor.staged-actor.ensemble{width:clamp(140px,38vh,210px)}
+ .stage-staged .object-study.stage-object{width:clamp(85px,var(--prop-width),155px)}
+ .stage-staged .stage-companion{width:clamp(55px,var(--companion-width),90px)}
+ .cinema-dialogue.dialogue-side-right.character-dialogue{right:5%;left:auto;width:43%;top:40%;bottom:auto;transform:translateY(-40%)}
+ .cinema-dialogue.dialogue-side-center.character-dialogue{left:50%;top:auto;bottom:17%;transform:translateX(-50%);width:62%;padding:14px 20px 10px}
+}
+.reduce-motion .stage-staged .actor.staged-actor,.reduce-motion .stage-staged .painted-prop{animation:none!important;transition:none!important;translate:none}
+.reduce-motion .stage-staged .stage-object>.painted-prop{transform:none;clip-path:none}
+@media(prefers-reduced-motion:reduce){.stage-staged .actor.staged-actor,.stage-staged .painted-prop{animation:none!important;transition:none!important;translate:none}.stage-staged .stage-object>.painted-prop{transform:none;clip-path:none}}

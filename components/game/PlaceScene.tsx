@@ -3,7 +3,7 @@ import {ArrowLeft,Home,Pause,UsersRound} from 'lucide-react';
 import type {Place} from '@/lib/game/places';
 import type {Game} from '@/lib/game/engine';
 import {debtTotal,quarterName} from '@/lib/game/engine';
-import type {Lesson} from '@/lib/game/tutorial';
+import {TRADE_LESSONS,type Lesson} from '@/lib/game/tutorial';
 import {warmScene} from '@/lib/game/assets';
 import {Stage} from './Stage';
 
@@ -15,7 +15,7 @@ export function PlaceScene({place,game,lesson,onGo,onAction,onTitle,onPause,onPe
   {hotspot('证券营业室',21,58,()=>onGo('broker'),lesson==='broker'||lesson==='company')}
   {hotspot('沿海银行',87,49,()=>onGo('bank'))}
  </>:place==='broker'?<>
-  {hotspot('公司资料 · 买入',26,68,()=>onAction('buy'),lesson==='company')}
+  {hotspot('公司资料 · 买入',26,68,()=>onAction('buy'),lesson==='company'||TRADE_LESSONS.includes(lesson))}
   {hotspot('卖出已有持仓',34,55,()=>onAction('sell'))}
  </>:<>
   {hotspot('办理借款',28,55,()=>onAction('borrow'))}

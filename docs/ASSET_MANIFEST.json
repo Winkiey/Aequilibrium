@@ -506,6 +506,50 @@
       "alpha": true,
       "status": "ready",
       "promptSource": "docs/SEASON_ART_PROMPTS.json"
+    },
+    "bookshop-pledge": {
+      "id": "bookshop-pledge",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-pledge.webp",
+      "source": "exec-1c8d2b99-e646-49ff-9b20-18ac6913a639.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/ONBOARDING_ART_PROMPTS.json"
+    },
+    "attic-kept-letter": {
+      "id": "attic-kept-letter",
+      "kind": "background",
+      "path": "/art/backgrounds/attic-kept-letter.webp",
+      "source": "exec-b40bdba8-76b5-4cb9-93a7-ea2f01ba4105.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/ONBOARDING_ART_PROMPTS.json"
+    },
+    "reading-gathering": {
+      "id": "reading-gathering",
+      "kind": "background",
+      "path": "/art/backgrounds/reading-gathering.webp",
+      "source": "exec-aaf54ed1-63b4-4900-a144-570cfc6948ed.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/ONBOARDING_ART_PROMPTS.json"
+    },
+    "proof-solitary": {
+      "id": "proof-solitary",
+      "kind": "background",
+      "path": "/art/backgrounds/proof-solitary.webp",
+      "source": "exec-da1ec5f6-16e5-494f-9c80-2e086c361335.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/ONBOARDING_ART_PROMPTS.json"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
-  "originalBytes": 12925966,
-  "runtimeBytes": 4699580,
-  "reduction": 0.6364233048423615,
+  "originalBytes": 14892520,
+  "runtimeBytes": 4997374,
+  "reduction": 0.6644373148399331,
   "assets": {
     "/art/backgrounds/bookshop-night.webp": {
       "src": "/art/runtime/bookshop-night-1440.32f6cc5944.webp",
@@ -488,6 +488,54 @@
       "width": 800,
       "bytes": 61930,
       "height": 600
+    },
+    "/art/backgrounds/bookshop-pledge.webp": {
+      "src": "/art/runtime/bookshop-pledge-1440.5172fdec24.webp",
+      "width": 1440,
+      "bytes": 83288,
+      "height": 810,
+      "small": {
+        "src": "/art/runtime/bookshop-pledge-960.abe7079d78.webp",
+        "width": 960,
+        "bytes": 43398
+      },
+      "placeholder": "data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAADQBgCdASowABsAPwFysFKrJqQiqrgKAWAgCUAXugFf3ysYv5kujECb0v+tcusMNtA+U6KyNqNbUph3W8ME7AAA/tjuRzkTXk2FW7pkyUWycflEY0m8HiCijhNM5vRS8z4lXX8RFbHznX80uqsa1rRKqQSEAj4bUhNubW/HQgubvfqhb0futTGQPMElMYBQ53mFP/Ayc9j+okCANqJe7uwWFrTfKLWOTHBOkTqiEvWuwc4uf3ZYkRzQUj4rSLKHoIObIC9E3kPkKYpSfqkCocpedQTI95fWMaEX07iPh30HH7lwD+sYdwAA"
+    },
+    "/art/backgrounds/attic-kept-letter.webp": {
+      "src": "/art/runtime/attic-kept-letter-1440.446b3e77ce.webp",
+      "width": 1440,
+      "bytes": 65566,
+      "height": 810,
+      "small": {
+        "src": "/art/runtime/attic-kept-letter-960.e864e92fab.webp",
+        "width": 960,
+        "bytes": 33670
+      },
+      "placeholder": "data:image/webp;base64,UklGRsgAAABXRUJQVlA4ILwAAADwBQCdASowABsAPu1kp06ppaOiNUgBMB2JYwDDcCSIAgzcW31nJIV+L6TxSjVlBTISDyeWvEMPcAD+6PDmTqjbTaWnILEptgiGfcpcQc3zyjpQ3p+gwGmDNk20/flUePG5I7jr51kHcQiOgS17zjXzgb1R0Ub8EW4UG287f6/ueefIlz7aRVWqnjzVljMnBcJ5nz2PgPzjCzZs8TvbJ2+YBIs+l2vxZfGo9Iq/13l3aqt7dewGsDWkeTjgAA=="
+    },
+    "/art/backgrounds/reading-gathering.webp": {
+      "src": "/art/runtime/reading-gathering-1440.db04752630.webp",
+      "width": 1440,
+      "bytes": 83356,
+      "height": 810,
+      "small": {
+        "src": "/art/runtime/reading-gathering-960.ecc0993953.webp",
+        "width": 960,
+        "bytes": 43308
+      },
+      "placeholder": "data:image/webp;base64,UklGRuYAAABXRUJQVlA4INoAAABQBwCdASowABsAPwFwrk8rJyQiKrgN+WAgCUAXFVW8CQ0TmbUl979n5viXBJqqP9qJDBnc7Z4DUb03ns78PIik8bvQAP7ZfK9UkFB+TPBT6oG7dY8MZizZtSVVtYJQMjk3P1n6rkYfrwM5aC4uDb0p3N5bivTCXz+b23Tf+/FeCkzp5q2xhux75idqBPOLiuNxBEjyLIeBeTaVDssTuRtANapQCvgh2lVN5s+rg0+RCmNRwaG+suCh37oRgbrv+o8g2WiAe3Qyl6QtR/OsYMu+wC3A90m3P8IAAA=="
+    },
+    "/art/backgrounds/proof-solitary.webp": {
+      "src": "/art/runtime/proof-solitary-1440.9e00e8589d.webp",
+      "width": 1440,
+      "bytes": 65584,
+      "height": 810,
+      "small": {
+        "src": "/art/runtime/proof-solitary-960.603587f9bc.webp",
+        "width": 960,
+        "bytes": 31860
+      },
+      "placeholder": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABwBQCdASowABsAPvFiqk6ppaQiNVgMATAeCWUAvVgcuad9G1TgELL7jWhu1dlNjiak5h0AAP7uHxlbK3bka3VUwzu8v3iwrbMWenuAqwn6UO+bb9dA9i4DQ1sBEmW/zqlnzc9/wQHBuMh79qry37SqCbJRUrSdxHDtaaq1NKHm867cST4uYIBTf2P/OdAO22kUeK4DvDxr737aGNaU1pi1YtgU4qYRbaIBUL/kNnMkv4u1QtTSOT1tAe/CIXYAAAA="
     }
   }
 }

@@ -12,6 +12,8 @@ const outside=(x=9,y=96,width=13,night=false):SeasonPlacement=>({outdoors:true,p
 // Positions are in painting coordinates so seasonal objects keep their place
 // through the same cover/camera transforms as the authored scene.
 export const SEASON_PLACEMENTS:Record<SceneId,SeasonPlacement>={
+ 'bookshop-pledge':inside(63,78,10,[61,3,37,48],true),'attic-kept-letter':inside(48,72,10,[40,3,19,40],true),
+ 'reading-gathering':inside(53,65,10,[63,2,35,50],true),'proof-solitary':inside(24,72,10,[39,7,20,39],true),
  'bookshop-night':inside(30,70,10,[59,6,39,55],true),'bookshop-day':inside(30,70,10),
  'reading-room':inside(29,67,11),'attic':inside(27,72,11,[59,6,38,54],true),
  'noodle-shop':inside(24,70,11,[61,5,38,62],true),'coldstore':inside(12,75,10,[4,8,29,55]),

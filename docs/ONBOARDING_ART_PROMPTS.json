@@ -1,0 +1,194 @@
+{
+  "created": "2026-11-08",
+  "purpose": "Existing main-1/main-2 branch-specific scene paintings. No new events or game logic.",
+  "style": "Existing realistic matte hand-painted cinematic storyboard, slate/moss/tobacco, natural light, aged wood and paper. No character redesign.",
+  "registrationStatus": "Registered in ASSET_MANIFEST, fingerprinted 1440/960 runtime variants, scene/season/branch mapping and authored staging.",
+  "assets": [
+    {
+      "id": "bookshop-pledge",
+      "source": "exec-1c8d2b99-e646-49ff-9b20-18ac6913a639.png",
+      "event": "main-1",
+      "branch": 0,
+      "quarter": 1,
+      "anchors": {
+        "contract": [
+          36,
+          78
+        ],
+        "key": [
+          52,
+          67
+        ],
+        "lamp": [
+          15,
+          40
+        ],
+        "window": [
+          79,
+          29
+        ]
+      },
+      "note": "同一秋季雨夜，近柜台低机位，打开租约与钥匙并置。",
+      "path": "public/art/backgrounds/bookshop-pledge.webp",
+      "sourcePath": "C:/Users/王智睿/.codex/generated_images/01a1baad-34ce-7351-a2f8-c0074eaa4405/exec-1c8d2b99-e646-49ff-9b20-18ac6913a639.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "prompt": "Use case: illustration-story.\nAsset: a NEW full-screen background painting for the existing narrative game Aequilibrium, first chapter choice A, \"accept the keys and care for the bookshop\". Wide 16:9 horizontal frame, ideally 1672x941 or 1536x864. Not a UI, not a storyboard contact sheet.\nReference image1 (bookshop-night) is the SAME room's architecture/material/lighting continuity reference. Reference image2 (bookshop-day) is a supporting exact art-style reference. Preserve the old wood beams, plaster, floral porcelain table lamp, shelves of used books, right-side rain window looking onto the old coastal Chinese town. New camera angle and composition, no copied cut-and-paste.\nPRIMARY SCENE: same autumn rainy night, intimate lower camera nearer the original worn wooden counter. The tabletop fills the LOWER LEFT half, its aged grain and rounded worn edge beautifully painted. An unfolded cream lease lies flat at around x38% y65%, with a small brass key deliberately laid alongside at x47% y63%. Paper has several faint blurred grey rules and a blank signature area, absolutely no readable text or numbers, no writing hand. The old floral porcelain lamp at left pools restrained amber light onto the document, with a plain closed cloth ledger farther back. Behind this, familiar low bookcases and right rain window softly recede. Cool slate blue rainy night outside; thin warm reflection on key. This should convey a decision becoming a real practical responsibility, quiet and grounded. The space to the right has natural floor/window negative space for later separately drawn actors, not a blank void.\nSTYLE: faithfully match the refs' realistic adult-world hand-painted cinematic film-storyboard illustration, precise but restrained gouache/oil brushwork, matte textured painted surfaces, slate grey / low-saturation moss / tobacco brown, subtle natural light. Same levels of detail and subdued contrast as original. No heightened fantasy glow, no 3D render, no photography, no anime, no harsh black outlines, no collage, no vignette frame.\nNo people, faces, hands, silhouettes, ghosts, speech bubbles, logos, watermark, UI, labels, charts or readable generated text. This is a standalone atmospheric narrative painting, not generic stock bookstore art.",
+      "references": [
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-night.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-day.webp"
+      ],
+      "tool": "built-in image_gen",
+      "review": {
+        "styleMatched": true,
+        "noPeople": true,
+        "noReadableText": true,
+        "continuityMatched": true,
+        "generatedImageInspected": true
+      },
+      "bytes": 520448,
+      "sha256": "5a4324028c4eb186da2bd0fc6ca447e64b0bb41e0339103c55521d7ee17ce9b9"
+    },
+    {
+      "id": "attic-kept-letter",
+      "source": "exec-b40bdba8-76b5-4cb9-93a7-ea2f01ba4105.png",
+      "event": "main-1",
+      "branch": 1,
+      "quarter": 1,
+      "anchors": {
+        "letter": [
+          27,
+          77
+        ],
+        "book": [
+          36,
+          74
+        ],
+        "cup": [
+          20,
+          80
+        ],
+        "window": [
+          48,
+          28
+        ]
+      },
+      "note": "同一秋季雨夜，暂缓决定，信封压在校样下；蓝铅笔和拉开的椅子保留工作日常。",
+      "path": "public/art/backgrounds/attic-kept-letter.webp",
+      "sourcePath": "C:/Users/王智睿/.codex/generated_images/01a1baad-34ce-7351-a2f8-c0074eaa4405/exec-b40bdba8-76b5-4cb9-93a7-ea2f01ba4105.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "prompt": "Use case: illustration-story.\nAsset: NEW 16:9 full-screen background painting for Aequilibrium, chapter1 choiceB, \"keep caring for the shop and leave time to decide\". Ideally1672x941. One painting, not a grid.\nReferenceimage1 (attic) is the SAME attic's architecture/material/light continuity reference. Referenceimage2 (bookshop-night) and3(bookshop-day) establish the EXACT quiet realistic hand-painted artstyle. Keep familiar low sloping dark wood roof, aged plaster, small rain window framing old coastal-town roofs, shelves of old books, brass task lamp and worn desk. Same place, new intimate camera composition.\nPRIMARY SCENE: the SAME autumn rainy night, viewpoint nearer the attic proofreading desk, subtly looking downward at the tabletop while keeping the small rain window and sloping ceiling visible above. A carefully refolded plain cream kraft envelope sits partly under a neat stack of proofreading pages at approx x38% y64%, a blue pencil lies on top of the proofs. Grey markings on pages are faint, blurred, illegible; no readable letters/numbers. The manuscript is unfinished, with one page laid aside. An empty wooden chair is pulled back a little at screenright of the desk; no person, no hands. A plain small porcelain cup with cold dark tea, a closed cloth-bound book fartherleft. Keep the desk paper/envelope key visual clear in the mid/lower left, natural floor and quiet wall space to the right for separately drawn actors. Brass lamp emits a small warm pool against the cool rainy window, subdued and thoughtful, not sad or abandoned. The decision is being left open, not a rejection or final loss. Do not add key-on-contract because this branch does not sign.\nSTYLE: match refs' restrained adult-world painted cinematic storyboard, detailed but matte oil/gouache texture, visible fine brushwork rather than synthetic gloss, low-saturation slate/moss/tobacco browns, natural light, no HDR contrast, no photoreal camera output, no anime, no 3D render. Avoid generic fantasy attic, billowing paper, glowing particles, symbolic metaphors.\nNo people, shadows shaped like humans, faces, hands, readable text, captions, watermark, logos, UI or charts. Preserve established design quality and practical everyday objects.",
+      "references": [
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/attic.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-night.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-day.webp"
+      ],
+      "tool": "built-in image_gen",
+      "review": {
+        "styleMatched": true,
+        "noPeople": true,
+        "noReadableText": true,
+        "continuityMatched": true,
+        "generatedImageInspected": true
+      },
+      "bytes": 447730,
+      "sha256": "2fdbb0a9226a431e6144a9b2b0eda999d3ae75cad0bbb158cf0fa4c171c5a9db"
+    },
+    {
+      "id": "reading-gathering",
+      "source": "exec-aaf54ed1-63b4-4900-a144-570cfc6948ed.png",
+      "event": "main-2",
+      "branch": 0,
+      "quarter": 2,
+      "anchors": {
+        "book": [
+          25,
+          79
+        ],
+        "cup": [
+          57,
+          77
+        ],
+        "lamp": [
+          31,
+          48
+        ],
+        "window": [
+          79,
+          28
+        ]
+      },
+      "note": "入冬读书夜，四把旧椅子拉近，四只杯子，留给街坊的长桌。",
+      "path": "public/art/backgrounds/reading-gathering.webp",
+      "sourcePath": "C:/Users/王智睿/.codex/generated_images/01a1baad-34ce-7351-a2f8-c0074eaa4405/exec-aaf54ed1-63b4-4900-a144-570cfc6948ed.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "prompt": "Use case: illustration-story.\nAsset: NEW16:9 wide background painting for Aequilibrium, chapter2 choiceA, a small first reading evening \"leave this evening for the neighbours\". One image ideally1672x941. No UI, no panels.\nReferenceimage1 (reading-room) is the exact room/architecture continuity reference. Referenceimage2(bookshop-day) is supporting artstyle/material reference. Keep the same coastal old-town bookshop's back reading area: beam ceiling, wall shelves of worn books, right-side old wood-framed windows, peeling grey plaster, vintage floral porcelain lamp, rough wide plank floor, and old long wooden table. Do not redesign the whole interior as a library hall or cafe.\nPRIMARY SCENE: intimate view from the NEAR END of the familiar long table, with four mismatched old wooden chairs deliberately pulled a little closer around it, enough uneven spacing to feel practical and lived-in. Three or four plain cups at the four places, a worn thin book partly open near the front-left, two other closed books waiting for readers. A muted plain linen runner lies softly creased across the table, one chair still slightly out as though someone will sit soon. At mid-left the same floral porcelain lamp makes a restrained warm pool that connects these places. No flowers/ornaments demanding attention. It is a cold early-winter evening; outside the right window the harbour blue-grey sky is fading, a bare twig and a little condensation along glass edges convey cold; old buildings and distant boat masts remain consistent. Warm low light in the table area, empty calm floor/wall to the right to leave room for later separate character layers. Room is EMPTY right now, no people or visible human shadows. A quiet inviting gathering, modest and everyday rather than grand celebration.\nSTYLE: exact refs' realistic hand-painted cinematic storyboard, painterly wood/paper/ceramic details, matte restrained oil/gouache brush texture, low-saturation slate/moss/tobacco, softly natural practical lamp light. Same scale and adult realism, no stock-photo realism, no anime, no3D render, no glossy fantasy lighting, no glitter, no glowing book.\nNo readable text, handwritten labels, typography, UI, charts, watermark, logo, people, faces or hands. All book pages/spines have only unreadable irregular painted marks. Keep central important tabletop arrangement within the middle70% so landscape phone cropping works.",
+      "references": [
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/reading-room.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-day.webp"
+      ],
+      "tool": "built-in image_gen",
+      "review": {
+        "styleMatched": true,
+        "noPeople": true,
+        "noReadableText": true,
+        "continuityMatched": true,
+        "generatedImageInspected": true
+      },
+      "bytes": 527586,
+      "sha256": "1945220fffa4a9e641495899e764edf4ea4d774b165ee31399154cd7001b16ff"
+    },
+    {
+      "id": "proof-solitary",
+      "source": "exec-da1ec5f6-16e5-494f-9c80-2e086c361335.png",
+      "event": "main-2",
+      "branch": 1,
+      "quarter": 2,
+      "anchors": {
+        "book": [
+          31,
+          81
+        ],
+        "cup": [
+          47,
+          70
+        ],
+        "lamp": [
+          14,
+          55
+        ],
+        "window": [
+          47,
+          30
+        ]
+      },
+      "note": "入冬加急稿夜，楼上阁楼仍是同一住处；蓝铅笔、校样、冷茶和空椅子。",
+      "path": "public/art/backgrounds/proof-solitary.webp",
+      "sourcePath": "C:/Users/王智睿/.codex/generated_images/01a1baad-34ce-7351-a2f8-c0074eaa4405/exec-da1ec5f6-16e5-494f-9c80-2e086c361335.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "prompt": "Use case: illustration-story.\nAsset: NEW16:9 full-screen narrative background painting for Aequilibrium, chapter2 choiceB \"accept the urgent proofreading work; postpone the reading evening\". One painting ideally1672x941. NOT a UI, grid or photo.\nReferenceimage1(attic) establishes SAME upstairs home location, roofline, surfaces, belongings and window. Referenceimage2(factory) is ONLY supporting reference for ordinary proofreading tools/papers and precise painted rendering; do NOT insert a printing machine or move this room into a factory. Referenceimage3(bookshop-day) fixes the series' muted painted artstyle.\nPRIMARY SCENE: cold early-winter late evening at the familiar attic proofreading desk, seen from a thoughtful slightly angled frontal viewpoint across the near desk corner. A small worn brass adjustable task lamp near the left focuses its quiet amber light on two large open unmarked proof pages and a blue pencil laid diagonally across the nearer page. A squared-up substantial stack of unfinished manuscript sheets waits at the far-left of the light. A small pale chipped porcelain cup of cold dark tea sits untouched near the far edge, no steam. An empty old wooden chair beyond the desk, slightly to the left of the centre, faces the working seat that is out of frame. It is visibly a room suited to one person's work tonight, rather than people gathering. No envelope, no contract, no brass key, no symbols of despair.\nSame dark roof slopes and wood beams, ragged neutral window curtain, shelves of old books, small window looking at the same coastal tiled roofs and distant boat masts. Outside is blue-grey cold night with fine condensation at the lower glass edge and a few rain tracks, soft bleak light rather than artificial cyan. Keep simple quiet plaster/floor space on the right for separate character layers. The concentration of light is the blue pencil and open proofs at x40% y65%; blank remaining page area enables exact dialogue to be overlaid later. All marks on papers/books are soft abstract grey strokes, no readable generated words, digits or symbols.\nSTYLE: exactly the refs' realistic restrained hand-painted film-storyboard aesthetic, matte gouache/oil texture with fine visible brushwork, tobacco wood, muted moss/slate shadows, practical natural light, adult-scale furniture, quiet everyday dignity. No cinematic neon, excessive bloom, fake depth-of-field blur, 3D render, cartoon/anime, HDR photo or fantasy imagery.\nNo people, faces, hands, silhouettes, ghostly human shadows, labels, typographic text, watermark, logos, UI, charts or decorative narrative icons.",
+      "references": [
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/attic.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/factory.webp",
+        "C:/Users/王智睿/.codex/visualizations/2026/11/07/01a1b6ec-bf13-7443-aae3-e8a38f2bf7cc/onboarding-work/public/art/backgrounds/bookshop-day.webp"
+      ],
+      "tool": "built-in image_gen",
+      "review": {
+        "styleMatched": true,
+        "noPeople": true,
+        "noReadableText": true,
+        "continuityMatched": true,
+        "generatedImageInspected": true
+      },
+      "bytes": 470790,
+      "sha256": "96a695ed77e8c2c0b402ee90e39dafe279c4be100095a77e115ea2e2aa90ecdb"
+    }
+  ]
+}

@@ -10,14 +10,14 @@ import { CinematicPlayer } from './CinematicPlayer';
 import { EndingPlayer } from './EndingPlayer'; import { EPILOGUES } from '@/lib/game/epilogues';
 import { Prop } from './Stage';
 
-export function StoryboardGallery({game,collection,onClose,speed,reducedMotion,paused=false}:{game:Game;collection:Collection;onClose:()=>void;speed:number;reducedMotion:boolean;paused?:boolean}){
+export function StoryboardGallery({game,collection,onClose,speed,reducedMotion,paused=false,sound=false,onSound,onAudioFocus}:{game:Game;collection:Collection;onClose:()=>void;speed:number;reducedMotion:boolean;paused?:boolean;sound?:boolean;onSound?:()=>void;onAudioFocus?:(active:boolean)=>void}){
  const [endingName,setEndingName]=useState<string|null>(null);
  const [filter,setFilter]=useState('all'),[open,setOpen]=useState<{id:string;branch?:0|1}|null>(null);
  const total=Object.keys(STORYBOARDS).length,totalEndings=Object.keys(EPILOGUES).length,stats=collectionStats(collection),knownIds=Object.keys(STORYBOARDS).filter(id=>collection.stories[id]).sort((a,b)=>{const order=(id:string)=>id.startsWith('main-')?Number(id.slice(5))*2:id.startsWith('chapter-')?Number(id.slice(8))*2+1:100+Number(id.slice(1));return order(a)-order(b);});
  const ids=knownIds.filter(id=>filter==='all'||(filter==='main'?isMainStory(id):!isMainStory(id)));
  const remaining=Object.keys(STORYBOARDS).filter(id=>!collection.stories[id]&&(filter==='all'||(filter==='main'?isMainStory(id):!isMainStory(id)))).length;
  const end=endingName?collection.endings[endingName]:undefined;
- if(endingName&&end)return <EndingPlayer game={game} name={endingName} recordedText={end.text} preview paused={paused} speed={speed} reducedMotion={reducedMotion} onFinish={()=>setEndingName(null)}/>;
+ if(endingName&&end)return <EndingPlayer sound={sound} onSound={onSound} onAudioFocus={onAudioFocus} game={game} name={endingName} recordedText={end.text} preview paused={paused} speed={speed} reducedMotion={reducedMotion} onFinish={()=>setEndingName(null)}/>;
  const replay=open?collectionReplay(collection,open.id,open.branch):undefined;
  if(open&&replay)return <CinematicPlayer key={`${open.id}-${open.branch}`} game={game} event={replay} answered={null} preview introOnly={open.branch===undefined} paused={paused} previewBranch={open.branch} speed={speed} reducedMotion={reducedMotion} onChoose={()=>false} onFinish={()=>setOpen(null)} onLedger={()=>{}} onProgress={()=>{}}/>;
  return <div className="storyboard-gallery">

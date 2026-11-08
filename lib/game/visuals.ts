@@ -18,6 +18,10 @@ export const CAST:Record<CastId,{name:string;role:string;accent:string;sprite:st
  ning:{name:'顾宁',role:'往来的客户',accent:'#b9a2a4',sprite:'/art/characters/ning.webp'},
 };
 export const SCENES:Record<SceneId,{name:string;image:string;weather:'rain'|'dust'|'none';origin:[number,number]}>={
+ 'bookshop-pledge':{name:'雨夜柜台 · 展开的租约',image:'/art/backgrounds/bookshop-pledge.webp',weather:'rain',origin:[36,68]},
+ 'attic-kept-letter':{name:'楼上 · 收好的来信',image:'/art/backgrounds/attic-kept-letter.webp',weather:'rain',origin:[30,70]},
+ 'reading-gathering':{name:'冬夜 · 留给街坊的长桌',image:'/art/backgrounds/reading-gathering.webp',weather:'none',origin:[42,66]},
+ 'proof-solitary':{name:'阁楼 · 灯下的加急稿',image:'/art/backgrounds/proof-solitary.webp',weather:'rain',origin:[31,76]},
  'winter-roster':{name:'书屋后间 · 冬夜值班台',image:'/art/backgrounds/winter-roster.webp',weather:'none',origin:[55,50]},
  'seawall-evening':{name:'澄港堤岸 · 夏日晚风',image:'/art/backgrounds/seawall-evening.webp',weather:'none',origin:[55,50]},
  'proof-night':{name:'印刷厂 · 春夜返工',image:'/art/backgrounds/proof-night.webp',weather:'none',origin:[55,50]},
@@ -64,17 +68,20 @@ export const INTRO_CAPTIONS=[
  {start:21,end:27,text:'还有一把钥匙，和三年尚未决定的生活。'},
  {start:27,end:33,text:'今晚，你又下了一层楼。'},
 ];
+export const OBJECT_INSPECTIONS:Record<Focus,string>={
+ key:'铜面被磨得发暗，齿口还留着常年使用的痕迹。',letter:'折痕已经压实，纸张边缘微微发软。',ledger:'页边有旧折角，空白处还可以继续往下记。',cup:'杯沿有细小的使用痕迹，灯影落在里面。',receipt:'薄纸沿折线展开，边缘留下了夹取的痕迹。',book:'书脊已经磨软，有几页被反复翻过。',window:'隔着窗玻璃，近处与远处的声音分得很清楚。',phone:'屏幕把那一小块桌面照亮，四周仍然很安静。',ticket:'票纸很薄，手指停在没有印字的边缘。',contract:'纸页摊在面前，沿折痕可以重新收好。',lamp:'灯光只照亮手边一小片地方，墙角仍留在暗处。',
+};
 export function getScript(event:StoryEvent):VisualScript {
  const script=STORYBOARDS[event.id];if(!script)throw new Error(`缺少分镜：${event.id}`);return script;
 }
 export function outcomeBeats(event:StoryEvent,script:VisualScript,index:0|1):Beat[]{
  // The engine's authoritative response carries dynamic financial/story facts.
- return [...script.outcomes[index],...responseDialogue(event.options[index].response,event.sender,script.cast).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:index===0?'warm' as const:'quiet' as const}))];
+ return [...script.outcomes[index],...responseDialogue(event.options[index].response,event.sender,script.cast).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:'quiet' as const}))];
 }
 export function hubScene(s:Game):SceneId {return s.quarter===1?'bookshop-night':(s.quarter-1)%4===1?'bookshop-night':(s.quarter-1)%4===2?'bookshop-day':'reading-room';}
 export const OUTCOME_SCENES:Record<string,[SceneId,SceneId]>={
  ...EXPANSION_OUTCOMES,
- 'main-1':['bookshop-night','bookshop-night'],'main-2':['reading-room','attic'],'main-3':['printshop','archive'],'main-4':['coldstore','attic'],
+ 'main-1':['bookshop-pledge','attic-kept-letter'],'main-2':['reading-gathering','proof-solitary'],'main-3':['printshop','archive'],'main-4':['coldstore','attic'],
  'main-5':['roof','roof'],'main-6':['bookshop-day','pottery'],'main-7':['printshop','old-street'],'main-8':['coastal-train','attic'],
  'main-9':['archive','attic'],'main-10':['tea-room','bank'],'main-11':['reading-room','bookshop-day'],'main-12':['reading-room','bookshop-night'],
  s01:['attic','attic'],s02:['coastal-train','factory'],s03:['attic','attic'],s04:['old-street','attic'],s05:['attic','factory'],s06:['noodle-shop','noodle-shop'],

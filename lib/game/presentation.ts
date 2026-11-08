@@ -4,7 +4,7 @@ import type { CastId } from './cinematic-content';
 export type Encounter={quarter:number;events:string[]};
 export type ReadingProgress={eventId:string;phase:'story'|'choice'|'outcome';index:number;choice:0|1|null;inspected:boolean};
 export const PRESENTATION_KEY='aequilibrium.presentation.v2';
-export type Presentation={version:2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;reading:ReadingProgress|null;seenScenes:string[];place?:'hub'|'street'|'broker'|'bank';lesson?:Lesson;lessonAsset?:string;people?:Partial<Record<CastId,Encounter>>;readingPage?:number};
+export type Presentation={version:2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;reading:ReadingProgress|null;seenScenes:string[];place?:'hub'|'street'|'broker'|'bank';lesson?:Lesson;lessonAsset?:string;lessonAmount?:number;people?:Partial<Record<CastId,Encounter>>;readingPage?:number};
 export function freshPresentation(game:Game):Presentation{const tutorial=game.quarter>1||game.finished?6:game.mainChoice!==null?3:0;return{version:2,seed:game.seed,introSeen:game.history.length>0,tutorial,lesson:initialLesson(game,tutorial),speed:30,reducedMotion:false,reading:null,seenScenes:[],people:{},readingPage:0,place:'hub'};}
 export function restartPresentation(game:Game,previous:Presentation):Presentation{return{...freshPresentation(game),introSeen:false,speed:previous.speed,reducedMotion:previous.reducedMotion};}
 export function validPresentation(value:unknown,game:Game):value is Presentation{
@@ -14,6 +14,7 @@ export function validPresentation(value:unknown,game:Game):value is Presentation
  if(p.place!==undefined&&!['hub','street','broker','bank'].includes(p.place))return false;
  if(p.lesson!==undefined&&!validLesson(p.lesson))return false;
  if(p.lessonAsset!==undefined&&!game.assets.some(a=>a.id===p.lessonAsset))return false;
+ if(p.lessonAmount!==undefined&&(!Number.isFinite(p.lessonAmount)||p.lessonAmount<0||p.lessonAmount>1e9))return false;
  if(p.readingPage!==undefined&&(!Number.isInteger(p.readingPage)||p.readingPage<0||p.readingPage>1000))return false;
  if(p.people!==undefined&&(!p.people||typeof p.people!=='object'||!Object.values(p.people).every(e=>e&&Number.isInteger(e.quarter)&&e.quarter>=1&&e.quarter<=12&&Array.isArray(e.events)&&e.events.every(id=>typeof id==='string'))))return false;
  return true;

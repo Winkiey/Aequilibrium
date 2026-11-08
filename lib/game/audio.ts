@@ -1,5 +1,7 @@
 export class RoomAudio {
   private context: AudioContext | null = null;
+  private master: GainNode | null = null;
+  private duckLevel=1;
   private rain: GainNode | null = null;
   private filter: BiquadFilterNode | null = null;
   private seasonIndex=0;
@@ -12,7 +14,7 @@ export class RoomAudio {
   async start() {
     if (!this.context) {
       const ctx = new AudioContext(); this.context = ctx;
-      const master = ctx.createGain(); master.gain.value = 0.5; master.connect(ctx.destination);
+      const master = ctx.createGain();this.master=master;master.gain.value = 0.5*this.duckLevel; master.connect(ctx.destination);
       this.rain = ctx.createGain(); this.rain.gain.value = 0; this.rain.connect(master);
       this.music = ctx.createGain(); this.music.gain.value = 0; this.music.connect(master);
       const buffer = ctx.createBuffer(2, ctx.sampleRate * 5, ctx.sampleRate);
@@ -32,6 +34,7 @@ export class RoomAudio {
     this.music?.gain.setTargetAtTime(music * 0.32, this.context.currentTime, 1.2);
   }
   season(index:number){this.seasonIndex=((index%4)+4)%4;if(this.context&&this.filter){this.filter.frequency.setTargetAtTime([1500,620,1200,2100][this.seasonIndex],this.context.currentTime,2);this.levels(this.rainLevel,this.musicLevel);}}
+  duck(level:number){this.duckLevel=Math.max(0,Math.min(1,level));if(this.context)this.master?.gain.setTargetAtTime(.5*this.duckLevel,this.context.currentTime,.4);}
   private note() {
     if (!this.context || !this.music || !this.on) return;
     const ctx = this.context, notes = [196, 293.66, 220, 261.63, 174.61, 261.63, 220, 293.66];

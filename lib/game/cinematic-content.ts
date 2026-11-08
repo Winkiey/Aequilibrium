@@ -5,7 +5,7 @@
  */
 import { EXPANSION_STORYBOARDS } from './expansion-visuals';
 export type CastId = 'cheng' | 'tang' | 'lu' | 'he' | 'zhou' | 'gu' | 'yao' | 'xu' | 'cao' | 'ning';
-export type SceneId = 'bookshop-night' | 'bookshop-day' | 'reading-room' | 'attic' | 'noodle-shop' | 'coldstore' | 'printshop' | 'bank' | 'tea-room' | 'old-street' | 'coastal-train' | 'station' | 'roof' | 'factory' | 'pottery' | 'archive' | 'quiet-room' | 'brokerage' | 'district-street' | 'neighborhood-bank' | 'securities-office' | 'winter-roster' | 'seawall-evening' | 'proof-night' | 'shared-keys' | 'winter-cloakroom' | 'ferry-spring' | 'repair-summer' | 'osmanthus-yard' | 'proof-morning' | 'post-winter' | 'noodle-blackout' | 'debt-autumn';
+export type SceneId = 'bookshop-night' | 'bookshop-day' | 'reading-room' | 'attic' | 'noodle-shop' | 'coldstore' | 'printshop' | 'bank' | 'tea-room' | 'old-street' | 'coastal-train' | 'station' | 'roof' | 'factory' | 'pottery' | 'archive' | 'quiet-room' | 'brokerage' | 'district-street' | 'neighborhood-bank' | 'securities-office' | 'winter-roster' | 'seawall-evening' | 'proof-night' | 'shared-keys' | 'winter-cloakroom' | 'ferry-spring' | 'repair-summer' | 'osmanthus-yard' | 'proof-morning' | 'post-winter' | 'noodle-blackout' | 'debt-autumn' | 'bookshop-pledge' | 'attic-kept-letter' | 'reading-gathering' | 'proof-solitary';
 export type FocusObject = 'key' | 'letter' | 'ledger' | 'cup' | 'receipt' | 'book' | 'window' | 'phone' | 'ticket' | 'contract' | 'lamp';
 export type Beat = {
   speaker: CastId | 'narrator' | 'self';

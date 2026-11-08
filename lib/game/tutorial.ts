@@ -1,7 +1,7 @@
 import type { Game } from './engine';
 
 export const LESSONS = [
-  'letter', 'dialogue', 'decision', 'ledger', 'news', 'broker', 'company',
+  'letter', 'dialogue', 'decision', 'aftermath', 'ledger', 'news', 'broker', 'company',
   'business', 'revenue', 'cashflow', 'debt', 'amount', 'costs',
   'confirm', 'holding', 'quarter', 'done',
 ] as const;
@@ -11,10 +11,11 @@ export const LESSON_COPY: Record<Lesson, {title:string; text:string; action?:str
   letter:{title:'第一步，拆开柜台上的信',text:'发亮的圆圈就在牛皮纸信封上。点它，听听程姨想说什么。',action:'拆开这封信'},
   dialogue:{title:'点一下补全，再点一下继续',text:'字未出完时点一下，先显示全句；读完再点“继续”。也可以按空格。'},
   decision:{title:'选一条你愿意承担的生活',text:'先读费用与约定，再点击其中一个答复。作答后，继续看完它的后续。'},
+  aftermath:{title:'看看这封答复留下了什么',text:'选择已经记下。继续看完这一条后续，再回书屋核对现金。退出对话也能从这里接着读。',action:'接着看选择之后'},
   ledger:{title:'答复收好了，接着看钱',text:'下一步翻开账本，确认手头现金和未来付款。之后带你亲手完成第一笔买入。',action:'翻开账本'},
   news:{title:'先读消息，再看公司',text:'打开今日报纸，读完后点击“去证券营业室查看资料”。',action:'打开今日报纸'},
   broker:{title:'出门，去证券营业室',text:'老街上有证券营业室和银行。先点击“证券营业室”，再打开桌上的公司资料。',action:'走到老街'},
-  company:{title:'打开资料，选一家公司',text:'点开营业室桌上的公司资料，再选“澄川能源”。接下来一起分析，再亲手买入。'},
+  company:{title:'选一家公司，一起读它的资料',text:'可以从标出的澄川能源开始，也可以换一家。标记只表示教学入口，不代表它会涨。',action:'打开公司资料'},
   business:{title:'先弄清楚，它靠什么赚钱',text:'先读公司介绍。股价只是一份股份的报价，不能代替对生意的了解。',action:'读过了，看营业收入'},
   revenue:{title:'营收：卖出了多少产品与服务',text:'营收衡量生意规模，不等于利润，也不等于现金已经到账。',action:'下一步，看经营现金流'},
   cashflow:{title:'现金流：经营中留下了多少现金',text:'这是日常经营现金流入减去流出的净额。结合营收来看，别把销售额全当成可用的钱。',action:'下一步，看债务'},
@@ -35,6 +36,33 @@ export function initialLesson(game:Game,legacyStep:number):Lesson {
   return legacyStep>=4?'news':'ledger';
 }
 export function validLesson(value:unknown):value is Lesson{return LESSONS.includes(value as Lesson);}
+/** Facts correct stale steps, while an explicit decision to explore is kept. */
+export function reconcileLesson(game:Game,stored:Lesson|undefined,legacyStep:number,reading?:{eventId:string;phase:string}|null):Lesson {
+ if(game.finished||game.quarter>1||stored==='done'||(!stored&&legacyStep===6))return 'done';
+ const current=stored??initialLesson(game,legacyStep);
+ if(game.mainChoice===null)return ['letter','dialogue','decision'].includes(current)?current:'letter';
+ if(reading?.eventId==='main-1'&&['letter','dialogue','decision','aftermath'].includes(current))return 'aftermath';
+ const bought=game.transactions.some(t=>t.side==='buy'&&t.amount>0);
+ if(bought)return current==='quarter'?'quarter':'holding';
+ if(['letter','dialogue','decision','aftermath','holding','quarter'].includes(current))return 'ledger';
+ return current;
+}
+export function lessonDestination(lesson:Lesson,place:string):'story'|'ledger'|'news'|'street'|'broker'|'market'|'trade'|'end'|null {
+ if(['letter','dialogue','decision','aftermath'].includes(lesson))return 'story';
+ if(lesson==='ledger'||lesson==='holding')return 'ledger';
+ if(lesson==='news')return 'news';
+ if(lesson==='broker')return place==='broker'?'market':place==='street'?'broker':'street';
+ if(lesson==='company')return 'market';
+ if(TRADE_LESSONS.includes(lesson))return 'trade';
+ return lesson==='quarter'?'end':null;
+}
+export function lessonMilestone(lesson:Lesson){
+ const index=lessonIndex(lesson);
+ const boundaries=[lessonIndex('aftermath'),lessonIndex('ledger'),lessonIndex('company'),lessonIndex('debt'),lessonIndex('confirm'),lessonIndex('done')];
+ const group=Math.max(0,boundaries.findIndex(end=>index<=end));
+ return {index:group,total:6,label:['一封来信','手头的钱','走到营业室','读懂一家公司','核对并买入','找到你的持仓'][group]};
+}
+export function suggestedLessonAmount(game:Game){return Math.min(3000,Math.max(0,Math.floor(game.cash/100)*100));}
 export function lessonIndex(lesson:Lesson){return LESSONS.indexOf(lesson);}
 export function nextLesson(lesson:Lesson):Lesson{return LESSONS[Math.min(LESSONS.length-1,lessonIndex(lesson)+1)];}
 export function lessonGroup(lesson:Lesson){return lessonIndex(lesson)<=2?lessonIndex(lesson):lesson==='ledger'?3:lessonIndex(lesson)<=12?4:lesson==='holding'?5:6;}

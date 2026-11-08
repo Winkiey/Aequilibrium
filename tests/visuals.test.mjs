@@ -22,7 +22,7 @@ test('all 76 events and both branches have authored visual scenes, with no missi
  assert.equal(new Set(ids.map(id=>STORYBOARDS[id].interaction.line)).size,76);
 });
 test('every referenced background, fixed character atlas and prop exists in the shipped project',()=>{
- assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,33);
+ assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,37);
  for(const a of Object.values(manifest)){assert.equal(a.status,'ready');assert.ok(statSync(`public${a.path}`).size>1000,a.path);}
  for(const [id,c]of Object.entries(CAST)){const a=manifest[id];assert.equal(c.sprite,a.path);assert.ok(a.alpha);assert.equal(a.width/a.height,1.5);}
  for(const [id,s]of Object.entries(SCENES)){const a=manifest[id];assert.equal(s.image,a.path);assert.ok(a.width/a.height>1.7);}
