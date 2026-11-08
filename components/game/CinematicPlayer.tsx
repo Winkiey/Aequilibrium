@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, X } from 'lucide-react';
+import { HUB_ANCHORS } from '@/lib/game/assets';
 import { Stage } from './Stage';
 import { CAST, getScript, OBJECTS, outcomeBeats, outcomeScene } from '@/lib/game/visuals';
 import { optionError, type Game, type StoryEvent } from '@/lib/game/engine';
@@ -8,6 +9,7 @@ import type { Beat, VisualScript } from '@/lib/game/cinematic-content';
 import type { ReadingProgress } from '@/lib/game/presentation';
 
 export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMotion=false,paused=false,preview=false,previewBranch,epilogue=false,scriptOverride,onChoose,onFinish,onLedger,onProgress,onStep}:{game:Game;event:StoryEvent;answered:0|1|null;progress?:ReadingProgress;speed?:number;reducedMotion?:boolean;paused?:boolean;preview?:boolean;previewBranch?:0|1;epilogue?:boolean;scriptOverride?:VisualScript;onChoose:(i:0|1)=>boolean;onFinish:(reason:'complete'|'exit')=>void;onLedger:()=>void;onProgress:(p:ReadingProgress)=>void;onStep?:(step:'dialogue'|'decision')=>void}){
+ const [sceneReady,setSceneReady]=useState(false);
  const script=scriptOverride??getScript(event);
  const start=progress?.eventId===event.id?progress:undefined;
  const [phase,setPhase]=useState<ReadingProgress['phase']>(previewBranch!==undefined?'outcome':start?.phase==='choice'&&answered!==null?'outcome':start?.phase==='outcome'&&answered===null?'story':start?.phase??'story');
@@ -19,23 +21,24 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const chars=useMemo(()=>Array.from(beat.text),[beat.text]);
  const beatKey=`${event.id}-${phase}-${safeIndex}-${inspection}`;
  const [typing,setTyping]=useState({key:beatKey,count:0});
- const count=typing.key===beatKey?typing.count:0,complete=reducedMotion||count>=chars.length;
- useEffect(()=>{if(reducedMotion||paused||complete)return;const timer=setTimeout(()=>setTyping({key:beatKey,count:Math.min(count+1,chars.length)}),/[，。！？；]/u.test(chars[count-1]??'')?speed*5:speed);return()=>clearTimeout(timer);},[beatKey,count,chars,reducedMotion,speed,paused,complete]);
+ const count=typing.key===beatKey?typing.count:0,complete=inspection||reducedMotion||count>=chars.length;
+ useEffect(()=>{if(reducedMotion||paused||!sceneReady||complete)return;const timer=setTimeout(()=>setTyping({key:beatKey,count:Math.min(count+1,chars.length)}),/[，。！？；]/u.test(chars[count-1]??'')?speed*5:speed);return()=>clearTimeout(timer);},[beatKey,count,chars,reducedMotion,speed,paused,sceneReady,complete]);
  useEffect(()=>{onProgress({eventId:event.id,phase,index:safeIndex,choice,inspected});},[event.id,phase,safeIndex,choice,inspected]);
  useEffect(()=>{onStep?.(phase==='choice'?'decision':'dialogue');},[phase]);
- function advance(){if(paused||transcript||phase==='choice')return;if(!complete){setTyping({key:beatKey,count:chars.length});return;}if(inspection){setInspection(false);return;}if(safeIndex<beats.length-1){setIndex(safeIndex+1);return;}if(phase==='outcome'||epilogue)onFinish('complete');else{if(answered!==null){setChoice(answered);setPhase('outcome');}else setPhase('choice');setIndex(0);}}
+ function advance(){if(paused||!sceneReady||transcript||phase==='choice')return;if(!complete){setTyping({key:beatKey,count:chars.length});return;}if(inspection){setInspection(false);return;}if(safeIndex<beats.length-1){setIndex(safeIndex+1);return;}if(phase==='outcome'||epilogue)onFinish('complete');else{if(answered!==null){setChoice(answered);setPhase('outcome');}else setPhase('choice');setIndex(0);}}
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(paused||e.repeat||e.altKey||e.ctrlKey||e.metaKey)return;if((e.target as HTMLElement)?.closest('input,button,select,textarea,a'))return;if(e.code==='Space'||e.code==='Enter'){e.preventDefault();advance();}if(e.code==='ArrowLeft'&&index>0){e.preventDefault();setIndex(index-1);}if(e.code==='Escape'){if(transcript)setTranscript(false);else onFinish('exit');}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);});
  const npc=beat.speaker!=='self'&&beat.speaker!=='narrator'?CAST[beat.speaker]:null;
  const location=phase==='outcome'?outcomeScene(event.id,choice??0,script.scene):script.scene;
  const focus=phase==='outcome'?(beat.focus??script.outcomeFocus[choice??0]):beat.focus;
  function select(i:0|1){if(preview||onChoose(i)){setChoice(i);setPhase('outcome');setIndex(0);setInspection(false);}}
+ const hotspotPoint=script.interaction.object==='letter'&&HUB_ANCHORS[location]?HUB_ANCHORS[location]!.letter:OBJECTS[script.interaction.object].point;
  const actors=npc?[beat.speaker as keyof typeof CAST,...script.cast.filter(id=>id!==beat.speaker)]:script.cast;
  return <div className="cinematic-player" data-event={event.id} data-phase={phase} data-branch={phase==='outcome'?choice:undefined}>
-  <Stage scene={location} cast={actors} speaker={beat.speaker} pose={beat.pose??(phase==='outcome'?choice===0?1:2:0)} camera={beat.camera} focus={focus} emotion={beat.emotion} showObject={beat.camera==='detail'||phase==='outcome'} shotId={`${event.id}:${phase}:${phase==='outcome'?choice:'intro'}:${safeIndex}`}>
+  <Stage framing={HUB_ANCHORS[location]?'desk':'center'} sceneLayer={phase!=='choice'&&(beat.camera!=='detail'||beat.focus===script.interaction.object||inspection)&&<button className={`story-object-hotspot ${!inspected?'undiscovered':''}`} style={{left:`${hotspotPoint[0]}%`,top:`${hotspotPoint[1]}%`}} onClick={()=>{setInspection(value=>!value);setInspected(true);}} aria-label={script.interaction.label}><i/><span>{script.interaction.label}{inspected&&<small>已查看</small>}</span></button>} onReadyChange={setSceneReady} scene={location} cast={actors} speaker={beat.speaker} pose={beat.pose??(phase==='outcome'?choice===0?1:2:0)} camera={beat.camera} focus={focus} emotion={beat.emotion} showObject={beat.camera==='detail'||phase==='outcome'} shotId={`${event.id}:${phase}:${phase==='outcome'?choice:'intro'}:${safeIndex}`}>
    <button className="scene-advance-hit" aria-label={inspection?'收起物件，继续':complete?'下一句':'立即显示完整对白'} onClick={advance} disabled={phase==='choice'}/>
    <div className="cinema-letterbox top"/><div className="cinema-letterbox bottom"/>
    <header className="cinema-header"><button className="scene-tool" onClick={()=>onFinish('exit')}><ArrowLeft size={15}/>{preview?'返回分镜':epilogue?'查看复盘':'回到书店'}</button><span>{event.title}<small>{event.sender}</small></span><button className="scene-tool" onClick={()=>setTranscript(!transcript)}><BookOpen size={15}/>回看</button></header>
-   {phase!=='choice'&&<button className={`story-object-hotspot ${!inspected?'undiscovered':''}`} style={{left:`${OBJECTS[script.interaction.object].point[0]}%`,top:`${OBJECTS[script.interaction.object].point[1]}%`}} onClick={()=>{setInspection(true);setInspected(true);}} aria-label={script.interaction.label}><i/><span>{script.interaction.label}{inspected&&<small>已查看</small>}</span></button>}
+
    {phase==='choice'?<div className="cinema-choices"><p className="choice-intro">这一次，你决定——</p>{event.options.map((option,i)=>{const error=preview?null:optionError(game,option);return <div key={i}><button disabled={!!error} onClick={()=>select(i as 0|1)} className="cinema-choice"><span className="choice-index">0{i+1}</span><span><strong>{option.label}</strong><small>{option.detail}</small></span><ArrowRight size={19}/></button>{error&&<p className="scene-choice-error">{error}</p>}</div>;})}<button className="choice-ledger-link" onClick={onLedger}>先看一眼账本<ArrowRight size={14}/></button></div>:<>
     <div key={`${beat.speaker}-${event.id}`} className={`cinema-dialogue ${npc?'character-dialogue':'narrator-dialogue'} ${beat.speaker==='self'?'inner-voice':''}`} style={npc?{'--speaker-accent':npc.accent} as React.CSSProperties:undefined}>
      <div className="speaker-label"><span>{npc?.name??(beat.speaker==='self'?'你':'旁白')}</span>{npc&&<small>{npc.role}</small>}{phase==='outcome'&&<em>选择之后</em>}</div>

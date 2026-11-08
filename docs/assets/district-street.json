@@ -1,0 +1,10 @@
+{
+  "id": "district-street",
+  "kind": "background",
+  "path": "/art/backgrounds/district-street.webp",
+  "source": "exec-1ae251c1-0dca-4bd1-8794-ce268b538600.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

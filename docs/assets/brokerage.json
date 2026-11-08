@@ -1,0 +1,10 @@
+{
+  "id": "brokerage",
+  "kind": "background",
+  "path": "/art/backgrounds/brokerage.webp",
+  "source": "exec-4ff30f84-dfd5-43e9-8cb6-ebe6d8598559.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

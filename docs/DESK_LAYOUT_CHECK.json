@@ -1,0 +1,137 @@
+{
+  "method": "Painting-coordinate composition check; not a browser screenshot",
+  "cases": [
+    {
+      "scene": "bookshop-night",
+      "width": 1440,
+      "height": 1000,
+      "letter": {
+        "x": 199.0053134962805,
+        "y": 775,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-night",
+      "width": 844,
+      "height": 390,
+      "letter": {
+        "x": 94.52799999999999,
+        "y": 283.12446172248804,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-night",
+      "width": 667,
+      "height": 375,
+      "letter": {
+        "x": 74.704,
+        "y": 290.5379336124402,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-night",
+      "width": 2560,
+      "height": 720,
+      "letter": {
+        "x": 286.72,
+        "y": 395.82775119617236,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-day",
+      "width": 1440,
+      "height": 1000,
+      "letter": {
+        "x": 195.45164718384694,
+        "y": 775,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-day",
+      "width": 844,
+      "height": 390,
+      "letter": {
+        "x": 92.84,
+        "y": 283.12446172248804,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-day",
+      "width": 667,
+      "height": 375,
+      "letter": {
+        "x": 73.37,
+        "y": 290.5379336124402,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "bookshop-day",
+      "width": 2560,
+      "height": 720,
+      "letter": {
+        "x": 281.6,
+        "y": 395.82775119617236,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "reading-room",
+      "width": 1440,
+      "height": 1000,
+      "letter": {
+        "x": 426.4399574920297,
+        "y": 680,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "reading-room",
+      "width": 844,
+      "height": 390,
+      "letter": {
+        "x": 202.56,
+        "y": 237.99923444976076,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "reading-room",
+      "width": 667,
+      "height": 375,
+      "letter": {
+        "x": 160.08,
+        "y": 254.87617224880384,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    },
+    {
+      "scene": "reading-room",
+      "width": 2560,
+      "height": 720,
+      "letter": {
+        "x": 614.4,
+        "y": 258.95502392344497,
+        "radiusWithHalo": 24
+      },
+      "objectsFullyVisible": true
+    }
+  ]
+}

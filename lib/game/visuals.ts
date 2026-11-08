@@ -1,4 +1,6 @@
 import type { Beat, CastId, SceneId, VisualScript } from './cinematic-content';
+import { shortLines, responseDialogue } from './dialogue';
+export { shortLines } from './dialogue';
 import { STORYBOARDS } from './cinematic-content';
 import type { Game, StoryEvent } from './engine';
 
@@ -32,6 +34,10 @@ export const SCENES:Record<SceneId,{name:string;image:string;weather:'rain'|'dus
  pottery:{name:'南方的陶艺间',image:'/art/backgrounds/pottery.webp',weather:'dust',origin:[55,49]},
  archive:{name:'旧档案室',image:'/art/backgrounds/archive.webp',weather:'dust',origin:[55,49]},
  'quiet-room':{name:'固定的房间',image:'/art/backgrounds/quiet-room.webp',weather:'none',origin:[55,49]},
+ brokerage:{name:'老街证券营业室',image:'/art/backgrounds/brokerage.webp',weather:'rain',origin:[55,49]},
+ 'district-street':{name:'老街 · 银行街口',image:'/art/backgrounds/district-street.webp',weather:'none',origin:[50,48]},
+ 'neighborhood-bank':{name:'沿海银行 · 柜台',image:'/art/backgrounds/neighborhood-bank.webp',weather:'none',origin:[50,50]},
+ 'securities-office':{name:'老街证券营业室',image:'/art/backgrounds/securities-office.webp',weather:'dust',origin:[50,50]},
 };
 export type Focus=NonNullable<Beat['focus']>;
 export const OBJECTS:Record<Focus,{name:string;cell:number;point:[number,number]}>= {
@@ -45,17 +51,12 @@ export const INTRO_CAPTIONS=[
  {start:21,end:27,text:'还有一把钥匙，和三年尚未决定的生活。'},
  {start:27,end:33,text:'今晚，你又下了一层楼。'},
 ];
-export const shortLines=(text:string,max=44):string[]=>{
- const sentences=text.match(/[^。！？；]+[。！？；]?/gu)??[text];const result:string[]=[];
- for(const sentence of sentences){const chars=Array.from(sentence);if(chars.length<=max)result.push(sentence);else{for(let i=0;i<chars.length;i+=max)result.push(chars.slice(i,i+max).join(''));}}
- return result.filter(Boolean);
-};
 export function getScript(event:StoryEvent):VisualScript {
  const script=STORYBOARDS[event.id];if(!script)throw new Error(`缺少分镜：${event.id}`);return script;
 }
 export function outcomeBeats(event:StoryEvent,script:VisualScript,index:0|1):Beat[]{
  // The engine's authoritative response carries dynamic financial/story facts.
- return [...script.outcomes[index],...shortLines(event.options[index].response).map(text=>({speaker:'narrator' as const,text,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:index===0?'warm' as const:'quiet' as const}))];
+ return [...script.outcomes[index],...responseDialogue(event.options[index].response,event.sender,script.cast).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:index===0?'warm' as const:'quiet' as const}))];
 }
 export function hubScene(s:Game):SceneId {return s.quarter===1?'bookshop-night':(s.quarter-1)%4===1?'bookshop-night':(s.quarter-1)%4===2?'bookshop-day':'reading-room';}
 export const OUTCOME_SCENES:Record<string,[SceneId,SceneId]>={

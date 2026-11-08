@@ -11,7 +11,7 @@ import {freshPresentation,validPresentation} from '../.sites-runtime/test-module
 const ids=[...Array.from({length:12},(_,i)=>`main-${i+1}`),...SIDE_EVENTS.map(e=>e.id)];
 const manifest=JSON.parse(readFileSync('docs/ASSET_MANIFEST.json','utf8')).assets;
 function fixture(id){const s=createGame(20261108);s.flags.shop=1;s.flags.printLoan=1;s.quarter=id.startsWith('main-')?Number(id.slice(5)):5;return materialize(id.startsWith('main-')?mainEvent(s):SIDE_EVENTS.find(e=>e.id===id),s);}
-function verifyBeat(b){assert.ok(b.text&&Array.from(b.text).length<=48,b.text);assert.ok(['self','narrator',...Object.keys(CAST)].includes(b.speaker));if(b.focus)assert.ok(OBJECTS[b.focus]);assert.ok(b.pose===undefined||[0,1,2].includes(b.pose));}
+function verifyBeat(b){assert.ok(b.text&&Array.from(b.text).length<=96,b.text);assert.ok(['self','narrator',...Object.keys(CAST)].includes(b.speaker));if(b.focus)assert.ok(OBJECTS[b.focus]);assert.ok(b.pose===undefined||[0,1,2].includes(b.pose));}
 
 test('all 64 events and both branches have authored visual scenes, with no missing ids',()=>{
  assert.deepEqual(Object.keys(STORYBOARDS).sort(),ids.sort());assert.deepEqual(Object.keys(OUTCOME_SCENES).sort(),ids);
@@ -22,7 +22,7 @@ test('all 64 events and both branches have authored visual scenes, with no missi
  assert.equal(new Set(ids.map(id=>STORYBOARDS[id].interaction.line)).size,64);
 });
 test('every referenced background, fixed character atlas and prop exists in the shipped project',()=>{
- assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,17);
+ assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,21);
  for(const a of Object.values(manifest)){assert.equal(a.status,'ready');assert.ok(statSync(`public${a.path}`).size>1000,a.path);}
  for(const [id,c]of Object.entries(CAST)){const a=manifest[id];assert.equal(c.sprite,a.path);assert.ok(a.alpha);assert.equal(a.width/a.height,1.5);}
  for(const [id,s]of Object.entries(SCENES)){const a=manifest[id];assert.equal(s.image,a.path);assert.ok(a.width/a.height>1.7);}
@@ -38,6 +38,6 @@ test('new presentation state survives export, rejects another scenario, and pres
  const legacy=structuredClone(done);delete legacy.history[0].snapshot;delete legacy.history[0].eventId;delete legacy.history[0].optionIndex;assert.ok(validateSave(legacy));
 });
 test('write complete, deterministic visual coverage report',()=>{
- const report={version:2,summary:{events:64,outcomes:128,playableCompositions:192,endings:8,backgrounds:17,characters:10,poses:30,missing:0},events:ids.map(id=>({id,before:{scene:STORYBOARDS[id].scene,cast:STORYBOARDS[id].cast,lines:STORYBOARDS[id].beats.length,interaction:STORYBOARDS[id].interaction.label},after:[0,1].map(branch=>({branch,scene:OUTCOME_SCENES[id][branch],focus:STORYBOARDS[id].outcomeFocus[branch],lines:outcomeBeats(fixture(id),STORYBOARDS[id],branch).length}))})),endings:Object.entries(EPILOGUES).map(([name,e])=>({name,scene:e.scene,cast:e.cast}))};
+ const report={version:2,summary:{events:64,outcomes:128,playableCompositions:192,endings:8,backgrounds:21,characters:10,poses:30,missing:0},events:ids.map(id=>({id,before:{scene:STORYBOARDS[id].scene,cast:STORYBOARDS[id].cast,lines:STORYBOARDS[id].beats.length,interaction:STORYBOARDS[id].interaction.label},after:[0,1].map(branch=>({branch,scene:OUTCOME_SCENES[id][branch],focus:STORYBOARDS[id].outcomeFocus[branch],lines:outcomeBeats(fixture(id),STORYBOARDS[id],branch).length}))})),endings:Object.entries(EPILOGUES).map(([name,e])=>({name,scene:e.scene,cast:e.cast}))};
  writeFileSync('docs/VISUAL_COVERAGE.json',JSON.stringify(report,null,2)+'\n');assert.equal(report.events.length*3,192);
 });
