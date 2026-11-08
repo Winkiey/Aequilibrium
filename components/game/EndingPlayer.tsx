@@ -4,6 +4,6 @@ import { EPILOGUES, epilogueScript } from '@/lib/game/epilogues';
 import { CinematicPlayer } from './CinematicPlayer';
 export function EndingPlayer({game,name,recordedText,onFinish,speed,reducedMotion,preview=false,paused=false}:{game:Game;name?:string;recordedText?:string;onFinish:()=>void;speed:number;reducedMotion:boolean;preview?:boolean;paused?:boolean}){
  const end=ending(game),title=name??end.name;
- const event={id:`ending-${title}`,title:name??end.title,sender:'澄港，三年以后',atQuarter:EPILOGUES[title].quarter??game.quarter,paragraphs:[],options:[]} as unknown as StoryEvent;
+ const event={id:`ending-${title}`,title,sender:'澄港，三年以后',atQuarter:EPILOGUES[title].quarter??game.quarter,paragraphs:[],options:[]} as unknown as StoryEvent;
  return <CinematicPlayer game={game} event={event} answered={null} speed={speed} reducedMotion={reducedMotion} preview={preview} paused={paused} epilogue scriptOverride={epilogueScript(game,title,recordedText)} onChoose={()=>false} onFinish={onFinish} onLedger={()=>{}} onProgress={()=>{}}/>;
 }

@@ -86,7 +86,7 @@ export function optionError(s: Game, option: Option): string | null {
   const e = option.effects;
   try { if(e.buy) quoteTrade(s, e.buy.asset, 'buy', e.buy.budget); if(e.sell) quoteTrade(s, e.sell.asset, 'sell', e.sell.value); } catch(err) { return (err as Error).message; }
   const extra = (e.cash ?? 0) - (e.buy?.budget ?? 0);
-  if (extra < 0 && s.cash + extra < -0.001) return `还需要 ¥${money(-extra - s.cash)} 现金。可以先到账本调整持仓，再回来作答。`;
+  if (extra < 0 && s.cash + extra < -0.001) return `还需要 ¥${money(-extra - s.cash)} 现金。可先回书屋，再去证券营业室卖出持仓，或到银行核对借款安排。`;
   return null;
 }
 export function choose(state: Game, event: StoryEvent, index: number, kind: StoryKind): Game {
