@@ -10,7 +10,7 @@ import {freshPresentation,validPresentation} from '../.sites-runtime/test-module
 
 const ids=[...Array.from({length:12},(_,i)=>`main-${i+1}`),...CHAPTER_EVENTS.map(e=>e.id),...SIDE_EVENTS.map(e=>e.id)];
 const manifest=JSON.parse(readFileSync('docs/ASSET_MANIFEST.json','utf8')).assets;
-function fixture(id){const s=createGame(20261108);s.flags.shop=1;s.flags.printLoan=1;s.quarter=id.startsWith('main-')?Number(id.slice(5)):id.startsWith('chapter-')?Number(id.slice(8)):5;return materialize(id.startsWith('main-')?mainEvent(s):[...CHAPTER_EVENTS,...SIDE_EVENTS].find(e=>e.id===id),s);}
+function fixture(id){const s=createGame(20261108);delete s.shop;s.flags.shop=1;s.flags.printLoan=1;s.quarter=id.startsWith('main-')?Number(id.slice(5)):id.startsWith('chapter-')?Number(id.slice(8)):5;return materialize(id.startsWith('main-')?mainEvent(s):[...CHAPTER_EVENTS,...SIDE_EVENTS].find(e=>e.id===id),s);}
 function verifyBeat(b){assert.ok(b.text&&Array.from(b.text).length<=96,b.text);assert.ok(['self','narrator',...Object.keys(CAST)].includes(b.speaker));if(b.focus)assert.ok(OBJECTS[b.focus]);assert.ok(b.pose===undefined||[0,1,2].includes(b.pose));}
 
 test('all 76 events and both branches have authored visual scenes, with no missing ids',()=>{
@@ -22,7 +22,7 @@ test('all 76 events and both branches have authored visual scenes, with no missi
  assert.equal(new Set(ids.map(id=>STORYBOARDS[id].interaction.line)).size,76);
 });
 test('every referenced background, fixed character atlas and prop exists in the shipped project',()=>{
- assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,37);
+ assert.equal(Object.keys(CAST).length,10);assert.equal(Object.keys(SCENES).length,40);
  for(const a of Object.values(manifest)){assert.equal(a.status,'ready');assert.ok(statSync(`public${a.path}`).size>1000,a.path);}
  for(const [id,c]of Object.entries(CAST)){const a=manifest[id];assert.equal(c.sprite,a.path);assert.ok(a.alpha);assert.equal(a.width/a.height,1.5);}
  for(const [id,s]of Object.entries(SCENES)){const a=manifest[id];assert.equal(s.image,a.path);assert.ok(a.width/a.height>1.7);}

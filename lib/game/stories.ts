@@ -1,3 +1,4 @@
+import {materializeShop} from './shop-stories';
 import type { Effects, Game, Option, StoryEvent } from './engine';
 import { debtTotal, investments } from './engine';
 import {choiceResearch,researchTarget} from './research';
@@ -162,7 +163,7 @@ const specs:SideSpec[]=[
  ['s46','重新整理的账本','自己','旧事','有一页同时记了借来的钱、工资和卖出股票收到的钱。总数很大，含义却混在一起。','把三种收款分开','花一个晚上，保留准确记录。','总额没有变，你却终于能说清哪些是收入。',{flags:{verified:1},fatigue:3,stress:-3},'先把眼前的工作做完','获得 600 元零工报酬。',{cash:600,fatigue:4},'心理账户与现金流分类'],
  ['s47','程姨寄来的失败作品','程姨','旧事','陶碗的口沿歪得厉害。程姨问你，是继续练还是换一种釉？她说已经买了不少材料。','劝她看下一炉的成本','不涉及资金。','她说那就少烧几只，试出合适的温度再说。',{relations:{cheng:3},flags:{boundary:1},stress:-2},'寄一笔钱支持再试一次','花费 600 元，作为赠与。',{cash:-600,relations:{cheng:5}},'沉没成本与边际决策'],
  ['s48','老同学的不同生活','陆川','旧事','同学聚会上，有人说买房，有人说换工作。轮到你时，大家问书店赚不赚钱。','讲一件书店里发生的小事','支付聚餐分摊 300 元。','你讲起周五来读书的学生，讲完发现有人一直在听。',{cash:-300,stress:-5,relations:{lu:3}},'只报一个账面最好的数字','支付聚餐分摊 300 元。',{cash:-300,confidence:7,stress:4,flags:{comparison:1}},'社会比较与参照依赖'],
- ['s49','旧窗又开始漏雨','阿棠','街坊','局部修好的屋顶经住了几场雨，后窗附近却又渗了水。师傅说，这次要处理里面的木梁。','修好木梁','花费 3,800 元。','你们把窗边的书搬开，晒了整整一个下午。',{cash:-3800,flags:{roof:1},stress:-3},'先搬开书，等下一季','本季不支出，保留维护问题。',{stress:5,flags:{roofDeferred:1}},'延迟维护的跨期成本',(s)=>!!s.flags.temporaryRoof],
+ ['s49','旧窗又开始漏雨','阿棠','街坊','局部修好的屋顶经住了几场雨，后窗附近却又渗了水。师傅说，这次要处理里面的木梁。','修好木梁','花费 3,800 元。','你们把窗边的书搬开，晒了整整一个下午。',{cash:-3800,flags:{roof:1},stress:-3},'先搬开书，等下一季','本季不支出，保留维护问题。',{stress:5,flags:{roofDeferred:1}},'延迟维护的跨期成本',(s)=>!!s.flags.temporaryRoof&&(!s.shop||s.shop.roof==='patched')],
  ['s50','借款后的第一个月','自己','期限','借款到账以后，现金看起来宽裕了许多。你重新看了一眼合同，本金之外，每季还要付息。','把到期日抄在日历上','不新增交易。','你在还本日期前留了一整页空白，准备安排资金。',{flags:{verified:1},stress:-3},'用一部分现金买入','买入澄川能源，总支出 5,000 元；原借款照常计息。',{buy:{asset:'power',budget:5000},stress:3},'杠杆幻觉与融资成本',(s)=>debtTotal(s)>0],
  ['s51','又一次想起买入价','自己','传闻','你看了几眼持仓，发现自己记得每一笔买价，却说不出公司的最近一季收入。','重读公开报表','花费 300 元核对历史材料。','那几个熟悉的价格，被你暂时盖在了另一张纸下面。',{cash:-300,research:'held',flags:{verified:1},stress:-3},'先不看，等价格回来','保留持仓与现金。',{flags:{anchoring:1},stress:4},'锚定与处置效应',(s)=>investments(s)>0],
  ['s52','门上的营业时间','阿棠','告别','阿棠写了两张营业时间。一张开到晚九点，另一张在周日多休半天。他把笔递给你。','留半天给各自的生活','不花钱，减少一次营业时段。','周日午后，你走出店门时，街道有一种平常见不到的亮。',{stress:-8,fatigue:-6,relations:{tang:5}},'多留一个晚上','花费 400 元照明与茶水，增加读者活动。',{cash:-400,flags:{readers:1,community:1},fatigue:4},'闲暇与经营收益的取舍',(s)=>!!s.flags.shop&&s.quarter>=7],
@@ -238,7 +239,7 @@ export function materialize(e:StoryEvent,s:Game):StoryEvent {
  result.atQuarter=s.quarter;
  for(const [index,option]of result.options.entries()){const target=choiceResearch(s,result,index);if(target)option.effects.research=researchTarget(s,target);}
  for(const option of result.options)for(const p of option.effects.promises??[]){if(p.due===0)p.due=s.quarter+1;else if(p.due<0)p.due=s.quarter-p.due;}
- return result;
+ return materializeShop(result,s);
 }
 
 export const QUOTES=[

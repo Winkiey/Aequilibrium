@@ -1,0 +1,747 @@
+{
+  "currentVersion": {
+    "modern": true,
+    "sampleSize": 200,
+    "sourceFingerprints": {
+      "engine": "5949fe57e6c6fcfd4ab798a212cd755d04f86ef96086c43ec70bcfbf99755a11",
+      "shop": "07034c20a382badd856fcdc38e0ed44b79c98e5459b74b50423a2c4296f63e52",
+      "shop-stories": "e87f17f1c7923067656fde2ff04b40ad6970bbe64f6eed674e7c8333c6bda4db",
+      "market": "052a9863b4431641544556b9404410d79f631aa7ce03648b51a7888281790ebf",
+      "research": "907cfc0d0953d2f62852ead9475749c11fbd8b21a7e281fa4e0400247818d1c4",
+      "investment": "762e543b50e56862509e44bc7402972a63a4c22fae09241ebe950917168d0ed4",
+      "stories": "47e3c8db5996c558f5fe0f40a3742d5aacb0c5fe5c47e99250a22a9e8cb24640",
+      "expansion": "a9a28fe18c3b150e766f805bb9b8996510fc0b3fa02e9d4f89995695e3f83345",
+      "news": "3116d1b86981b0cc58dcdc30788acc0c7ddf1432dd340b6578e49dd3e034d9d6"
+    },
+    "method": "Seeds 1..N, twelve quarters, no trading or borrowing. Offers frozen at entry. Full: takeover/reading/full roof/renewal/upkeep. Staged: same but patch then complete the actually offered follow-up. Cautious: takeover, no reading event, patch, no renewal, handover, decline extra repair. Community: full path, prefer reader/catalogue choices only among actually offered daily events and choose shared keys. CommunityPatch: community choices but retain the partial repair. Handover: full roof then no renewal/upkeep. Late: caretaker then takeover at quarter six. Cash: no shop. Same non-shop main/chapter answers except the explicitly stated shared keys; actual costs and deposits are recorded. Operating cash and profit are distinct; returned deposits are not sales.",
+    "policies": {
+      "full": {
+        "wealth": {
+          "mean": 115693.59,
+          "median": 116363.59,
+          "min": 103706.64,
+          "max": 122031.72,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 23993.59,
+          "median": 24663.59,
+          "min": 12006.64,
+          "max": 30331.72,
+          "positive": 200
+        },
+        "net": {
+          "mean": -17406.41,
+          "median": -16736.41,
+          "min": -29393.36,
+          "max": -11068.28,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 11.06,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 3487.97,
+          "median": 2770.24,
+          "min": 0,
+          "max": 12755.67,
+          "positive": 188
+        },
+        "depositsHeld": {
+          "mean": 15000,
+          "median": 15000,
+          "min": 15000,
+          "max": 15000,
+          "positive": 200
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "staged": {
+        "wealth": {
+          "mean": 113693.59,
+          "median": 114363.59,
+          "min": 101706.64,
+          "max": 120031.72,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 23993.59,
+          "median": 24663.59,
+          "min": 12006.64,
+          "max": 30331.72,
+          "positive": 200
+        },
+        "net": {
+          "mean": -19406.41,
+          "median": -18736.41,
+          "min": -31393.36,
+          "max": -13068.28,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 11.06,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 3487.97,
+          "median": 2770.24,
+          "min": 0,
+          "max": 12755.67,
+          "positive": 188
+        },
+        "depositsHeld": {
+          "mean": 15000,
+          "median": 15000,
+          "min": 15000,
+          "max": 15000,
+          "positive": 200
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "cautious": {
+        "wealth": {
+          "mean": 136791.51,
+          "median": 137274.36,
+          "min": 123613.07,
+          "max": 143124.16,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 16291.51,
+          "median": 16774.36,
+          "min": 3113.07,
+          "max": 22624.16,
+          "positive": 200
+        },
+        "net": {
+          "mean": 891.51,
+          "median": 1374.36,
+          "min": -12286.93,
+          "max": 7224.16,
+          "positive": 132
+        },
+        "positiveQuarters": {
+          "mean": 10.65,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 6039.19,
+          "median": 5532.35,
+          "min": 791.2,
+          "max": 17317.67,
+          "positive": 200
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 12000,
+          "median": 12000,
+          "min": 12000,
+          "max": 12000,
+          "positive": 200
+        }
+      },
+      "community": {
+        "wealth": {
+          "mean": 119192.37,
+          "median": 119679.04,
+          "min": 105128.22,
+          "max": 128161.81,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 27548.07,
+          "median": 28041.51,
+          "min": 13028.22,
+          "max": 36761.81,
+          "positive": 200
+        },
+        "net": {
+          "mean": -13907.63,
+          "median": -13420.96,
+          "min": -27971.78,
+          "max": -4938.19,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 11.06,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 3487.97,
+          "median": 2770.24,
+          "min": 0,
+          "max": 12755.67,
+          "positive": 188
+        },
+        "depositsHeld": {
+          "mean": 15000,
+          "median": 15000,
+          "min": 15000,
+          "max": 15000,
+          "positive": 200
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "communityPatch": {
+        "wealth": {
+          "mean": 130360.18,
+          "median": 130561.04,
+          "min": 116224.27,
+          "max": 140516.67,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 23687.28,
+          "median": 23973.79,
+          "min": 9124.27,
+          "max": 34376.67,
+          "positive": 200
+        },
+        "net": {
+          "mean": -2739.82,
+          "median": -2538.96,
+          "min": -16875.73,
+          "max": 7416.67,
+          "positive": 58
+        },
+        "positiveQuarters": {
+          "mean": 11.01,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 6039.19,
+          "median": 5532.35,
+          "min": 791.2,
+          "max": 17317.67,
+          "positive": 200
+        },
+        "depositsHeld": {
+          "mean": 15000,
+          "median": 15000,
+          "min": 15000,
+          "max": 15000,
+          "positive": 200
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "handover": {
+        "wealth": {
+          "mean": 123693.59,
+          "median": 124363.59,
+          "min": 111706.64,
+          "max": 130031.72,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 23993.59,
+          "median": 24663.59,
+          "min": 12006.64,
+          "max": 30331.72,
+          "positive": 200
+        },
+        "net": {
+          "mean": -9406.41,
+          "median": -8736.41,
+          "min": -21393.36,
+          "max": -3068.28,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 11.06,
+          "median": 11,
+          "min": 7,
+          "max": 12,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 3487.97,
+          "median": 2770.24,
+          "min": 0,
+          "max": 12755.67,
+          "positive": 188
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 12000,
+          "median": 12000,
+          "min": 12000,
+          "max": 12000,
+          "positive": 200
+        }
+      },
+      "late": {
+        "wealth": {
+          "mean": 139845.15,
+          "median": 139965.54,
+          "min": 136462.41,
+          "max": 142515.86,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 12345.15,
+          "median": 12465.54,
+          "min": 8962.41,
+          "max": 15015.86,
+          "positive": 200
+        },
+        "net": {
+          "mean": 3945.15,
+          "median": 4065.54,
+          "min": 562.41,
+          "max": 6615.86,
+          "positive": 200
+        },
+        "positiveQuarters": {
+          "mean": 6.48,
+          "median": 6,
+          "min": 6,
+          "max": 7,
+          "positive": 200
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 15000,
+          "median": 15000,
+          "min": 15000,
+          "max": 15000,
+          "positive": 200
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "cash": {
+        "wealth": {
+          "mean": 135500,
+          "median": 135500,
+          "min": 135500,
+          "max": 135500,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      }
+    }
+  },
+  "priorVersion": {
+    "modern": false,
+    "sampleSize": 200,
+    "sourceFingerprints": {
+      "engine": "5899bf5120b65d6518144084ce69aabe428b892011f9d76e13f15c4c3c1f0132",
+      "market": "052a9863b4431641544556b9404410d79f631aa7ce03648b51a7888281790ebf",
+      "research": "907cfc0d0953d2f62852ead9475749c11fbd8b21a7e281fa4e0400247818d1c4",
+      "investment": "762e543b50e56862509e44bc7402972a63a4c22fae09241ebe950917168d0ed4",
+      "stories": "29f32aa43fc0779ba5ebd46e52208b22199293595bfedd16f0133f1dcb7e1ba0",
+      "expansion": "a9a28fe18c3b150e766f805bb9b8996510fc0b3fa02e9d4f89995695e3f83345",
+      "news": "3116d1b86981b0cc58dcdc30788acc0c7ddf1432dd340b6578e49dd3e034d9d6"
+    },
+    "method": "Seeds 1..N, twelve quarters, no trading or borrowing. Offers frozen at entry. Full: takeover/reading/full roof/renewal/upkeep. Staged: same but patch then complete the actually offered follow-up. Cautious: takeover, no reading event, patch, no renewal, handover, decline extra repair. Community: full path, prefer reader/catalogue choices only among actually offered daily events and choose shared keys. Handover: full roof then no renewal/upkeep. Late: caretaker then takeover at quarter six. Cash: no shop. Same non-shop main/chapter answers except the explicitly stated shared keys; actual costs and deposits are recorded. Operating cash and profit are distinct; returned deposits are not sales.",
+    "policies": {
+      "full": {
+        "wealth": {
+          "mean": 55312.2,
+          "median": 55540.82,
+          "min": 50866.26,
+          "max": 57961.93,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -9387.8,
+          "median": -9159.18,
+          "min": -13833.74,
+          "max": -6738.07,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "staged": {
+        "wealth": {
+          "mean": 69970.2,
+          "median": 70368.77,
+          "min": 63091.85,
+          "max": 72790.13,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -9387.8,
+          "median": -9159.18,
+          "min": -13833.74,
+          "max": -6738.07,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "cautious": {
+        "wealth": {
+          "mean": 95262.2,
+          "median": 95490.82,
+          "min": 90816.26,
+          "max": 97911.93,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -13237.8,
+          "median": -13009.18,
+          "min": -17683.74,
+          "max": -10588.07,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "community": {
+        "wealth": {
+          "mean": 57583.25,
+          "median": 57540.89,
+          "min": 51691.4,
+          "max": 64572.16,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -7061.05,
+          "median": -7079.37,
+          "min": -13408.6,
+          "max": 132.16,
+          "positive": 2
+        },
+        "positiveQuarters": {
+          "mean": 0.94,
+          "median": 0,
+          "min": 0,
+          "max": 9,
+          "positive": 78
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "handover": {
+        "wealth": {
+          "mean": 78312.2,
+          "median": 78540.82,
+          "min": 73866.26,
+          "max": 80961.93,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -9387.8,
+          "median": -9159.18,
+          "min": -13833.74,
+          "max": -6738.07,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "late": {
+        "wealth": {
+          "mean": 104466.14,
+          "median": 104541.82,
+          "min": 100292.72,
+          "max": 106870.03,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": -8033.86,
+          "median": -7958.18,
+          "min": -12207.28,
+          "max": -5629.97,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      },
+      "cash": {
+        "wealth": {
+          "mean": 135500,
+          "median": 135500,
+          "min": 135500,
+          "max": 135500,
+          "positive": 200
+        },
+        "operatingCash": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "positiveQuarters": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "damage": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsHeld": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        },
+        "depositsReturned": {
+          "mean": 0,
+          "median": 0,
+          "min": 0,
+          "max": 0,
+          "positive": 0
+        }
+      }
+    }
+  },
+  "baselineCommit": "ecfa59ed24302c4631f12045016d95c1d91fea35",
+  "interpretation": "Paired common policies use seeds 1..200. No stock trades or borrowing. CommunityPatch exists only in the new summary. Operating cash, profit after attributed shop expenses, total wealth and refundable deposits are distinct. These policies are examples, not optimal play or a promise of profit."
+}

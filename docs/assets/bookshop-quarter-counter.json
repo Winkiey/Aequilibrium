@@ -1,0 +1,10 @@
+{
+  "id": "bookshop-quarter-counter",
+  "kind": "background",
+  "path": "/art/backgrounds/bookshop-quarter-counter.webp",
+  "source": "bookshop-quarter-counter.png",
+  "width": 1671,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

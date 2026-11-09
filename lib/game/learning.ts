@@ -21,6 +21,8 @@ export function decisionFacts(option:Option,game?:Game){
  const e=option.effects,now=(game?effectiveCash(game,e):e.cash??0)-(e.buy?.budget??0),facts:{label:string;text:string}[]=[];
  facts.push({label:'现在',text:e.sell?'会卖出部分持仓，净到账按成交回单核对':now<0?`支付 ¥${money(-now)}`:now>0?`收到 ¥${money(now)}`:'没有即时现金收支'});
  if(e.research&&game){const id=researchTarget(game,e.research);facts.push({label:'材料',text:evidenceFor(game,id)?'本季同一份材料已核验，不重复收费':`核验 ${game.assets.find(a=>a.id===id)?.name??id} 本季材料，文件会保存在公司资料中`});}
+ if(e.shop?.deposit)facts.push({label:'押金',text:`其中 ¥${money(e.shop.deposit)} 为可退押金，余款是已发生的费用；押金不能当作手头现金`});
+ if(e.shop?.roof)facts.push({label:'修缮',text:e.shop.roof==='sound'?'完整修缮须付款验收后生效；已完工部分才减少之后的漏雨风险':'局部修补保留未修部分的雨季风险'});
  if(e.buy)facts.push({label:'投入',text:`其中 ¥${money(e.buy.budget)} 用于买入股份，之后会随价格变化`});
  for(const p of e.promises??[])facts.push({label:'以后',text:`第${p.due}季${p.kind==='payment'?'须付':'预计收回'} ¥${money(p.amount)} · ${p.label}${p.kind==='receipt'&&(p.chance??.7)<1?'（可能无法收回）':''}`});
  for(const p of game?.promises??[])if(p.status==='pending'&&p.kind==='payment'&&p.due<=game!.quarter&&!(e.cancelPayment&&p.id.includes(e.cancelPayment)))facts.push({label:'已约定',text:`本季结算仍须付 ¥${money(p.amount)} · ${p.label}`});

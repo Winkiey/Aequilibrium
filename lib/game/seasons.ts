@@ -12,6 +12,7 @@ const outside=(x=9,y=96,width=13,night=false):SeasonPlacement=>({outdoors:true,p
 // Positions are in painting coordinates so seasonal objects keep their place
 // through the same cover/camera transforms as the authored scene.
 export const SEASON_PLACEMENTS:Record<SceneId,SeasonPlacement>={
+ 'bookshop-roof-sound':inside(23.5,65,6.5,[59,6,39,55]),'bookshop-roof-patch':inside(23.5,65,6.5,[59,6,39,55]),'bookshop-quarter-counter':inside(23.5,65,6.5,[59,6,39,55]),
  'bookshop-pledge':inside(63,78,7,[61,3,37,48],true),'attic-kept-letter':inside(48,72,7,[40,3,19,40],true),
  'reading-gathering':inside(52,73,6,[63,2,35,50],true),'proof-solitary':inside(40,70,5,[39,7,20,39],true),
  'bookshop-night':inside(23.5,65,6.5,[59,6,39,55],true),'bookshop-day':inside(23.5,65,6.5,[59,6,39,55]),

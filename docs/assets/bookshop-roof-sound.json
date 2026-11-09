@@ -1,0 +1,10 @@
+{
+  "id": "bookshop-roof-sound",
+  "kind": "background",
+  "path": "/art/backgrounds/bookshop-roof-sound.webp",
+  "source": "bookshop-roof-sound.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

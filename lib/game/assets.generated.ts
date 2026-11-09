@@ -533,5 +533,41 @@ export const ASSETS = {
       "bytes": 31860
     },
     "placeholder": "data:image/webp;base64,UklGRswAAABXRUJQVlA4IMAAAABwBQCdASowABsAPvFiqk6ppaQiNVgMATAeCWUAvVgcuad9G1TgELL7jWhu1dlNjiak5h0AAP7uHxlbK3bka3VUwzu8v3iwrbMWenuAqwn6UO+bb9dA9i4DQ1sBEmW/zqlnzc9/wQHBuMh79qry37SqCbJRUrSdxHDtaaq1NKHm867cST4uYIBTf2P/OdAO22kUeK4DvDxr737aGNaU1pi1YtgU4qYRbaIBUL/kNnMkv4u1QtTSOT1tAe/CIXYAAAA="
+  },
+  "/art/backgrounds/bookshop-roof-sound.webp": {
+    "src": "/art/runtime/bookshop-roof-sound-1440.df09b9efe2.webp",
+    "width": 1440,
+    "bytes": 93284,
+    "height": 810,
+    "small": {
+      "src": "/art/runtime/bookshop-roof-sound-960.6348d54136.webp",
+      "width": 960,
+      "bytes": 49578
+    },
+    "placeholder": "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAABwBgCdASowABsAPwFusVCrJiSiqqoBYCAJZwDKAqxQQ74Bkz2c5Uut/nbs0jwvS8aHkZ410kyEUc95TiAA/szX4pVlUEuYfFiB4+H9sMSWlXQ9WuHxR26UIHtbEFjvTXqgociyD3Z9/Q6oHVA2CM1eBkPp2aVKB/9zzGhdPusrRAWma4lsSzUpflJzijWnNMK9ENUBZrfMW1ro/usWh2vMXFgKv5RStsSYPPZZWthWyx9a+lSwpK1yKvjtBUsrqt08uaLLnczZuxKPVjPfEg9mwgIlqh77DYjCE8iUeDyQfpFsGqcfPS+bJyKK7vlQDli1ydkOzvqJQDxxAAA="
+  },
+  "/art/backgrounds/bookshop-roof-patch.webp": {
+    "src": "/art/runtime/bookshop-roof-patch-1440.8fc2ebad0c.webp",
+    "width": 1440,
+    "bytes": 97134,
+    "height": 810,
+    "small": {
+      "src": "/art/runtime/bookshop-roof-patch-960.c483f7ce2e.webp",
+      "width": 960,
+      "bytes": 51446
+    },
+    "placeholder": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAAAQBgCdASowABsAPv1qpk6rJiMiMBqtUWAfiWdMDNAG3jCkCsxCWs2qOiyRqfxe+jrTpXNQHY0V6SAA/umdKO33d5GIRvMm7B2qQW+VsypxMAJeW5AfPI6gpfGd1dgv4vZXqWURT4y73beDt97eHNEOlQFDSPnfjbuRMMp4thQNHNCcCsAJDI4TpdY2tZ9TklBVUaguD5bvkdmnZQNRsiZSeya3HZzl1lfwEL1kOgCw+lbgeqcKhc/tV+dvLrwJFeOFWRZjEArGbPy8wjK+HdaYBJ/mZpfbEo0MzNOcUEeFesaP47tpT5uq8FOIhQAA"
+  },
+  "/art/backgrounds/bookshop-quarter-counter.webp": {
+    "src": "/art/runtime/bookshop-quarter-counter-1440.2a6d72b29c.webp",
+    "width": 1440,
+    "bytes": 97212,
+    "height": 811,
+    "small": {
+      "src": "/art/runtime/bookshop-quarter-counter-960.d5fba964f7.webp",
+      "width": 960,
+      "bytes": 52280
+    },
+    "placeholder": "data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAADQBgCdASowABsAPwFusVCrJiSiqqoBYCAJZwDIXzHIhEy3Z7RdoQXfr1sZe47Uo7IR432q8JMS1TtPgHxwvAAA/syJRe8n0qcnGWWhKHSiW4K5orki7jpo6mQr64QGAZCirYvauYE5kWHOouwruFuAxBBUnOHVb5eisI6X24za0GTpBT+7aiuhvEHNXwlk5QfKBsZ/t6kAg6blJBfEc7df+8hTf04Qo7U10blCq/feK6OnZE3t2wiPiGuqphZ6/vK0Jn+0i7wSOGeviTeX7pSuI1XjUvIpt/1BSF7w/cq0v6SK2NTcRkAIkROknPbGFTBuxQO0KeGu5SrYjDYUxpA3oGinDPTve62uKm+Z1xh/8d8MAAA="
   }
 } as const;

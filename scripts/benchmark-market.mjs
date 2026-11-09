@@ -6,7 +6,7 @@ import ts from 'typescript';
 const count=Number(process.argv[2]??500);
 if(!Number.isInteger(count)||count<2||count>2000)throw new Error('Choose 2..2000 seeds.');
 const out=path.resolve('.sites-runtime/market-benchmark');mkdirSync(out,{recursive:true});
-for(const file of ['engine','market','research','investment','stories','expansion','news']){
+for(const file of ['shop','shop-stories','engine','market','research','investment','stories','expansion','news']){
  const text=ts.transpileModule(readFileSync(`lib/game/${file}.ts`,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;
  writeFileSync(path.join(out,file+'.mjs'),text.replace(/from '(.\/[^']+)'/g,"from '$1.mjs'"));
 }

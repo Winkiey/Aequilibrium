@@ -1,0 +1,10 @@
+{
+  "id": "bookshop-roof-patch",
+  "kind": "background",
+  "path": "/art/backgrounds/bookshop-roof-patch.webp",
+  "source": "bookshop-roof-patch.png",
+  "width": 1672,
+  "height": 941,
+  "alpha": false,
+  "status": "ready"
+}

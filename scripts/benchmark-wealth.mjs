@@ -8,7 +8,7 @@ const count=Number(process.argv[2]??200),sourceRoot=path.resolve(process.argv[3]
 if(!Number.isInteger(count)||count<2||count>1000)throw new Error('Choose 2..1000 seeds.');
 const out=path.resolve('.sites-runtime/wealth-benchmark'),modules=path.join(out,'modules');mkdirSync(modules,{recursive:true});
 const sourceFingerprints={};
-for(const file of ['engine','market','research','investment','stories','expansion','news']){
+for(const file of ['shop','shop-stories','engine','market','research','investment','stories','expansion','news']){
  const filePath=path.join(sourceRoot,'lib/game',file+'.ts');if(!existsSync(filePath))continue;
  const source=readFileSync(filePath,'utf8').replace(/\r\n/g,'\n');sourceFingerprints[file]=createHash('sha256').update(source).digest('hex');
  const text=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}}).outputText;

@@ -17,6 +17,8 @@ React19、TypeScript与Vite。游戏状态转换集中在lib/game/engine.ts；�
 
 发布使用现有Winkiey/Aequilibrium与GitHub Pages工作流。不要另建站点或改变原Sites访问范围。未完成验收的内容应在制作状态中标记，不能用静态检查代替实际浏览器体验。
 
-证券市场第一批机制与旧档过渡见 [市场v2](MARKET_V2.md)。`node scripts/benchmark-market.mjs 500` 用公开信息、相同种子及真实交易费用对照策略，汇总记录在 [策略实验](MARKET_BENCHMARK.json)。书店经营按用户要求保持原样。
+证券市场第一批机制与旧档过渡见 [市场v2](MARKET_V2.md)。`node scripts/benchmark-market.mjs 500` 用公开信息、相同种子及真实交易费用对照策略，汇总记录在 [策略实验](MARKET_BENCHMARK.json)。此份市场实验保留为当时版本的历史记录。
 
 核验档案、现金留存、分红除息和投资贡献见 [判断与回报](JUDGMENT_AND_RETURNS.md)。`node scripts/benchmark-wealth.mjs 200 [源码目录]` 可使用同本金对照旧版与当前版；[收益实验](RETURNS_BENCHMARK.json)保留源码指纹与真实方法。旧市场v2文档和数据是当时版本的历史记录，不作为当前结果。
+
+书屋经营与旧季度过渡见[书屋机制](BOOKSHOP_MECHANICS.md)，200种子经营实验见[数据](BOOKSHOP_BENCHMARK.json)。`lib/game/shop.ts`负责押金、经营结算与汇总，`shop-stories.ts`只为新事件冻结经营条款；`ShopStatement.tsx`呈现经营单。不要将退回本金计作收入，也不要在工程尚未付款时给予完整保护。

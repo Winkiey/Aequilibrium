@@ -550,6 +550,39 @@
       "alpha": false,
       "status": "ready",
       "promptSource": "docs/ONBOARDING_ART_PROMPTS.json"
+    },
+    "bookshop-roof-sound": {
+      "id": "bookshop-roof-sound",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-roof-sound.webp",
+      "source": "exec-2fe5d175-8857-49cb-beed-c468a5b13eeb.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/SHOP_ART_PROMPTS.json"
+    },
+    "bookshop-roof-patch": {
+      "id": "bookshop-roof-patch",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-roof-patch.webp",
+      "source": "exec-7d80312f-57f7-4035-85b5-23b51a2d8234.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/SHOP_ART_PROMPTS.json"
+    },
+    "bookshop-quarter-counter": {
+      "id": "bookshop-quarter-counter",
+      "kind": "background",
+      "path": "/art/backgrounds/bookshop-quarter-counter.webp",
+      "source": "exec-345ce688-871a-4aae-ac50-4cee160e8fe7.png",
+      "width": 1671,
+      "height": 941,
+      "alpha": false,
+      "status": "ready",
+      "promptSource": "docs/SHOP_ART_PROMPTS.json"
     }
   }
 }

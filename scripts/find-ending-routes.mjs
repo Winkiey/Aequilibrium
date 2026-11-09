@@ -22,8 +22,8 @@ function replays(route){
  }catch{return false;}
 }
 for(const [name,route]of Object.entries(found))if(!replays(route)){delete found[name];console.log(`Rebuilding changed route: ${name}`);}
-const targets={paper:'纸上春秋',family:'归途有约',coast:'潮声入梦',mutual:'同灯共守',ordinary:'寻常岁月',retire:'激流勇退',shop:'泊灯长明',community:'长桌人间',fraud:'铁窗四季',signal:'知止乘潮',harbor:'知止乘潮',urban:'知止乘潮',ruin:'余烬重燃',lonely:'独自抵达'};
-const plans=['paper','family','coast','mutual','ordinary','retire','shop','community','fraud','signal','harbor','urban','ruin','lonely'];
+const targets={paper:'纸上春秋',family:'归途有约',coast:'潮声入梦',mutual:'同灯共守',ordinary:'寻常岁月',retire:'激流勇退',shop:'泊灯长明',community:'长桌人间',fraud:'铁窗四季',signal:'知止乘潮',harbor:'知止乘潮',urban:'知止乘潮',ruin:'余烬重燃',ruinUrban:'余烬重燃',ruinHarbor:'余烬重燃',ruinNoShop:'余烬重燃',ruinChurn:'余烬重燃',lonely:'独自抵达'};
+const plans=['paper','family','coast','mutual','ordinary','retire','shop','community','fraud','signal','harbor','urban','ruin','ruinUrban','ruinHarbor','ruinNoShop','ruinChurn','lonely'];
 const metrics={};
 function play(seed,plan){
  let s=createGame(seed);const actions=[];
@@ -34,7 +34,8 @@ function play(seed,plan){
   if(plan==='community'&&[2,11,12].includes(quarter))index=0;
   if(plan==='fraud'&&quarter===10)index=0;
   if(plan==='retire'&&quarter===9)index=0;
-  if(plan==='ruin')index=[1,3,4,6,7,9,11].includes(quarter)?0:1;
+  if(plan.startsWith('ruin'))index=[1,2,3,4,6,7,8,9,11,12].includes(quarter)?0:1;
+  if(plan==='ruinNoShop'&&[1,6].includes(quarter))index=1;
   if(plan==='lonely'){index=[1,4,5,6].includes(quarter)?0:1;if(quarter===5&&s.cash<4500){const a=s.assets.find(a=>a.id==='power');if(a.units>0){const amount=Math.min(a.units*a.price,(4500-s.cash)*1.1);act('trade',{asset:'power',side:'sell',amount},()=>trade(s,'power','sell',amount));}}}
   const required=Math.max(0,(main.options[index].effects.buy?.budget??0)-(main.options[index].effects.cash??0));
   if(s.cash<required)for(const a of s.assets.filter(a=>a.units>0).sort((a,b)=>b.units*b.price-a.units*a.price)){if(s.cash>=required)break;const amount=Math.min(a.units*a.price,(required-s.cash)*1.12+10);act('trade',{asset:a.id,side:'sell',amount},()=>trade(s,a.id,'sell',amount));}
@@ -45,17 +46,18 @@ function play(seed,plan){
    if((plan==='paper'&&side.id==='s57')||(plan==='family'&&side.id==='s53')||(plan==='coast'&&side.id==='s54')||(plan==='mutual'&&['s56','s59'].includes(side.id)))si=0;
    if(plan==='community'&&(side.options[0].effects.flags?.community??0)>0)si=0;
    if(plan==='fraud'&&side.options[0].effects.fraud)si=0;
-   if(plan==='ruin')si=side.options[0].effects.cash<0?0:1;
+   if(plan.startsWith('ruin')){const immediate=o=>(o.effects.cash??0)-(o.effects.buy?.budget??0);si=immediate(side.options[0])<immediate(side.options[1])?0:1;}
    if(plan==='lonely'){const promises=i=>(side.options[i].effects.promises??[]).filter(p=>p.kind==='payment').length;si=promises(0)>promises(1)?0:1;}
    if(plan==='retire'&&side.options[si].effects.buy)si=1-si;
    if(optionError(s,side.options[si]))si=1-si;if(!optionError(s,side.options[si]))act('choice',{id:side.id,index:si},()=>choose(s,side,si,'side'));
   }
   if(['signal','harbor','urban'].includes(plan)&&quarter===1){const amount=Math.max(0,s.cash-1000);act('trade',{asset:plan,side:'buy',amount},()=>trade(s,plan,'buy',amount));}
-  if(plan==='ruin'){
+  if(plan.startsWith('ruin')){
    if(quarter<=8&&s.debt.length<2)act('borrow',{},()=>borrow(s));
    for(const a of s.assets.filter(a=>a.units>0))act('trade',{asset:a.id,side:'sell',amount:a.units*a.price},()=>trade(s,a.id,'sell',a.units*a.price));
-   const asset='signal';if(s.cash>1)act('trade',{asset,side:'buy',amount:s.cash},()=>trade(s,asset,'buy',s.cash));
+   const asset=plan==='ruinUrban'?'urban':plan==='ruinHarbor'?'harbor':'signal';if(s.cash>1)act('trade',{asset,side:'buy',amount:s.cash},()=>trade(s,asset,'buy',s.cash));
   }
+  if(plan==='ruinChurn')for(const a of s.assets.filter(a=>a.units>0))act('trade',{asset:a.id,side:'sell',amount:a.units*a.price},()=>trade(s,a.id,'sell',a.units*a.price));
   if(plan==='lonely'){if(quarter<=8&&s.debt.length<2)act('borrow',{},()=>borrow(s));if(s.cash>1)act('trade',{asset:'power',side:'buy',amount:s.cash},()=>trade(s,'power','buy',s.cash));}
   if(plan==='retire'&&quarter>=11)for(const a of s.assets.filter(a=>a.units>0))act('trade',{asset:a.id,side:'sell',amount:a.units*a.price},()=>trade(s,a.id,'sell',a.units*a.price));
   if(pendingChapter(s))return null;

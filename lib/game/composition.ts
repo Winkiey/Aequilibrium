@@ -9,6 +9,9 @@ const outside=(actors:[number,number,number,number,number,number]=[64,91,61,80,8
  * Outdoor paperwork uses an explicit close-reading insert, never a floor/table fiction.
  */
 export const SCENE_LAYOUTS:Record<SceneId,SceneLayout>={
+ 'bookshop-roof-sound':room([20,75],[10,80],8,[62,91,62,78,89,60],{letter:[11,77.5],key:[19,75],lamp:[14,48],window:[79,30]},'desk'),
+ 'bookshop-roof-patch':room([20,75],[10,80],8,[65,91,60,80,89,59],{letter:[11,77.5],key:[19,75],lamp:[14,48],window:[79,30]},'desk'),
+ 'bookshop-quarter-counter':room([20,78],[33,76],8,[63,91,61,79,89,59],{ledger:[17,78],receipt:[32,76],key:[36,82],lamp:[14,48],window:[79,30]},'desk'),
  'bookshop-night':room([20,75],[10,80],8,[62,91,62,78,89,60],{letter:[11.2,77.5],key:[19,75],lamp:[14,48],window:[79,30]},'desk'),
  'bookshop-day':room([20,75],[10,80],8,[62,91,62,78,89,60],{letter:[11,77.5],key:[19,75],lamp:[14,48],window:[79,30]},'desk'),
  'reading-room':room([28,74],[18,80],7,[62,91,62,79,89,60],{book:[12,72],cup:[25,67],lamp:[35,44],window:[79,28]},'desk'),

@@ -1,3 +1,4 @@
+import {shopOutcomeBeats,SHOP_OUTCOMES} from './shop-stories';
 import type { Beat, CastId, SceneId, VisualScript } from './cinematic-content';
 import { shortLines, responseDialogue } from './dialogue';
 export { shortLines } from './dialogue';
@@ -20,6 +21,9 @@ export const CAST:Record<CastId,{name:string;role:string;accent:string;sprite:st
  ning:{name:'顾宁',role:'往来的客户',accent:'#b9a2a4',sprite:'/art/characters/ning.webp'},
 };
 export const SCENES:Record<SceneId,{name:string;image:string;weather:'rain'|'dust'|'none';origin:[number,number]}>={
+ 'bookshop-roof-sound':{name:'书屋 · 整修后的窗边',image:'/art/backgrounds/bookshop-roof-sound.webp',weather:'dust',origin:[55,50]},
+ 'bookshop-roof-patch':{name:'书屋 · 尚未修完的屋面',image:'/art/backgrounds/bookshop-roof-patch.webp',weather:'rain',origin:[55,50]},
+ 'bookshop-quarter-counter':{name:'书屋柜台 · 经营单',image:'/art/backgrounds/bookshop-quarter-counter.webp',weather:'dust',origin:[55,50]},
  'bookshop-pledge':{name:'雨夜柜台 · 展开的租约',image:'/art/backgrounds/bookshop-pledge.webp',weather:'rain',origin:[36,68]},
  'attic-kept-letter':{name:'楼上 · 收好的来信',image:'/art/backgrounds/attic-kept-letter.webp',weather:'rain',origin:[30,70]},
  'reading-gathering':{name:'冬夜 · 留给街坊的长桌',image:'/art/backgrounds/reading-gathering.webp',weather:'none',origin:[42,66]},
@@ -74,15 +78,16 @@ export const OBJECT_INSPECTIONS:Record<Focus,string>={
  key:'铜面被磨得发暗，齿口还留着常年使用的痕迹。',letter:'折痕已经压实，纸张边缘微微发软。',ledger:'页边有旧折角，空白处还可以继续往下记。',cup:'杯沿有细小的使用痕迹，灯影落在里面。',receipt:'薄纸沿折线展开，边缘留下了夹取的痕迹。',book:'书脊已经磨软，有几页被反复翻过。',window:'隔着窗玻璃，近处与远处的声音分得很清楚。',phone:'屏幕把那一小块桌面照亮，四周仍然很安静。',ticket:'票纸很薄，手指停在没有印字的边缘。',contract:'纸页摊在面前，沿折痕可以重新收好。',lamp:'灯光只照亮手边一小片地方，墙角仍留在暗处。',
 };
 export function getScript(event:StoryEvent):VisualScript {
- const script=STORYBOARDS[event.id];if(!script)throw new Error(`缺少分镜：${event.id}`);return script;
+ const base=STORYBOARDS[event.id];const script=event.shopRevision===1&&SHOP_OUTCOMES[event.id]&&(shopOutcomeBeats(event,0)||shopOutcomeBeats(event,1))?{...base,outcomes:SHOP_OUTCOMES[event.id]}:base;if(!script)throw new Error(`缺少分镜：${event.id}`);return script;
 }
 export const OUTCOME_REVISION=2;
 export function hasAuthoredOutcome(event:StoryEvent,index:0|1):boolean{
- return OUTCOME_RESPONSE_KEYS[event.id]?.[index]===outcomeResponseKey(event.options[index].response);
+ return !!shopOutcomeBeats(event,index)||OUTCOME_RESPONSE_KEYS[event.id]?.[index]===outcomeResponseKey(event.options[index].response);
 }
 export function outcomeBeats(event:StoryEvent,script:VisualScript,index:0|1):Beat[]{
  // A performance and its history summary describe ONE response. Never concatenate
  // them. A changed/legacy response owns its words, including amounts and dates.
+ const shop=shopOutcomeBeats(event,index);if(shop)return shop.map(beat=>({...beat}));
  if(hasAuthoredOutcome(event,index))return script.outcomes[index].map(beat=>({...beat}));
  const reply=responseDialogue(event.options[index].response,event.sender,script.cast);
  return (reply.length?reply:[{speaker:'narrator' as const,text:'这一段答复已经记下。'}]).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:'quiet' as const}));
@@ -112,6 +117,6 @@ export const OUTCOME_SCENES:Record<string,[SceneId,SceneId]>={
  s43:['old-street','bookshop-day'],s44:['reading-room','bookshop-day'],s45:['attic','attic'],s46:['attic','factory'],s47:['pottery','pottery'],s48:['noodle-shop','old-street'],
  s49:['roof','bookshop-day'],s50:['bank','attic'],s51:['archive','attic'],s52:['old-street','reading-room'],
 };
-export function outcomeScene(id:string,index:0|1,base:SceneId):SceneId{return OUTCOME_SCENES[id]?.[index]??base;}
+export function outcomeScene(id:string,index:0|1,base:SceneId,event?:StoryEvent):SceneId{if(event?.shopRevision===1&&id==='s49'&&shopOutcomeBeats(event,index))return index===0?'bookshop-roof-sound':'bookshop-roof-patch';return OUTCOME_SCENES[id]?.[index]??base;}
 export function visualSeed(id:string){return Array.from(id).reduce((n,c)=>n+c.codePointAt(0)!,0);}
 export const requiredVisuals=()=>({events:Object.keys(STORYBOARDS).length,outcomes:Object.values(STORYBOARDS).reduce((n,s)=>n+s.outcomes.length,0),characters:Object.keys(CAST),locations:Object.keys(SCENES)});

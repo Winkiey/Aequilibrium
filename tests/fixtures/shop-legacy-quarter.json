@@ -1,0 +1,2760 @@
+{
+  "source": "ecfa59ed24302c4631f12045016d95c1d91fea35",
+  "before": {
+    "version": 1,
+    "seed": 73,
+    "quarter": 4,
+    "finished": false,
+    "cash": 99896.42,
+    "assets": [
+      {
+        "id": "harbor",
+        "name": "雾港冷链",
+        "industry": "港务 · 物流",
+        "code": "CG.016",
+        "description": "新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。",
+        "price": 25.11,
+        "initial": 24.8,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          22.47,
+          23.01,
+          23.39,
+          23.08,
+          22.77,
+          22.92,
+          24.04,
+          24.32,
+          24.62,
+          23.67,
+          23.65,
+          24.12,
+          24.8,
+          24.83,
+          23.65,
+          25.11
+        ],
+        "revenue": 3561.98,
+        "cashflow": 197.1,
+        "debtRatio": 45.1,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 24.8,
+            "revenue": 3860,
+            "cashflow": 342,
+            "debtRatio": 46
+          },
+          {
+            "quarter": 1,
+            "price": 24.83,
+            "revenue": 3768.34,
+            "cashflow": 171.07,
+            "debtRatio": 45.7
+          },
+          {
+            "quarter": 2,
+            "price": 23.65,
+            "revenue": 3394.79,
+            "cashflow": 150.36,
+            "debtRatio": 45.4
+          },
+          {
+            "quarter": 3,
+            "price": 25.11,
+            "revenue": 3561.98,
+            "cashflow": 197.1,
+            "debtRatio": 45.1
+          }
+        ],
+        "fundamental": 22.706081057422413,
+        "trueRevenue": 3561.98,
+        "trueCashflow": 197.1,
+        "business": {
+          "referenceRevenue": 3860,
+          "referenceCashRatio": 0.08860103626943006,
+          "referenceDebt": 46,
+          "referencePrice": 24.8,
+          "notice": {
+            "quarter": 4,
+            "kind": "collection",
+            "direction": -1,
+            "title": "回款日期需要再确认",
+            "fact": "冷库扩建与生鲜运输：部分客户申请延长付款期限，交付与收款可能分属不同季度。",
+            "uncertainty": "延期能否缩短、剩余款项何时到账，仍需跟踪。",
+            "check": "把营收和经营现金净额放在一起看，继续核对融资压力。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -91.66,
+              "cashChange": -170.93,
+              "debtChange": -0.3,
+              "priceChange": 0.12,
+              "fact": "客户对账单与付款条件覆盖这项计划的70%；本季按所列条件落实。",
+              "dividendPerUnit": 0.05,
+              "cumDividendPrice": 24.88,
+              "retainedPerUnit": 0.11
+            },
+            {
+              "quarter": 2,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -373.55,
+              "cashChange": -20.71,
+              "debtChange": -0.3,
+              "priceChange": -4.75,
+              "fact": "订单确认函与验收条款覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.04,
+              "cumDividendPrice": 23.69,
+              "retainedPerUnit": 0.1
+            },
+            {
+              "quarter": 3,
+              "title": "采购与维护报价上移",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 167.19,
+              "cashChange": 46.74,
+              "debtChange": -0.3,
+              "priceChange": 6.17,
+              "fact": "采购报价单与适用范围覆盖这项计划的70%；本季按所列条件落实。",
+              "dividendPerUnit": 0.06,
+              "cumDividendPrice": 25.17,
+              "retainedPerUnit": 0.12
+            }
+          ],
+          "capital": 0.3264027958549223,
+          "terms": {
+            "quarter": 4,
+            "status": "conditional",
+            "coverage": 70,
+            "source": "客户对账单与付款条件"
+          }
+        }
+      },
+      {
+        "id": "power",
+        "name": "澄川能源",
+        "industry": "公用 · 能源",
+        "code": "CG.028",
+        "description": "城里大多数灯都由它点亮。收入稳定，设备改造需要持续投入。",
+        "price": 18.15,
+        "initial": 16.35,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          15.17,
+          15.43,
+          14.99,
+          15.38,
+          15.24,
+          15.61,
+          16.06,
+          16.14,
+          15.89,
+          16.2,
+          16.58,
+          16.1,
+          16.35,
+          17.19,
+          16.69,
+          18.15
+        ],
+        "revenue": 6078.08,
+        "cashflow": 629.31,
+        "debtRatio": 39.8,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 16.35,
+            "revenue": 6240,
+            "cashflow": 820,
+            "debtRatio": 38
+          },
+          {
+            "quarter": 1,
+            "price": 17.19,
+            "revenue": 6404.24,
+            "cashflow": 992.63,
+            "debtRatio": 37.7
+          },
+          {
+            "quarter": 2,
+            "price": 16.69,
+            "revenue": 6233.77,
+            "cashflow": 750.07,
+            "debtRatio": 37.4
+          },
+          {
+            "quarter": 3,
+            "price": 18.15,
+            "revenue": 6078.08,
+            "cashflow": 629.31,
+            "debtRatio": 39.8
+          }
+        ],
+        "fundamental": 15.622507632220083,
+        "trueRevenue": 6078.08,
+        "trueCashflow": 629.31,
+        "business": {
+          "referenceRevenue": 6240,
+          "referenceCashRatio": 0.13141025641025642,
+          "referenceDebt": 38,
+          "referencePrice": 16.35,
+          "notice": {
+            "quarter": 4,
+            "kind": "collection",
+            "direction": 1,
+            "title": "客户提出分批结清",
+            "fact": "设备检修与供能合同：客户交来分批付款安排，具体到账仍以回单为准。",
+            "uncertainty": "承诺的日期不等于已经收到现金；也可能只收到一部分。",
+            "check": "核对经营现金净额是否改善，以及负债是否仍在上升。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "采购与维护报价上移",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 164.24,
+              "cashChange": 172.63,
+              "debtChange": -0.3,
+              "priceChange": 5.14,
+              "fact": "采购报价单与适用范围覆盖这项计划的50%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.24,
+              "cumDividendPrice": 17.43,
+              "retainedPerUnit": 0.2
+            },
+            {
+              "quarter": 2,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -170.47,
+              "cashChange": -242.56,
+              "debtChange": -0.3,
+              "priceChange": -2.91,
+              "fact": "订单确认函与验收条款覆盖这项计划的60%；本季按所列条件落实。",
+              "dividendPerUnit": 0.18,
+              "cumDividendPrice": 16.87,
+              "retainedPerUnit": 0.15
+            },
+            {
+              "quarter": 3,
+              "title": "续贷要求增加担保",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -155.69,
+              "cashChange": -120.76,
+              "debtChange": 2.4,
+              "priceChange": 8.75,
+              "fact": "授信审查材料与附加条件覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.15,
+              "cumDividendPrice": 18.3,
+              "retainedPerUnit": 0.13
+            }
+          ],
+          "capital": 0.48035567812500024,
+          "terms": {
+            "quarter": 4,
+            "status": "conditional",
+            "coverage": 60,
+            "source": "客户对账单与付款条件"
+          }
+        }
+      },
+      {
+        "id": "retail",
+        "name": "街角百货",
+        "industry": "消费 · 零售",
+        "code": "CG.032",
+        "description": "从一间杂货铺做到十二家门店。老板仍然每天去市场看菜价。",
+        "price": 13.28,
+        "initial": 12.6,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          11.64,
+          11.95,
+          12.11,
+          11.92,
+          12.26,
+          11.63,
+          11.81,
+          12.15,
+          12.23,
+          11.88,
+          11.98,
+          11.99,
+          12.6,
+          12.97,
+          13.92,
+          13.28
+        ],
+        "revenue": 2294.37,
+        "cashflow": 164.11,
+        "debtRatio": 30.1,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 12.6,
+            "revenue": 2150,
+            "cashflow": 180,
+            "debtRatio": 31
+          },
+          {
+            "quarter": 1,
+            "price": 12.97,
+            "revenue": 2146.29,
+            "cashflow": 184.69,
+            "debtRatio": 30.7
+          },
+          {
+            "quarter": 2,
+            "price": 13.92,
+            "revenue": 2300.07,
+            "cashflow": 263.82,
+            "debtRatio": 30.4
+          },
+          {
+            "quarter": 3,
+            "price": 13.28,
+            "revenue": 2294.37,
+            "cashflow": 164.11,
+            "debtRatio": 30.1
+          }
+        ],
+        "fundamental": 13.2927635120431,
+        "trueRevenue": 2294.37,
+        "trueCashflow": 164.11,
+        "business": {
+          "referenceRevenue": 2150,
+          "referenceCashRatio": 0.08372093023255814,
+          "referenceDebt": 31,
+          "referencePrice": 12.6,
+          "notice": {
+            "quarter": 4,
+            "kind": "credit",
+            "direction": -1,
+            "title": "续贷要求增加担保",
+            "fact": "门店销售与补货：银行要求补充担保和回款材料，再确认续贷条件。",
+            "uncertainty": "公司仍可能获得其他安排，补充材料也不代表一定违约。",
+            "check": "核对负债水平、经营现金和后续融资安排。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "部分交付重新排期",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": -3.71,
+              "cashChange": 4.69,
+              "debtChange": -0.3,
+              "priceChange": 2.94,
+              "fact": "订单确认函与验收条款覆盖这项计划的60%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.06,
+              "cumDividendPrice": 13.03,
+              "retainedPerUnit": 0.12
+            },
+            {
+              "quarter": 2,
+              "title": "采购开始重新议价",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": 153.78,
+              "cashChange": 79.13,
+              "debtChange": -0.3,
+              "priceChange": 7.32,
+              "fact": "采购报价单与适用范围覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0.09,
+              "cumDividendPrice": 14.01,
+              "retainedPerUnit": 0.17
+            },
+            {
+              "quarter": 3,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -5.7,
+              "cashChange": -99.71,
+              "debtChange": -0.3,
+              "priceChange": -4.6,
+              "fact": "客户对账单与付款条件覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0.05,
+              "cumDividendPrice": 13.33,
+              "retainedPerUnit": 0.11
+            }
+          ],
+          "capital": 0.40675024558139544,
+          "terms": {
+            "quarter": 4,
+            "status": "conditional",
+            "coverage": 90,
+            "source": "授信审查材料与附加条件"
+          }
+        }
+      },
+      {
+        "id": "medical",
+        "name": "白鹭医疗",
+        "industry": "制造 · 医疗",
+        "code": "CG.051",
+        "description": "为社区诊所生产器材。新产品刚通过验收，医院付款仍需要时间。",
+        "price": 44.26,
+        "initial": 38.2,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          35.55,
+          35.55,
+          36.39,
+          36.57,
+          36.88,
+          35.3,
+          36.28,
+          37.07,
+          37.31,
+          36.68,
+          36.18,
+          38.38,
+          38.2,
+          43.32,
+          45.21,
+          44.26
+        ],
+        "revenue": 1614.7,
+        "cashflow": 140.8,
+        "debtRatio": 41.28,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 38.2,
+            "revenue": 1480,
+            "cashflow": 98,
+            "debtRatio": 42
+          },
+          {
+            "quarter": 1,
+            "price": 43.32,
+            "revenue": 1493.85,
+            "cashflow": 116.78,
+            "debtRatio": 41.7
+          },
+          {
+            "quarter": 2,
+            "price": 45.21,
+            "revenue": 1612.6,
+            "cashflow": 159.59,
+            "debtRatio": 41.4
+          },
+          {
+            "quarter": 3,
+            "price": 44.26,
+            "revenue": 1614.7,
+            "cashflow": 140.8,
+            "debtRatio": 41.28
+          }
+        ],
+        "fundamental": 43.25948346195386,
+        "trueRevenue": 1614.7,
+        "trueCashflow": 140.8,
+        "business": {
+          "referenceRevenue": 1480,
+          "referenceCashRatio": 0.06621621621621622,
+          "referenceDebt": 42,
+          "referencePrice": 38.2,
+          "notice": {
+            "quarter": 4,
+            "kind": "cost",
+            "direction": 1,
+            "title": "采购开始重新议价",
+            "fact": "器材交付与医院付款：公司正在重新议价采购与维护合同。",
+            "uncertainty": "新报价尚未覆盖全部采购，也未必能抵消其他成本。",
+            "check": "核对现金净额是否改善，而不是只看采购消息。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "回款日期需要再确认",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 13.85,
+              "cashChange": 18.78,
+              "debtChange": -0.3,
+              "priceChange": 13.4,
+              "fact": "客户对账单与付款条件覆盖这项计划的70%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.19,
+              "cumDividendPrice": 43.51,
+              "retainedPerUnit": 0.36
+            },
+            {
+              "quarter": 2,
+              "title": "新增需求进入排期",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": 118.75,
+              "cashChange": 42.81,
+              "debtChange": -0.3,
+              "priceChange": 4.36,
+              "fact": "订单确认函与验收条款覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.26,
+              "cumDividendPrice": 45.47,
+              "retainedPerUnit": 0.49
+            },
+            {
+              "quarter": 3,
+              "title": "续贷要求增加担保",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 2.1,
+              "cashChange": -18.79,
+              "debtChange": -0.12,
+              "priceChange": -2.1,
+              "fact": "授信审查材料与附加条件覆盖这项计划的40%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.23,
+              "cumDividendPrice": 44.49,
+              "retainedPerUnit": 0.43
+            }
+          ],
+          "capital": 1.2796842621621622,
+          "terms": {
+            "quarter": 4,
+            "status": "conditional",
+            "coverage": 40,
+            "source": "采购报价单与适用范围"
+          }
+        }
+      },
+      {
+        "id": "signal",
+        "name": "远汐通信",
+        "industry": "科技 · 通信",
+        "code": "CG.067",
+        "description": "承包沿海城市的数据网络。未来写在合同里，成本已经发生。",
+        "price": 50.15,
+        "initial": 45.7,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          41.86,
+          41.86,
+          41.56,
+          44.24,
+          44.4,
+          43.71,
+          43.9,
+          42.7,
+          44.45,
+          45.4,
+          45.68,
+          43.67,
+          45.7,
+          46.29,
+          48.86,
+          50.15
+        ],
+        "revenue": 3212.64,
+        "cashflow": -9.37,
+        "debtRatio": 59.3,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 45.7,
+            "revenue": 2780,
+            "cashflow": 112,
+            "debtRatio": 56
+          },
+          {
+            "quarter": 1,
+            "price": 46.29,
+            "revenue": 2862.76,
+            "cashflow": 135.3,
+            "debtRatio": 55.7
+          },
+          {
+            "quarter": 2,
+            "price": 48.86,
+            "revenue": 3020.21,
+            "cashflow": -24.35,
+            "debtRatio": 57.5
+          },
+          {
+            "quarter": 3,
+            "price": 50.15,
+            "revenue": 3212.64,
+            "cashflow": -9.37,
+            "debtRatio": 59.3
+          }
+        ],
+        "fundamental": 45.343546984036315,
+        "trueRevenue": 3212.64,
+        "trueCashflow": -9.37,
+        "business": {
+          "referenceRevenue": 2780,
+          "referenceCashRatio": 0.04028776978417266,
+          "referenceDebt": 56,
+          "referencePrice": 45.7,
+          "notice": {
+            "quarter": 4,
+            "kind": "credit",
+            "direction": -1,
+            "title": "续贷要求增加担保",
+            "fact": "网络工程验收与交付：银行要求补充担保和回款材料，再确认续贷条件。",
+            "uncertainty": "公司仍可能获得其他安排，补充材料也不代表一定违约。",
+            "check": "核对负债水平、经营现金和后续融资安排。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "新增需求进入排期",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 82.76,
+              "cashChange": 23.3,
+              "debtChange": -0.3,
+              "priceChange": 1.29,
+              "fact": "订单确认函与验收条款覆盖这项计划的50%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.04,
+              "cumDividendPrice": 46.33,
+              "retainedPerUnit": 0.19
+            },
+            {
+              "quarter": 2,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 157.45,
+              "cashChange": -159.65,
+              "debtChange": 1.8,
+              "priceChange": 5.55,
+              "fact": "客户对账单与付款条件覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 48.86,
+              "retainedPerUnit": -0.04
+            },
+            {
+              "quarter": 3,
+              "title": "采购开始重新议价",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 192.43,
+              "cashChange": 14.98,
+              "debtChange": 1.8,
+              "priceChange": 2.64,
+              "fact": "采购报价单与适用范围覆盖这项计划的90%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 50.15,
+              "retainedPerUnit": -0.02
+            }
+          ],
+          "capital": 0.13366526043165472,
+          "terms": {
+            "quarter": 4,
+            "status": "confirmed",
+            "coverage": 80,
+            "source": "授信审查材料与附加条件"
+          }
+        }
+      },
+      {
+        "id": "urban",
+        "name": "旧城实业",
+        "industry": "建设 · 更新",
+        "code": "CG.083",
+        "description": "旧街改造的主要承建商。土地与厂房很多，能动用的现金很少。",
+        "price": 8.08,
+        "initial": 8.9,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          8.39,
+          8.2,
+          8.29,
+          8.08,
+          8.6,
+          8.75,
+          8.27,
+          8.62,
+          8.75,
+          8.6,
+          8.65,
+          8.6,
+          8.9,
+          8.45,
+          8.69,
+          8.08
+        ],
+        "revenue": 4392.16,
+        "cashflow": -96.45,
+        "debtRatio": 73.13,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 8.9,
+            "revenue": 4510,
+            "cashflow": 86,
+            "debtRatio": 68
+          },
+          {
+            "quarter": 1,
+            "price": 8.45,
+            "revenue": 4781.91,
+            "cashflow": -23.06,
+            "debtRatio": 69.53
+          },
+          {
+            "quarter": 2,
+            "price": 8.69,
+            "revenue": 4781.77,
+            "cashflow": -101.07,
+            "debtRatio": 71.33
+          },
+          {
+            "quarter": 3,
+            "price": 8.08,
+            "revenue": 4392.16,
+            "cashflow": -96.45,
+            "debtRatio": 73.13
+          }
+        ],
+        "fundamental": 7.83668983217414,
+        "trueRevenue": 4392.16,
+        "trueCashflow": -96.45,
+        "business": {
+          "referenceRevenue": 4510,
+          "referenceCashRatio": 0.02,
+          "referenceDebt": 68,
+          "referencePrice": 8.9,
+          "notice": {
+            "quarter": 4,
+            "kind": "cost",
+            "direction": -1,
+            "title": "采购与维护报价上移",
+            "fact": "旧城项目与融资安排：供应商提交了更高的采购或维护报价。",
+            "uncertainty": "最终采购量与执行价仍待确认，涨价不会等比例变成全部成本。",
+            "check": "核对经营现金与债务变化，确认公司能否消化成本。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "续贷材料进入审查",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 271.91,
+              "cashChange": -109.06,
+              "debtChange": 1.53,
+              "priceChange": -5.06,
+              "fact": "授信审查材料与附加条件覆盖这项计划的60%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.45,
+              "retainedPerUnit": 0
+            },
+            {
+              "quarter": 2,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -0.14,
+              "cashChange": -78.01,
+              "debtChange": 1.8,
+              "priceChange": 2.84,
+              "fact": "客户对账单与付款条件覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.69,
+              "retainedPerUnit": -0.02
+            },
+            {
+              "quarter": 3,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -389.61,
+              "cashChange": 4.62,
+              "debtChange": 1.8,
+              "priceChange": -7.02,
+              "fact": "订单确认函与验收条款覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.08,
+              "retainedPerUnit": -0.02
+            }
+          ],
+          "capital": -0.03961147272727273,
+          "terms": {
+            "quarter": 4,
+            "status": "confirmed",
+            "coverage": 50,
+            "source": "采购报价单与适用范围"
+          }
+        }
+      }
+    ],
+    "stress": 14.496000000000002,
+    "confidence": 44,
+    "fatigue": 28.630464000000003,
+    "relations": {
+      "cheng": 73,
+      "tang": 67,
+      "lu": 61,
+      "he": 71
+    },
+    "flags": {
+      "shop": 1,
+      "readers": 1,
+      "community": 1,
+      "workBoundary": 2,
+      "verified": 1,
+      "waited": 1,
+      "integrity": 1
+    },
+    "promises": [
+      {
+        "label": "书店屋顶修缮",
+        "due": 5,
+        "amount": 24000,
+        "kind": "payment",
+        "person": "he",
+        "id": "main-4-0",
+        "status": "pending"
+      }
+    ],
+    "journal": [
+      {
+        "quarter": 1,
+        "amount": 120000,
+        "label": "六年积蓄",
+        "category": "initial"
+      },
+      {
+        "quarter": 1,
+        "amount": -18000,
+        "label": "雨夜续租",
+        "category": "event"
+      },
+      {
+        "quarter": 1,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 1,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 1,
+        "amount": -1030.56,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      },
+      {
+        "quarter": 2,
+        "amount": -3000,
+        "label": "星期五的空椅子",
+        "category": "event"
+      },
+      {
+        "quarter": 2,
+        "amount": 600,
+        "label": "第一张值班表",
+        "category": "event"
+      },
+      {
+        "quarter": 2,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 2,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 2,
+        "amount": -792.28,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      },
+      {
+        "quarter": 3,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 3,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 3,
+        "amount": -880.74,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      }
+    ],
+    "transactions": [],
+    "history": [
+      {
+        "quarter": 1,
+        "title": "雨夜续租",
+        "choice": "接过钥匙，试着经营这家店",
+        "response": "你给程姨回了一个「好」字。过了片刻，又补上一句：后窗我会修。",
+        "principle": "机会成本：安稳的积蓄、经营的可能和投入的时间，都有各自的价值。",
+        "cash": -18000,
+        "eventId": "main-1",
+        "optionIndex": 0,
+        "snapshot": {
+          "id": "main-1",
+          "title": "雨夜续租",
+          "sender": "程姨",
+          "location": "泊灯书屋 · 晚上九点十七分",
+          "category": "序章",
+          "paragraphs": [
+            "你下楼接漏雨的水。柜台上放着一个牛皮纸信封，下面压着程姨常用的黄铜钥匙。",
+            "「租约还有三年。书架、桌子和没卖完的书，都可以留下。你想想，下周给我答复。」",
+            "最后一行另换了一支笔：「后窗关不严，下雨记得垫毛巾。」",
+            "你在店里坐下来。楼上是校对到一半的稿件，手机里是陆川刚发来的消息：新港区的项目定了，明天有空聊聊？",
+            "十二万元，是你六年攒下的钱。你原本打算再攒几年。至于攒够以后做什么，一直没有认真想过。",
+            "水滴落进搪瓷盆。你把钥匙从信封上拿开，开始读那份租约。"
+          ],
+          "options": [
+            {
+              "label": "接过钥匙，试着经营这家店",
+              "detail": "支付 18,000 元押金与首批整理费；保留校对工作，阿棠照看白天。",
+              "response": "你给程姨回了一个「好」字。过了片刻，又补上一句：后窗我会修。",
+              "effects": {
+                "cash": -18000,
+                "flags": {
+                  "shop": 1
+                },
+                "relations": {
+                  "cheng": 8,
+                  "tang": 8
+                },
+                "confidence": 4
+              }
+            },
+            {
+              "label": "先替她照看，留一点考虑的时间",
+              "detail": "暂不支付接手费用；店仍由程姨经营，第六季可以再次决定。",
+              "response": "程姨回道：「那钥匙先放你那里。想清楚了再说。」你把信折好，压在了稿纸下面。",
+              "effects": {
+                "flags": {
+                  "caretaker": 1
+                },
+                "relations": {
+                  "cheng": 3
+                },
+                "stress": -3
+              }
+            }
+          ],
+          "principle": "机会成本：安稳的积蓄、经营的可能和投入的时间，都有各自的价值。",
+          "atQuarter": 1
+        }
+      },
+      {
+        "quarter": 2,
+        "title": "星期五的空椅子",
+        "choice": "添几把椅子，把这个晚上留下",
+        "response": "第一晚只有四个人来。你们坐得很散，却一直聊到末班车快开了。",
+        "principle": "机会成本与时间稀缺：可支配的晚上和现金一样，无法同时用于两件事。",
+        "cash": -3000,
+        "eventId": "main-2",
+        "optionIndex": 0,
+        "snapshot": {
+          "id": "main-2",
+          "title": "星期五的空椅子",
+          "sender": "阿棠",
+          "location": "书店后间 · 第一场冷空气",
+          "category": "日常",
+          "paragraphs": [
+            "阿棠把这一季卖出的书列成一张清单。最贵的一本，卖给了在街口等了半天公交的退休教师。",
+            "他想在星期五腾一张桌子，请街坊来读自己喜欢的东西。不收门票，但要添几把椅子，还得有人留下来收拾。",
+            "同一个晚上，印刷厂有一份可以带回家完成的加急校对。报酬不多，足够付下个月的水电。",
+            "阿棠拿着量尺，等你决定桌子朝哪一边放。"
+          ],
+          "options": [
+            {
+              "label": "添几把椅子，把这个晚上留下",
+              "detail": "花费 3,000 元；认识更多街坊，放弃加急稿的报酬。",
+              "response": "第一晚只有四个人来。你们坐得很散，却一直聊到末班车快开了。",
+              "effects": {
+                "cash": -3000,
+                "flags": {
+                  "readers": 1,
+                  "community": 1
+                },
+                "relations": {
+                  "tang": 7,
+                  "he": 3
+                },
+                "fatigue": 4
+              }
+            },
+            {
+              "label": "接下加急稿，桌子的事缓一缓",
+              "detail": "获得 2,800 元校对报酬；本季晚间会更忙。",
+              "response": "阿棠把量尺卷起来，说下次也行。你上楼开灯，桌上的稿纸还是早晨的样子。",
+              "effects": {
+                "cash": 2800,
+                "fatigue": 12,
+                "stress": 3,
+                "flags": {
+                  "overtime": 1
+                }
+              }
+            }
+          ],
+          "principle": "机会成本与时间稀缺：可支配的晚上和现金一样，无法同时用于两件事。",
+          "atQuarter": 2
+        }
+      },
+      {
+        "quarter": 2,
+        "title": "第一张值班表",
+        "choice": "请人顶一班，把稿件按时交完",
+        "response": "你把代班费和稿费分别记下，没有把它们写成一个轻松的数字。沈禾说知道了，让你下次确定好日期再叫她。",
+        "principle": "时间配置与承诺装置：固定安排减少临时反悔的余地，但也会放弃即时收入。",
+        "cash": 600,
+        "eventId": "chapter-2",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "chapter-2",
+          "title": "第一张值班表",
+          "sender": "沈禾",
+          "location": "书屋后间 · 冬夜",
+          "category": "生活",
+          "paragraphs": [
+            "值班表贴上墙的那天，程姨寄来的围巾也到了。阿棠把自己排在了五个晚上，剩下两个空格没有写名字。",
+            "沈禾没有看你的账户。她指着周六那一格问：「要是每次有空再来，我们什么时候才算真的约好了？」",
+            "窗上的水汽遮住了街灯。你有一份可以在家完成的加急稿，也有一个已经说了好几次的周末。"
+          ],
+          "options": [
+            {
+              "label": "把周六留出来，先写自己的名字",
+              "detail": "不增加现金支出；放弃这一份加急稿，之后每周留一个固定晚上。",
+              "response": "你在周六那格写了名字。沈禾没有再追问时间，只把饭盒收进帆布袋。阿棠把自己的一班擦掉了。",
+              "effects": {
+                "flags": {
+                  "familyTime": 1
+                },
+                "relations": {
+                  "he": 6,
+                  "tang": 3
+                },
+                "stress": -5
+              }
+            },
+            {
+              "label": "请人顶一班，把稿件按时交完",
+              "detail": "支付600元代班费，获得1,200元稿费，净收入600元；这次周末另约。",
+              "response": "你把代班费和稿费分别记下，没有把它们写成一个轻松的数字。沈禾说知道了，让你下次确定好日期再叫她。",
+              "effects": {
+                "cash": 600,
+                "flags": {
+                  "workBoundary": 1
+                },
+                "fatigue": 5,
+                "relations": {
+                  "he": -2
+                }
+              }
+            }
+          ],
+          "principle": "时间配置与承诺装置：固定安排减少临时反悔的余地，但也会放弃即时收入。",
+          "atQuarter": 2
+        }
+      },
+      {
+        "quarter": 3,
+        "title": "没有盖章的订单",
+        "choice": "不借钱，帮他把订单再核对一次",
+        "response": "你们把确认函和订货单分开装好。阿棠第二天去找客户，带走了两份需要补签的文件。",
+        "principle": "信息不对称与信用风险：订单、利润和能按期收到的钱，是三件不同的事。",
+        "cash": 0,
+        "eventId": "main-3",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "main-3",
+          "title": "没有盖章的订单",
+          "sender": "阿棠",
+          "location": "街尾印坊 · 春分以后",
+          "category": "往来",
+          "paragraphs": [
+            "阿棠下班后还在街尾的印坊帮忙。那台旧机器印过你参与校对的第一本书，封面上的蓝色，当年总是偏深。",
+            "印坊接到了一批毕业册订单，修机器需要两万元。阿棠拿来了报价与交货日期，回款约在一年后。客户的确认栏，还空着一枚印章。",
+            "「订金到得慢，学校不会跑。」他说。你想起这条街上，从前也有几家不会跑的店。"
+          ],
+          "options": [
+            {
+              "label": "借出两万元，写清还款日期",
+              "detail": "立即支出 20,000 元；第七季尝试收回本金与 1,000 元约定收益，存在损失风险。",
+              "response": "阿棠坚持写了借据。他把复印件递给你，原件用订书机钉进了账本。",
+              "effects": {
+                "cash": -20000,
+                "relations": {
+                  "tang": 8
+                },
+                "flags": {
+                  "printLoan": 1
+                },
+                "promises": [
+                  {
+                    "label": "印坊借款回收",
+                    "due": 7,
+                    "amount": 21000,
+                    "principal": 20000,
+                    "kind": "receipt",
+                    "chance": 0.62,
+                    "person": "tang"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "不借钱，帮他把订单再核对一次",
+              "detail": "保留现金；花一个晚上整理合同，不承诺出资。",
+              "response": "你们把确认函和订货单分开装好。阿棠第二天去找客户，带走了两份需要补签的文件。",
+              "effects": {
+                "relations": {
+                  "tang": 2
+                },
+                "flags": {
+                  "verified": 1
+                },
+                "fatigue": 4
+              }
+            }
+          ],
+          "principle": "信息不对称与信用风险：订单、利润和能按期收到的钱，是三件不同的事。",
+          "atQuarter": 3
+        }
+      },
+      {
+        "quarter": 4,
+        "title": "他们都已经上车",
+        "choice": "留着现金，替我向大家问好",
+        "response": "周末，陆川寄来了新照片。你把它放进抽屉，正面朝下。",
+        "principle": "羊群行为与错失恐惧：熟人的参与可以增强信心，却无法替代对价格和经营的判断。",
+        "cash": 0,
+        "eventId": "main-4",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "main-4",
+          "title": "他们都已经上车",
+          "sender": "陆川",
+          "location": "新港区来信 · 盛夏",
+          "category": "来信",
+          "paragraphs": [
+            "陆川寄来一张合照。背景是新落成的冷库，几个人穿着同样的蓝色工装，手里举着纸杯。背面写着：「老同学，这次总该轮到我们了。」",
+            "雾港冷链的扩建登上了报纸。项目安排写在前面，客户付款的条件另列在下一页。陆川说，街口卖早点的夫妻也买了。",
+            "沈禾把修缮屋顶的确认单放在你桌上：下一季付款，两万四。师傅已经为书店空出了工期。",
+            "你翻回那张照片。陆川站在最边上，笑得比毕业时还年轻。"
+          ],
+          "options": [
+            {
+              "label": "买入一万八千元，周末去看看",
+              "detail": "总支出 18,000 元，含手续费；第五季另有 24,000 元修缮款。",
+              "response": "陆川很快回了消息：「给你留了位置。」你没有问，他说的是车上的，还是照片里的。",
+              "effects": {
+                "buy": {
+                  "asset": "harbor",
+                  "budget": 18000
+                },
+                "confidence": 10,
+                "relations": {
+                  "lu": 5
+                },
+                "flags": {
+                  "herd": 1
+                },
+                "promises": [
+                  {
+                    "label": "书店屋顶修缮",
+                    "due": 5,
+                    "amount": 24000,
+                    "kind": "payment",
+                    "person": "he"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "留着现金，替我向大家问好",
+              "detail": "不买入雾港冷链；保留第五季 24,000 元修缮承诺。",
+              "response": "周末，陆川寄来了新照片。你把它放进抽屉，正面朝下。",
+              "effects": {
+                "stress": -3,
+                "promises": [
+                  {
+                    "label": "书店屋顶修缮",
+                    "due": 5,
+                    "amount": 24000,
+                    "kind": "payment",
+                    "person": "he"
+                  }
+                ],
+                "flags": {
+                  "waited": 1
+                }
+              }
+            }
+          ],
+          "principle": "羊群行为与错失恐惧：熟人的参与可以增强信心，却无法替代对价格和经营的判断。",
+          "atQuarter": 4
+        }
+      },
+      {
+        "quarter": 4,
+        "title": "堤岸上的晚风",
+        "choice": "一起把账期与责任写清楚，再各自回家",
+        "response": "你们把能确认的日期列成一张纸。没有人保证回款，也没有人再说肯定能赚。陆川把纸折好，说这也算帮上了忙。",
+        "principle": "社会关系与资金边界：情感支持不等于承担对方的资产风险，明确责任有助于维持长期关系。",
+        "cash": 0,
+        "eventId": "chapter-4",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "chapter-4",
+          "title": "堤岸上的晚风",
+          "sender": "陆川",
+          "location": "港口堤岸 · 夏末",
+          "category": "生活",
+          "paragraphs": [
+            "仓库外的路修好了，陆川却没有带你去看新招牌。他在堤岸上坐下，拆开一只已经不烫的饭盒。",
+            "「大家问我订单什么时候变成钱。我每天都去催，回来还是一样的回答。」他说完，把手机屏幕朝下放着。",
+            "你们认识这么久，第一次在港口坐了半个小时，没有讨论哪家公司会涨。海上的灯一盏盏亮起来。"
+          ],
+          "options": [
+            {
+              "label": "留下来，听他把这一天说完",
+              "detail": "不买入、不借出资金；留下一个晚上，接受自己暂时帮不上账款的忙。",
+              "response": "陆川说到最后，饭已经凉了。你们去买了两杯温水，约好下一次不用等有项目才见面。",
+              "effects": {
+                "flags": {
+                  "coast": 1
+                },
+                "relations": {
+                  "lu": 7
+                },
+                "stress": -6
+              }
+            },
+            {
+              "label": "一起把账期与责任写清楚，再各自回家",
+              "detail": "不追加投资；整理原始合同，保留朋友之间清楚的资金边界。",
+              "response": "你们把能确认的日期列成一张纸。没有人保证回款，也没有人再说肯定能赚。陆川把纸折好，说这也算帮上了忙。",
+              "effects": {
+                "flags": {
+                  "integrity": 1,
+                  "workBoundary": 1
+                },
+                "relations": {
+                  "lu": 3
+                },
+                "fatigue": 2
+              }
+            }
+          ],
+          "principle": "社会关系与资金边界：情感支持不等于承担对方的资产风险，明确责任有助于维持长期关系。",
+          "atQuarter": 4
+        }
+      }
+    ],
+    "quarters": [
+      {
+        "quarter": 1,
+        "wealth": 101969.44,
+        "cash": 101969.44,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      },
+      {
+        "quarter": 2,
+        "wealth": 99777.16,
+        "cash": 99777.16,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      },
+      {
+        "quarter": 3,
+        "wealth": 99896.42,
+        "cash": 99896.42,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      }
+    ],
+    "used": [
+      "main-1",
+      "main-2",
+      "chapter-2",
+      "main-3",
+      "main-4",
+      "chapter-4"
+    ],
+    "mainChoice": 1,
+    "sideId": null,
+    "sideChoice": null,
+    "notices": [],
+    "regime": 0,
+    "debt": [],
+    "investmentBuys": 0,
+    "investmentSells": 0,
+    "dividends": 0,
+    "peakProfit": 0,
+    "drawdown": 0,
+    "investigation": 0,
+    "market": {
+      "version": 3,
+      "startedQuarter": 1,
+      "upgradedQuarter": 1
+    }
+  },
+  "after": {
+    "version": 1,
+    "seed": 73,
+    "quarter": 5,
+    "finished": false,
+    "cash": 100003.3,
+    "assets": [
+      {
+        "id": "harbor",
+        "name": "雾港冷链",
+        "industry": "港务 · 物流",
+        "code": "CG.016",
+        "description": "新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。",
+        "price": 25.21,
+        "initial": 24.8,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          22.47,
+          23.01,
+          23.39,
+          23.08,
+          22.77,
+          22.92,
+          24.04,
+          24.32,
+          24.62,
+          23.67,
+          23.65,
+          24.12,
+          24.8,
+          24.83,
+          23.65,
+          25.11,
+          25.21
+        ],
+        "revenue": 3865.86,
+        "cashflow": 158.87,
+        "debtRatio": 44.8,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 24.8,
+            "revenue": 3860,
+            "cashflow": 342,
+            "debtRatio": 46
+          },
+          {
+            "quarter": 1,
+            "price": 24.83,
+            "revenue": 3768.34,
+            "cashflow": 171.07,
+            "debtRatio": 45.7
+          },
+          {
+            "quarter": 2,
+            "price": 23.65,
+            "revenue": 3394.79,
+            "cashflow": 150.36,
+            "debtRatio": 45.4
+          },
+          {
+            "quarter": 3,
+            "price": 25.11,
+            "revenue": 3561.98,
+            "cashflow": 197.1,
+            "debtRatio": 45.1
+          },
+          {
+            "quarter": 4,
+            "price": 25.21,
+            "revenue": 3865.86,
+            "cashflow": 158.87,
+            "debtRatio": 44.8
+          }
+        ],
+        "fundamental": 23.375262058372215,
+        "trueRevenue": 3865.86,
+        "trueCashflow": 158.87,
+        "business": {
+          "referenceRevenue": 3860,
+          "referenceCashRatio": 0.08860103626943006,
+          "referenceDebt": 46,
+          "referencePrice": 24.8,
+          "notice": {
+            "quarter": 5,
+            "kind": "collection",
+            "direction": -1,
+            "title": "回款日期需要再确认",
+            "fact": "冷库扩建与生鲜运输：部分客户申请延长付款期限，交付与收款可能分属不同季度。",
+            "uncertainty": "延期能否缩短、剩余款项何时到账，仍需跟踪。",
+            "check": "把营收和经营现金净额放在一起看，继续核对融资压力。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -91.66,
+              "cashChange": -170.93,
+              "debtChange": -0.3,
+              "priceChange": 0.12,
+              "fact": "客户对账单与付款条件覆盖这项计划的70%；本季按所列条件落实。",
+              "dividendPerUnit": 0.05,
+              "cumDividendPrice": 24.88,
+              "retainedPerUnit": 0.11
+            },
+            {
+              "quarter": 2,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -373.55,
+              "cashChange": -20.71,
+              "debtChange": -0.3,
+              "priceChange": -4.75,
+              "fact": "订单确认函与验收条款覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.04,
+              "cumDividendPrice": 23.69,
+              "retainedPerUnit": 0.1
+            },
+            {
+              "quarter": 3,
+              "title": "采购与维护报价上移",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 167.19,
+              "cashChange": 46.74,
+              "debtChange": -0.3,
+              "priceChange": 6.17,
+              "fact": "采购报价单与适用范围覆盖这项计划的70%；本季按所列条件落实。",
+              "dividendPerUnit": 0.06,
+              "cumDividendPrice": 25.17,
+              "retainedPerUnit": 0.12
+            },
+            {
+              "quarter": 4,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 303.88,
+              "cashChange": -38.23,
+              "debtChange": -0.3,
+              "priceChange": 0.4,
+              "fact": "客户对账单与付款条件覆盖这项计划的70%；本季按所列条件落实。",
+              "dividendPerUnit": 0.05,
+              "cumDividendPrice": 25.26,
+              "retainedPerUnit": 0.1
+            }
+          ],
+          "capital": 0.4223656373056996,
+          "terms": {
+            "quarter": 5,
+            "status": "unconfirmed",
+            "coverage": 60,
+            "source": "客户对账单与付款条件"
+          }
+        }
+      },
+      {
+        "id": "power",
+        "name": "澄川能源",
+        "industry": "公用 · 能源",
+        "code": "CG.028",
+        "description": "城里大多数灯都由它点亮。收入稳定，设备改造需要持续投入。",
+        "price": 18.24,
+        "initial": 16.35,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          15.17,
+          15.43,
+          14.99,
+          15.38,
+          15.24,
+          15.61,
+          16.06,
+          16.14,
+          15.89,
+          16.2,
+          16.58,
+          16.1,
+          16.35,
+          17.19,
+          16.69,
+          18.15,
+          18.24
+        ],
+        "revenue": 6034.02,
+        "cashflow": 810.86,
+        "debtRatio": 39.5,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 16.35,
+            "revenue": 6240,
+            "cashflow": 820,
+            "debtRatio": 38
+          },
+          {
+            "quarter": 1,
+            "price": 17.19,
+            "revenue": 6404.24,
+            "cashflow": 992.63,
+            "debtRatio": 37.7
+          },
+          {
+            "quarter": 2,
+            "price": 16.69,
+            "revenue": 6233.77,
+            "cashflow": 750.07,
+            "debtRatio": 37.4
+          },
+          {
+            "quarter": 3,
+            "price": 18.15,
+            "revenue": 6078.08,
+            "cashflow": 629.31,
+            "debtRatio": 39.8
+          },
+          {
+            "quarter": 4,
+            "price": 18.24,
+            "revenue": 6034.02,
+            "cashflow": 810.86,
+            "debtRatio": 39.5
+          }
+        ],
+        "fundamental": 16.61500656561494,
+        "trueRevenue": 6034.02,
+        "trueCashflow": 810.86,
+        "business": {
+          "referenceRevenue": 6240,
+          "referenceCashRatio": 0.13141025641025642,
+          "referenceDebt": 38,
+          "referencePrice": 16.35,
+          "notice": {
+            "quarter": 5,
+            "kind": "cost",
+            "direction": 1,
+            "title": "采购开始重新议价",
+            "fact": "设备检修与供能合同：公司正在重新议价采购与维护合同。",
+            "uncertainty": "新报价尚未覆盖全部采购，也未必能抵消其他成本。",
+            "check": "核对现金净额是否改善，而不是只看采购消息。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "采购与维护报价上移",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 164.24,
+              "cashChange": 172.63,
+              "debtChange": -0.3,
+              "priceChange": 5.14,
+              "fact": "采购报价单与适用范围覆盖这项计划的50%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.24,
+              "cumDividendPrice": 17.43,
+              "retainedPerUnit": 0.2
+            },
+            {
+              "quarter": 2,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -170.47,
+              "cashChange": -242.56,
+              "debtChange": -0.3,
+              "priceChange": -2.91,
+              "fact": "订单确认函与验收条款覆盖这项计划的60%；本季按所列条件落实。",
+              "dividendPerUnit": 0.18,
+              "cumDividendPrice": 16.87,
+              "retainedPerUnit": 0.15
+            },
+            {
+              "quarter": 3,
+              "title": "续贷要求增加担保",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -155.69,
+              "cashChange": -120.76,
+              "debtChange": 2.4,
+              "priceChange": 8.75,
+              "fact": "授信审查材料与附加条件覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.15,
+              "cumDividendPrice": 18.3,
+              "retainedPerUnit": 0.13
+            },
+            {
+              "quarter": 4,
+              "title": "客户提出分批结清",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": -44.06,
+              "cashChange": 181.55,
+              "debtChange": -0.3,
+              "priceChange": 0.5,
+              "fact": "客户对账单与付款条件覆盖这项计划的60%；本季按所列条件落实。",
+              "dividendPerUnit": 0.19,
+              "cumDividendPrice": 18.43,
+              "retainedPerUnit": 0.17
+            }
+          ],
+          "capital": 0.6494146218750003,
+          "terms": {
+            "quarter": 5,
+            "status": "conditional",
+            "coverage": 40,
+            "source": "采购报价单与适用范围"
+          }
+        }
+      },
+      {
+        "id": "retail",
+        "name": "街角百货",
+        "industry": "消费 · 零售",
+        "code": "CG.032",
+        "description": "从一间杂货铺做到十二家门店。老板仍然每天去市场看菜价。",
+        "price": 13.66,
+        "initial": 12.6,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          11.64,
+          11.95,
+          12.11,
+          11.92,
+          12.26,
+          11.63,
+          11.81,
+          12.15,
+          12.23,
+          11.88,
+          11.98,
+          11.99,
+          12.6,
+          12.97,
+          13.92,
+          13.28,
+          13.66
+        ],
+        "revenue": 2397.2,
+        "cashflow": 200.14,
+        "debtRatio": 32.5,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 12.6,
+            "revenue": 2150,
+            "cashflow": 180,
+            "debtRatio": 31
+          },
+          {
+            "quarter": 1,
+            "price": 12.97,
+            "revenue": 2146.29,
+            "cashflow": 184.69,
+            "debtRatio": 30.7
+          },
+          {
+            "quarter": 2,
+            "price": 13.92,
+            "revenue": 2300.07,
+            "cashflow": 263.82,
+            "debtRatio": 30.4
+          },
+          {
+            "quarter": 3,
+            "price": 13.28,
+            "revenue": 2294.37,
+            "cashflow": 164.11,
+            "debtRatio": 30.1
+          },
+          {
+            "quarter": 4,
+            "price": 13.66,
+            "revenue": 2397.2,
+            "cashflow": 200.14,
+            "debtRatio": 32.5
+          }
+        ],
+        "fundamental": 13.869141504329155,
+        "trueRevenue": 2397.2,
+        "trueCashflow": 200.14,
+        "business": {
+          "referenceRevenue": 2150,
+          "referenceCashRatio": 0.08372093023255814,
+          "referenceDebt": 31,
+          "referencePrice": 12.6,
+          "notice": {
+            "quarter": 5,
+            "kind": "orders",
+            "direction": 1,
+            "title": "新增需求进入排期",
+            "fact": "门店销售与补货：客户提交了新增需求，尚需完成交付和验收。",
+            "uncertainty": "新增需求可能改期；交付前还要安排人手和材料。",
+            "check": "核对实际营收是否增加，以及新增业务有没有带来现金。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "部分交付重新排期",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": -3.71,
+              "cashChange": 4.69,
+              "debtChange": -0.3,
+              "priceChange": 2.94,
+              "fact": "订单确认函与验收条款覆盖这项计划的60%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.06,
+              "cumDividendPrice": 13.03,
+              "retainedPerUnit": 0.12
+            },
+            {
+              "quarter": 2,
+              "title": "采购开始重新议价",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": 153.78,
+              "cashChange": 79.13,
+              "debtChange": -0.3,
+              "priceChange": 7.32,
+              "fact": "采购报价单与适用范围覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0.09,
+              "cumDividendPrice": 14.01,
+              "retainedPerUnit": 0.17
+            },
+            {
+              "quarter": 3,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -5.7,
+              "cashChange": -99.71,
+              "debtChange": -0.3,
+              "priceChange": -4.6,
+              "fact": "客户对账单与付款条件覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0.05,
+              "cumDividendPrice": 13.33,
+              "retainedPerUnit": 0.11
+            },
+            {
+              "quarter": 4,
+              "title": "续贷要求增加担保",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 102.83,
+              "cashChange": 36.03,
+              "debtChange": 2.4,
+              "priceChange": 2.86,
+              "fact": "授信审查材料与附加条件覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.06,
+              "cumDividendPrice": 13.72,
+              "retainedPerUnit": 0.14
+            }
+          ],
+          "capital": 0.5449726251162792,
+          "terms": {
+            "quarter": 5,
+            "status": "conditional",
+            "coverage": 40,
+            "source": "订单确认函与验收条款"
+          }
+        }
+      },
+      {
+        "id": "medical",
+        "name": "白鹭医疗",
+        "industry": "制造 · 医疗",
+        "code": "CG.051",
+        "description": "为社区诊所生产器材。新产品刚通过验收，医院付款仍需要时间。",
+        "price": 38.74,
+        "initial": 38.2,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          35.55,
+          35.55,
+          36.39,
+          36.57,
+          36.88,
+          35.3,
+          36.28,
+          37.07,
+          37.31,
+          36.68,
+          36.18,
+          38.38,
+          38.2,
+          43.32,
+          45.21,
+          44.26,
+          38.74
+        ],
+        "revenue": 1598.99,
+        "cashflow": 151.22,
+        "debtRatio": 40.98,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 38.2,
+            "revenue": 1480,
+            "cashflow": 98,
+            "debtRatio": 42
+          },
+          {
+            "quarter": 1,
+            "price": 43.32,
+            "revenue": 1493.85,
+            "cashflow": 116.78,
+            "debtRatio": 41.7
+          },
+          {
+            "quarter": 2,
+            "price": 45.21,
+            "revenue": 1612.6,
+            "cashflow": 159.59,
+            "debtRatio": 41.4
+          },
+          {
+            "quarter": 3,
+            "price": 44.26,
+            "revenue": 1614.7,
+            "cashflow": 140.8,
+            "debtRatio": 41.28
+          },
+          {
+            "quarter": 4,
+            "price": 38.74,
+            "revenue": 1598.99,
+            "cashflow": 151.22,
+            "debtRatio": 40.98
+          }
+        ],
+        "fundamental": 44.11809191048353,
+        "trueRevenue": 1598.99,
+        "trueCashflow": 151.22,
+        "business": {
+          "referenceRevenue": 1480,
+          "referenceCashRatio": 0.06621621621621622,
+          "referenceDebt": 42,
+          "referencePrice": 38.2,
+          "notice": {
+            "quarter": 5,
+            "kind": "collection",
+            "direction": 1,
+            "title": "客户提出分批结清",
+            "fact": "器材交付与医院付款：客户交来分批付款安排，具体到账仍以回单为准。",
+            "uncertainty": "承诺的日期不等于已经收到现金；也可能只收到一部分。",
+            "check": "核对经营现金净额是否改善，以及负债是否仍在上升。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "回款日期需要再确认",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 13.85,
+              "cashChange": 18.78,
+              "debtChange": -0.3,
+              "priceChange": 13.4,
+              "fact": "客户对账单与付款条件覆盖这项计划的70%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.19,
+              "cumDividendPrice": 43.51,
+              "retainedPerUnit": 0.36
+            },
+            {
+              "quarter": 2,
+              "title": "新增需求进入排期",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": 118.75,
+              "cashChange": 42.81,
+              "debtChange": -0.3,
+              "priceChange": 4.36,
+              "fact": "订单确认函与验收条款覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0.26,
+              "cumDividendPrice": 45.47,
+              "retainedPerUnit": 0.49
+            },
+            {
+              "quarter": 3,
+              "title": "续贷要求增加担保",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 2.1,
+              "cashChange": -18.79,
+              "debtChange": -0.12,
+              "priceChange": -2.1,
+              "fact": "授信审查材料与附加条件覆盖这项计划的40%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.23,
+              "cumDividendPrice": 44.49,
+              "retainedPerUnit": 0.43
+            },
+            {
+              "quarter": 4,
+              "title": "采购开始重新议价",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": -15.71,
+              "cashChange": 10.42,
+              "debtChange": -0.3,
+              "priceChange": -12.47,
+              "fact": "采购报价单与适用范围覆盖这项计划的40%；本季按所列条件落实。",
+              "dividendPerUnit": 0.24,
+              "cumDividendPrice": 38.98,
+              "retainedPerUnit": 0.47
+            }
+          ],
+          "capital": 1.7500504297297297,
+          "terms": {
+            "quarter": 5,
+            "status": "unconfirmed",
+            "coverage": 50,
+            "source": "客户对账单与付款条件"
+          }
+        }
+      },
+      {
+        "id": "signal",
+        "name": "远汐通信",
+        "industry": "科技 · 通信",
+        "code": "CG.067",
+        "description": "承包沿海城市的数据网络。未来写在合同里，成本已经发生。",
+        "price": 48.47,
+        "initial": 45.7,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          41.86,
+          41.86,
+          41.56,
+          44.24,
+          44.4,
+          43.71,
+          43.9,
+          42.7,
+          44.45,
+          45.4,
+          45.68,
+          43.67,
+          45.7,
+          46.29,
+          48.86,
+          50.15,
+          48.47
+        ],
+        "revenue": 3450.79,
+        "cashflow": 84.61,
+        "debtRatio": 61.4,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 45.7,
+            "revenue": 2780,
+            "cashflow": 112,
+            "debtRatio": 56
+          },
+          {
+            "quarter": 1,
+            "price": 46.29,
+            "revenue": 2862.76,
+            "cashflow": 135.3,
+            "debtRatio": 55.7
+          },
+          {
+            "quarter": 2,
+            "price": 48.86,
+            "revenue": 3020.21,
+            "cashflow": -24.35,
+            "debtRatio": 57.5
+          },
+          {
+            "quarter": 3,
+            "price": 50.15,
+            "revenue": 3212.64,
+            "cashflow": -9.37,
+            "debtRatio": 59.3
+          },
+          {
+            "quarter": 4,
+            "price": 48.47,
+            "revenue": 3450.79,
+            "cashflow": 84.61,
+            "debtRatio": 61.4
+          }
+        ],
+        "fundamental": 49.21842923047147,
+        "trueRevenue": 3450.79,
+        "trueCashflow": 84.61,
+        "business": {
+          "referenceRevenue": 2780,
+          "referenceCashRatio": 0.04028776978417266,
+          "referenceDebt": 56,
+          "referencePrice": 45.7,
+          "notice": {
+            "quarter": 5,
+            "kind": "orders",
+            "direction": -1,
+            "title": "部分交付重新排期",
+            "fact": "网络工程验收与交付：客户调整了本季交付安排，原订单仍需逐项确认。",
+            "uncertainty": "延期范围和补单数量尚未确定，不能直接认定全部收入消失。",
+            "check": "核对营收变化、待交付安排和对应回款。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "新增需求进入排期",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 82.76,
+              "cashChange": 23.3,
+              "debtChange": -0.3,
+              "priceChange": 1.29,
+              "fact": "订单确认函与验收条款覆盖这项计划的50%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0.04,
+              "cumDividendPrice": 46.33,
+              "retainedPerUnit": 0.19
+            },
+            {
+              "quarter": 2,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 157.45,
+              "cashChange": -159.65,
+              "debtChange": 1.8,
+              "priceChange": 5.55,
+              "fact": "客户对账单与付款条件覆盖这项计划的90%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 48.86,
+              "retainedPerUnit": -0.04
+            },
+            {
+              "quarter": 3,
+              "title": "采购开始重新议价",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 192.43,
+              "cashChange": 14.98,
+              "debtChange": 1.8,
+              "priceChange": 2.64,
+              "fact": "采购报价单与适用范围覆盖这项计划的90%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 50.15,
+              "retainedPerUnit": -0.02
+            },
+            {
+              "quarter": 4,
+              "title": "续贷要求增加担保",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 238.15,
+              "cashChange": 93.98,
+              "debtChange": 2.1,
+              "priceChange": -3.35,
+              "fact": "授信审查材料与附加条件覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0.02,
+              "cumDividendPrice": 48.49,
+              "retainedPerUnit": 0.12
+            }
+          ],
+          "capital": 0.2583179251798562,
+          "terms": {
+            "quarter": 5,
+            "status": "conditional",
+            "coverage": 50,
+            "source": "订单确认函与验收条款"
+          }
+        }
+      },
+      {
+        "id": "urban",
+        "name": "旧城实业",
+        "industry": "建设 · 更新",
+        "code": "CG.083",
+        "description": "旧街改造的主要承建商。土地与厂房很多，能动用的现金很少。",
+        "price": 7.3,
+        "initial": 8.9,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          8.39,
+          8.2,
+          8.29,
+          8.08,
+          8.6,
+          8.75,
+          8.27,
+          8.62,
+          8.75,
+          8.6,
+          8.65,
+          8.6,
+          8.9,
+          8.45,
+          8.69,
+          8.08,
+          7.3
+        ],
+        "revenue": 4566.54,
+        "cashflow": -173.8,
+        "debtRatio": 74.93,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 8.9,
+            "revenue": 4510,
+            "cashflow": 86,
+            "debtRatio": 68
+          },
+          {
+            "quarter": 1,
+            "price": 8.45,
+            "revenue": 4781.91,
+            "cashflow": -23.06,
+            "debtRatio": 69.53
+          },
+          {
+            "quarter": 2,
+            "price": 8.69,
+            "revenue": 4781.77,
+            "cashflow": -101.07,
+            "debtRatio": 71.33
+          },
+          {
+            "quarter": 3,
+            "price": 8.08,
+            "revenue": 4392.16,
+            "cashflow": -96.45,
+            "debtRatio": 73.13
+          },
+          {
+            "quarter": 4,
+            "price": 7.3,
+            "revenue": 4566.54,
+            "cashflow": -173.8,
+            "debtRatio": 74.93
+          }
+        ],
+        "fundamental": 7.677214265783725,
+        "trueRevenue": 4566.54,
+        "trueCashflow": -173.8,
+        "business": {
+          "referenceRevenue": 4510,
+          "referenceCashRatio": 0.02,
+          "referenceDebt": 68,
+          "referencePrice": 8.9,
+          "notice": {
+            "quarter": 5,
+            "kind": "credit",
+            "direction": 1,
+            "title": "续贷材料进入审查",
+            "fact": "旧城项目与融资安排：银行已受理续贷材料，额度和条件等待最终确认。",
+            "uncertainty": "受理不等于放款；原有债务仍须按期处理。",
+            "check": "核对融资压力是否缓解，并继续观察现金回收。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "续贷材料进入审查",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 271.91,
+              "cashChange": -109.06,
+              "debtChange": 1.53,
+              "priceChange": -5.06,
+              "fact": "授信审查材料与附加条件覆盖这项计划的60%；本季未全部落实，实际影响有限。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.45,
+              "retainedPerUnit": 0
+            },
+            {
+              "quarter": 2,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -0.14,
+              "cashChange": -78.01,
+              "debtChange": 1.8,
+              "priceChange": 2.84,
+              "fact": "客户对账单与付款条件覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.69,
+              "retainedPerUnit": -0.02
+            },
+            {
+              "quarter": 3,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -389.61,
+              "cashChange": 4.62,
+              "debtChange": 1.8,
+              "priceChange": -7.02,
+              "fact": "订单确认函与验收条款覆盖这项计划的80%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 8.08,
+              "retainedPerUnit": -0.02
+            },
+            {
+              "quarter": 4,
+              "title": "采购与维护报价上移",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 174.38,
+              "cashChange": -77.35,
+              "debtChange": 1.8,
+              "priceChange": -9.65,
+              "fact": "采购报价单与适用范围覆盖这项计划的50%；本季按所列条件落实。",
+              "dividendPerUnit": 0,
+              "cumDividendPrice": 7.3,
+              "retainedPerUnit": -0.03
+            }
+          ],
+          "capital": -0.07082225321507761,
+          "terms": {
+            "quarter": 5,
+            "status": "unconfirmed",
+            "coverage": 90,
+            "source": "授信审查材料与附加条件"
+          }
+        }
+      }
+    ],
+    "stress": 13.046400000000002,
+    "confidence": 44,
+    "fatigue": 28.194808320000003,
+    "relations": {
+      "cheng": 73,
+      "tang": 67,
+      "lu": 61,
+      "he": 71
+    },
+    "flags": {
+      "shop": 1,
+      "readers": 1,
+      "community": 1,
+      "workBoundary": 2,
+      "verified": 1,
+      "waited": 1,
+      "integrity": 1
+    },
+    "promises": [
+      {
+        "label": "书店屋顶修缮",
+        "due": 5,
+        "amount": 24000,
+        "kind": "payment",
+        "person": "he",
+        "id": "main-4-0",
+        "status": "pending"
+      }
+    ],
+    "journal": [
+      {
+        "quarter": 1,
+        "amount": 120000,
+        "label": "六年积蓄",
+        "category": "initial"
+      },
+      {
+        "quarter": 1,
+        "amount": -18000,
+        "label": "雨夜续租",
+        "category": "event"
+      },
+      {
+        "quarter": 1,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 1,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 1,
+        "amount": -1030.56,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      },
+      {
+        "quarter": 2,
+        "amount": -3000,
+        "label": "星期五的空椅子",
+        "category": "event"
+      },
+      {
+        "quarter": 2,
+        "amount": 600,
+        "label": "第一张值班表",
+        "category": "event"
+      },
+      {
+        "quarter": 2,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 2,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 2,
+        "amount": -792.28,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      },
+      {
+        "quarter": 3,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 3,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 3,
+        "amount": -880.74,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      },
+      {
+        "quarter": 4,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 4,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      },
+      {
+        "quarter": 4,
+        "amount": -893.12,
+        "label": "泊灯书屋 · 本季经营",
+        "category": "shop"
+      }
+    ],
+    "transactions": [],
+    "history": [
+      {
+        "quarter": 1,
+        "title": "雨夜续租",
+        "choice": "接过钥匙，试着经营这家店",
+        "response": "你给程姨回了一个「好」字。过了片刻，又补上一句：后窗我会修。",
+        "principle": "机会成本：安稳的积蓄、经营的可能和投入的时间，都有各自的价值。",
+        "cash": -18000,
+        "eventId": "main-1",
+        "optionIndex": 0,
+        "snapshot": {
+          "id": "main-1",
+          "title": "雨夜续租",
+          "sender": "程姨",
+          "location": "泊灯书屋 · 晚上九点十七分",
+          "category": "序章",
+          "paragraphs": [
+            "你下楼接漏雨的水。柜台上放着一个牛皮纸信封，下面压着程姨常用的黄铜钥匙。",
+            "「租约还有三年。书架、桌子和没卖完的书，都可以留下。你想想，下周给我答复。」",
+            "最后一行另换了一支笔：「后窗关不严，下雨记得垫毛巾。」",
+            "你在店里坐下来。楼上是校对到一半的稿件，手机里是陆川刚发来的消息：新港区的项目定了，明天有空聊聊？",
+            "十二万元，是你六年攒下的钱。你原本打算再攒几年。至于攒够以后做什么，一直没有认真想过。",
+            "水滴落进搪瓷盆。你把钥匙从信封上拿开，开始读那份租约。"
+          ],
+          "options": [
+            {
+              "label": "接过钥匙，试着经营这家店",
+              "detail": "支付 18,000 元押金与首批整理费；保留校对工作，阿棠照看白天。",
+              "response": "你给程姨回了一个「好」字。过了片刻，又补上一句：后窗我会修。",
+              "effects": {
+                "cash": -18000,
+                "flags": {
+                  "shop": 1
+                },
+                "relations": {
+                  "cheng": 8,
+                  "tang": 8
+                },
+                "confidence": 4
+              }
+            },
+            {
+              "label": "先替她照看，留一点考虑的时间",
+              "detail": "暂不支付接手费用；店仍由程姨经营，第六季可以再次决定。",
+              "response": "程姨回道：「那钥匙先放你那里。想清楚了再说。」你把信折好，压在了稿纸下面。",
+              "effects": {
+                "flags": {
+                  "caretaker": 1
+                },
+                "relations": {
+                  "cheng": 3
+                },
+                "stress": -3
+              }
+            }
+          ],
+          "principle": "机会成本：安稳的积蓄、经营的可能和投入的时间，都有各自的价值。",
+          "atQuarter": 1
+        }
+      },
+      {
+        "quarter": 2,
+        "title": "星期五的空椅子",
+        "choice": "添几把椅子，把这个晚上留下",
+        "response": "第一晚只有四个人来。你们坐得很散，却一直聊到末班车快开了。",
+        "principle": "机会成本与时间稀缺：可支配的晚上和现金一样，无法同时用于两件事。",
+        "cash": -3000,
+        "eventId": "main-2",
+        "optionIndex": 0,
+        "snapshot": {
+          "id": "main-2",
+          "title": "星期五的空椅子",
+          "sender": "阿棠",
+          "location": "书店后间 · 第一场冷空气",
+          "category": "日常",
+          "paragraphs": [
+            "阿棠把这一季卖出的书列成一张清单。最贵的一本，卖给了在街口等了半天公交的退休教师。",
+            "他想在星期五腾一张桌子，请街坊来读自己喜欢的东西。不收门票，但要添几把椅子，还得有人留下来收拾。",
+            "同一个晚上，印刷厂有一份可以带回家完成的加急校对。报酬不多，足够付下个月的水电。",
+            "阿棠拿着量尺，等你决定桌子朝哪一边放。"
+          ],
+          "options": [
+            {
+              "label": "添几把椅子，把这个晚上留下",
+              "detail": "花费 3,000 元；认识更多街坊，放弃加急稿的报酬。",
+              "response": "第一晚只有四个人来。你们坐得很散，却一直聊到末班车快开了。",
+              "effects": {
+                "cash": -3000,
+                "flags": {
+                  "readers": 1,
+                  "community": 1
+                },
+                "relations": {
+                  "tang": 7,
+                  "he": 3
+                },
+                "fatigue": 4
+              }
+            },
+            {
+              "label": "接下加急稿，桌子的事缓一缓",
+              "detail": "获得 2,800 元校对报酬；本季晚间会更忙。",
+              "response": "阿棠把量尺卷起来，说下次也行。你上楼开灯，桌上的稿纸还是早晨的样子。",
+              "effects": {
+                "cash": 2800,
+                "fatigue": 12,
+                "stress": 3,
+                "flags": {
+                  "overtime": 1
+                }
+              }
+            }
+          ],
+          "principle": "机会成本与时间稀缺：可支配的晚上和现金一样，无法同时用于两件事。",
+          "atQuarter": 2
+        }
+      },
+      {
+        "quarter": 2,
+        "title": "第一张值班表",
+        "choice": "请人顶一班，把稿件按时交完",
+        "response": "你把代班费和稿费分别记下，没有把它们写成一个轻松的数字。沈禾说知道了，让你下次确定好日期再叫她。",
+        "principle": "时间配置与承诺装置：固定安排减少临时反悔的余地，但也会放弃即时收入。",
+        "cash": 600,
+        "eventId": "chapter-2",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "chapter-2",
+          "title": "第一张值班表",
+          "sender": "沈禾",
+          "location": "书屋后间 · 冬夜",
+          "category": "生活",
+          "paragraphs": [
+            "值班表贴上墙的那天，程姨寄来的围巾也到了。阿棠把自己排在了五个晚上，剩下两个空格没有写名字。",
+            "沈禾没有看你的账户。她指着周六那一格问：「要是每次有空再来，我们什么时候才算真的约好了？」",
+            "窗上的水汽遮住了街灯。你有一份可以在家完成的加急稿，也有一个已经说了好几次的周末。"
+          ],
+          "options": [
+            {
+              "label": "把周六留出来，先写自己的名字",
+              "detail": "不增加现金支出；放弃这一份加急稿，之后每周留一个固定晚上。",
+              "response": "你在周六那格写了名字。沈禾没有再追问时间，只把饭盒收进帆布袋。阿棠把自己的一班擦掉了。",
+              "effects": {
+                "flags": {
+                  "familyTime": 1
+                },
+                "relations": {
+                  "he": 6,
+                  "tang": 3
+                },
+                "stress": -5
+              }
+            },
+            {
+              "label": "请人顶一班，把稿件按时交完",
+              "detail": "支付600元代班费，获得1,200元稿费，净收入600元；这次周末另约。",
+              "response": "你把代班费和稿费分别记下，没有把它们写成一个轻松的数字。沈禾说知道了，让你下次确定好日期再叫她。",
+              "effects": {
+                "cash": 600,
+                "flags": {
+                  "workBoundary": 1
+                },
+                "fatigue": 5,
+                "relations": {
+                  "he": -2
+                }
+              }
+            }
+          ],
+          "principle": "时间配置与承诺装置：固定安排减少临时反悔的余地，但也会放弃即时收入。",
+          "atQuarter": 2
+        }
+      },
+      {
+        "quarter": 3,
+        "title": "没有盖章的订单",
+        "choice": "不借钱，帮他把订单再核对一次",
+        "response": "你们把确认函和订货单分开装好。阿棠第二天去找客户，带走了两份需要补签的文件。",
+        "principle": "信息不对称与信用风险：订单、利润和能按期收到的钱，是三件不同的事。",
+        "cash": 0,
+        "eventId": "main-3",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "main-3",
+          "title": "没有盖章的订单",
+          "sender": "阿棠",
+          "location": "街尾印坊 · 春分以后",
+          "category": "往来",
+          "paragraphs": [
+            "阿棠下班后还在街尾的印坊帮忙。那台旧机器印过你参与校对的第一本书，封面上的蓝色，当年总是偏深。",
+            "印坊接到了一批毕业册订单，修机器需要两万元。阿棠拿来了报价与交货日期，回款约在一年后。客户的确认栏，还空着一枚印章。",
+            "「订金到得慢，学校不会跑。」他说。你想起这条街上，从前也有几家不会跑的店。"
+          ],
+          "options": [
+            {
+              "label": "借出两万元，写清还款日期",
+              "detail": "立即支出 20,000 元；第七季尝试收回本金与 1,000 元约定收益，存在损失风险。",
+              "response": "阿棠坚持写了借据。他把复印件递给你，原件用订书机钉进了账本。",
+              "effects": {
+                "cash": -20000,
+                "relations": {
+                  "tang": 8
+                },
+                "flags": {
+                  "printLoan": 1
+                },
+                "promises": [
+                  {
+                    "label": "印坊借款回收",
+                    "due": 7,
+                    "amount": 21000,
+                    "principal": 20000,
+                    "kind": "receipt",
+                    "chance": 0.62,
+                    "person": "tang"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "不借钱，帮他把订单再核对一次",
+              "detail": "保留现金；花一个晚上整理合同，不承诺出资。",
+              "response": "你们把确认函和订货单分开装好。阿棠第二天去找客户，带走了两份需要补签的文件。",
+              "effects": {
+                "relations": {
+                  "tang": 2
+                },
+                "flags": {
+                  "verified": 1
+                },
+                "fatigue": 4
+              }
+            }
+          ],
+          "principle": "信息不对称与信用风险：订单、利润和能按期收到的钱，是三件不同的事。",
+          "atQuarter": 3
+        }
+      },
+      {
+        "quarter": 4,
+        "title": "他们都已经上车",
+        "choice": "留着现金，替我向大家问好",
+        "response": "周末，陆川寄来了新照片。你把它放进抽屉，正面朝下。",
+        "principle": "羊群行为与错失恐惧：熟人的参与可以增强信心，却无法替代对价格和经营的判断。",
+        "cash": 0,
+        "eventId": "main-4",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "main-4",
+          "title": "他们都已经上车",
+          "sender": "陆川",
+          "location": "新港区来信 · 盛夏",
+          "category": "来信",
+          "paragraphs": [
+            "陆川寄来一张合照。背景是新落成的冷库，几个人穿着同样的蓝色工装，手里举着纸杯。背面写着：「老同学，这次总该轮到我们了。」",
+            "雾港冷链的扩建登上了报纸。项目安排写在前面，客户付款的条件另列在下一页。陆川说，街口卖早点的夫妻也买了。",
+            "沈禾把修缮屋顶的确认单放在你桌上：下一季付款，两万四。师傅已经为书店空出了工期。",
+            "你翻回那张照片。陆川站在最边上，笑得比毕业时还年轻。"
+          ],
+          "options": [
+            {
+              "label": "买入一万八千元，周末去看看",
+              "detail": "总支出 18,000 元，含手续费；第五季另有 24,000 元修缮款。",
+              "response": "陆川很快回了消息：「给你留了位置。」你没有问，他说的是车上的，还是照片里的。",
+              "effects": {
+                "buy": {
+                  "asset": "harbor",
+                  "budget": 18000
+                },
+                "confidence": 10,
+                "relations": {
+                  "lu": 5
+                },
+                "flags": {
+                  "herd": 1
+                },
+                "promises": [
+                  {
+                    "label": "书店屋顶修缮",
+                    "due": 5,
+                    "amount": 24000,
+                    "kind": "payment",
+                    "person": "he"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "留着现金，替我向大家问好",
+              "detail": "不买入雾港冷链；保留第五季 24,000 元修缮承诺。",
+              "response": "周末，陆川寄来了新照片。你把它放进抽屉，正面朝下。",
+              "effects": {
+                "stress": -3,
+                "promises": [
+                  {
+                    "label": "书店屋顶修缮",
+                    "due": 5,
+                    "amount": 24000,
+                    "kind": "payment",
+                    "person": "he"
+                  }
+                ],
+                "flags": {
+                  "waited": 1
+                }
+              }
+            }
+          ],
+          "principle": "羊群行为与错失恐惧：熟人的参与可以增强信心，却无法替代对价格和经营的判断。",
+          "atQuarter": 4
+        }
+      },
+      {
+        "quarter": 4,
+        "title": "堤岸上的晚风",
+        "choice": "一起把账期与责任写清楚，再各自回家",
+        "response": "你们把能确认的日期列成一张纸。没有人保证回款，也没有人再说肯定能赚。陆川把纸折好，说这也算帮上了忙。",
+        "principle": "社会关系与资金边界：情感支持不等于承担对方的资产风险，明确责任有助于维持长期关系。",
+        "cash": 0,
+        "eventId": "chapter-4",
+        "optionIndex": 1,
+        "snapshot": {
+          "id": "chapter-4",
+          "title": "堤岸上的晚风",
+          "sender": "陆川",
+          "location": "港口堤岸 · 夏末",
+          "category": "生活",
+          "paragraphs": [
+            "仓库外的路修好了，陆川却没有带你去看新招牌。他在堤岸上坐下，拆开一只已经不烫的饭盒。",
+            "「大家问我订单什么时候变成钱。我每天都去催，回来还是一样的回答。」他说完，把手机屏幕朝下放着。",
+            "你们认识这么久，第一次在港口坐了半个小时，没有讨论哪家公司会涨。海上的灯一盏盏亮起来。"
+          ],
+          "options": [
+            {
+              "label": "留下来，听他把这一天说完",
+              "detail": "不买入、不借出资金；留下一个晚上，接受自己暂时帮不上账款的忙。",
+              "response": "陆川说到最后，饭已经凉了。你们去买了两杯温水，约好下一次不用等有项目才见面。",
+              "effects": {
+                "flags": {
+                  "coast": 1
+                },
+                "relations": {
+                  "lu": 7
+                },
+                "stress": -6
+              }
+            },
+            {
+              "label": "一起把账期与责任写清楚，再各自回家",
+              "detail": "不追加投资；整理原始合同，保留朋友之间清楚的资金边界。",
+              "response": "你们把能确认的日期列成一张纸。没有人保证回款，也没有人再说肯定能赚。陆川把纸折好，说这也算帮上了忙。",
+              "effects": {
+                "flags": {
+                  "integrity": 1,
+                  "workBoundary": 1
+                },
+                "relations": {
+                  "lu": 3
+                },
+                "fatigue": 2
+              }
+            }
+          ],
+          "principle": "社会关系与资金边界：情感支持不等于承担对方的资产风险，明确责任有助于维持长期关系。",
+          "atQuarter": 4
+        }
+      }
+    ],
+    "quarters": [
+      {
+        "quarter": 1,
+        "wealth": 101969.44,
+        "cash": 101969.44,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      },
+      {
+        "quarter": 2,
+        "wealth": 99777.16,
+        "cash": 99777.16,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      },
+      {
+        "quarter": 3,
+        "wealth": 99896.42,
+        "cash": 99896.42,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      },
+      {
+        "quarter": 4,
+        "wealth": 100003.3,
+        "cash": 100003.3,
+        "investment": 0,
+        "text": "柜台上的日历，又薄了三张。"
+      }
+    ],
+    "used": [
+      "main-1",
+      "main-2",
+      "chapter-2",
+      "main-3",
+      "main-4",
+      "chapter-4"
+    ],
+    "mainChoice": null,
+    "sideId": null,
+    "sideChoice": null,
+    "notices": [],
+    "regime": 0,
+    "debt": [],
+    "investmentBuys": 0,
+    "investmentSells": 0,
+    "dividends": 0,
+    "peakProfit": 0,
+    "drawdown": 0,
+    "investigation": 0,
+    "market": {
+      "version": 3,
+      "startedQuarter": 1,
+      "upgradedQuarter": 1
+    }
+  }
+}

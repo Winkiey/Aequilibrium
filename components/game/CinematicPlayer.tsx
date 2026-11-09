@@ -16,7 +16,7 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const [sceneReady,setSceneReady]=useState(false);
  const sourceScript=scriptOverride??getScript(event);
  const script=event.opening&&!scriptOverride?{...sourceScript,beats:event.opening}:sourceScript;
- const context=EVENT_CONTEXTS[event.id];
+ const context=event.shopRevision===1?{...(EVENT_CONTEXTS[event.id]??{question:'怎样安排这一季的书屋？'}),...(event.id==='s49'?{question:'补完余下屋面，还是继续保留现金？'}:{}),options:event.options.map(o=>({label:o.label,reason:o.effects.shop?.deposit?'押金占用现金，整理费不退；保留原来的校对工作。':o.effects.shop?.roof?'按下方费用与条件安排工程，之后核对实际书损与营业。':o.effects.shop?.plan?'按约安排去留，押金与已经发生的费用分开计算。':o.detail}))}:EVENT_CONTEXTS[event.id];
  const start=progress?.eventId===event.id?progress:undefined;
  const [phase,setPhase]=useState<ReadingProgress['phase']>(previewBranch!==undefined?'outcome':start?.phase==='choice'&&answered!==null?'outcome':start?.phase==='outcome'&&answered===null?'story':start?.phase??'story');
  const [restoredOutcome]=useState(()=>resumeOutcome(event,script,previewBranch??answered??start?.choice??0,start));
@@ -38,14 +38,14 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  function advance(){if(paused||!sceneReady||transcript||phase==='choice')return;if(!complete){setTyping({key:beatKey,count:chars.length});return;}if(inspection){setInspection(null);return;}if(safeIndex<beats.length-1){setIndex(safeIndex+1);return;}if(phase==='outcome'||epilogue||introOnly)onFinish('complete');else{if(answered!==null){setChoice(answered);setPhase('outcome');}else setPhase('choice');setIndex(0);}}
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(paused||e.repeat||e.altKey||e.ctrlKey||e.metaKey)return;if((e.target as HTMLElement)?.closest('input,button,select,textarea,a,summary'))return;if(e.code==='Space'||e.code==='Enter'){e.preventDefault();advance();}if(e.code==='ArrowLeft'&&index>0){e.preventDefault();setIndex(index-1);}if(e.code==='Escape'){if(transcript)setTranscript(false);else onFinish('exit');}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);});
  const npc=beat.speaker!=='self'&&beat.speaker!=='narrator'?CAST[beat.speaker]:null;
- const location=phase==='outcome'?outcomeScene(event.id,choice??0,script.scene):script.scene;
+ const location=phase==='outcome'?outcomeScene(event.id,choice??0,script.scene,event):script.scene;
  const focus=phase==='outcome'?(beat.focus??script.outcomeFocus[choice??0]):beat.focus;
  function select(i:0|1){if(introOnly)return;if(preview||onChoose(i)){setChoice(i);setPhase('outcome');setIndex(0);setInspection(null);}}
  const hotspotPoint=sceneFocusPoint(location,interest);
  const hasWorldObject=!!SCENE_LAYOUTS[location].painted[interest]||!!materialPlacement(location,interest);
  const inspectLabel=interest===script.interaction.object&&phase!=='outcome'?script.interaction.label:`查看${OBJECTS[interest].name}`;
  const direction=resolveStaging({eventId:event.id,phase,branch:choice??0,beat,index:safeIndex,script,scene:location});
- useEffect(()=>{if(phase==='choice'||(phase==='story'&&safeIndex>=script.beats.length-2)){for(const branch of [0,1] as const)warmScene(outcomeScene(event.id,branch,script.scene),script.cast);}},[event.id,phase,safeIndex,script]);
+ useEffect(()=>{if(phase==='choice'||(phase==='story'&&safeIndex>=script.beats.length-2)){for(const branch of [0,1] as const)warmScene(outcomeScene(event.id,branch,script.scene,event),script.cast);}},[event.id,phase,safeIndex,script]);
  const actors=direction.cast;
  if(legacyCompleted)return null;
  return <div className="cinematic-player" data-event={event.id} data-phase={phase} data-branch={phase==='outcome'?choice:undefined}>

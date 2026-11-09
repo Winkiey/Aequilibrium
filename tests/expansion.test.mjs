@@ -5,7 +5,7 @@ import{createHash}from'node:crypto';
 import{createGame,choose,trade,borrow,endQuarter,selectSide,optionError,validateSave,CHAPTER_QUARTERS,pendingChapter,storyKind,ending,normalizeEndingName}from'../.sites-runtime/test-modules/engine.mjs';
 import{mainEvent,materialize,CHAPTER_EVENTS,SIDE_EVENTS}from'../.sites-runtime/test-modules/stories.mjs';
 import{STORYBOARDS}from'../.sites-runtime/test-modules/cinematic-content.mjs';
-import{SCENES,outcomeBeats,outcomeScene}from'../.sites-runtime/test-modules/visuals.mjs';
+import{SCENES,outcomeBeats,outcomeScene,getScript}from'../.sites-runtime/test-modules/visuals.mjs';
 import{SEASON_PLACEMENTS,SEASONS_VISUAL,seasonForQuarter,seasonPropFrame}from'../.sites-runtime/test-modules/seasons.mjs';
 import{coverFrame}from'../.sites-runtime/test-modules/assets.mjs';
 import{EPILOGUES,epilogueScript}from'../.sites-runtime/test-modules/epilogues.mjs';
@@ -16,7 +16,7 @@ function completeChapter(s,index=0){if(pendingChapter(s)){const e=materialize(CH
 function check(s){assert.ok(validateSave(s));assert.ok(Math.abs(s.cash-s.journal.reduce((n,e)=>n+e.amount,0))<.1);assert.ok(s.cash>=0);}
 function fixture(id){
  let s=trade(createGame(451),'harbor','buy',6000);s.flags.shop=1;
- if(id==='s05')s.fatigue=24;if(id==='s25')s.regime=1;if(id==='s49')s.flags.temporaryRoof=1;if(id==='s50')s=borrow(s);if(id==='s41')s.flags.fraud=1;
+ if(id==='s05')s.fatigue=24;if(id==='s25')s.regime=1;if(id==='s49'){s.flags.temporaryRoof=1;if(s.shop)s.shop.roof='patched';}if(id==='s50')s=borrow(s);if(id==='s41')s.flags.fraud=1;
  const source=id.startsWith('main-')?null:[...CHAPTER_EVENTS,...SIDE_EVENTS].find(e=>e.id===id);
  if(id.startsWith('main-'))s.quarter=Number(id.slice(5));else if(id.startsWith('chapter-'))s.quarter=Number(id.slice(8));else{s.quarter=Array.from({length:10},(_,i)=>i+2).find(q=>!source.when||source.when({...s,quarter:q}))??5;assert.ok(!source.when||source.when(s),`${id} eligibility`);}
  if(!id.startsWith('main-'))s=choose(s,materialize(mainEvent(s),s),1,'main');
@@ -26,12 +26,12 @@ for(const id of Object.keys(STORYBOARDS))for(const branch of[0,1])test(`execute 
  const{s,event}=fixture(id),before=structuredClone(s);assert.equal(optionError(s,event.options[branch]),null);
  const chosen=choose(s,event,branch,storyKind(id));assert.deepEqual(s,before);check(chosen);assert.equal(chosen.history.at(-1).eventId,id);assert.equal(chosen.history.at(-1).optionIndex,branch);
  assert.throws(()=>choose(chosen,event,branch,storyKind(id)),/回复/);
- const beats=outcomeBeats(event,STORYBOARDS[id],branch);assert.ok(beats.length>=2);assert.ok(SCENES[outcomeScene(id,branch,STORYBOARDS[id].scene)]);
+ const beats=outcomeBeats(event,getScript(event),branch);assert.ok(beats.length>=2);assert.ok(SCENES[outcomeScene(id,branch,STORYBOARDS[id].scene,event)]);
  const restored=JSON.parse(JSON.stringify(chosen));check(restored);const collection=recoverCollection(freshCollection(),restored);assert.ok(collectionReplay(collection,id,branch));assert.equal(collectionReplay(collection,id,1-branch),undefined);
  let settled=endQuarter(completeChapter(restored));check(settled);assert.ok(settled.quarters.some(q=>q.quarter===s.quarter));assert.equal(settled.promises.filter(p=>p.status==='pending'&&p.due===s.quarter).length,0);
  while(!settled.finished){const next=materialize(mainEvent(settled),settled),i=optionError(settled,next.options[1])?0:1;assert.equal(optionError(settled,next.options[i]),null);settled=endQuarter(completeChapter(choose(settled,next,i,'main')));check(settled);}
  assert.ok(settled.finished);assert.equal(settled.promises.filter(p=>p.status==='pending'&&p.due<=12).length,0);
- branchReport.push({id,branch,quarter:s.quarter,season:seasonForQuarter(s.quarter).id,scene:outcomeScene(id,branch,STORYBOARDS[id].scene),cashBefore:s.cash,cashAfter:chosen.cash,lines:beats.length,saveRoundTrip:true,quarterSettled:true,finishedThreeYears:true});
+ branchReport.push({id,branch,quarter:s.quarter,season:seasonForQuarter(s.quarter).id,scene:outcomeScene(id,branch,STORYBOARDS[id].scene,event),cashBefore:s.cash,cashAfter:chosen.cash,lines:beats.length,saveRoundTrip:true,quarterSettled:true,finishedThreeYears:true});
 });
 test('four main continuations gate the correct quarters, are stable and cannot consume the daily choice',()=>{
  for(const e of CHAPTER_EVENTS){let s=createGame(1);s.quarter=Number(e.id.slice(8));assert.throws(()=>choose(s,materialize(e,s),0,'chapter'),/先读完/);s=choose(s,materialize(mainEvent(s),s),1,'main');assert.throws(()=>endQuarter(s),/主线续章/);
