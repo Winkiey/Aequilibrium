@@ -1,0 +1,75 @@
+{
+  "auditVersion": 2,
+  "sampleSize": 1000,
+  "sourceFingerprints": {
+    "lib/game/engine.ts": "2e9ac133b9ccebb6ea8dbeaea6c9e212cb3e078991aaf97fee3072657f34cd5f",
+    "lib/game/stories.ts": "e8ac35b180b14f1968c94b24e7da6f202785544df2d65a31e565a72f63d66539",
+    "lib/game/expansion.ts": "a9a28fe18c3b150e766f805bb9b8996510fc0b3fa02e9d4f89995695e3f83345",
+    "lib/game/news.ts": "f5a0729839c551497f4276fe9f5a2aa36d3b8dd3839851613d73ef88dc9c80da",
+    "components/game/CinematicGame.tsx": "c4bc6a7d6bbdad1feaa0ecf9312512aec455e2a71cf75355f5fd9f8dc5a601ee"
+  },
+  "method": {
+    "seeds": "1..N",
+    "shopMainOptionIndices": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    "chapterOptionIndex": 1,
+    "sideDraw": "Frozen at quarter entry, matching CinematicGame.prepare()",
+    "sidePolicy": "Only the actually drawn side offer; prefer readers*350 + catalog*220; ties use option 1; skip if unaffordable.",
+    "scope": "Operating shop journal only; excludes initial takeover, activity investment, roof, renewal deposit and terminal upkeep. Not an optimal-policy search or total wealth.",
+    "priceComparison": "Identical main/chapter answers, no sides; add one 10000 power buy at entry."
+  },
+  "pricePathMismatchesAfterPlayerBuy": 0,
+  "shopRouteOperatingOnly": {
+    "min": -14863.83,
+    "median": -9350.33,
+    "max": -5547.08,
+    "mean": -9452.63,
+    "positive": 0
+  },
+  "shopGrowthOperatingOnly": {
+    "min": -14732.55,
+    "median": -7037.93,
+    "max": 3057.5,
+    "mean": -6868.84,
+    "positive": 5
+  },
+  "growthProfitableQuarters": {
+    "min": 0,
+    "median": 0,
+    "max": 9,
+    "mean": 1.1,
+    "positive": 461
+  },
+  "financialCounterexample": {
+    "sameNextPrices": true,
+    "original": [
+      25.43,
+      17.42,
+      13.23,
+      40.6,
+      45.43,
+      8.07
+    ],
+    "changedAccounts": [
+      25.43,
+      17.42,
+      13.23,
+      40.6,
+      45.43,
+      8.07
+    ],
+    "description": "Isolated intervention: revenue x10, operating cashflow deeply negative, debt ratio 95%; same seed/regime/price/fundamental."
+  }
+}
