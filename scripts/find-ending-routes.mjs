@@ -6,6 +6,22 @@ import{mainEvent,materialize,CHAPTER_EVENTS,SIDE_EVENTS}from'../.sites-runtime/t
 import{EPILOGUES}from'../.sites-runtime/test-modules/epilogues.mjs';
 
 const wanted=Object.keys(EPILOGUES),found={};try{Object.assign(found,JSON.parse(readFileSync('tests/fixtures/ending-routes.json','utf8')).routes);}catch{}
+// Revalidate previously recorded routes whenever the economics changes.
+function replays(route){
+ try{let s=createGame(route.seed),cache=null;
+  for(const action of route.actions){
+   if(cache?.quarter!==s.quarter){const picked=selectSide(s,SIDE_EVENTS);cache={quarter:s.quarter,main:materialize(mainEvent(s),s),side:picked?materialize(picked,s):null,chapter:CHAPTER_EVENTS.find(e=>e.id===`chapter-${s.quarter}`)};if(cache.chapter)cache.chapter=materialize(cache.chapter,s);}
+   if(action.quarter!==s.quarter)return false;
+   if(action.kind==='choice'){const event=[cache.main,cache.side,cache.chapter].find(e=>e?.id===action.id);if(!event||optionError(s,event.options[action.index]))return false;s=choose(s,event,action.index,event.id.startsWith('chapter-')?'chapter':event.id.startsWith('main-')?'main':'side');}
+   else if(action.kind==='trade')s=trade(s,action.asset,action.side,action.amount);
+   else if(action.kind==='borrow')s=borrow(s);
+   else if(action.kind==='end')s=endQuarter(s);else return false;
+   if(!validateSave(s))return false;
+  }
+  return s.finished&&ending(s).name===route.name;
+ }catch{return false;}
+}
+for(const [name,route]of Object.entries(found))if(!replays(route)){delete found[name];console.log(`Rebuilding changed route: ${name}`);}
 const targets={paper:'纸上春秋',family:'归途有约',coast:'潮声入梦',mutual:'同灯共守',ordinary:'寻常岁月',retire:'激流勇退',shop:'泊灯长明',community:'长桌人间',fraud:'铁窗四季',signal:'知止乘潮',harbor:'知止乘潮',urban:'知止乘潮',ruin:'余烬重燃',lonely:'独自抵达'};
 const plans=['paper','family','coast','mutual','ordinary','retire','shop','community','fraud','signal','harbor','urban','ruin','lonely'];
 const metrics={};

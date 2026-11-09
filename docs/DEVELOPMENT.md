@@ -13,6 +13,8 @@ React19、TypeScript与Vite。游戏状态转换集中在lib/game/engine.ts；�
 
 新增故事或调整资金规则前请阅读根目录AGENTS.md。完成typecheck、适当的自动检查与生产构建；UI点击、离线、移动横屏应在可用浏览器中验收。测试报告和制作记录放docs，README只介绍公开项目。
 
-当前经济规则、已知限制与重构验收见 [机制审计](MECHANICS_REVIEW.md)，固定策略的1000种子汇总见 [机制基线](MECHANICS_BASELINE.json)。在项目根目录执行 `node scripts/audit-mechanics.mjs 1000` 可重跑；它只读取源码，在 `.sites-runtime/mechanics-audit/` 生成隔离模块与结果，不访问浏览器存档，也不调整游戏参数。基线带源文件指纹；规则或剧情变化后应重新运行并解释差异，不自动覆盖已发布基线。
+更新前经济规则、已知限制与重构验收见 [机制审计](MECHANICS_REVIEW.md)，固定策略的1000种子汇总见 [机制基线](MECHANICS_BASELINE.json)。在项目根目录执行 `node scripts/audit-mechanics.mjs 1000` 可重跑；它只读取源码，在 `.sites-runtime/mechanics-audit/` 生成隔离模块与结果，不访问浏览器存档，也不调整游戏参数。基线带源文件指纹；规则或剧情变化后应重新运行并解释差异，不自动覆盖已发布基线。
 
 发布使用现有Winkiey/Aequilibrium与GitHub Pages工作流。不要另建站点或改变原Sites访问范围。未完成验收的内容应在制作状态中标记，不能用静态检查代替实际浏览器体验。
+
+证券市场第一批机制与旧档过渡见 [市场v2](MARKET_V2.md)。`node scripts/benchmark-market.mjs 500` 用公开信息、相同种子及真实交易费用对照策略，汇总记录在 [策略实验](MARKET_BENCHMARK.json)。书店经营按用户要求保持原样。

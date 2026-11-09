@@ -49,7 +49,7 @@ export function TradeLessonForm({game,asset,onTrade,lesson='done',onLesson,onSki
   {error&&<p className="trade-error" role="status">{error}</p>}</div>
   <button data-lesson-field="confirm" className={`primary-button full ${lesson==='confirm'?'lesson-focus':''}`} disabled={!quote||game.finished||(training&&lesson!=='confirm')} onClick={submit}>{training&&lesson!=='confirm'?'先完成上方教学':`确认${side==='buy'?'买入':'卖出'}${quote?` · ¥${orderMoney(quote.total)}`:''}`}<ArrowRight size={16}/></button>
   <p className="order-execution-note">确认后立即成交；结束本季才推进行情。</p></div></div></div>
-  <div className="trade-reading"><details className="trade-history-drawer" open={deskView==='facts'||undefined}><summary>逐季对比 / 分红到账</summary><CompanyHistory game={game} asset={asset}/></details>
+  <div className="trade-reading"><details className="trade-history-drawer" open={deskView==='facts'||undefined}><summary>经营事项 / 逐季对比 / 分红到账</summary><CompanyHistory game={game} asset={asset}/></details>
   <p className="form-note">费用已包含在总额中。确认后立即成交，季末再推进市场。</p><details className="trade-practice-drawer"><summary>不确定收益怎么算？先作一次演算</summary><TradePractice game={game} asset={asset} budget={Number(amount)||3000}/></details>
  </div></div>;
 }

@@ -1,15 +1,16 @@
 import type {Beat} from './cinematic-content';
+import {openMarketQuarter,settleCompany,validMarket,type CompanyBusiness,type MarketState} from './market';
 export const INITIAL_CASH = 120000;
 export const SAVE_KEY = 'aequilibrium.save.v1';
 export type Person = 'cheng' | 'tang' | 'lu' | 'he';
 export type Disclosure={quarter:number;price:number;revenue:number;cashflow:number;debtRatio:number};
-export type Asset = { disclosures?:Disclosure[]; id: string; name: string; industry: string; code: string; description: string; price: number; initial: number; units: number; basis: number; history: number[]; revenue: number; cashflow: number; debtRatio: number; fundamental: number; trueRevenue: number; trueCashflow: number };
+export type Asset = { business?:CompanyBusiness; disclosures?:Disclosure[]; id: string; name: string; industry: string; code: string; description: string; price: number; initial: number; units: number; basis: number; history: number[]; revenue: number; cashflow: number; debtRatio: number; fundamental: number; trueRevenue: number; trueCashflow: number };
 export type CashEntry = { quarter: number; amount: number; label: string; category: string };
 export type PromiseEntry = { id: string; label: string; due: number; amount: number; status: 'pending' | 'paid' | 'missed' | 'cancelled'; kind: 'payment' | 'receipt'; person?: Person; chance?: number; principal?: number };
 export type Transaction = { quarter: number; asset: string; side: 'buy' | 'sell'; amount: number; fee: number; slippage: number; units: number; realized?: number };
 export type ChoiceLog = { quarter: number; title: string; choice: string; response: string; principle: string; cash: number; eventId?:string; optionIndex?:0|1; snapshot?:StoryEvent };
 export type QuarterLog = { quarter: number; wealth: number; cash: number; investment: number; text: string };
-export type Game = { version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; chapterSnapshot?:StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
+export type Game = { market?:MarketState; version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; chapterSnapshot?:StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
 export type Effects = { cash?: number; stress?: number; confidence?: number; fatigue?: number; relations?: Partial<Record<Person, number>>; flags?: Record<string, number>; promises?: Omit<PromiseEntry, 'id' | 'status'>[]; buy?: { asset: string; budget: number }; sell?: { asset: string; value: number }; closeClaim?: string; extendClaim?: string; cancelPayment?: string; fraud?: number };
 export type Option = { label: string; detail: string; response: string; effects: Effects };
 export type StoryEvent = { id: string; title: string; sender: string; location: string; category: string; paragraphs: string[]; opening?:Beat[]; options: [Option, Option]; principle: string; atQuarter?:number; when?: (s: Game) => boolean; weight?: (s: Game) => number };
@@ -43,9 +44,10 @@ export function random(seed: number, quarter: number, channel: string): number {
   return (h >>> 0) / 4294967296;
 }
 export function createGame(seed = Math.floor(Math.random() * 2147483647)): Game {
-  return { version: 1, seed, quarter: 1, finished: false, cash: INITIAL_CASH,
+  const game:Game = { version: 1, seed, quarter: 1, finished: false, cash: INITIAL_CASH,
     assets: COMPANIES.map(([id, name, industry, code, description, price, revenue, cashflow, debtRatio]) => ({ id, name, industry, code, description, price, initial: price, units: 0, basis: 0, history: Array.from({length: 12}, (_, i) => round(price * (0.92 + i * 0.006 + (random(seed, i, id) - 0.5) * 0.07))).concat(price), revenue, cashflow, debtRatio, disclosures:[{quarter:0,price,revenue,cashflow,debtRatio}],fundamental: price, trueRevenue: revenue, trueCashflow: cashflow })),
     stress: 24, confidence: 40, fatigue: 12, relations: { cheng: 65, tang: 50, lu: 58, he: 70 }, flags: {}, promises: [], journal: [{quarter: 1, amount: INITIAL_CASH, label: '六年积蓄', category: 'initial'}], transactions: [], history: [], quarters: [], used: [], mainChoice: null, sideId: null, sideChoice: null, notices: [], regime: 0, debt: [], investmentBuys: 0, investmentSells: 0, dividends: 0, peakProfit: 0, drawdown: 0, investigation: 0 };
+  openMarketQuarter(game,random);return game;
 }
 export const positionValue = (a: Asset) => a.units * a.price;
 export const debtTotal = (s: Game) => s.debt.reduce((t, d) => t + d.principal, 0);
@@ -139,6 +141,8 @@ export function endQuarter(state: Game): Game {
   if(random(s.seed,q,'cycle')<0.36) s.regime=(s.regime+1)%4;
   const macro=[0.012,0.027,0.038,-0.055][s.regime];
   for(const a of s.assets) {
+    const old=a.price;
+    if(s.market){settleCompany(a,s.seed,q,s.regime,random);}else{
     const industryShock=random(s.seed,q,a.id+'earn')-0.5;
     a.revenue=round(a.trueRevenue);a.cashflow=round(a.trueCashflow);
     a.trueRevenue=Math.max(100,a.trueRevenue*(1+macro+industryShock*0.12));
@@ -149,8 +153,9 @@ export function endQuarter(state: Game): Game {
     const correction=Math.log(a.fundamental/a.price)*0.12;
     const credit=a.id==='urban'||a.id==='signal'?macro*0.5:0;
     const change=Math.exp(clamp(macro+idio+tail+correction+credit,-0.65,0.40));
-    const old=a.price;a.price=Math.max(0.1,round(a.price*change));a.history.push(a.price);a.debtRatio=round(clamp(a.debtRatio+(s.regime===3?2:-0.4)+industryShock*2,5,95));
+    a.price=Math.max(0.1,round(a.price*change));a.history.push(a.price);a.debtRatio=round(clamp(a.debtRatio+(s.regime===3?2:-0.4)+industryShock*2,5,95));
     a.disclosures=[...(a.disclosures??[]),{quarter:q,price:a.price,revenue:a.revenue,cashflow:a.cashflow,debtRatio:a.debtRatio}];
+    }
     const dividend=round(a.units*old*(a.id==='power'?0.007:0.002));if(dividend>0){cash(s,dividend,`${a.name} 分红`,'dividend');s.dividends+=dividend;}
   }
   cash(s,6500,'校对工作 · 季度结余','salary');cash(s,-5500,'房租、餐食与日常','living');
@@ -180,7 +185,7 @@ export function endQuarter(state: Game): Game {
   s.stress=clamp(s.stress*0.9+(s.cash<15000?8:0));s.fatigue=clamp(s.fatigue*0.88+3);
   const text=s.notices[0]??(s.regime===3?'港口的夜班少了。街上比上季安静一些。':'柜台上的日历，又薄了三张。');
   s.quarters.push({quarter:q,wealth:round(netWealth(s)),cash:s.cash,investment:round(profit),text});
-  if(q===12){s.finished=true;}else{s.quarter++;s.mainChoice=null;s.sideChoice=null;s.sideId=null;delete s.mainSnapshot;delete s.sideSnapshot;delete s.chapterSnapshot;}
+  if(q===12){s.finished=true;}else{s.quarter++;s.mainChoice=null;s.sideChoice=null;s.sideId=null;delete s.mainSnapshot;delete s.sideSnapshot;delete s.chapterSnapshot;const migrated=openMarketQuarter(s,random);if(migrated)s.notices.push('新一期公司经营事项已披露，可在季报核对。已发生的报价、账目和约定均保留。');}
   return s;
 }
 export function selectSide(s: Game, pool: StoryEvent[]): StoryEvent | null {
@@ -218,6 +223,7 @@ export function validateSave(value: unknown): value is Game {
   if(![null,0,1].includes(s.mainChoice)||![null,0,1].includes(s.sideChoice))return false;
   if(!COMPANIES.every((c,i)=>s.assets[i].id===c[0]&&Number.isFinite(s.assets[i].price)&&s.assets[i].price>0&&Number.isFinite(s.assets[i].units)&&s.assets[i].units>=0&&Number.isFinite(s.assets[i].basis)&&s.assets[i].basis>=0&&Array.isArray(s.assets[i].history)&&s.assets[i].history.length>=2&&s.assets[i].history.every(Number.isFinite)))return false;
   if(!s.assets.every(a=>a.disclosures===undefined||(Array.isArray(a.disclosures)&&a.disclosures.length<=13&&a.disclosures.every((d,i,list)=>d&&Number.isInteger(d.quarter)&&d.quarter>=0&&d.quarter<=12&&(i===0||d.quarter>list[i-1].quarter)&&['price','revenue','cashflow','debtRatio'].every(k=>Number.isFinite(d[k as keyof Disclosure]))))))return false;
+  if(!validMarket(s))return false;
   if(!s.assets.every(a=>['revenue','cashflow','fundamental','trueRevenue','trueCashflow','debtRatio','initial'].every(key=>Number.isFinite(a[key as keyof Asset]))))return false;
   if(!s.journal.every(e=>Number.isFinite(e.amount)&&typeof e.label==='string'&&typeof e.category==='string')||Math.abs(s.journal.reduce((t,e)=>t+e.amount,0)-s.cash)>0.1)return false;
   if(!s.promises.every(p=>typeof p.id==='string'&&typeof p.label==='string'&&Number.isFinite(p.amount)&&p.amount>=0&&Number.isInteger(p.due)&&['pending','paid','missed','cancelled'].includes(p.status)&&['payment','receipt'].includes(p.kind)))return false;

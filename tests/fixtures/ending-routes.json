@@ -1737,230 +1737,6 @@
         }
       ]
     },
-    "知止乘潮": {
-      "seed": 5,
-      "plan": "urban",
-      "name": "知止乘潮",
-      "actions": [
-        {
-          "quarter": 1,
-          "kind": "choice",
-          "id": "main-1",
-          "index": 1
-        },
-        {
-          "quarter": 1,
-          "kind": "trade",
-          "asset": "urban",
-          "side": "buy",
-          "amount": 119000
-        },
-        {
-          "quarter": 1,
-          "kind": "end"
-        },
-        {
-          "quarter": 2,
-          "kind": "choice",
-          "id": "main-2",
-          "index": 1
-        },
-        {
-          "quarter": 2,
-          "kind": "choice",
-          "id": "chapter-2",
-          "index": 1
-        },
-        {
-          "quarter": 2,
-          "kind": "choice",
-          "id": "s02",
-          "index": 1
-        },
-        {
-          "quarter": 2,
-          "kind": "end"
-        },
-        {
-          "quarter": 3,
-          "kind": "choice",
-          "id": "main-3",
-          "index": 1
-        },
-        {
-          "quarter": 3,
-          "kind": "choice",
-          "id": "s01",
-          "index": 1
-        },
-        {
-          "quarter": 3,
-          "kind": "end"
-        },
-        {
-          "quarter": 4,
-          "kind": "choice",
-          "id": "main-4",
-          "index": 1
-        },
-        {
-          "quarter": 4,
-          "kind": "choice",
-          "id": "chapter-4",
-          "index": 1
-        },
-        {
-          "quarter": 4,
-          "kind": "choice",
-          "id": "s51",
-          "index": 1
-        },
-        {
-          "quarter": 4,
-          "kind": "end"
-        },
-        {
-          "quarter": 5,
-          "kind": "choice",
-          "id": "main-5",
-          "index": 1
-        },
-        {
-          "quarter": 5,
-          "kind": "choice",
-          "id": "s05",
-          "index": 1
-        },
-        {
-          "quarter": 5,
-          "kind": "end"
-        },
-        {
-          "quarter": 6,
-          "kind": "choice",
-          "id": "main-6",
-          "index": 1
-        },
-        {
-          "quarter": 6,
-          "kind": "choice",
-          "id": "s47",
-          "index": 1
-        },
-        {
-          "quarter": 6,
-          "kind": "end"
-        },
-        {
-          "quarter": 7,
-          "kind": "choice",
-          "id": "main-7",
-          "index": 1
-        },
-        {
-          "quarter": 7,
-          "kind": "choice",
-          "id": "chapter-7",
-          "index": 1
-        },
-        {
-          "quarter": 7,
-          "kind": "choice",
-          "id": "s21",
-          "index": 1
-        },
-        {
-          "quarter": 7,
-          "kind": "end"
-        },
-        {
-          "quarter": 8,
-          "kind": "choice",
-          "id": "main-8",
-          "index": 1
-        },
-        {
-          "quarter": 8,
-          "kind": "choice",
-          "id": "s15",
-          "index": 1
-        },
-        {
-          "quarter": 8,
-          "kind": "end"
-        },
-        {
-          "quarter": 9,
-          "kind": "choice",
-          "id": "main-9",
-          "index": 1
-        },
-        {
-          "quarter": 9,
-          "kind": "choice",
-          "id": "s20",
-          "index": 1
-        },
-        {
-          "quarter": 9,
-          "kind": "end"
-        },
-        {
-          "quarter": 10,
-          "kind": "choice",
-          "id": "main-10",
-          "index": 1
-        },
-        {
-          "quarter": 10,
-          "kind": "choice",
-          "id": "chapter-10",
-          "index": 1
-        },
-        {
-          "quarter": 10,
-          "kind": "choice",
-          "id": "s30",
-          "index": 0
-        },
-        {
-          "quarter": 10,
-          "kind": "end"
-        },
-        {
-          "quarter": 11,
-          "kind": "choice",
-          "id": "main-11",
-          "index": 1
-        },
-        {
-          "quarter": 11,
-          "kind": "choice",
-          "id": "s09",
-          "index": 1
-        },
-        {
-          "quarter": 11,
-          "kind": "end"
-        },
-        {
-          "quarter": 12,
-          "kind": "choice",
-          "id": "main-12",
-          "index": 1
-        },
-        {
-          "quarter": 12,
-          "kind": "choice",
-          "id": "s33",
-          "index": 1
-        },
-        {
-          "quarter": 12,
-          "kind": "end"
-        }
-      ]
-    },
     "潮声入梦": {
       "seed": 8,
       "plan": "coast",
@@ -2254,7 +2030,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "buy",
-          "amount": 329.21
+          "amount": 319.36
         },
         {
           "quarter": 3,
@@ -2265,7 +2041,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "sell",
-          "amount": 19956.6512
+          "amount": 19971.681600000004
         },
         {
           "quarter": 4,
@@ -2290,7 +2066,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "buy",
-          "amount": 2066.22
+          "amount": 2067.76
         },
         {
           "quarter": 4,
@@ -2380,7 +2156,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "buy",
-          "amount": 1404.54
+          "amount": 1334.02
         },
         {
           "quarter": 7,
@@ -2403,7 +2179,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "buy",
-          "amount": 237.23
+          "amount": 149.13
         },
         {
           "quarter": 8,
@@ -2485,7 +2261,7 @@
           "kind": "trade",
           "asset": "power",
           "side": "buy",
-          "amount": 500.06
+          "amount": 306.89
         },
         {
           "quarter": 11,
@@ -2499,10 +2275,227 @@
         },
         {
           "quarter": 12,
+          "kind": "end"
+        }
+      ]
+    },
+    "知止乘潮": {
+      "seed": 5,
+      "plan": "harbor",
+      "name": "知止乘潮",
+      "actions": [
+        {
+          "quarter": 1,
+          "kind": "choice",
+          "id": "main-1",
+          "index": 1
+        },
+        {
+          "quarter": 1,
           "kind": "trade",
-          "asset": "power",
+          "asset": "harbor",
           "side": "buy",
-          "amount": 19.87
+          "amount": 119000
+        },
+        {
+          "quarter": 1,
+          "kind": "end"
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "main-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "chapter-2",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "choice",
+          "id": "s02",
+          "index": 1
+        },
+        {
+          "quarter": 2,
+          "kind": "end"
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "main-3",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "choice",
+          "id": "s01",
+          "index": 1
+        },
+        {
+          "quarter": 3,
+          "kind": "end"
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "main-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "chapter-4",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "choice",
+          "id": "s48",
+          "index": 1
+        },
+        {
+          "quarter": 4,
+          "kind": "end"
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "main-5",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "choice",
+          "id": "s05",
+          "index": 1
+        },
+        {
+          "quarter": 5,
+          "kind": "end"
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "main-6",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "choice",
+          "id": "s47",
+          "index": 1
+        },
+        {
+          "quarter": 6,
+          "kind": "end"
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "main-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "chapter-7",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "choice",
+          "id": "s22",
+          "index": 1
+        },
+        {
+          "quarter": 7,
+          "kind": "end"
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "main-8",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "choice",
+          "id": "s15",
+          "index": 1
+        },
+        {
+          "quarter": 8,
+          "kind": "end"
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "main-9",
+          "index": 1
+        },
+        {
+          "quarter": 9,
+          "kind": "choice",
+          "id": "s21",
+          "index": 0
+        },
+        {
+          "quarter": 9,
+          "kind": "end"
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "main-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "chapter-10",
+          "index": 1
+        },
+        {
+          "quarter": 10,
+          "kind": "choice",
+          "id": "s30",
+          "index": 0
+        },
+        {
+          "quarter": 10,
+          "kind": "end"
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "main-11",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "choice",
+          "id": "s09",
+          "index": 1
+        },
+        {
+          "quarter": 11,
+          "kind": "end"
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "main-12",
+          "index": 1
+        },
+        {
+          "quarter": 12,
+          "kind": "choice",
+          "id": "s33",
+          "index": 1
         },
         {
           "quarter": 12,
@@ -2511,7 +2504,7 @@
       ]
     },
     "余烬重燃": {
-      "seed": 247,
+      "seed": 486,
       "plan": "ruin",
       "name": "余烬重燃",
       "actions": [
@@ -2551,7 +2544,7 @@
         {
           "quarter": 2,
           "kind": "choice",
-          "id": "s34",
+          "id": "s29",
           "index": 0
         },
         {
@@ -2563,14 +2556,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 129686.39374522664
+          "amount": 119234.95745994661
         },
         {
           "quarter": 2,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 149085.14
+          "amount": 141040.18
         },
         {
           "quarter": 2,
@@ -2592,22 +2585,22 @@
         {
           "quarter": 3,
           "kind": "choice",
-          "id": "s18",
-          "index": 1
+          "id": "s50",
+          "index": 0
         },
         {
           "quarter": 3,
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 139642.40462509537
+          "amount": 85936.4290051748
         },
         {
           "quarter": 3,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 140840.92
+          "amount": 87703.62
         },
         {
           "quarter": 3,
@@ -2618,7 +2611,7 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 17705.988800000003
+          "amount": 20169.988800000003
         },
         {
           "quarter": 4,
@@ -2635,7 +2628,7 @@
         {
           "quarter": 4,
           "kind": "choice",
-          "id": "s31",
+          "id": "s26",
           "index": 0
         },
         {
@@ -2643,7 +2636,7 @@
           "kind": "trade",
           "asset": "harbor",
           "side": "sell",
-          "amount": 17928.664700824716
+          "amount": 17769.058380458653
         },
         {
           "quarter": 4,
@@ -2658,7 +2651,7 @@
         {
           "quarter": 5,
           "kind": "choice",
-          "id": "s09",
+          "id": "s02",
           "index": 1
         },
         {
@@ -2670,14 +2663,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 98829.51377828741
+          "amount": 73232.16322880023
         },
         {
           "quarter": 5,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 118157.68
+          "amount": 93535.91
         },
         {
           "quarter": 5,
@@ -2692,7 +2685,7 @@
         {
           "quarter": 6,
           "kind": "choice",
-          "id": "s05",
+          "id": "s08",
           "index": 1
         },
         {
@@ -2704,14 +2697,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 97281.01482610087
+          "amount": 59012.936206533246
         },
         {
           "quarter": 6,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 117424.35
+          "amount": 78157.52
         },
         {
           "quarter": 6,
@@ -2739,22 +2732,22 @@
         {
           "quarter": 7,
           "kind": "choice",
-          "id": "s35",
-          "index": 1
+          "id": "s30",
+          "index": 0
         },
         {
           "quarter": 7,
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 94099.54078448178
+          "amount": 47335.72258168241
         },
         {
           "quarter": 7,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 95106.91
+          "amount": 49147.33
         },
         {
           "quarter": 7,
@@ -2768,17 +2761,23 @@
         },
         {
           "quarter": 8,
+          "kind": "choice",
+          "id": "s24",
+          "index": 0
+        },
+        {
+          "quarter": 8,
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 89045.43826727587
+          "amount": 46339.14240416754
         },
         {
           "quarter": 8,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 87667.39
+          "amount": 45687.94
         },
         {
           "quarter": 8,
@@ -2800,7 +2799,7 @@
         {
           "quarter": 9,
           "kind": "choice",
-          "id": "s01",
+          "id": "s31",
           "index": 1
         },
         {
@@ -2808,14 +2807,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 55898.58751354681
+          "amount": 26094.855724083805
         },
         {
           "quarter": 9,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 56078.71
+          "amount": 26074
         },
         {
           "quarter": 9,
@@ -2836,7 +2835,7 @@
         {
           "quarter": 10,
           "kind": "choice",
-          "id": "s07",
+          "id": "s46",
           "index": 1
         },
         {
@@ -2844,14 +2843,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 18439.65359162193
+          "amount": 5164.331023898521
         },
         {
           "quarter": 10,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 18200.47
+          "amount": 5747.01
         },
         {
           "quarter": 10,
@@ -2862,33 +2861,26 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 8567.8976
+          "amount": 5567.5505477497545
         },
         {
           "quarter": 11,
           "kind": "choice",
           "id": "main-11",
-          "index": 0
+          "index": 1
         },
         {
           "quarter": 11,
           "kind": "choice",
-          "id": "s06",
-          "index": 0
-        },
-        {
-          "quarter": 11,
-          "kind": "trade",
-          "asset": "signal",
-          "side": "sell",
-          "amount": 6944.493775284383
+          "id": "s05",
+          "index": 1
         },
         {
           "quarter": 11,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 7737.15
+          "amount": 6498.03
         },
         {
           "quarter": 11,
@@ -2903,7 +2895,7 @@
         {
           "quarter": 12,
           "kind": "choice",
-          "id": "s33",
+          "id": "s20",
           "index": 1
         },
         {
@@ -2911,14 +2903,14 @@
           "kind": "trade",
           "asset": "signal",
           "side": "sell",
-          "amount": 7879.871714044736
+          "amount": 6375.9179204560205
         },
         {
           "quarter": 12,
           "kind": "trade",
           "asset": "signal",
           "side": "buy",
-          "amount": 8379.92
+          "amount": 6742.11
         },
         {
           "quarter": 12,

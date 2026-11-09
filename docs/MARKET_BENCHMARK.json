@@ -1,0 +1,44 @@
+{
+  "sampleSize": 500,
+  "method": "Seeds 1..N, same twelve-quarter story choices, no sides or borrowing. Each non-cash policy buys one company for 10000 each quarter, sells next quarter, and reserves a hypothetical net sale at the final quote. Real fees, slippage and received dividends included. Public policy uses notice wording direction, published cash/revenue, debt and quote growth relative to disclosed revenue growth; accountsOnly omits notices. Synthetic benchmark, not a promise of player profit.",
+  "strategies": {
+    "informed": {
+      "mean": 1434.06,
+      "min": -8503.21,
+      "max": 6774.59,
+      "positive": 369
+    },
+    "accountsOnly": {
+      "mean": 708.04,
+      "min": -6554.66,
+      "max": 6071.98,
+      "positive": 335
+    },
+    "random": {
+      "mean": -394.08,
+      "min": -7702.55,
+      "max": 6911.85,
+      "positive": 231
+    },
+    "cash": {
+      "mean": 0,
+      "min": 0,
+      "max": 0,
+      "positive": 0
+    }
+  },
+  "informedMinusRandom": {
+    "mean": 1828.13,
+    "approx95PercentInterval": [
+      1581.44,
+      2074.83
+    ]
+  },
+  "informedMinusAccountsOnly": {
+    "mean": 726.02,
+    "approx95PercentInterval": [
+      541.41,
+      910.63
+    ]
+  }
+}

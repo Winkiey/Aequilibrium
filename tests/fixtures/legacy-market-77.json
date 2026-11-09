@@ -1,0 +1,299 @@
+{
+  "cash": 121000,
+  "assets": [
+    {
+      "id": "harbor",
+      "name": "雾港冷链",
+      "industry": "港务 · 物流",
+      "code": "CG.016",
+      "description": "新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。",
+      "price": 26.09,
+      "initial": 24.8,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        22.33,
+        22.18,
+        22.26,
+        22.6,
+        22.81,
+        23.61,
+        23.02,
+        24.17,
+        23.44,
+        25,
+        24.43,
+        24.59,
+        24.8,
+        26.09
+      ],
+      "revenue": 3860,
+      "cashflow": 342,
+      "debtRatio": 45,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 24.8,
+          "revenue": 3860,
+          "cashflow": 342,
+          "debtRatio": 46
+        },
+        {
+          "quarter": 1,
+          "price": 26.09,
+          "revenue": 3860,
+          "cashflow": 342,
+          "debtRatio": 45
+        }
+      ],
+      "fundamental": 24.64575994563982,
+      "trueRevenue": 3768.190084964484,
+      "trueCashflow": 251.08600913872507
+    },
+    {
+      "id": "power",
+      "name": "澄川能源",
+      "industry": "公用 · 能源",
+      "code": "CG.028",
+      "description": "城里大多数灯都由它点亮。收入稳定，设备改造需要持续投入。",
+      "price": 16.14,
+      "initial": 16.35,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        15.32,
+        14.7,
+        14.84,
+        15.13,
+        15.74,
+        15.03,
+        16.15,
+        15.76,
+        15.71,
+        15.64,
+        15.68,
+        15.82,
+        16.35,
+        16.14
+      ],
+      "revenue": 6240,
+      "cashflow": 820,
+      "debtRatio": 37.24,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 16.35,
+          "revenue": 6240,
+          "cashflow": 820,
+          "debtRatio": 38
+        },
+        {
+          "quarter": 1,
+          "price": 16.14,
+          "revenue": 6240,
+          "cashflow": 820,
+          "debtRatio": 37.24
+        }
+      ],
+      "fundamental": 16.33408338267045,
+      "trueRevenue": 6178.873069580197,
+      "trueCashflow": 750.2559902473206
+    },
+    {
+      "id": "retail",
+      "name": "街角百货",
+      "industry": "消费 · 零售",
+      "code": "CG.032",
+      "description": "从一间杂货铺做到十二家门店。老板仍然每天去市场看菜价。",
+      "price": 12.09,
+      "initial": 12.6,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        11.78,
+        11.52,
+        12.13,
+        11.66,
+        11.81,
+        11.54,
+        12.42,
+        12.55,
+        12.57,
+        12.44,
+        12.11,
+        12.41,
+        12.6,
+        12.09
+      ],
+      "revenue": 2150,
+      "cashflow": 180,
+      "debtRatio": 30.69,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 12.6,
+          "revenue": 2150,
+          "cashflow": 180,
+          "debtRatio": 31
+        },
+        {
+          "quarter": 1,
+          "price": 12.09,
+          "revenue": 2150,
+          "cashflow": 180,
+          "debtRatio": 30.69
+        }
+      ],
+      "fundamental": 12.71757151322745,
+      "trueRevenue": 2188.0181488759818,
+      "trueCashflow": 223.81636658454497
+    },
+    {
+      "id": "medical",
+      "name": "白鹭医疗",
+      "industry": "制造 · 医疗",
+      "code": "CG.051",
+      "description": "为社区诊所生产器材。新产品刚通过验收，医院付款仍需要时间。",
+      "price": 40.94,
+      "initial": 38.2,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        35.84,
+        36.47,
+        35.03,
+        35.05,
+        36.82,
+        37.41,
+        37.16,
+        35.75,
+        36.4,
+        38.28,
+        37.93,
+        37.83,
+        38.2,
+        40.94
+      ],
+      "revenue": 1480,
+      "cashflow": 98,
+      "debtRatio": 41.11,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 38.2,
+          "revenue": 1480,
+          "cashflow": 98,
+          "debtRatio": 42
+        },
+        {
+          "quarter": 1,
+          "price": 40.94,
+          "revenue": 1480,
+          "cashflow": 98,
+          "debtRatio": 41.11
+        }
+      ],
+      "fundamental": 38.05525489754832,
+      "trueRevenue": 1454.3895321725308,
+      "trueCashflow": 86.26260919427638
+    },
+    {
+      "id": "signal",
+      "name": "远汐通信",
+      "industry": "科技 · 通信",
+      "code": "CG.067",
+      "description": "承包沿海城市的数据网络。未来写在合同里，成本已经发生。",
+      "price": 44.62,
+      "initial": 45.7,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        41.21,
+        42.34,
+        43.03,
+        41.61,
+        41.99,
+        43.81,
+        42.58,
+        45.42,
+        45.46,
+        44.79,
+        43.32,
+        45.92,
+        45.7,
+        44.62
+      ],
+      "revenue": 2780,
+      "cashflow": 112,
+      "debtRatio": 56.04,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 45.7,
+          "revenue": 2780,
+          "cashflow": 112,
+          "debtRatio": 56
+        },
+        {
+          "quarter": 1,
+          "price": 44.62,
+          "revenue": 2780,
+          "cashflow": 112,
+          "debtRatio": 56.04
+        }
+      ],
+      "fundamental": 46.484107953627685,
+      "trueRevenue": 2887.179921872206,
+      "trueCashflow": 304.2867462470028
+    },
+    {
+      "id": "urban",
+      "name": "旧城实业",
+      "industry": "建设 · 更新",
+      "code": "CG.083",
+      "description": "旧街改造的主要承建商。土地与厂房很多，能动用的现金很少。",
+      "price": 8.87,
+      "initial": 8.9,
+      "units": 0,
+      "basis": 0,
+      "history": [
+        8.16,
+        8.36,
+        8.08,
+        8.05,
+        8.66,
+        8.19,
+        8.71,
+        8.8,
+        8.39,
+        8.4,
+        9.01,
+        9.02,
+        8.9,
+        8.87
+      ],
+      "revenue": 4510,
+      "cashflow": 86,
+      "debtRatio": 67.21,
+      "disclosures": [
+        {
+          "quarter": 0,
+          "price": 8.9,
+          "revenue": 4510,
+          "cashflow": 86,
+          "debtRatio": 68
+        },
+        {
+          "quarter": 1,
+          "price": 8.87,
+          "revenue": 4510,
+          "cashflow": 86,
+          "debtRatio": 67.21
+        }
+      ],
+      "fundamental": 8.885123483688847,
+      "trueRevenue": 4457.425201928597,
+      "trueCashflow": 282.4675650453513
+    }
+  ]
+}

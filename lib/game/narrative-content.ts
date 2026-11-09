@@ -41,7 +41,7 @@ export const MAIN_REVISED_BEATS:Record<string,Beat[]>={
  'main-4':[
   b('narrator','陆川寄来冷库扩建的照片。他负责港口业务，天天在这些货车之间来回跑。','wide','letter'),
   b('lu','新库已经起来了。周末来看看？好几个老同学也买了雾港冷链。','medium','phone',1),
-  b('narrator','照片之外，还有一份公开公告：营收增长，客户回款却在放慢。','detail','letter'),
+  b('narrator','照片之外，还有一份公开公告：扩建怎样交付，客户何时付款，都另列着条件。','detail','letter'),
   b('self','扩建完成、订单增加、钱进账户，是不同的几件事。','medium','contract'),
   b('narrator','沈禾同时发来书屋的施工确认单，提醒你核对自己负责的安排。','detail','contract'),
   b('he','我把项目和付款人标出来了。哪一笔是你的，先看清楚再答复。','medium','phone'),

@@ -1,4 +1,5 @@
 import {money,REGIMES,type Asset,type Disclosure,type Game} from './engine';
+import {publicBusiness} from './market';
 
 export const COMPANY_QUESTIONS:Record<string,string>={
  harbor:'扩建需要的投入，与客户回款的日期是否撞在一起？订单增加以后，钱何时收到？',
@@ -23,7 +24,7 @@ export function companyNews(asset:Asset){
  const baseline:Record<string,string>={harbor:'冷库扩建，客户账期仍需跟踪',power:'设备改造与供能收入并行',retail:'十二家门店，汇总收入之外还有成本',medical:'验收通过以后，仍要等待付款',signal:'合同写着未来，投入发生在眼前',urban:'土地与厂房背后，可用现金仍需核对'};
  const headline=current.cashflow<0?'经营现金出现净流出':revenueGrowth!==null&&revenueGrowth>0&&cashChange!==null&&cashChange<0?'营收增加，经营现金净额走弱':debtChange!==null&&debtChange>1?'负债水平上移，偿付安排值得继续核对':revenueGrowth!==null&&revenueGrowth<0?'营收回落，继续跟踪回款':baseline[asset.id]??'最新经营资料已披露';
  const comparison=previous?`与${disclosureDate(previous.quarter)}相比，营收变化${revenueGrowth===null?'原基数为零，无法计算增幅':signed(revenueGrowth)+'%'}，经营现金净额变动${signed(cashChange!,0)}万元，负债水平变动${signed(debtChange!)}个百分点。`:'尚无上一份披露可供对照。这些数字是观察的起点，不能据此认定正在增长。';
- return{id:asset.id,name:asset.name,industry:asset.industry,description:asset.description,current,previous,asOf:last?disclosureDate(last.quarter):'当前可查资料 · 旧档未保留披露日期',asOfShort:last?disclosureDate(last.quarter).replace('披露',''):'当前资料',headline,comparison,priceChange,
+ return{business:publicBusiness(asset),id:asset.id,name:asset.name,industry:asset.industry,description:asset.description,current,previous,asOf:last?disclosureDate(last.quarter):'当前可查资料 · 旧档未保留披露日期',asOfShort:last?disclosureDate(last.quarter).replace('披露',''):'当前资料',headline,comparison,priceChange,
   facts:`营收${money(current.revenue)}万元，经营现金净额${money(current.cashflow)}万元，负债水平${current.debtRatio.toFixed(1)}%。`,
   interpretation:current.cashflow>=0?'日常经营目前有现金净流入；它不是账户现金余额，也没有替你扣完设备投入和未来到期本金。':'日常经营目前需要消耗现金；还需核对现有资金、后续融资与到期付款，不能只凭营收规模判断。',
   question:COMPANY_QUESTIONS[asset.id]??'回款、经营投入和偿债的日期是否匹配？'};

@@ -16,7 +16,7 @@ function source(file){
  sourceFingerprints[file]=createHash('sha256').update(text).digest('hex');
  return text;
 }
-for(const file of ['engine','stories','expansion','news']){
+for(const file of ['engine','market','stories','expansion','news']){
  const result=ts.transpileModule(source(`lib/game/${file}.ts`),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022}});
  writeFileSync(path.join(out,`${file}.mjs`),result.outputText.replace(/from '(.\/[^']+)'/g,"from '$1.mjs'"));
 }
