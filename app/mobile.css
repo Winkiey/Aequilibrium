@@ -239,3 +239,6 @@
 }
 
 @media(orientation:landscape) and (max-height:600px) and (max-width:1200px){.newspaper-masthead h2{text-align:center}}
+
+.offline-update{border-block:1px solid #b8bfa471;padding:12px 0;margin:10px 0}.offline-update h3{font:18px var(--serif);margin:0 0 8px;color:#536b44}.offline-update p{font:13px/1.8 var(--serif);margin:8px 0}.offline-update .ink-button{margin-top:9px}
+@media(orientation:landscape) and (max-height:600px) and (max-width:1200px){.offline-update{grid-column:2;margin:3px 0;padding:7px 0}.offline-update h3{font-size:16px}.offline-update p{font-size:12px;line-height:1.6}.offline-update .ink-button{min-height:34px;margin:5px 0 0}}

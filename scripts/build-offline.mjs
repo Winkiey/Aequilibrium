@@ -53,16 +53,28 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
  add('/favicon.svg','shell');add('/index.html','shell');add('/playtest/index.html','shell');
  const manifest={id:base,name:'均衡之渊 · Aequilibrium',short_name:'均衡之渊',description:'雨夜、来信和未定的三年。',start_url:base,scope:base,display:'standalone',orientation:'landscape',background_color:'#17201e',theme_color:'#17201e',icons:[{src:base+'favicon.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]};
  await writeFile(resolve(output,'manifest.webmanifest'),JSON.stringify(manifest,null,2)+'\n');add('/manifest.webmanifest','shell');
+ // A page build marker is independent of its final package hash. Strip it when
+ // rebuilding unchanged output so repeated builds remain deterministic.
+ const pagePaths=['index.html','playtest/index.html'];
+ for(const page of pagePaths){const path=resolve(output,page);const html=await readFile(path,'utf8');await writeFile(path,html.replace(/<meta name="aequilibrium-build" content="[a-f0-9]{20}">/g,''));}
  const files=[];
  for(const [path,group] of [...candidates].sort(([a],[b])=>a.localeCompare(b,'en'))){
   const filename=resolve(output,path),actual=await realpath(filename);if(!inside(output,actual))throw new Error('Offline resource escaped the deployment directory');
   if(!(await stat(actual)).isFile())throw new Error('Offline resource is not a file');
   const body=await readFile(actual);files.push({url:base+path,bytes:body.byteLength,sha256:digest(body),group});
  }
- const version=digest(JSON.stringify({base,files,worker:digest(template)})).slice(0,20);
+ const buildId=digest(JSON.stringify({base,files,worker:digest(template)})).slice(0,20);
+ for(const page of pagePaths){
+  const path=resolve(output,page),html=await readFile(path,'utf8'),meta=`<meta name="aequilibrium-build" content="${buildId}">`;
+  const updated=html.includes('</head>')?html.replace('</head>',meta+'</head>'):html+meta;
+  await writeFile(path,updated);const entry=files.find(file=>file.url===base+page),body=await readFile(path);entry.bytes=body.byteLength;entry.sha256=digest(body);
+ }
+ const version=digest(JSON.stringify({base,buildId,files,worker:digest(template)})).slice(0,20);
  const cachePrefix=`aequilibrium:${encodeURIComponent(base)}:`;
- const result={version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files};
+ const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files};
  await writeFile(resolve(output,'offline-manifest.json'),JSON.stringify(result,null,2)+'\n');
+ // Deliberately absent from files: an old cached manifest cannot hide this release.
+ await writeFile(resolve(output,'release.json'),JSON.stringify(result,null,2)+'\n');
  if(!template.includes('/*__OFFLINE_MANIFEST__*/'))throw new Error('Offline worker manifest placeholder missing');
  await writeFile(resolve(output,'sw.js'),template.replace('/*__OFFLINE_MANIFEST__*/',JSON.stringify(result)));
  console.log(`Offline package: ${files.length} verified resources, ${(result.totalBytes/1024/1024).toFixed(1)} MiB, version ${version}`);

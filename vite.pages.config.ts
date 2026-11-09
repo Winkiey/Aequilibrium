@@ -24,6 +24,6 @@ export default defineConfig({
   },
  },react()],
  build:{outDir:output,emptyOutDir:true,sourcemap:false,rolldownOptions:{input:{
-  game:resolve(project,'pages/index.html'),playtest:resolve(project,'pages/playtest/index.html'),
+  game:resolve(project,'pages/index.html'),playtest:resolve(project,'pages/playtest/index.html'),updater:resolve(project,'pages/update/index.html'),
  }}},
 });

@@ -25,10 +25,36 @@ async function installShell(){
  }
 }
 self.addEventListener('install',event=>{event.waitUntil(installShell());});
-// Deliberately no skipWaiting(), clients.claim(), deletion or save manipulation.
-// A completed UI download is the only writer of completeMarker in mediaCache.
+// No install-time takeover, cache deletion or save manipulation.
+let explicitUpdate=false;
+self.addEventListener('activate',event=>{if(explicitUpdate)event.waitUntil(self.clients.claim());});
+// Only the explicit, version-checked update page may request activation.
+async function otherGamePages(){
+ const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+ return windows.filter(client=>{const url=new URL(client.url);return url.origin===ORIGIN&&navigationPath(url.pathname)!==null;}).length;
+}
+async function completePackage(){
+ const media=await caches.open(OFFLINE.mediaCache),marker=await media.match(absolute(OFFLINE.completeMarker));
+ if(!marker)return false;try{const value=await marker.json();if(value.version!==OFFLINE.version||value.complete!==true)return false;}catch{return false;}
+ for(const entry of OFFLINE.files)if(!await(await caches.open(entry.group==='shell'?OFFLINE.shellCache:OFFLINE.mediaCache)).match(absolute(entry.url)))return false;
+ return true;
+}
 self.addEventListener('message',event=>{
- if(event.data?.type==='AEQUILIBRIUM_MANIFEST')event.ports?.[0]?.postMessage({manifest:OFFLINE});
+ const port=event.ports?.[0];
+ if(event.data?.type==='AEQUILIBRIUM_MANIFEST'){port?.postMessage({manifest:OFFLINE});return;}
+ if(!['AEQUILIBRIUM_UPDATE_STATUS','AEQUILIBRIUM_ACTIVATE'].includes(event.data?.type)||!port)return;
+ event.waitUntil((async()=>{
+  try{
+   const source=event.source?.url?new URL(event.source.url):null;
+   if(!source||source.origin!==ORIGIN||![OFFLINE.base+'update/',OFFLINE.base+'update/index.html'].includes(source.pathname))throw new Error('更新请求必须来自本游戏的更新页。');
+   if(event.data.version!==OFFLINE.version)throw new Error('新版已变化，请重新检查后再更新。');
+   const openGames=await otherGamePages();
+   if(event.data.type==='AEQUILIBRIUM_UPDATE_STATUS'){port.postMessage({version:OFFLINE.version,openGames});return;}
+   if(openGames){port.postMessage({version:OFFLINE.version,openGames,blocked:true});return;}
+   if(!await completePackage())throw new Error('新版资源尚未准备完整，当前版本仍保留。');
+   explicitUpdate=true;await self.skipWaiting();port.postMessage({version:OFFLINE.version,accepted:true});
+  }catch(error){port.postMessage({error:error.message??'更新未能完成。'});}
+ })());
 });
 
 function navigationPath(path){
@@ -57,6 +83,9 @@ async function cached(entry){
  const response=await cache.match(absolute(entry.url));return response?.status===200?response:undefined;
 }
 async function respond(request,url){
+ // Update discovery and the recovery entry always reach the network. Old workers
+ // also forward these previously unknown paths, so already-started saves can upgrade.
+ if(url.pathname===OFFLINE.base+'release.json'||url.pathname.startsWith(OFFLINE.base+'update/'))return fetch(new Request(request.url,{method:request.method,headers:request.headers,cache:'no-store',credentials:'same-origin'}));
  // Always report this controlling worker's manifest, not a newer incompatible shell.
  if(url.pathname===OFFLINE.base+'offline-manifest.json')return new Response(request.method==='HEAD'?null:JSON.stringify(OFFLINE),{status:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}});
  // Explicit integrity repair must reach the network rather than re-read a

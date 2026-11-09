@@ -1,0 +1,80 @@
+/* Generated at build time. Only this project's versioned caches are read. */
+'use strict';
+const OFFLINE = /*__OFFLINE_MANIFEST__*/;
+const ORIGIN = self.location.origin;
+const ENTRY_BY_PATH = new Map(OFFLINE.files.map(file=>[file.url,file]));
+const absolute = path => new URL(path,ORIGIN).href;
+const toHex = value => [...new Uint8Array(value)].map(n=>n.toString(16).padStart(2,'0')).join('');
+
+async function validateResponse(response,entry){
+ if(response.status!==200||response.type==='opaque')throw new Error('Offline download did not return a complete response');
+ const buffer=await response.arrayBuffer();
+ if(buffer.byteLength!==entry.bytes||toHex(await crypto.subtle.digest('SHA-256',buffer))!==entry.sha256)throw new Error('Offline resource failed integrity check');
+ // fetch() exposes a decoded body; never retain transfer encoding or compressed size.
+ const headers=new Headers(response.headers);headers.delete('Content-Encoding');headers.delete('Transfer-Encoding');headers.set('Content-Length',String(buffer.byteLength));
+ return new Response(buffer,{status:200,headers});
+}
+
+async function installShell(){
+ const cache=await caches.open(OFFLINE.shellCache);
+ for(const entry of OFFLINE.files.filter(file=>file.group==='shell')){
+  const url=absolute(entry.url),existing=await cache.match(url);
+  if(existing){try{await validateResponse(existing.clone(),entry);continue;}catch{/* Repair only this incomplete version's entry. */}}
+  const response=await fetch(new Request(url,{cache:'reload',credentials:'same-origin'}));
+  await cache.put(url,await validateResponse(response,entry));
+ }
+}
+self.addEventListener('install',event=>{event.waitUntil(installShell());});
+// Deliberately no skipWaiting(), clients.claim(), deletion or save manipulation.
+// A completed UI download is the only writer of completeMarker in mediaCache.
+self.addEventListener('message',event=>{
+ if(event.data?.type==='AEQUILIBRIUM_MANIFEST')event.ports?.[0]?.postMessage({manifest:OFFLINE});
+});
+
+function navigationPath(path){
+ if(path===OFFLINE.base||path===OFFLINE.base+'index.html')return OFFLINE.base+'index.html';
+ if(path===OFFLINE.base+'playtest'||path===OFFLINE.base+'playtest/'||path===OFFLINE.base+'playtest/index.html')return OFFLINE.base+'playtest/index.html';
+ return null;
+}
+function parseRange(value,size){
+ const match=/^bytes=(\d*)-(\d*)$/.exec(value?.trim()??'');
+ if(!match||(!match[1]&&!match[2])||size===0)return null;
+ let start,end;
+ if(!match[1]){const count=Number(match[2]);if(!Number.isSafeInteger(count)||count<=0)return null;start=Math.max(0,size-count);end=size-1;}
+ else{start=Number(match[1]);end=match[2]?Number(match[2]):size-1;if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start>=size||end<start)return null;end=Math.min(size-1,end);}
+ return{start,end};
+}
+async function rangedResponse(response,request){
+ const body=await response.arrayBuffer(),range=parseRange(request.headers.get('Range'),body.byteLength);
+ const headers=new Headers(response.headers);headers.delete('Content-Encoding');headers.delete('Transfer-Encoding');headers.set('Accept-Ranges','bytes');
+ if(!range){headers.set('Content-Range',`bytes */${body.byteLength}`);headers.set('Content-Length','0');return new Response(null,{status:416,headers});}
+ const {start,end}=range;headers.set('Content-Range',`bytes ${start}-${end}/${body.byteLength}`);headers.set('Content-Length',String(end-start+1));
+ return new Response(request.method==='HEAD'?null:body.slice(start,end+1),{status:206,headers});
+}
+function headOnly(response){return new Response(null,{status:response.status,statusText:response.statusText,headers:response.headers});}
+async function cached(entry){
+ const cache=await caches.open(entry.group==='shell'?OFFLINE.shellCache:OFFLINE.mediaCache);
+ const response=await cache.match(absolute(entry.url));return response?.status===200?response:undefined;
+}
+async function respond(request,url){
+ // Always report this controlling worker's manifest, not a newer incompatible shell.
+ if(url.pathname===OFFLINE.base+'offline-manifest.json')return new Response(request.method==='HEAD'?null:JSON.stringify(OFFLINE),{status:200,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'}});
+ // Explicit integrity repair must reach the network rather than re-read a
+ // damaged cached response. A failed repair keeps the prior cache intact.
+ if(request.cache==='reload')return fetch(request);
+ const nav=request.mode==='navigate'?navigationPath(url.pathname):null;
+ const entry=ENTRY_BY_PATH.get(nav??url.pathname);
+ if(entry){
+  const response=await cached(entry);
+  if(response){if(request.headers.has('Range'))return rangedResponse(response,request);return request.method==='HEAD'?headOnly(response):response;}
+ }
+ try{return await fetch(request);}catch{
+  // Missing media/scripts must not receive the app HTML masquerading as success.
+  return new Response(request.method==='HEAD'?null:'This resource is not available offline.',{status:503,headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}});
+ }
+}
+self.addEventListener('fetch',event=>{
+ const request=event.request;if(request.method!=='GET'&&request.method!=='HEAD')return;
+ const url=new URL(request.url);if(url.origin!==ORIGIN||!url.pathname.startsWith(OFFLINE.base))return;
+ event.respondWith(respond(request,url));
+});
