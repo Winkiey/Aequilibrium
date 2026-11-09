@@ -9,7 +9,7 @@
       "scene": "shared-keys",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -22,7 +22,7 @@
       "scene": "shared-keys",
       "cashBefore": 114000,
       "cashAfter": 113600,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -35,7 +35,7 @@
       "scene": "winter-roster",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -48,7 +48,7 @@
       "scene": "winter-roster",
       "cashBefore": 116800,
       "cashAfter": 117400,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -61,7 +61,7 @@
       "scene": "seawall-evening",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -74,7 +74,7 @@
       "scene": "seawall-evening",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -87,7 +87,7 @@
       "scene": "proof-night",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -100,7 +100,7 @@
       "scene": "proof-night",
       "cashBefore": 114000,
       "cashAfter": 115200,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -113,7 +113,7 @@
       "scene": "bookshop-pledge",
       "cashBefore": 114000,
       "cashAfter": 96000,
-      "lines": 4,
+      "lines": 3,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -126,7 +126,7 @@
       "scene": "attic-kept-letter",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 5,
+      "lines": 3,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -139,7 +139,7 @@
       "scene": "tea-room",
       "cashBefore": 114000,
       "cashAfter": 120000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -152,7 +152,7 @@
       "scene": "bank",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -165,7 +165,7 @@
       "scene": "reading-room",
       "cashBefore": 114000,
       "cashAfter": 106000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -178,7 +178,7 @@
       "scene": "bookshop-day",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -191,7 +191,7 @@
       "scene": "reading-room",
       "cashBefore": 114000,
       "cashAfter": 113400,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -204,7 +204,7 @@
       "scene": "bookshop-night",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -217,7 +217,7 @@
       "scene": "reading-gathering",
       "cashBefore": 114000,
       "cashAfter": 111000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -230,7 +230,7 @@
       "scene": "proof-solitary",
       "cashBefore": 114000,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -243,7 +243,7 @@
       "scene": "printshop",
       "cashBefore": 114000,
       "cashAfter": 94000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -256,7 +256,7 @@
       "scene": "archive",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -269,7 +269,7 @@
       "scene": "coldstore",
       "cashBefore": 114000,
       "cashAfter": 96000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -282,7 +282,7 @@
       "scene": "attic",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -295,7 +295,7 @@
       "scene": "roof",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -308,7 +308,7 @@
       "scene": "roof",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -321,7 +321,7 @@
       "scene": "bookshop-day",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -334,7 +334,7 @@
       "scene": "pottery",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -347,7 +347,7 @@
       "scene": "printshop",
       "cashBefore": 114000,
       "cashAfter": 102000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -360,7 +360,7 @@
       "scene": "old-street",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -373,7 +373,7 @@
       "scene": "coastal-train",
       "cashBefore": 114000,
       "cashAfter": 112400,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -386,7 +386,7 @@
       "scene": "attic",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -399,7 +399,7 @@
       "scene": "archive",
       "cashBefore": 114000,
       "cashAfter": 113300,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -412,7 +412,7 @@
       "scene": "attic",
       "cashBefore": 114000,
       "cashAfter": 104000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -425,7 +425,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116620,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -438,7 +438,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 117700,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -451,7 +451,7 @@
       "scene": "coastal-train",
       "cashBefore": 116800,
       "cashAfter": 116200,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -464,7 +464,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 118200,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -477,7 +477,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 115900,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -490,7 +490,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -503,7 +503,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116560,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -516,7 +516,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -529,7 +529,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -542,7 +542,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 117600,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -555,7 +555,7 @@
       "scene": "noodle-shop",
       "cashBefore": 116800,
       "cashAfter": 116720,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -568,7 +568,7 @@
       "scene": "noodle-shop",
       "cashBefore": 116800,
       "cashAfter": 115800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -581,7 +581,7 @@
       "scene": "reading-room",
       "cashBefore": 116800,
       "cashAfter": 115600,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -594,7 +594,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -607,7 +607,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 114800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -620,7 +620,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -633,7 +633,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116100,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -646,7 +646,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -659,7 +659,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 115000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -672,7 +672,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -685,7 +685,7 @@
       "scene": "bookshop-night",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -698,7 +698,7 @@
       "scene": "bookshop-night",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -711,7 +711,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -724,7 +724,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116540,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -737,7 +737,7 @@
       "scene": "noodle-shop",
       "cashBefore": 116800,
       "cashAfter": 120400,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -750,7 +750,7 @@
       "scene": "bookshop-night",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -763,7 +763,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -776,7 +776,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 118000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -789,7 +789,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 117700,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -802,7 +802,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -815,7 +815,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 115400,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -828,7 +828,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -841,7 +841,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 119500,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -854,7 +854,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -867,7 +867,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 119200,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -880,7 +880,7 @@
       "scene": "bookshop-night",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -893,7 +893,7 @@
       "scene": "coldstore",
       "cashBefore": 116800,
       "cashAfter": 116300,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -906,7 +906,7 @@
       "scene": "coldstore",
       "cashBefore": 116800,
       "cashAfter": 108800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -919,7 +919,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 110800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -932,7 +932,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -945,7 +945,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116400,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -958,7 +958,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 111800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -971,7 +971,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -984,7 +984,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 109800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -997,7 +997,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116200,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1010,7 +1010,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 107800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1023,7 +1023,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1036,7 +1036,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 110800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1049,7 +1049,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1062,7 +1062,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 109800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1075,7 +1075,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1088,7 +1088,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 108800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1101,7 +1101,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 115000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1114,7 +1114,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1127,7 +1127,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1140,7 +1140,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 111800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1153,7 +1153,7 @@
       "scene": "tea-room",
       "cashBefore": 116800,
       "cashAfter": 116000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1166,7 +1166,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1179,7 +1179,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1192,7 +1192,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 111800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1205,7 +1205,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 115200,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1218,7 +1218,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1231,7 +1231,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 118600,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1244,7 +1244,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1257,7 +1257,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 114000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1270,7 +1270,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1283,7 +1283,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 113800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1296,7 +1296,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1309,7 +1309,7 @@
       "scene": "coldstore",
       "cashBefore": 116800,
       "cashAfter": 113800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1322,7 +1322,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1335,7 +1335,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1348,7 +1348,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 121783.26,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1361,7 +1361,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 119200,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1374,7 +1374,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1387,7 +1387,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 119800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1400,7 +1400,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1413,7 +1413,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 120400,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1426,7 +1426,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1439,7 +1439,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 120800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1452,7 +1452,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1465,7 +1465,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116300,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1478,7 +1478,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 115300,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1491,7 +1491,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 119600,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1504,7 +1504,7 @@
       "scene": "bank",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1517,7 +1517,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116300,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1530,7 +1530,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1543,7 +1543,7 @@
       "scene": "reading-room",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1556,7 +1556,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 118000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1569,7 +1569,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116760,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1582,7 +1582,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1595,7 +1595,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1608,7 +1608,7 @@
       "scene": "factory",
       "cashBefore": 116800,
       "cashAfter": 117400,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1621,7 +1621,7 @@
       "scene": "pottery",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1634,7 +1634,7 @@
       "scene": "pottery",
       "cashBefore": 116800,
       "cashAfter": 116200,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1647,7 +1647,7 @@
       "scene": "noodle-shop",
       "cashBefore": 116800,
       "cashAfter": 116500,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1660,7 +1660,7 @@
       "scene": "old-street",
       "cashBefore": 116800,
       "cashAfter": 116500,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1673,7 +1673,7 @@
       "scene": "roof",
       "cashBefore": 116800,
       "cashAfter": 113000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1686,7 +1686,7 @@
       "scene": "bookshop-day",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1699,7 +1699,7 @@
       "scene": "bank",
       "cashBefore": 136800,
       "cashAfter": 136800,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1712,7 +1712,7 @@
       "scene": "attic",
       "cashBefore": 136800,
       "cashAfter": 131800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1725,7 +1725,7 @@
       "scene": "archive",
       "cashBefore": 116800,
       "cashAfter": 116500,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1738,7 +1738,7 @@
       "scene": "attic",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1751,7 +1751,7 @@
       "scene": "old-street",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 3,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1764,7 +1764,7 @@
       "scene": "reading-room",
       "cashBefore": 114000,
       "cashAfter": 113600,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1777,7 +1777,7 @@
       "scene": "winter-cloakroom",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1790,7 +1790,7 @@
       "scene": "winter-cloakroom",
       "cashBefore": 116800,
       "cashAfter": 117500,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1803,7 +1803,7 @@
       "scene": "ferry-spring",
       "cashBefore": 114000,
       "cashAfter": 113920,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1816,7 +1816,7 @@
       "scene": "ferry-spring",
       "cashBefore": 114000,
       "cashAfter": 115000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1829,7 +1829,7 @@
       "scene": "repair-summer",
       "cashBefore": 114000,
       "cashAfter": 113740,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1842,7 +1842,7 @@
       "scene": "repair-summer",
       "cashBefore": 114000,
       "cashAfter": 113350,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1855,7 +1855,7 @@
       "scene": "osmanthus-yard",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1868,7 +1868,7 @@
       "scene": "osmanthus-yard",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1881,7 +1881,7 @@
       "scene": "proof-morning",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1894,7 +1894,7 @@
       "scene": "proof-morning",
       "cashBefore": 114000,
       "cashAfter": 114800,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1907,7 +1907,7 @@
       "scene": "post-winter",
       "cashBefore": 116800,
       "cashAfter": 116792,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1920,7 +1920,7 @@
       "scene": "post-winter",
       "cashBefore": 116800,
       "cashAfter": 116800,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1933,7 +1933,7 @@
       "scene": "noodle-blackout",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1946,7 +1946,7 @@
       "scene": "noodle-blackout",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1959,7 +1959,7 @@
       "scene": "debt-autumn",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 4,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true
@@ -1972,7 +1972,7 @@
       "scene": "debt-autumn",
       "cashBefore": 114000,
       "cashAfter": 114000,
-      "lines": 5,
+      "lines": 2,
       "saveRoundTrip": true,
       "quarterSettled": true,
       "finishedThreeYears": true

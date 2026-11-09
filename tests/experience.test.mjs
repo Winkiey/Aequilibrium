@@ -6,7 +6,7 @@ import {createGame,choose,debtTotal} from '../.sites-runtime/test-modules/engine
 import {CHAPTER_EVENTS,mainEvent,materialize,SIDE_EVENTS} from '../.sites-runtime/test-modules/stories.mjs';
 import {shortLines,responseDialogue} from '../.sites-runtime/test-modules/dialogue.mjs';
 import {STORYBOARDS} from '../.sites-runtime/test-modules/cinematic-content.mjs';
-import {outcomeBeats} from '../.sites-runtime/test-modules/visuals.mjs';
+import {outcomeBeats,resumeOutcome,hasAuthoredOutcome,OUTCOME_REVISION} from '../.sites-runtime/test-modules/visuals.mjs';
 import {encounterPeople,recoverPeople,characterHistory} from '../.sites-runtime/test-modules/people.mjs';
 import {freshPresentation,restartPresentation,validPresentation} from '../.sites-runtime/test-modules/presentation.mjs';
 import {initialLesson,LESSONS,nextLesson} from '../.sites-runtime/test-modules/tutorial.mjs';
@@ -23,7 +23,7 @@ test('spoken replies and following narration remain separate; inline quoted word
 });
 test('all 152 responses avoid orphan quote fragments and one-character tail lines',()=>{
  const s=createGame(7);const events=[...Array.from({length:12},(_,i)=>{s.quarter=i+1;return materialize(mainEvent(s),s);}),...SIDE_EVENTS,...CHAPTER_EVENTS];
- for(const event of events)for(const branch of [0,1])for(const beat of outcomeBeats(event,STORYBOARDS[event.id],branch)){
+ for(const event of events)for(const branch of [0,1])for(const beat of [...outcomeBeats(event,STORYBOARDS[event.id],branch),...responseDialogue(event.options[branch].response,event.sender,STORYBOARDS[event.id].cast)]){
   assert.doesNotMatch(beat.text,/^[」”』，。！？；]/u,`${event.id}: ${beat.text}`);assert.ok(Array.from(beat.text).length>1,`${event.id}: ${beat.text}`);
  }
 });
@@ -69,4 +69,41 @@ test('bookshop desk framing keeps complete interaction rings visible across seas
 test('bank, brokerage and travel street use independent paintings instead of story backdrops',()=>{
  const paths=['district-street','neighborhood-bank','securities-office'].map(id=>`public/art/backgrounds/${id}.webp`);const hashes=paths.map(path=>createHash('sha256').update(readFileSync(path)).digest('hex'));assert.equal(new Set(hashes).size,3);
  const old=['old-street','bank','bookshop-night','bookshop-day','brokerage'].map(id=>createHash('sha256').update(readFileSync(`public/art/backgrounds/${id}.webp`)).digest('hex'));assert.ok(hashes.every(hash=>!old.includes(hash)));
+});
+
+// Regression: the two sources used to repeat the same reply in different words.
+test('both opening answers are performed once, including the key reply and window promise',()=>{
+ const g=createGame(77),event=materialize(mainEvent(g),g),before=structuredClone(event),script=STORYBOARDS[event.id];
+ const no=outcomeBeats(event,script,1),yes=outcomeBeats(event,script,0);
+ assert.equal(no.filter(b=>b.text.includes('钥匙先放')).length,1);assert.equal(no.filter(b=>b.text.includes('想清楚')).length,1);
+ assert.equal(no.find(b=>b.text.includes('钥匙先放')).speaker,'cheng');assert.equal(no.at(-1).speaker,'narrator');
+ assert.equal(yes.filter(b=>b.text.includes('后窗')).length,1);assert.deepEqual(event,before);
+});
+test('a saved reply from another content version keeps its own words, amounts and dates without the new performance',()=>{
+ const g=createGame(78),event=materialize(mainEvent(g),g);event.options[1].response='程姨回道：「先留三天。」第六季退回2,345元。';
+ const before=structuredClone(event),beats=outcomeBeats(event,STORYBOARDS[event.id],1);
+ assert.equal(hasAuthoredOutcome(event,1),false);assert.deepEqual(beats.map(b=>[b.speaker,b.text]),[['cheng','先留三天。'],['narrator','第六季退回2,345元。']]);assert.deepEqual(event,before);
+});
+test('variant roof outcomes cannot inherit a performance for a different responsibility',()=>{
+ const g=createGame(79);g.quarter=5;const event=materialize(mainEvent(g),g),beats=outcomeBeats(event,STORYBOARDS[event.id],0);
+ assert.equal(hasAuthoredOutcome(event,0),false);assert.equal(beats.map(b=>b.text).join(''),event.options[0].response);assert.doesNotMatch(beats.map(b=>b.text).join(''),/旧瓦|改签/);
+});
+test('old aftermath cursors skip a removed repeated summary; new cursors retain every authored line',()=>{
+ const g=createGame(80),e=materialize(mainEvent(g),g),script=STORYBOARDS[e.id],old={eventId:e.id,phase:'outcome',index:3,choice:1,inspected:false};
+ const chosen=choose(g,e,1,'main'),before=structuredClone(chosen);
+ assert.deepEqual(resumeOutcome(e,script,1,old),{index:0,finished:true});
+ assert.deepEqual(resumeOutcome(e,script,1,{...old,index:1}),{index:1,finished:false});
+ const current={...old,index:2,outcomeRevision:OUTCOME_REVISION};assert.deepEqual(resumeOutcome(e,script,1,JSON.parse(JSON.stringify(current))),{index:2,finished:false});
+ const ui=freshPresentation(chosen);ui.reading=current;assert.ok(validPresentation(JSON.parse(JSON.stringify(ui)),chosen));
+ assert.deepEqual(chosen,before,'resuming does not apply the choice or effects again');
+ const legacy=structuredClone(e);legacy.options[1].response='程姨回道：「先留三天。明早再来。」信留在桌上。';
+ assert.deepEqual(resumeOutcome(legacy,script,1,old),{index:1,finished:false});
+});
+test('all reviewed branch performances are complete and contain no repeated sentence',()=>{
+ const seen=new Set();for(const shop of [0,1]){const game=createGame(81);game.flags.shop=shop;
+ const events=[...Array.from({length:12},(_,i)=>{game.quarter=i+1;return materialize(mainEvent(game),game);}),...SIDE_EVENTS,...CHAPTER_EVENTS];
+ for(const e of events)for(const i of [0,1]){
+  const beats=outcomeBeats(e,STORYBOARDS[e.id],i),sentences=beats.flatMap(b=>shortLines(b.text)).map(t=>t.replace(/[\p{P}\p{Z}\s]/gu,''));
+  assert.equal(new Set(sentences).size,sentences.length,`${e.id}/${i}`);assert.ok(beats.every(b=>b.text.length>1));seen.add(e.id+'/'+i);
+ }}assert.equal(seen.size,152);
 });

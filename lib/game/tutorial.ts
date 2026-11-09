@@ -13,7 +13,7 @@ export const LESSON_COPY: Record<Lesson, {title:string; text:string; action?:str
   decision:{title:'选一条你愿意承担的生活',text:'先读费用与约定，再点击其中一个答复。作答后，继续看完它的后续。'},
   aftermath:{title:'看看这封答复留下了什么',text:'选择已经记下。继续看完这一条后续，再回书屋核对现金。退出对话也能从这里接着读。',action:'接着看选择之后'},
   ledger:{title:'答复收好了，接着看钱',text:'下一步翻开账本，确认手头现金和未来付款。之后带你亲手完成第一笔买入。',action:'翻开账本'},
-  news:{title:'先读消息，再看公司',text:'打开今日报纸，读完后点击“去证券营业室查看资料”。',action:'打开今日报纸'},
+  news:{title:'先读消息，再看公司',text:'打开本季报纸，读完后点击“去证券营业室查看资料”。',action:'打开本季报纸'},
   broker:{title:'出门，去证券营业室',text:'老街上有证券营业室和银行。先点击“证券营业室”，再打开桌上的公司资料。',action:'走到老街'},
   company:{title:'选一家公司，一起读它的资料',text:'可以从标出的澄川能源开始，也可以换一家。标记只表示教学入口，不代表它会涨。',action:'打开公司资料'},
   business:{title:'先弄清楚，它靠什么赚钱',text:'先读公司介绍。股价只是一份股份的报价，不能代替对生意的了解。',action:'读过了，看营业收入'},

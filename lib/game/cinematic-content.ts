@@ -19,6 +19,7 @@ export type VisualScript = {
   scene: SceneId;
   cast: CastId[];
   beats: Beat[];
+  /** Complete performances. Recorded option responses are history summaries, not extra lines. */
   outcomes: [Beat[], Beat[]];
   outcomeFocus: [FocusObject, FocusObject];
   interaction: { object: FocusObject; label: string; line: string };
@@ -41,11 +42,13 @@ export const STORYBOARDS: Record<string, VisualScript> = {
       b('self', '我把钥匙挪开，展开租约。雨声里，纸页显得格外清楚。', 'medium', 'contract', 0, 'tense'),
     ],
     outcomes: [[
-      b('narrator', '你将钥匙握进掌心，给程姨发去答复，又补了一句话。', 'detail', 'key'),
-      b('self', '后窗我会找人看看。明早，先把这几个书架理一理。', 'medium', 'window', 1, 'warm'),
+      b('self', '好，我来试试。后窗我会找人修。', 'medium', 'letter', 1, 'warm'),
+      b('narrator', '你将钥匙收进衣袋，把租约摊平在灯下。', 'detail', 'key'),
+      b('self', '明早先和阿棠排好开门的时间，校对的工作也不能耽搁。', 'medium', 'ledger'),
     ], [
-      b('narrator', '你把租约按折痕收好，压进校对稿下面，留下钥匙。', 'detail', 'letter'),
-      b('cheng', '钥匙先放你那里。哪天想清楚了，再慢慢告诉我。', 'medium', 'key', 1, 'warm'),
+      b('self', '我先替你照看。正式接手的事，让我再想一想。', 'medium', 'letter'),
+      b('cheng', '好，钥匙先放你那里。想清楚了再告诉我。', 'medium', 'key', 1, 'warm'),
+      b('narrator', '你把信折好，压在稿纸下面。租约上还没有签名。', 'detail', 'contract'),
     ]],
     outcomeFocus: ['key', 'letter'],
     interaction: { object: 'letter', label: '拆开信封', line: '你抽出折好的租约，黄铜钥匙在柜台上轻轻一响。' },
@@ -363,7 +366,7 @@ export const STORYBOARDS: Record<string, VisualScript> = {
       b('he', '就这个吧。回去你叫车，我今天只管这张桌子。', 'medium', 'receipt', 2, 'warm'),
     ], [
       b('narrator', '你先去付了账；沈禾伸向信封的手停住，慢慢把它收回。', 'detail', 'receipt'),
-      b('he', '已经付过了啊……那，下次先说好，真的让我请一次。', 'medium', 'cup', 0),
+      b('self', '本来想请她高兴，怎么又替她作了决定。', 'medium', 'cup', 0),
     ]], outcomeFocus: ['cup', 'receipt'],
     interaction: { object: "phone", label: "看看她收藏的菜单", line: "照片的收藏日期很早，想吃的那道菜被她放大过。" },
   },

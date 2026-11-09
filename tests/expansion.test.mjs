@@ -26,7 +26,7 @@ for(const id of Object.keys(STORYBOARDS))for(const branch of[0,1])test(`execute 
  const{s,event}=fixture(id),before=structuredClone(s);assert.equal(optionError(s,event.options[branch]),null);
  const chosen=choose(s,event,branch,storyKind(id));assert.deepEqual(s,before);check(chosen);assert.equal(chosen.history.at(-1).eventId,id);assert.equal(chosen.history.at(-1).optionIndex,branch);
  assert.throws(()=>choose(chosen,event,branch,storyKind(id)),/回复/);
- const beats=outcomeBeats(event,STORYBOARDS[id],branch);assert.ok(beats.length>=3);assert.ok(SCENES[outcomeScene(id,branch,STORYBOARDS[id].scene)]);
+ const beats=outcomeBeats(event,STORYBOARDS[id],branch);assert.ok(beats.length>=2);assert.ok(SCENES[outcomeScene(id,branch,STORYBOARDS[id].scene)]);
  const restored=JSON.parse(JSON.stringify(chosen));check(restored);const collection=recoverCollection(freshCollection(),restored);assert.ok(collectionReplay(collection,id,branch));assert.equal(collectionReplay(collection,id,1-branch),undefined);
  let settled=endQuarter(completeChapter(restored));check(settled);assert.ok(settled.quarters.some(q=>q.quarter===s.quarter));assert.equal(settled.promises.filter(p=>p.status==='pending'&&p.due===s.quarter).length,0);
  while(!settled.finished){const next=materialize(mainEvent(settled),settled),i=optionError(settled,next.options[1])?0:1;assert.equal(optionError(settled,next.options[i]),null);settled=endQuarter(completeChapter(choose(settled,next,i,'main')));check(settled);}

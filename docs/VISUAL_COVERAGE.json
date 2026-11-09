@@ -27,13 +27,13 @@
           "branch": 0,
           "scene": "shared-keys",
           "focus": "key",
-          "lines": 5
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "shared-keys",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -53,13 +53,13 @@
           "branch": 0,
           "scene": "winter-roster",
           "focus": "book",
-          "lines": 5
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "winter-roster",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -78,13 +78,13 @@
           "branch": 0,
           "scene": "seawall-evening",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "seawall-evening",
           "focus": "contract",
-          "lines": 5
+          "lines": 2
         }
       ]
     },
@@ -104,13 +104,13 @@
           "branch": 0,
           "scene": "proof-night",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "proof-night",
           "focus": "receipt",
-          "lines": 5
+          "lines": 2
         }
       ]
     },
@@ -129,13 +129,13 @@
           "branch": 0,
           "scene": "bookshop-pledge",
           "focus": "key",
-          "lines": 4
+          "lines": 3
         },
         {
           "branch": 1,
           "scene": "attic-kept-letter",
           "focus": "letter",
-          "lines": 5
+          "lines": 3
         }
       ]
     },
@@ -155,13 +155,13 @@
           "branch": 0,
           "scene": "tea-room",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bank",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -180,13 +180,13 @@
           "branch": 0,
           "scene": "reading-room",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -207,13 +207,13 @@
           "branch": 0,
           "scene": "reading-room",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-night",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -233,13 +233,13 @@
           "branch": 0,
           "scene": "reading-gathering",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "proof-solitary",
           "focus": "lamp",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -258,13 +258,13 @@
           "branch": 0,
           "scene": "printshop",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "archive",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -284,13 +284,13 @@
           "branch": 0,
           "scene": "coldstore",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -310,13 +310,13 @@
           "branch": 0,
           "scene": "roof",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "roof",
           "focus": "window",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -335,13 +335,13 @@
           "branch": 0,
           "scene": "bookshop-day",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "pottery",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -360,13 +360,13 @@
           "branch": 0,
           "scene": "printshop",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -385,13 +385,13 @@
           "branch": 0,
           "scene": "coastal-train",
           "focus": "window",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -410,13 +410,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -435,13 +435,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "cup",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "lamp",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -460,13 +460,13 @@
           "branch": 0,
           "scene": "coastal-train",
           "focus": "window",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -485,13 +485,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -510,13 +510,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "cup",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "ticket",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -533,13 +533,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "window",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "lamp",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -558,13 +558,13 @@
           "branch": 0,
           "scene": "noodle-shop",
           "focus": "cup",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "noodle-shop",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         }
       ]
     },
@@ -583,13 +583,13 @@
           "branch": 0,
           "scene": "reading-room",
           "focus": "cup",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -608,13 +608,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -633,13 +633,13 @@
           "branch": 0,
           "scene": "bookshop-day",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -658,13 +658,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         }
       ]
     },
@@ -683,13 +683,13 @@
           "branch": 0,
           "scene": "bookshop-night",
           "focus": "lamp",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-night",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -709,13 +709,13 @@
           "branch": 0,
           "scene": "bookshop-day",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -734,13 +734,13 @@
           "branch": 0,
           "scene": "noodle-shop",
           "focus": "cup",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-night",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -759,13 +759,13 @@
           "branch": 0,
           "scene": "factory",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -784,13 +784,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -809,13 +809,13 @@
           "branch": 0,
           "scene": "factory",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         }
       ]
     },
@@ -834,13 +834,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -860,13 +860,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "key",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-night",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -885,13 +885,13 @@
           "branch": 0,
           "scene": "coldstore",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "coldstore",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -908,13 +908,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -933,13 +933,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -958,13 +958,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "letter",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -983,13 +983,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1008,13 +1008,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1033,13 +1033,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1056,13 +1056,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1081,13 +1081,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "letter",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1106,13 +1106,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "window",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1131,13 +1131,13 @@
           "branch": 0,
           "scene": "tea-room",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1154,13 +1154,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "letter",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1179,13 +1179,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1204,13 +1204,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1229,13 +1229,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1254,13 +1254,13 @@
           "branch": 0,
           "scene": "bookshop-day",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "phone",
-          "lines": 3
+          "lines": 2
         }
       ]
     },
@@ -1279,13 +1279,13 @@
           "branch": 0,
           "scene": "coldstore",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1302,13 +1302,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1327,13 +1327,13 @@
           "branch": 0,
           "scene": "factory",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1352,13 +1352,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bank",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1377,13 +1377,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "archive",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1402,13 +1402,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "archive",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1425,13 +1425,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "letter",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bank",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1450,13 +1450,13 @@
           "branch": 0,
           "scene": "factory",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bank",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1475,13 +1475,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "receipt",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1501,13 +1501,13 @@
           "branch": 0,
           "scene": "reading-room",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1526,13 +1526,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "letter",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1549,13 +1549,13 @@
           "branch": 0,
           "scene": "attic",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "factory",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1574,13 +1574,13 @@
           "branch": 0,
           "scene": "pottery",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "pottery",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1599,13 +1599,13 @@
           "branch": 0,
           "scene": "noodle-shop",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "old-street",
           "focus": "ledger",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1625,13 +1625,13 @@
           "branch": 0,
           "scene": "roof",
           "focus": "book",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "bookshop-day",
           "focus": "window",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1648,13 +1648,13 @@
           "branch": 0,
           "scene": "bank",
           "focus": "contract",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1671,13 +1671,13 @@
           "branch": 0,
           "scene": "archive",
           "focus": "ledger",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "attic",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1696,13 +1696,13 @@
           "branch": 0,
           "scene": "old-street",
           "focus": "key",
-          "lines": 3
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "reading-room",
           "focus": "cup",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1721,13 +1721,13 @@
           "branch": 0,
           "scene": "winter-cloakroom",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "winter-cloakroom",
           "focus": "ticket",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1746,13 +1746,13 @@
           "branch": 0,
           "scene": "ferry-spring",
           "focus": "ticket",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "ferry-spring",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1771,13 +1771,13 @@
           "branch": 0,
           "scene": "repair-summer",
           "focus": "receipt",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "repair-summer",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1797,13 +1797,13 @@
           "branch": 0,
           "scene": "osmanthus-yard",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "osmanthus-yard",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1823,13 +1823,13 @@
           "branch": 0,
           "scene": "proof-morning",
           "focus": "book",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "proof-morning",
           "focus": "receipt",
-          "lines": 5
+          "lines": 2
         }
       ]
     },
@@ -1848,13 +1848,13 @@
           "branch": 0,
           "scene": "post-winter",
           "focus": "letter",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "post-winter",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1874,13 +1874,13 @@
           "branch": 0,
           "scene": "noodle-blackout",
           "focus": "ledger",
-          "lines": 5
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "noodle-blackout",
           "focus": "phone",
-          "lines": 4
+          "lines": 2
         }
       ]
     },
@@ -1899,13 +1899,13 @@
           "branch": 0,
           "scene": "debt-autumn",
           "focus": "contract",
-          "lines": 4
+          "lines": 2
         },
         {
           "branch": 1,
           "scene": "debt-autumn",
           "focus": "receipt",
-          "lines": 5
+          "lines": 2
         }
       ]
     }

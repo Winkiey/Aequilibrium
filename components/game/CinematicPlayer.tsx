@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, ChevronRight, X } from 'lucide-react';
 import { warmScene } from '@/lib/game/assets';
 import { Stage } from './Stage';
-import { CAST, getScript, OBJECTS, OBJECT_INSPECTIONS, outcomeBeats, outcomeScene } from '@/lib/game/visuals';
+import { CAST, getScript, OBJECTS, OBJECT_INSPECTIONS, outcomeBeats, outcomeScene, resumeOutcome, OUTCOME_REVISION } from '@/lib/game/visuals';
 import { optionError, type Game, type StoryEvent } from '@/lib/game/engine';
 import type { Beat, VisualScript } from '@/lib/game/cinematic-content';
 import {materialPlacement,SCENE_LAYOUTS,sceneFocusPoint} from '@/lib/game/composition';
@@ -19,7 +19,9 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const context=EVENT_CONTEXTS[event.id];
  const start=progress?.eventId===event.id?progress:undefined;
  const [phase,setPhase]=useState<ReadingProgress['phase']>(previewBranch!==undefined?'outcome':start?.phase==='choice'&&answered!==null?'outcome':start?.phase==='outcome'&&answered===null?'story':start?.phase??'story');
- const [index,setIndex]=useState(previewBranch!==undefined?0:start?.index??0),[choice,setChoice]=useState<0|1|null>(previewBranch??answered??start?.choice??null),[inspection,setInspection]=useState<NonNullable<Beat['focus']>|null>(null),[inspected,setInspected]=useState(start?.inspected??false),[transcript,setTranscript]=useState(false);
+ const [restoredOutcome]=useState(()=>resumeOutcome(event,script,previewBranch??answered??start?.choice??0,start));
+ const [legacyCompleted]=useState(()=>!preview&&phase==='outcome'&&restoredOutcome.finished);
+ const [index,setIndex]=useState(previewBranch!==undefined?0:phase==='outcome'?restoredOutcome.index:start?.index??0),[choice,setChoice]=useState<0|1|null>(previewBranch??answered??start?.choice??null),[inspection,setInspection]=useState<NonNullable<Beat['focus']>|null>(null),[inspected,setInspected]=useState(start?.inspected??false),[transcript,setTranscript]=useState(false);
  const beats=useMemo(()=>phase==='outcome'?outcomeBeats(event,script,choice??0):script.beats,[phase,event,script,choice]);
  const safeIndex=Math.min(index,beats.length-1);
  const original=beats[safeIndex];
@@ -30,7 +32,8 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const [typing,setTyping]=useState({key:beatKey,count:0});
  const count=typing.key===beatKey?typing.count:0,complete=!!inspection||reducedMotion||count>=chars.length;
  useEffect(()=>{if(reducedMotion||paused||!sceneReady||complete)return;const timer=setTimeout(()=>setTyping({key:beatKey,count:Math.min(count+1,chars.length)}),/[，。！？；]/u.test(chars[count-1]??'')?speed*5:speed);return()=>clearTimeout(timer);},[beatKey,count,chars,reducedMotion,speed,paused,sceneReady,complete]);
- useEffect(()=>{onProgress({eventId:event.id,phase,index:safeIndex,choice,inspected});},[event.id,phase,safeIndex,choice,inspected]);
+ useEffect(()=>{if(!legacyCompleted)onProgress({eventId:event.id,phase,index:safeIndex,choice,inspected,...(phase==='outcome'?{outcomeRevision:OUTCOME_REVISION}:{})});},[event.id,phase,safeIndex,choice,inspected,legacyCompleted]);
+ useEffect(()=>{if(legacyCompleted)onFinish('complete');},[legacyCompleted]);
  useEffect(()=>{onStep?.(phase==='choice'?'decision':'dialogue');},[phase]);
  function advance(){if(paused||!sceneReady||transcript||phase==='choice')return;if(!complete){setTyping({key:beatKey,count:chars.length});return;}if(inspection){setInspection(null);return;}if(safeIndex<beats.length-1){setIndex(safeIndex+1);return;}if(phase==='outcome'||epilogue||introOnly)onFinish('complete');else{if(answered!==null){setChoice(answered);setPhase('outcome');}else setPhase('choice');setIndex(0);}}
  useEffect(()=>{const key=(e:KeyboardEvent)=>{if(paused||e.repeat||e.altKey||e.ctrlKey||e.metaKey)return;if((e.target as HTMLElement)?.closest('input,button,select,textarea,a,summary'))return;if(e.code==='Space'||e.code==='Enter'){e.preventDefault();advance();}if(e.code==='ArrowLeft'&&index>0){e.preventDefault();setIndex(index-1);}if(e.code==='Escape'){if(transcript)setTranscript(false);else onFinish('exit');}};document.addEventListener('keydown',key);return()=>document.removeEventListener('keydown',key);});
@@ -44,6 +47,7 @@ export function CinematicPlayer({game,event,answered,progress,speed=30,reducedMo
  const direction=resolveStaging({eventId:event.id,phase,branch:choice??0,beat,index:safeIndex,script,scene:location});
  useEffect(()=>{if(phase==='choice'||(phase==='story'&&safeIndex>=script.beats.length-2)){for(const branch of [0,1] as const)warmScene(outcomeScene(event.id,branch,script.scene),script.cast);}},[event.id,phase,safeIndex,script]);
  const actors=direction.cast;
+ if(legacyCompleted)return null;
  return <div className="cinematic-player" data-event={event.id} data-phase={phase} data-branch={phase==='outcome'?choice:undefined}>
   <Stage quarter={event.atQuarter??game.quarter} staging={direction} framing={SCENE_LAYOUTS[location].framing} sceneLayer={phase!=='choice'&&interest!=='window'&&hasWorldObject&&<button className={`story-object-hotspot ${!inspected?'undiscovered':''}`} style={{'--object-x':`${hotspotPoint[0]}%`,'--object-y':`${hotspotPoint[1]}%`} as React.CSSProperties} onClick={()=>{setInspection(value=>value?null:interest);setInspected(true);}} aria-label={inspectLabel}><i/><span>{inspectLabel}{inspected&&<small>已查看</small>}</span></button>} onReadyChange={setSceneReady} scene={location} cast={actors} speaker={beat.speaker} pose={beat.pose??(phase==='outcome'?choice===0?1:2:0)} camera={beat.camera} focus={focus} emotion={beat.emotion} showObject={beat.camera==='detail'||phase==='outcome'} shotId={`${event.id}:${phase}:${phase==='outcome'?choice:'intro'}:${safeIndex}`}>
    <button className="scene-advance-hit" aria-label={inspection?'收起物件，继续':complete?'下一句':'立即显示完整对白'} onClick={advance} disabled={phase==='choice'}/>

@@ -4,6 +4,8 @@ export { shortLines } from './dialogue';
 import { STORYBOARDS } from './cinematic-content';
 import type { Game, StoryEvent } from './engine';
 import { EXPANSION_OUTCOMES } from './expansion-visuals';
+import { OUTCOME_RESPONSE_KEYS, outcomeResponseKey } from './outcome-responses';
+import type { ReadingProgress } from './presentation';
 
 export const CAST:Record<CastId,{name:string;role:string;accent:string;sprite:string}>={
  cheng:{name:'程姨',role:'泊灯书屋的旧主人',accent:'#b4beb0',sprite:'/art/characters/cheng.webp'},
@@ -74,9 +76,25 @@ export const OBJECT_INSPECTIONS:Record<Focus,string>={
 export function getScript(event:StoryEvent):VisualScript {
  const script=STORYBOARDS[event.id];if(!script)throw new Error(`缺少分镜：${event.id}`);return script;
 }
+export const OUTCOME_REVISION=2;
+export function hasAuthoredOutcome(event:StoryEvent,index:0|1):boolean{
+ return OUTCOME_RESPONSE_KEYS[event.id]?.[index]===outcomeResponseKey(event.options[index].response);
+}
 export function outcomeBeats(event:StoryEvent,script:VisualScript,index:0|1):Beat[]{
- // The engine's authoritative response carries dynamic financial/story facts.
- return [...script.outcomes[index],...responseDialogue(event.options[index].response,event.sender,script.cast).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:'quiet' as const}))];
+ // A performance and its history summary describe ONE response. Never concatenate
+ // them. A changed/legacy response owns its words, including amounts and dates.
+ if(hasAuthoredOutcome(event,index))return script.outcomes[index].map(beat=>({...beat}));
+ const reply=responseDialogue(event.options[index].response,event.sender,script.cast);
+ return (reply.length?reply:[{speaker:'narrator' as const,text:'这一段答复已经记下。'}]).map(beat=>({...beat,camera:'medium' as const,focus:script.outcomeFocus[index],emotion:'quiet' as const}));
+}
+export function resumeOutcome(event:StoryEvent,script:VisualScript,index:0|1,progress?:ReadingProgress):{index:number;finished:boolean}{
+ if(progress?.eventId!==event.id||progress.phase!=='outcome')return{index:0,finished:false};
+ const length=outcomeBeats(event,script,index).length;
+ if(progress.outcomeRevision===OUTCOME_REVISION)return{index:Math.min(progress.index,length-1),finished:false};
+ // Before revision 2, two authored beats were followed by the recorded summary.
+ // If that performance was already read, return to the scene without replaying it.
+ if(hasAuthoredOutcome(event,index))return progress.index>=2?{index:0,finished:true}:{index:Math.min(progress.index,length-1),finished:false};
+ return{index:Math.min(Math.max(0,progress.index-2),length-1),finished:false};
 }
 export function hubScene(s:Game):SceneId {return s.quarter===1?'bookshop-night':(s.quarter-1)%4===1?'bookshop-night':(s.quarter-1)%4===2?'bookshop-day':'reading-room';}
 export const OUTCOME_SCENES:Record<string,[SceneId,SceneId]>={

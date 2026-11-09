@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,statSync,writeFileSync} from 'node:fs';
 import {STORYBOARDS} from '../.sites-runtime/test-modules/cinematic-content.mjs';
-import {CAST,SCENES,OBJECTS,OUTCOME_SCENES,outcomeBeats} from '../.sites-runtime/test-modules/visuals.mjs';
+import {CAST,SCENES,OBJECTS,OUTCOME_SCENES,outcomeBeats,hasAuthoredOutcome} from '../.sites-runtime/test-modules/visuals.mjs';
 import {EPILOGUES,epilogueScript} from '../.sites-runtime/test-modules/epilogues.mjs';
 import {createGame,choose,validateSave} from '../.sites-runtime/test-modules/engine.mjs';
 import {CHAPTER_EVENTS,mainEvent,SIDE_EVENTS,materialize} from '../.sites-runtime/test-modules/stories.mjs';
@@ -16,7 +16,7 @@ function verifyBeat(b){assert.ok(b.text&&Array.from(b.text).length<=96,b.text);a
 test('all 76 events and both branches have authored visual scenes, with no missing ids',()=>{
  assert.deepEqual(Object.keys(STORYBOARDS).sort(),ids.sort());assert.deepEqual(Object.keys(OUTCOME_SCENES).sort(),ids);
  for(const id of ids){const script=STORYBOARDS[id];assert.ok(SCENES[script.scene]);assert.ok(script.beats.length>=3);assert.ok(script.cast.every(c=>CAST[c]));assert.ok(script.interaction.line&&script.interaction.label&&OBJECTS[script.interaction.object]);assert.notEqual(script.outcomeFocus[0],script.outcomeFocus[1]);
-  script.beats.forEach(verifyBeat);for(const branch of [0,1]){assert.ok(SCENES[OUTCOME_SCENES[id][branch]]);assert.ok(script.outcomes[branch].length>=2);const beats=outcomeBeats(fixture(id),script,branch);beats.forEach(verifyBeat);assert.ok(beats.some(b=>b.text===fixture(id).options[branch].response||fixture(id).options[branch].response.includes(b.text)));}
+  script.beats.forEach(verifyBeat);for(const branch of [0,1]){assert.ok(SCENES[OUTCOME_SCENES[id][branch]]);assert.ok(script.outcomes[branch].length>=2);const beats=outcomeBeats(fixture(id),script,branch);beats.forEach(verifyBeat);assert.ok(hasAuthoredOutcome(fixture(id),branch),`${id}/${branch}: review changed responses before approving the performance`);assert.deepEqual(beats,script.outcomes[branch]);}
   assert.notDeepEqual(script.outcomes[0],script.outcomes[1]);
  }
  assert.equal(new Set(ids.map(id=>STORYBOARDS[id].interaction.line)).size,76);

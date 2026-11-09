@@ -12,6 +12,10 @@ import {rememberIntro,readCollection,freshCollection,collectionReplay} from '../
 import {freshPresentation,validPresentation} from '../.sites-runtime/test-modules/presentation.mjs';
 import {TradeLessonForm} from '../.sites-runtime/test-modules/TradeLessonForm.mjs';
 import Bookshelf from '../.sites-runtime/test-modules/Bookshelf.mjs';
+import {seasonalNews,companyNews,COMPANY_QUESTIONS} from '../.sites-runtime/test-modules/news.mjs';
+import {News} from '../.sites-runtime/test-modules/NewsPanels.mjs';
+import {Newspaper} from '../.sites-runtime/test-modules/PaperViews.mjs';
+import {CinematicPlayer} from '../.sites-runtime/test-modules/CinematicPlayer.mjs';
 
 test('all stories have an understandable situation and choice, main openings separate voices',()=>{
  assert.deepEqual(Object.keys(EVENT_CONTEXTS).sort(),Object.keys(STORYBOARDS).sort());assert.equal(Object.keys(MAIN_REVISED_BEATS).length,16);assert.equal(Object.keys(CAST_ENTRANCES).length,10);
@@ -69,4 +73,36 @@ test('a loan follow-up recalls the actual loan rather than a newer unrelated enc
  game.history=[{...game.history[0],quarter:3,eventId:'main-3',title:loan.title,choice:'借出两万元，写清还款日期'},{...game.history[0],quarter:4,eventId:'side-2',title:'不再出版的一本书',choice:'保留给来店的人'}];
  game.quarter=7;const current=materialize(mainEvent(game),game),opened=prepareNarrative(game,current,2);
  assert.ok(opened.opening[0].text.includes(loan.title));assert.ok(opened.opening.some(b=>b.text.includes('借出两万元')));
+});
+
+test('real quarterly newspaper and tutorial never present daily timestamps',()=>{
+ const game=createGame(82),noop=()=>{};
+ for(let quarter=1;quarter<=12;quarter++){
+  game.quarter=quarter;const before=structuredClone(game);
+  const paper=renderToStaticMarkup(h(Newspaper,{game,onMarket:noop,tutorial:false,onSkip:noop,onLessonAction:noop}));
+  const news=renderToStaticMarkup(h(News,{game}));
+  assert.match(paper,/澄港季报/);assert.match(paper,/每季一期/);assert.doesNotMatch(paper+news,/日报|今日|昨日|今晨/);assert.match(news,/公司观察/);assert.equal((news.match(/class="news-item"/g)||[]).length,3);assert.deepEqual(game,before);
+ }
+});
+test('the real player does not flash the duplicated line when an old save stopped in its removed summary',()=>{
+ const start=createGame(83),event=materialize(mainEvent(start),start),game=choose(start,event,1,'main'),noop=()=>{};
+ const html=renderToStaticMarkup(h(CinematicPlayer,{game,event,answered:1,reducedMotion:true,progress:{eventId:event.id,phase:'outcome',index:2,choice:1,inspected:false},onChoose:()=>false,onFinish:noop,onLedger:noop,onProgress:noop}));
+ assert.equal(html,'');assert.equal(game.history.length,1);assert.equal(game.cash,120000);
+});
+
+test('quarterly news covers all six businesses with public figures, comparisons and distinct follow-up questions',()=>{
+ const game=createGame(84),before=structuredClone(game),paper=seasonalNews(game);
+ assert.equal(paper.companies.length,6);assert.equal(new Set(paper.companies.map(c=>c.question)).size,6);
+ for(const c of paper.companies){assert.ok(COMPANY_QUESTIONS[c.id]);assert.equal(c.previous,undefined);assert.equal(c.priceChange,null);assert.match(c.comparison,/尚无上一份披露/);assert.ok(c.facts.includes(c.current.debtRatio.toFixed(1)));}
+ assert.deepEqual(game,before);const privateChange=structuredClone(game);
+ for(const a of privateChange.assets){a.fundamental=999;a.trueRevenue=888888;a.trueCashflow=-77777;}
+ assert.deepEqual(seasonalNews(privateChange),paper,'unpublished economic state must not enter a newspaper');
+ const a=structuredClone(game.assets[0]);a.disclosures.push({...a.disclosures[0],quarter:1,revenue:4500,cashflow:210,debtRatio:49,price:25});
+ const changed=companyNews(a);assert.match(changed.headline,/营收增加.*走弱/);assert.match(changed.comparison,/第0季|开局披露/);assert.equal(changed.current.cashflow,210);assert.ok(changed.priceChange>0);
+ delete a.disclosures;const old=companyNews(a);assert.equal(old.previous,undefined);assert.equal(old.priceChange,null);assert.match(old.asOf,/旧档未保留/);
+});
+test('local newspaper notes use only known choices and deadlines without inventing receipts',()=>{
+ const game=createGame(85);game.quarter=3;game.history=[{quarter:1,title:'雨夜续租',choice:'暂时照看',response:'她说可以慢慢想。',principle:'机会成本',cash:0}];
+ game.promises=[{id:'p',label:'已答应的修理费',due:3,amount:900,status:'pending',kind:'payment'},{id:'r',label:'待收回款',due:4,amount:2100,status:'pending',kind:'receipt',chance:.5},{id:'future',label:'远期付款',due:8,amount:8000,status:'pending',kind:'payment'}];
+ const before=structuredClone(game),news=seasonalNews(game);assert.deepEqual(news.commitments.map(p=>p.id),['p','r']);assert.ok(news.notes.some(n=>n.title.startsWith('第1季留下的回声')));assert.deepEqual(game,before);
 });
