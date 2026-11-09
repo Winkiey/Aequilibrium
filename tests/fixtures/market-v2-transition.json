@@ -1,0 +1,949 @@
+{
+  "sourceCommit": "0f7eaf315dc8ef12099d096d6d1f0cb858ad9c76",
+  "before": {
+    "version": 1,
+    "seed": 77,
+    "quarter": 1,
+    "finished": false,
+    "cash": 110000,
+    "assets": [
+      {
+        "id": "harbor",
+        "name": "雾港冷链",
+        "industry": "港务 · 物流",
+        "code": "CG.016",
+        "description": "新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。",
+        "price": 24.8,
+        "initial": 24.8,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          22.33,
+          22.18,
+          22.26,
+          22.6,
+          22.81,
+          23.61,
+          23.02,
+          24.17,
+          23.44,
+          25,
+          24.43,
+          24.59,
+          24.8
+        ],
+        "revenue": 3860,
+        "cashflow": 342,
+        "debtRatio": 46,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 24.8,
+            "revenue": 3860,
+            "cashflow": 342,
+            "debtRatio": 46
+          }
+        ],
+        "fundamental": 24.8,
+        "trueRevenue": 3860,
+        "trueCashflow": 342,
+        "business": {
+          "referenceRevenue": 3860,
+          "referenceCashRatio": 0.08860103626943006,
+          "referenceDebt": 46,
+          "referencePrice": 24.8,
+          "notice": {
+            "quarter": 1,
+            "kind": "collection",
+            "direction": -1,
+            "title": "回款日期需要再确认",
+            "fact": "冷库扩建与生鲜运输：部分客户申请延长付款期限，交付与收款可能分属不同季度。",
+            "uncertainty": "延期能否缩短、剩余款项何时到账，仍需跟踪。",
+            "check": "把营收和经营现金净额放在一起看，继续核对融资压力。"
+          },
+          "outcomes": []
+        }
+      },
+      {
+        "id": "power",
+        "name": "澄川能源",
+        "industry": "公用 · 能源",
+        "code": "CG.028",
+        "description": "城里大多数灯都由它点亮。收入稳定，设备改造需要持续投入。",
+        "price": 16.35,
+        "initial": 16.35,
+        "units": 609.419336254213,
+        "basis": 10000,
+        "history": [
+          15.32,
+          14.7,
+          14.84,
+          15.13,
+          15.74,
+          15.03,
+          16.15,
+          15.76,
+          15.71,
+          15.64,
+          15.68,
+          15.82,
+          16.35
+        ],
+        "revenue": 6240,
+        "cashflow": 820,
+        "debtRatio": 38,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 16.35,
+            "revenue": 6240,
+            "cashflow": 820,
+            "debtRatio": 38
+          }
+        ],
+        "fundamental": 16.35,
+        "trueRevenue": 6240,
+        "trueCashflow": 820,
+        "business": {
+          "referenceRevenue": 6240,
+          "referenceCashRatio": 0.13141025641025642,
+          "referenceDebt": 38,
+          "referencePrice": 16.35,
+          "notice": {
+            "quarter": 1,
+            "kind": "cost",
+            "direction": -1,
+            "title": "采购与维护报价上移",
+            "fact": "设备检修与供能合同：供应商提交了更高的采购或维护报价。",
+            "uncertainty": "最终采购量与执行价仍待确认，涨价不会等比例变成全部成本。",
+            "check": "核对经营现金与债务变化，确认公司能否消化成本。"
+          },
+          "outcomes": []
+        }
+      },
+      {
+        "id": "retail",
+        "name": "街角百货",
+        "industry": "消费 · 零售",
+        "code": "CG.032",
+        "description": "从一间杂货铺做到十二家门店。老板仍然每天去市场看菜价。",
+        "price": 12.6,
+        "initial": 12.6,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          11.78,
+          11.52,
+          12.13,
+          11.66,
+          11.81,
+          11.54,
+          12.42,
+          12.55,
+          12.57,
+          12.44,
+          12.11,
+          12.41,
+          12.6
+        ],
+        "revenue": 2150,
+        "cashflow": 180,
+        "debtRatio": 31,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 12.6,
+            "revenue": 2150,
+            "cashflow": 180,
+            "debtRatio": 31
+          }
+        ],
+        "fundamental": 12.6,
+        "trueRevenue": 2150,
+        "trueCashflow": 180,
+        "business": {
+          "referenceRevenue": 2150,
+          "referenceCashRatio": 0.08372093023255814,
+          "referenceDebt": 31,
+          "referencePrice": 12.6,
+          "notice": {
+            "quarter": 1,
+            "kind": "orders",
+            "direction": 1,
+            "title": "新增需求进入排期",
+            "fact": "门店销售与补货：客户提交了新增需求，尚需完成交付和验收。",
+            "uncertainty": "新增需求可能改期；交付前还要安排人手和材料。",
+            "check": "核对实际营收是否增加，以及新增业务有没有带来现金。"
+          },
+          "outcomes": []
+        }
+      },
+      {
+        "id": "medical",
+        "name": "白鹭医疗",
+        "industry": "制造 · 医疗",
+        "code": "CG.051",
+        "description": "为社区诊所生产器材。新产品刚通过验收，医院付款仍需要时间。",
+        "price": 38.2,
+        "initial": 38.2,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          35.84,
+          36.47,
+          35.03,
+          35.05,
+          36.82,
+          37.41,
+          37.16,
+          35.75,
+          36.4,
+          38.28,
+          37.93,
+          37.83,
+          38.2
+        ],
+        "revenue": 1480,
+        "cashflow": 98,
+        "debtRatio": 42,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 38.2,
+            "revenue": 1480,
+            "cashflow": 98,
+            "debtRatio": 42
+          }
+        ],
+        "fundamental": 38.2,
+        "trueRevenue": 1480,
+        "trueCashflow": 98,
+        "business": {
+          "referenceRevenue": 1480,
+          "referenceCashRatio": 0.06621621621621622,
+          "referenceDebt": 42,
+          "referencePrice": 38.2,
+          "notice": {
+            "quarter": 1,
+            "kind": "collection",
+            "direction": 1,
+            "title": "客户提出分批结清",
+            "fact": "器材交付与医院付款：客户交来分批付款安排，具体到账仍以回单为准。",
+            "uncertainty": "承诺的日期不等于已经收到现金；也可能只收到一部分。",
+            "check": "核对经营现金净额是否改善，以及负债是否仍在上升。"
+          },
+          "outcomes": []
+        }
+      },
+      {
+        "id": "signal",
+        "name": "远汐通信",
+        "industry": "科技 · 通信",
+        "code": "CG.067",
+        "description": "承包沿海城市的数据网络。未来写在合同里，成本已经发生。",
+        "price": 45.7,
+        "initial": 45.7,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          41.21,
+          42.34,
+          43.03,
+          41.61,
+          41.99,
+          43.81,
+          42.58,
+          45.42,
+          45.46,
+          44.79,
+          43.32,
+          45.92,
+          45.7
+        ],
+        "revenue": 2780,
+        "cashflow": 112,
+        "debtRatio": 56,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 45.7,
+            "revenue": 2780,
+            "cashflow": 112,
+            "debtRatio": 56
+          }
+        ],
+        "fundamental": 45.7,
+        "trueRevenue": 2780,
+        "trueCashflow": 112,
+        "business": {
+          "referenceRevenue": 2780,
+          "referenceCashRatio": 0.04028776978417266,
+          "referenceDebt": 56,
+          "referencePrice": 45.7,
+          "notice": {
+            "quarter": 1,
+            "kind": "orders",
+            "direction": -1,
+            "title": "部分交付重新排期",
+            "fact": "网络工程验收与交付：客户调整了本季交付安排，原订单仍需逐项确认。",
+            "uncertainty": "延期范围和补单数量尚未确定，不能直接认定全部收入消失。",
+            "check": "核对营收变化、待交付安排和对应回款。"
+          },
+          "outcomes": []
+        }
+      },
+      {
+        "id": "urban",
+        "name": "旧城实业",
+        "industry": "建设 · 更新",
+        "code": "CG.083",
+        "description": "旧街改造的主要承建商。土地与厂房很多，能动用的现金很少。",
+        "price": 8.9,
+        "initial": 8.9,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          8.16,
+          8.36,
+          8.08,
+          8.05,
+          8.66,
+          8.19,
+          8.71,
+          8.8,
+          8.39,
+          8.4,
+          9.01,
+          9.02,
+          8.9
+        ],
+        "revenue": 4510,
+        "cashflow": 86,
+        "debtRatio": 68,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 8.9,
+            "revenue": 4510,
+            "cashflow": 86,
+            "debtRatio": 68
+          }
+        ],
+        "fundamental": 8.9,
+        "trueRevenue": 4510,
+        "trueCashflow": 86,
+        "business": {
+          "referenceRevenue": 4510,
+          "referenceCashRatio": 0.02,
+          "referenceDebt": 68,
+          "referencePrice": 8.9,
+          "notice": {
+            "quarter": 1,
+            "kind": "credit",
+            "direction": -1,
+            "title": "续贷要求增加担保",
+            "fact": "旧城项目与融资安排：银行要求补充担保和回款材料，再确认续贷条件。",
+            "uncertainty": "公司仍可能获得其他安排，补充材料也不代表一定违约。",
+            "check": "核对负债水平、经营现金和后续融资安排。"
+          },
+          "outcomes": []
+        }
+      }
+    ],
+    "stress": 26,
+    "confidence": 40,
+    "fatigue": 12,
+    "relations": {
+      "cheng": 65,
+      "tang": 50,
+      "lu": 58,
+      "he": 70
+    },
+    "flags": {},
+    "promises": [],
+    "journal": [
+      {
+        "quarter": 1,
+        "amount": 120000,
+        "label": "六年积蓄",
+        "category": "initial"
+      },
+      {
+        "quarter": 1,
+        "amount": -10000,
+        "label": "买入 澄川能源",
+        "category": "trade"
+      }
+    ],
+    "transactions": [
+      {
+        "quarter": 1,
+        "asset": "power",
+        "side": "buy",
+        "amount": 10000,
+        "fee": 19.96,
+        "slippage": 16.03,
+        "units": 609.419336254213
+      }
+    ],
+    "history": [],
+    "quarters": [],
+    "used": [],
+    "mainChoice": 1,
+    "sideId": null,
+    "sideChoice": null,
+    "notices": [],
+    "regime": 0,
+    "debt": [],
+    "investmentBuys": 10000,
+    "investmentSells": 0,
+    "dividends": 0,
+    "peakProfit": 0,
+    "drawdown": 0,
+    "investigation": 0,
+    "market": {
+      "version": 2,
+      "startedQuarter": 1
+    }
+  },
+  "after": {
+    "version": 1,
+    "seed": 77,
+    "quarter": 2,
+    "finished": false,
+    "cash": 111069.75,
+    "assets": [
+      {
+        "id": "harbor",
+        "name": "雾港冷链",
+        "industry": "港务 · 物流",
+        "code": "CG.016",
+        "description": "新港区的冷库正在扩建。生鲜订单增加，客户的账期也在拉长。",
+        "price": 25.82,
+        "initial": 24.8,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          22.33,
+          22.18,
+          22.26,
+          22.6,
+          22.81,
+          23.61,
+          23.02,
+          24.17,
+          23.44,
+          25,
+          24.43,
+          24.59,
+          24.8,
+          25.82
+        ],
+        "revenue": 3873.89,
+        "cashflow": 304.27,
+        "debtRatio": 45.7,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 24.8,
+            "revenue": 3860,
+            "cashflow": 342,
+            "debtRatio": 46
+          },
+          {
+            "quarter": 1,
+            "price": 25.82,
+            "revenue": 3873.89,
+            "cashflow": 304.27,
+            "debtRatio": 45.7
+          }
+        ],
+        "fundamental": 24.451603599608035,
+        "trueRevenue": 3873.89,
+        "trueCashflow": 304.27,
+        "business": {
+          "referenceRevenue": 3860,
+          "referenceCashRatio": 0.08860103626943006,
+          "referenceDebt": 46,
+          "referencePrice": 24.8,
+          "notice": {
+            "quarter": 2,
+            "kind": "orders",
+            "direction": -1,
+            "title": "部分交付重新排期",
+            "fact": "冷库扩建与生鲜运输：客户调整了本季交付安排，原订单仍需逐项确认。",
+            "uncertainty": "延期范围和补单数量尚未确定，不能直接认定全部收入消失。",
+            "check": "核对营收变化、待交付安排和对应回款。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "回款日期需要再确认",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 13.89,
+              "cashChange": -37.73,
+              "debtChange": -0.3,
+              "priceChange": 4.11
+            }
+          ]
+        }
+      },
+      {
+        "id": "power",
+        "name": "澄川能源",
+        "industry": "公用 · 能源",
+        "code": "CG.028",
+        "description": "城里大多数灯都由它点亮。收入稳定，设备改造需要持续投入。",
+        "price": 15.74,
+        "initial": 16.35,
+        "units": 609.419336254213,
+        "basis": 10000,
+        "history": [
+          15.32,
+          14.7,
+          14.84,
+          15.13,
+          15.74,
+          15.03,
+          16.15,
+          15.76,
+          15.71,
+          15.64,
+          15.68,
+          15.82,
+          16.35,
+          15.74
+        ],
+        "revenue": 6021.57,
+        "cashflow": 592.75,
+        "debtRatio": 37.7,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 16.35,
+            "revenue": 6240,
+            "cashflow": 820,
+            "debtRatio": 38
+          },
+          {
+            "quarter": 1,
+            "price": 15.74,
+            "revenue": 6021.57,
+            "cashflow": 592.75,
+            "debtRatio": 37.7
+          }
+        ],
+        "fundamental": 15.10911416890466,
+        "trueRevenue": 6021.57,
+        "trueCashflow": 592.75,
+        "business": {
+          "referenceRevenue": 6240,
+          "referenceCashRatio": 0.13141025641025642,
+          "referenceDebt": 38,
+          "referencePrice": 16.35,
+          "notice": {
+            "quarter": 2,
+            "kind": "orders",
+            "direction": 1,
+            "title": "新增需求进入排期",
+            "fact": "设备检修与供能合同：客户提交了新增需求，尚需完成交付和验收。",
+            "uncertainty": "新增需求可能改期；交付前还要安排人手和材料。",
+            "check": "核对实际营收是否增加，以及新增业务有没有带来现金。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "采购与维护报价上移",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -218.43,
+              "cashChange": -227.25,
+              "debtChange": -0.3,
+              "priceChange": -3.73
+            }
+          ]
+        }
+      },
+      {
+        "id": "retail",
+        "name": "街角百货",
+        "industry": "消费 · 零售",
+        "code": "CG.032",
+        "description": "从一间杂货铺做到十二家门店。老板仍然每天去市场看菜价。",
+        "price": 12.05,
+        "initial": 12.6,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          11.78,
+          11.52,
+          12.13,
+          11.66,
+          11.81,
+          11.54,
+          12.42,
+          12.55,
+          12.57,
+          12.44,
+          12.11,
+          12.41,
+          12.6,
+          12.05
+        ],
+        "revenue": 2203.08,
+        "cashflow": 196.09,
+        "debtRatio": 30.7,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 12.6,
+            "revenue": 2150,
+            "cashflow": 180,
+            "debtRatio": 31
+          },
+          {
+            "quarter": 1,
+            "price": 12.05,
+            "revenue": 2203.08,
+            "cashflow": 196.09,
+            "debtRatio": 30.7
+          }
+        ],
+        "fundamental": 12.931228987680322,
+        "trueRevenue": 2203.08,
+        "trueCashflow": 196.09,
+        "business": {
+          "referenceRevenue": 2150,
+          "referenceCashRatio": 0.08372093023255814,
+          "referenceDebt": 31,
+          "referencePrice": 12.6,
+          "notice": {
+            "quarter": 2,
+            "kind": "cost",
+            "direction": 1,
+            "title": "采购开始重新议价",
+            "fact": "门店销售与补货：公司正在重新议价采购与维护合同。",
+            "uncertainty": "新报价尚未覆盖全部采购，也未必能抵消其他成本。",
+            "check": "核对现金净额是否改善，而不是只看采购消息。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "新增需求进入排期",
+              "description": "季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。",
+              "revenueChange": 53.08,
+              "cashChange": 16.09,
+              "debtChange": -0.3,
+              "priceChange": -4.37
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical",
+        "name": "白鹭医疗",
+        "industry": "制造 · 医疗",
+        "code": "CG.051",
+        "description": "为社区诊所生产器材。新产品刚通过验收，医院付款仍需要时间。",
+        "price": 41.64,
+        "initial": 38.2,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          35.84,
+          36.47,
+          35.03,
+          35.05,
+          36.82,
+          37.41,
+          37.16,
+          35.75,
+          36.4,
+          38.28,
+          37.93,
+          37.83,
+          38.2,
+          41.64
+        ],
+        "revenue": 1572.65,
+        "cashflow": 167.27,
+        "debtRatio": 41.7,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 38.2,
+            "revenue": 1480,
+            "cashflow": 98,
+            "debtRatio": 42
+          },
+          {
+            "quarter": 1,
+            "price": 41.64,
+            "revenue": 1572.65,
+            "cashflow": 167.27,
+            "debtRatio": 41.7
+          }
+        ],
+        "fundamental": 42.66290052354399,
+        "trueRevenue": 1572.65,
+        "trueCashflow": 167.27,
+        "business": {
+          "referenceRevenue": 1480,
+          "referenceCashRatio": 0.06621621621621622,
+          "referenceDebt": 42,
+          "referencePrice": 38.2,
+          "notice": {
+            "quarter": 2,
+            "kind": "orders",
+            "direction": 1,
+            "title": "新增需求进入排期",
+            "fact": "器材交付与医院付款：客户提交了新增需求，尚需完成交付和验收。",
+            "uncertainty": "新增需求可能改期；交付前还要安排人手和材料。",
+            "check": "核对实际营收是否增加，以及新增业务有没有带来现金。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "客户提出分批结清",
+              "description": "部分有利条件在本季落实，经营数字仍包括其他业务与成本。",
+              "revenueChange": 92.65,
+              "cashChange": 69.27,
+              "debtChange": -0.3,
+              "priceChange": 9.01
+            }
+          ]
+        }
+      },
+      {
+        "id": "signal",
+        "name": "远汐通信",
+        "industry": "科技 · 通信",
+        "code": "CG.067",
+        "description": "承包沿海城市的数据网络。未来写在合同里，成本已经发生。",
+        "price": 43.38,
+        "initial": 45.7,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          41.21,
+          42.34,
+          43.03,
+          41.61,
+          41.99,
+          43.81,
+          42.58,
+          45.42,
+          45.46,
+          44.79,
+          43.32,
+          45.92,
+          45.7,
+          43.38
+        ],
+        "revenue": 2659.58,
+        "cashflow": 61.33,
+        "debtRatio": 55.7,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 45.7,
+            "revenue": 2780,
+            "cashflow": 112,
+            "debtRatio": 56
+          },
+          {
+            "quarter": 1,
+            "price": 43.38,
+            "revenue": 2659.58,
+            "cashflow": 61.33,
+            "debtRatio": 55.7
+          }
+        ],
+        "fundamental": 43.22066523031646,
+        "trueRevenue": 2659.58,
+        "trueCashflow": 61.33,
+        "business": {
+          "referenceRevenue": 2780,
+          "referenceCashRatio": 0.04028776978417266,
+          "referenceDebt": 56,
+          "referencePrice": 45.7,
+          "notice": {
+            "quarter": 2,
+            "kind": "collection",
+            "direction": 1,
+            "title": "客户提出分批结清",
+            "fact": "网络工程验收与交付：客户交来分批付款安排，具体到账仍以回单为准。",
+            "uncertainty": "承诺的日期不等于已经收到现金；也可能只收到一部分。",
+            "check": "核对经营现金净额是否改善，以及负债是否仍在上升。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "部分交付重新排期",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": -120.42,
+              "cashChange": -50.67,
+              "debtChange": -0.3,
+              "priceChange": -5.08
+            }
+          ]
+        }
+      },
+      {
+        "id": "urban",
+        "name": "旧城实业",
+        "industry": "建设 · 更新",
+        "code": "CG.083",
+        "description": "旧街改造的主要承建商。土地与厂房很多，能动用的现金很少。",
+        "price": 8.58,
+        "initial": 8.9,
+        "units": 0,
+        "basis": 0,
+        "history": [
+          8.16,
+          8.36,
+          8.08,
+          8.05,
+          8.66,
+          8.19,
+          8.71,
+          8.8,
+          8.39,
+          8.4,
+          9.01,
+          9.02,
+          8.9,
+          8.58
+        ],
+        "revenue": 4539.86,
+        "cashflow": -78.58,
+        "debtRatio": 72.8,
+        "disclosures": [
+          {
+            "quarter": 0,
+            "price": 8.9,
+            "revenue": 4510,
+            "cashflow": 86,
+            "debtRatio": 68
+          },
+          {
+            "quarter": 1,
+            "price": 8.58,
+            "revenue": 4539.86,
+            "cashflow": -78.58,
+            "debtRatio": 72.8
+          }
+        ],
+        "fundamental": 8.117763316007066,
+        "trueRevenue": 4539.86,
+        "trueCashflow": -78.58,
+        "business": {
+          "referenceRevenue": 4510,
+          "referenceCashRatio": 0.02,
+          "referenceDebt": 68,
+          "referencePrice": 8.9,
+          "notice": {
+            "quarter": 2,
+            "kind": "collection",
+            "direction": -1,
+            "title": "回款日期需要再确认",
+            "fact": "旧城项目与融资安排：部分客户申请延长付款期限，交付与收款可能分属不同季度。",
+            "uncertainty": "延期能否缩短、剩余款项何时到账，仍需跟踪。",
+            "check": "把营收和经营现金净额放在一起看，继续核对融资压力。"
+          },
+          "outcomes": [
+            {
+              "quarter": 1,
+              "title": "续贷要求增加担保",
+              "description": "本季受到这项压力影响，经营数字同时反映其他业务的变化。",
+              "revenueChange": 29.86,
+              "cashChange": -164.58,
+              "debtChange": 4.8,
+              "priceChange": -3.6
+            }
+          ]
+        }
+      }
+    ],
+    "stress": 23.400000000000002,
+    "confidence": 40,
+    "fatigue": 13.56,
+    "relations": {
+      "cheng": 65,
+      "tang": 50,
+      "lu": 58,
+      "he": 70
+    },
+    "flags": {},
+    "promises": [],
+    "journal": [
+      {
+        "quarter": 1,
+        "amount": 120000,
+        "label": "六年积蓄",
+        "category": "initial"
+      },
+      {
+        "quarter": 1,
+        "amount": -10000,
+        "label": "买入 澄川能源",
+        "category": "trade"
+      },
+      {
+        "quarter": 1,
+        "amount": 69.75,
+        "label": "澄川能源 分红",
+        "category": "dividend"
+      },
+      {
+        "quarter": 1,
+        "amount": 6500,
+        "label": "校对工作 · 季度结余",
+        "category": "salary"
+      },
+      {
+        "quarter": 1,
+        "amount": -5500,
+        "label": "房租、餐食与日常",
+        "category": "living"
+      }
+    ],
+    "transactions": [
+      {
+        "quarter": 1,
+        "asset": "power",
+        "side": "buy",
+        "amount": 10000,
+        "fee": 19.96,
+        "slippage": 16.03,
+        "units": 609.419336254213
+      }
+    ],
+    "history": [],
+    "quarters": [
+      {
+        "quarter": 1,
+        "wealth": 120662.01,
+        "cash": 111069.75,
+        "investment": -337.99,
+        "text": "柜台上的日历，又薄了三张。"
+      }
+    ],
+    "used": [],
+    "mainChoice": null,
+    "sideId": null,
+    "sideChoice": null,
+    "notices": [],
+    "regime": 0,
+    "debt": [],
+    "investmentBuys": 10000,
+    "investmentSells": 0,
+    "dividends": 69.75,
+    "peakProfit": 0,
+    "drawdown": 0.002816580394655724,
+    "investigation": 0,
+    "market": {
+      "version": 2,
+      "startedQuarter": 1
+    }
+  }
+}

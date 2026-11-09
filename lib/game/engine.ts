@@ -1,17 +1,18 @@
 import type {Beat} from './cinematic-content';
+import {choiceResearch,effectiveCash,evidenceFor,recordEvidence,researchTarget,validEvidence,type EvidenceRecord} from './research';
 import {openMarketQuarter,settleCompany,validMarket,type CompanyBusiness,type MarketState} from './market';
 export const INITIAL_CASH = 120000;
 export const SAVE_KEY = 'aequilibrium.save.v1';
 export type Person = 'cheng' | 'tang' | 'lu' | 'he';
 export type Disclosure={quarter:number;price:number;revenue:number;cashflow:number;debtRatio:number};
 export type Asset = { business?:CompanyBusiness; disclosures?:Disclosure[]; id: string; name: string; industry: string; code: string; description: string; price: number; initial: number; units: number; basis: number; history: number[]; revenue: number; cashflow: number; debtRatio: number; fundamental: number; trueRevenue: number; trueCashflow: number };
-export type CashEntry = { quarter: number; amount: number; label: string; category: string };
+export type CashEntry = { quarter: number; amount: number; label: string; category: string; asset?:string };
 export type PromiseEntry = { id: string; label: string; due: number; amount: number; status: 'pending' | 'paid' | 'missed' | 'cancelled'; kind: 'payment' | 'receipt'; person?: Person; chance?: number; principal?: number };
 export type Transaction = { quarter: number; asset: string; side: 'buy' | 'sell'; amount: number; fee: number; slippage: number; units: number; realized?: number };
 export type ChoiceLog = { quarter: number; title: string; choice: string; response: string; principle: string; cash: number; eventId?:string; optionIndex?:0|1; snapshot?:StoryEvent };
 export type QuarterLog = { quarter: number; wealth: number; cash: number; investment: number; text: string };
-export type Game = { market?:MarketState; version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; chapterSnapshot?:StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
-export type Effects = { cash?: number; stress?: number; confidence?: number; fatigue?: number; relations?: Partial<Record<Person, number>>; flags?: Record<string, number>; promises?: Omit<PromiseEntry, 'id' | 'status'>[]; buy?: { asset: string; budget: number }; sell?: { asset: string; value: number }; closeClaim?: string; extendClaim?: string; cancelPayment?: string; fraud?: number };
+export type Game = { evidence?:EvidenceRecord[]; market?:MarketState; version: 1; seed: number; quarter: number; finished: boolean; cash: number; assets: Asset[]; stress: number; confidence: number; fatigue: number; relations: Record<Person, number>; flags: Record<string, number>; promises: PromiseEntry[]; journal: CashEntry[]; transactions: Transaction[]; history: ChoiceLog[]; quarters: QuarterLog[]; used: string[]; mainChoice: number | null; sideId: string | null; sideChoice: number | null; mainSnapshot?: StoryEvent; sideSnapshot?: StoryEvent; chapterSnapshot?:StoryEvent; notices: string[]; regime: number; debt: { principal: number; due: number; rate: number }[]; investmentBuys: number; investmentSells: number; dividends: number; peakProfit: number; drawdown: number; investigation: number };
+export type Effects = { research?:string; cash?: number; stress?: number; confidence?: number; fatigue?: number; relations?: Partial<Record<Person, number>>; flags?: Record<string, number>; promises?: Omit<PromiseEntry, 'id' | 'status'>[]; buy?: { asset: string; budget: number }; sell?: { asset: string; value: number }; closeClaim?: string; extendClaim?: string; cancelPayment?: string; fraud?: number };
 export type Option = { label: string; detail: string; response: string; effects: Effects };
 export type StoryEvent = { id: string; title: string; sender: string; location: string; category: string; paragraphs: string[]; opening?:Beat[]; options: [Option, Option]; principle: string; atQuarter?:number; when?: (s: Game) => boolean; weight?: (s: Game) => number };
 export type StoryKind='main'|'side'|'chapter';
@@ -52,12 +53,12 @@ export function createGame(seed = Math.floor(Math.random() * 2147483647)): Game 
 export const positionValue = (a: Asset) => a.units * a.price;
 export const debtTotal = (s: Game) => s.debt.reduce((t, d) => t + d.principal, 0);
 export const investments = (s: Game) => s.assets.reduce((t, a) => t + positionValue(a), 0);
-export const investmentProfit = (s: Game) => investments(s) + s.investmentSells + s.dividends - s.investmentBuys;
+export const investmentProfit = (s: Game) => investments(s) + s.investmentSells + s.dividends - s.investmentBuys - (s.evidence??[]).reduce((sum,e)=>sum+e.cost,0);
 export const claimsValue = (s: Game) => s.promises.filter(p => p.kind === 'receipt' && p.status === 'pending').reduce((t, p) => t + (p.principal ?? p.amount) * (p.chance ?? 0.7), 0);
 export const netWealth = (s: Game) => s.cash + investments(s) + claimsValue(s) - debtTotal(s);
 export function wealthWord(s: Game) { const n = netWealth(s); return n > 180000 ? '颇有余裕' : n > 125000 ? '渐有起色' : n > 95000 ? '尚有余裕' : n > 60000 ? '正在收紧' : n > 25000 ? '捉襟见肘' : '所剩无几'; }
-function cash(s: Game, amount: number, label: string, category: string) {
-  const value = round(amount); s.cash = round(s.cash + value); s.journal.push({ quarter: s.quarter, amount: value, label, category });
+function cash(s: Game, amount: number, label: string, category: string, asset?:string) {
+  const value = round(amount); s.cash = round(s.cash + value); s.journal.push({ quarter: s.quarter, amount: value, label, category,...(asset?{asset}:{}) });
 }
 function clone(s: Game): Game { return structuredClone(s); }
 export function quoteTrade(s: Game, id: string, side: 'buy' | 'sell', amount: number) {
@@ -67,7 +68,12 @@ export function quoteTrade(s: Game, id: string, side: 'buy' | 'sell', amount: nu
   if (s.transactions.filter(t => t.quarter === s.quarter && t.amount > 0).length >= 3) throw new Error('本季的三次主动调整已经用完。');
   const slip = 0.001 + Math.min(0.025, Math.pow(amount / 250000, 0.8) * 0.008) + (s.regime === 3 ? 0.009 : 0);
   const execution = a.price * (side === 'buy' ? 1 + slip : 1 - slip);
-  const nominal = side === 'buy' ? amount / 1.002 : Math.min(amount, positionValue(a));
+  let nominal=side==='buy'?amount/1.002:Math.min(amount,positionValue(a));
+  if(side==='buy'){
+    const budgetCents=Math.floor(amount*100+1e-7);let grossCents=Math.floor(budgetCents/1.002+1e-7);
+    if(grossCents+1+Math.round((grossCents+1)*.002)<=budgetCents)grossCents++;
+    nominal=grossCents/100;if(nominal<=0)throw new Error('买入金额至少需要 ¥0.01。');
+  }
   const units = side === 'buy' ? nominal / execution : nominal / a.price;
   const gross = units * execution;
   const fee = round(gross * 0.002);
@@ -89,7 +95,7 @@ export function optionError(s: Game, option: Option): string | null {
   if(s.finished) return '这一段故事已经结束。';
   const e = option.effects;
   try { if(e.buy) quoteTrade(s, e.buy.asset, 'buy', e.buy.budget); if(e.sell) quoteTrade(s, e.sell.asset, 'sell', e.sell.value); } catch(err) { return (err as Error).message; }
-  const extra = (e.cash ?? 0) - (e.buy?.budget ?? 0);
+  const extra = effectiveCash(s,e) - (e.buy?.budget ?? 0);
   if (extra < 0 && s.cash + extra < -0.001) return `还需要 ¥${money(-extra - s.cash)} 现金。可先回书屋，再去证券营业室卖出持仓，或到银行核对借款安排。`;
   return null;
 }
@@ -97,11 +103,14 @@ export function choose(state: Game, event: StoryEvent, index: number, kind: Stor
   if(index !== 0 && index !== 1) throw new Error('没有这个选项。');
   if((kind === 'main' && state.mainChoice !== null) || (kind === 'side' && state.sideChoice !== null) || state.used.includes(event.id)) throw new Error('这封信已经回复过了。');
   if(kind==='chapter'&&(state.mainChoice===null||CHAPTER_QUARTERS[state.quarter]!==event.id))throw new Error('请先读完本季来信，再继续这一段故事。');
-  const option = event.options[index]; const problem = optionError(state, option); if(problem) throw new Error(problem);
+  const raw=event.options[index],target=choiceResearch(state,event,index);
+  const option={...raw,effects:{...raw.effects,...(target?{research:target}:{})}}; const problem = optionError(state, option); if(problem) throw new Error(problem);
   const s = clone(state), e = option.effects;
   if(e.buy) executeTrade(s, e.buy.asset, 'buy', e.buy.budget);
   if(e.sell) executeTrade(s, e.sell.asset, 'sell', e.sell.value);
-  if(e.cash) cash(s, e.cash, event.title, 'event');
+  const immediate=effectiveCash(s,e),researched=e.research?researchTarget(s,e.research):undefined;
+  if(immediate)cash(s,immediate,event.title,'event',researched);
+  if(researched)recordEvidence(s,researched,Math.max(0,-immediate),event.id);
   s.stress = clamp(s.stress + (e.stress ?? 0)); s.confidence = clamp(s.confidence + (e.confidence ?? 0)); s.fatigue = clamp(s.fatigue + (e.fatigue ?? 0));
   for(const [key,value] of Object.entries(e.relations ?? {})) s.relations[key as Person] = clamp(s.relations[key as Person] + value);
   for(const [key,value] of Object.entries(e.flags ?? {})) s.flags[key] = (s.flags[key] ?? 0) + value;
@@ -110,9 +119,17 @@ export function choose(state: Game, event: StoryEvent, index: number, kind: Stor
   if(e.cancelPayment) s.promises.filter(p => p.id.includes(e.cancelPayment!) && p.kind === 'payment' && p.status === 'pending').forEach(p => p.status = 'cancelled');
   for(const [i,p] of (e.promises ?? []).entries()) s.promises.push({...p, id: `${event.id}-${i}`, status:'pending'});
   if(e.fraud) s.flags.fraud = (s.flags.fraud ?? 0) + e.fraud;
-  s.used.push(event.id); s.history.push({quarter: s.quarter, title: event.title, choice: option.label, response: option.response, principle:event.principle, cash:e.cash ?? 0,eventId:event.id,optionIndex:index as 0|1,snapshot:structuredClone({...event,when:undefined,weight:undefined})});
+  s.used.push(event.id); s.history.push({quarter: s.quarter, title: event.title, choice: option.label, response: option.response, principle:event.principle, cash:immediate,eventId:event.id,optionIndex:index as 0|1,snapshot:structuredClone({...event,when:undefined,weight:undefined})});
   if(kind === 'main') s.mainChoice = index; else if(kind==='side') s.sideChoice = index;
   return s;
+}
+export function researchCompany(state:Game,id:string):Game{
+ if(state.finished&&!evidenceFor(state,id))throw new Error('这段故事已经结束，不能购买新的资料。');
+ if(!state.assets.some(a=>a.id===id))throw new Error('没有这家公司。');
+ if(evidenceFor(state,id))return clone(state);
+ if(state.market?.version!==3)throw new Error('下一季会接入带附件的经营资料；本季旧记录仍按原规则核对。');
+ if(state.cash<300)throw new Error('核验需支付 ¥300，请先留出这笔现金。');
+ const s=clone(state);cash(s,-300,'核验 '+s.assets.find(a=>a.id===id)!.name+' 本季材料','research',id);recordEvidence(s,id,300);return s;
 }
 export function borrow(state: Game): Game {
   if(state.finished || state.quarter > 8 || state.debt.length >= 2) throw new Error('目前无法签订这笔借款。');
@@ -142,7 +159,8 @@ export function endQuarter(state: Game): Game {
   const macro=[0.012,0.027,0.038,-0.055][s.regime];
   for(const a of s.assets) {
     const old=a.price;
-    if(s.market){settleCompany(a,s.seed,q,s.regime,random);}else{
+    let dividendPerUnit:number|undefined;
+    if(s.market){dividendPerUnit=settleCompany(a,s.seed,q,s.regime,random,s.market.version);}else{
     const industryShock=random(s.seed,q,a.id+'earn')-0.5;
     a.revenue=round(a.trueRevenue);a.cashflow=round(a.trueCashflow);
     a.trueRevenue=Math.max(100,a.trueRevenue*(1+macro+industryShock*0.12));
@@ -156,7 +174,7 @@ export function endQuarter(state: Game): Game {
     a.price=Math.max(0.1,round(a.price*change));a.history.push(a.price);a.debtRatio=round(clamp(a.debtRatio+(s.regime===3?2:-0.4)+industryShock*2,5,95));
     a.disclosures=[...(a.disclosures??[]),{quarter:q,price:a.price,revenue:a.revenue,cashflow:a.cashflow,debtRatio:a.debtRatio}];
     }
-    const dividend=round(a.units*old*(a.id==='power'?0.007:0.002));if(dividend>0){cash(s,dividend,`${a.name} 分红`,'dividend');s.dividends+=dividend;}
+    const dividend=round(a.units*(dividendPerUnit??old*(a.id==='power'?0.007:0.002)));if(dividend>0){cash(s,dividend,`${a.name} 分红`,'dividend',a.id);s.dividends+=dividend;}
   }
   cash(s,6500,'校对工作 · 季度结余','salary');cash(s,-5500,'房租、餐食与日常','living');
   if(s.flags.shop) {
@@ -223,7 +241,7 @@ export function validateSave(value: unknown): value is Game {
   if(![null,0,1].includes(s.mainChoice)||![null,0,1].includes(s.sideChoice))return false;
   if(!COMPANIES.every((c,i)=>s.assets[i].id===c[0]&&Number.isFinite(s.assets[i].price)&&s.assets[i].price>0&&Number.isFinite(s.assets[i].units)&&s.assets[i].units>=0&&Number.isFinite(s.assets[i].basis)&&s.assets[i].basis>=0&&Array.isArray(s.assets[i].history)&&s.assets[i].history.length>=2&&s.assets[i].history.every(Number.isFinite)))return false;
   if(!s.assets.every(a=>a.disclosures===undefined||(Array.isArray(a.disclosures)&&a.disclosures.length<=13&&a.disclosures.every((d,i,list)=>d&&Number.isInteger(d.quarter)&&d.quarter>=0&&d.quarter<=12&&(i===0||d.quarter>list[i-1].quarter)&&['price','revenue','cashflow','debtRatio'].every(k=>Number.isFinite(d[k as keyof Disclosure]))))))return false;
-  if(!validMarket(s))return false;
+  if(!validMarket(s)||!validEvidence(s))return false;
   if(!s.assets.every(a=>['revenue','cashflow','fundamental','trueRevenue','trueCashflow','debtRatio','initial'].every(key=>Number.isFinite(a[key as keyof Asset]))))return false;
   if(!s.journal.every(e=>Number.isFinite(e.amount)&&typeof e.label==='string'&&typeof e.category==='string')||Math.abs(s.journal.reduce((t,e)=>t+e.amount,0)-s.cash)>0.1)return false;
   if(!s.promises.every(p=>typeof p.id==='string'&&typeof p.label==='string'&&Number.isFinite(p.amount)&&p.amount>=0&&Number.isInteger(p.due)&&['pending','paid','missed','cancelled'].includes(p.status)&&['payment','receipt'].includes(p.kind)))return false;

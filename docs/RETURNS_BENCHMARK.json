@@ -1,0 +1,678 @@
+{
+  "priorVersion": {
+    "version": 2,
+    "sampleSize": 200,
+    "sourceFingerprints": {
+      "engine": "e05cad9db07300f48d6b547539e01d90f811be4f5dd7c3e1c1ca95c52395227e",
+      "market": "e9a14fd3062ec14edeb6910a805f0546f0e34fb06e2e7a8dda00e8efd9eeab20",
+      "stories": "a67803d463787825c5afecfa84142f0cfce29d65c47706155666f62f0a08fa60",
+      "expansion": "a9a28fe18c3b150e766f805bb9b8996510fc0b3fa02e9d4f89995695e3f83345",
+      "news": "3116d1b86981b0cc58dcdc30788acc0c7ddf1432dd340b6578e49dd3e034d9d6"
+    },
+    "method": "Seeds 1..N; initial 120000, same non-shop story and chapter answers, no daily events or borrowing. hold=energy only; balanced=energy/retail/cold-chain equal initial allocation; rotate=public notices, cash/revenue, debt and relative price growth; random=same quarterly frequency. Each budget is principal allocated, not borrowed; final net-sale costs included hypothetically. All story costs including quarter-nine research are paid in every policy. Wealth comparisons remain valid when expense classifications differ between source versions.",
+    "cash": {
+      "mean": 135500,
+      "median": 135500,
+      "min": 135500,
+      "max": 135500,
+      "positive": 200
+    },
+    "allocations": {
+      "10000": {
+        "hold": {
+          "wealth": {
+            "mean": 136641.41,
+            "median": 136675.04,
+            "min": 132017.68,
+            "max": 141963.68,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 1141.41,
+            "median": 1175.04,
+            "min": -3482.32,
+            "max": 6463.68,
+            "positive": 148
+          },
+          "differenceFromCash": {
+            "mean": 1141.41,
+            "median": 1175.04,
+            "min": -3482.32,
+            "max": 6463.68,
+            "positive": 148
+          },
+          "meanDrawdown": 1.5
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 136422.65,
+            "median": 136358.93,
+            "min": 132769.93,
+            "max": 140612.97,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 922.65,
+            "median": 858.93,
+            "min": -2730.07,
+            "max": 5112.97,
+            "positive": 153
+          },
+          "differenceFromCash": {
+            "mean": 922.65,
+            "median": 858.93,
+            "min": -2730.07,
+            "max": 5112.97,
+            "positive": 153
+          },
+          "meanDrawdown": 1.07
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 137012.48,
+            "median": 137005.51,
+            "min": 127343.81,
+            "max": 142274.59,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 1512.48,
+            "median": 1505.51,
+            "min": -8156.19,
+            "max": 6774.59,
+            "positive": 142
+          },
+          "differenceFromCash": {
+            "mean": 1512.48,
+            "median": 1505.51,
+            "min": -8156.19,
+            "max": 6774.59,
+            "positive": 142
+          },
+          "meanDrawdown": 1.48
+        },
+        "random": {
+          "wealth": {
+            "mean": 135449.63,
+            "median": 135810.34,
+            "min": 128286.92,
+            "max": 140699.23,
+            "positive": 200
+          },
+          "investment": {
+            "mean": -50.37,
+            "median": 310.34,
+            "min": -7213.08,
+            "max": 5199.23,
+            "positive": 112
+          },
+          "differenceFromCash": {
+            "mean": -50.37,
+            "median": 310.34,
+            "min": -7213.08,
+            "max": 5199.23,
+            "positive": 112
+          },
+          "meanDrawdown": 1.95
+        }
+      },
+      "30000": {
+        "hold": {
+          "wealth": {
+            "mean": 138867.85,
+            "median": 138968.68,
+            "min": 125026.62,
+            "max": 154791.33,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 3367.85,
+            "median": 3468.68,
+            "min": -10473.38,
+            "max": 19291.33,
+            "positive": 147
+          },
+          "differenceFromCash": {
+            "mean": 3367.85,
+            "median": 3468.68,
+            "min": -10473.38,
+            "max": 19291.33,
+            "positive": 147
+          },
+          "meanDrawdown": 4.39
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 138244.31,
+            "median": 138053.56,
+            "min": 127296.52,
+            "max": 150801.5,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 2744.31,
+            "median": 2553.56,
+            "min": -8203.48,
+            "max": 15301.5,
+            "positive": 151
+          },
+          "differenceFromCash": {
+            "mean": 2744.31,
+            "median": 2553.56,
+            "min": -8203.48,
+            "max": 15301.5,
+            "positive": 151
+          },
+          "meanDrawdown": 3.14
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 139409.57,
+            "median": 139390.67,
+            "min": 110470.25,
+            "max": 155157.9,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 3909.57,
+            "median": 3890.67,
+            "min": -25029.75,
+            "max": 19657.9,
+            "positive": 139
+          },
+          "differenceFromCash": {
+            "mean": 3909.57,
+            "median": 3890.67,
+            "min": -25029.75,
+            "max": 19657.9,
+            "positive": 139
+          },
+          "meanDrawdown": 4.45
+        },
+        "random": {
+          "wealth": {
+            "mean": 134731.5,
+            "median": 135810.91,
+            "min": 113293.01,
+            "max": 150442.53,
+            "positive": 200
+          },
+          "investment": {
+            "mean": -768.5,
+            "median": 310.91,
+            "min": -22206.99,
+            "max": 14942.53,
+            "positive": 105
+          },
+          "differenceFromCash": {
+            "mean": -768.5,
+            "median": 310.91,
+            "min": -22206.99,
+            "max": 14942.53,
+            "positive": 105
+          },
+          "meanDrawdown": 5.94
+        }
+      },
+      "60000": {
+        "hold": {
+          "wealth": {
+            "mean": 142093.16,
+            "median": 142294.94,
+            "min": 114486.37,
+            "max": 173830.74,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 6593.16,
+            "median": 6794.94,
+            "min": -21013.63,
+            "max": 38330.74,
+            "positive": 145
+          },
+          "differenceFromCash": {
+            "mean": 6593.16,
+            "median": 6794.94,
+            "min": -21013.63,
+            "max": 38330.74,
+            "positive": 145
+          },
+          "meanDrawdown": 8.48
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 140928.84,
+            "median": 140548.23,
+            "min": 119059.62,
+            "max": 166008.35,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 5428.84,
+            "median": 5048.23,
+            "min": -16440.38,
+            "max": 30508.35,
+            "positive": 151
+          },
+          "differenceFromCash": {
+            "mean": 5428.84,
+            "median": 5048.23,
+            "min": -16440.38,
+            "max": 30508.35,
+            "positive": 151
+          },
+          "meanDrawdown": 6.09
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 141732.14,
+            "median": 141699.51,
+            "min": 84022.01,
+            "max": 173132.67,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 6232.14,
+            "median": 6199.51,
+            "min": -51477.99,
+            "max": 37632.67,
+            "positive": 131
+          },
+          "differenceFromCash": {
+            "mean": 6232.14,
+            "median": 6199.51,
+            "min": -51477.99,
+            "max": 37632.67,
+            "positive": 131
+          },
+          "meanDrawdown": 8.99
+        },
+        "random": {
+          "wealth": {
+            "mean": 132402.58,
+            "median": 134554.44,
+            "min": 89651.07,
+            "max": 163729.37,
+            "positive": 200
+          },
+          "investment": {
+            "mean": -3097.42,
+            "median": -945.56,
+            "min": -45848.93,
+            "max": 28229.37,
+            "positive": 95
+          },
+          "differenceFromCash": {
+            "mean": -3097.42,
+            "median": -945.56,
+            "min": -45848.93,
+            "max": 28229.37,
+            "positive": 95
+          },
+          "meanDrawdown": 12.13
+        }
+      }
+    }
+  },
+  "currentVersion": {
+    "version": 3,
+    "sampleSize": 200,
+    "sourceFingerprints": {
+      "engine": "5899bf5120b65d6518144084ce69aabe428b892011f9d76e13f15c4c3c1f0132",
+      "market": "052a9863b4431641544556b9404410d79f631aa7ce03648b51a7888281790ebf",
+      "research": "907cfc0d0953d2f62852ead9475749c11fbd8b21a7e281fa4e0400247818d1c4",
+      "investment": "762e543b50e56862509e44bc7402972a63a4c22fae09241ebe950917168d0ed4",
+      "stories": "29f32aa43fc0779ba5ebd46e52208b22199293595bfedd16f0133f1dcb7e1ba0",
+      "expansion": "a9a28fe18c3b150e766f805bb9b8996510fc0b3fa02e9d4f89995695e3f83345",
+      "news": "3116d1b86981b0cc58dcdc30788acc0c7ddf1432dd340b6578e49dd3e034d9d6"
+    },
+    "method": "Seeds 1..N; initial 120000, same non-shop story and chapter answers, no daily events or borrowing. hold=energy only; balanced=energy/retail/cold-chain equal initial allocation; rotate=public notices, cash/revenue, debt and relative price growth; random=same quarterly frequency. Each budget is principal allocated, not borrowed; final net-sale costs included hypothetically. All story costs including quarter-nine research are paid in every policy. Wealth comparisons remain valid when expense classifications differ between source versions.",
+    "cash": {
+      "mean": 135500,
+      "median": 135500,
+      "min": 135500,
+      "max": 135500,
+      "positive": 200
+    },
+    "allocations": {
+      "10000": {
+        "hold": {
+          "wealth": {
+            "mean": 138680.57,
+            "median": 138656.62,
+            "min": 133678.92,
+            "max": 144040.25,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 2480.57,
+            "median": 2456.62,
+            "min": -2521.08,
+            "max": 7840.25,
+            "positive": 180
+          },
+          "differenceFromCash": {
+            "mean": 3180.57,
+            "median": 3156.62,
+            "min": -1821.08,
+            "max": 8540.25,
+            "positive": 188
+          },
+          "meanDrawdown": 1.51
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 138147.59,
+            "median": 138140.53,
+            "min": 133599.37,
+            "max": 142388.37,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 1947.59,
+            "median": 1940.53,
+            "min": -2600.63,
+            "max": 6188.37,
+            "positive": 176
+          },
+          "differenceFromCash": {
+            "mean": 2647.59,
+            "median": 2640.53,
+            "min": -1900.63,
+            "max": 6888.37,
+            "positive": 188
+          },
+          "meanDrawdown": 1.11
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 138534.7,
+            "median": 138564.92,
+            "min": 128559.03,
+            "max": 143584.92,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 2334.7,
+            "median": 2364.92,
+            "min": -7640.97,
+            "max": 7384.92,
+            "positive": 167
+          },
+          "differenceFromCash": {
+            "mean": 3034.7,
+            "median": 3064.92,
+            "min": -6940.97,
+            "max": 8084.92,
+            "positive": 184
+          },
+          "meanDrawdown": 1.45
+        },
+        "random": {
+          "wealth": {
+            "mean": 136403.04,
+            "median": 136772.06,
+            "min": 128439.89,
+            "max": 141635.94,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 203.04,
+            "median": 572.06,
+            "min": -7760.11,
+            "max": 5435.94,
+            "positive": 117
+          },
+          "differenceFromCash": {
+            "mean": 903.04,
+            "median": 1272.06,
+            "min": -7060.11,
+            "max": 6135.94,
+            "positive": 133
+          },
+          "meanDrawdown": 2.05
+        }
+      },
+      "30000": {
+        "hold": {
+          "wealth": {
+            "mean": 144973.19,
+            "median": 144901.74,
+            "min": 130002.64,
+            "max": 161008.65,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 8773.19,
+            "median": 8701.74,
+            "min": -6197.36,
+            "max": 24808.65,
+            "positive": 186
+          },
+          "differenceFromCash": {
+            "mean": 9473.19,
+            "median": 9401.74,
+            "min": -5497.36,
+            "max": 25508.65,
+            "positive": 188
+          },
+          "meanDrawdown": 3.86
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 143414.51,
+            "median": 143393.27,
+            "min": 129782.87,
+            "max": 156123.11,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 7214.51,
+            "median": 7193.27,
+            "min": -6417.13,
+            "max": 19923.11,
+            "positive": 187
+          },
+          "differenceFromCash": {
+            "mean": 7914.51,
+            "median": 7893.27,
+            "min": -5717.13,
+            "max": 20623.11,
+            "positive": 188
+          },
+          "meanDrawdown": 2.69
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 143967.48,
+            "median": 144056.9,
+            "min": 114109.61,
+            "max": 159082.32,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 7767.48,
+            "median": 7856.9,
+            "min": -22090.39,
+            "max": 22882.32,
+            "positive": 175
+          },
+          "differenceFromCash": {
+            "mean": 8467.48,
+            "median": 8556.9,
+            "min": -21390.39,
+            "max": 23582.32,
+            "positive": 179
+          },
+          "meanDrawdown": 3.8
+        },
+        "random": {
+          "wealth": {
+            "mean": 137585.73,
+            "median": 138691.35,
+            "min": 113750.57,
+            "max": 153248.29,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 1385.73,
+            "median": 2491.35,
+            "min": -22449.43,
+            "max": 17048.29,
+            "positive": 122
+          },
+          "differenceFromCash": {
+            "mean": 2085.73,
+            "median": 3191.35,
+            "min": -21749.43,
+            "max": 17748.29,
+            "positive": 129
+          },
+          "meanDrawdown": 5.46
+        }
+      },
+      "60000": {
+        "hold": {
+          "wealth": {
+            "mean": 154273.21,
+            "median": 154131.36,
+            "min": 124418.86,
+            "max": 186234.09,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 18073.21,
+            "median": 17931.36,
+            "min": -11781.14,
+            "max": 50034.09,
+            "positive": 187
+          },
+          "differenceFromCash": {
+            "mean": 18773.21,
+            "median": 18631.36,
+            "min": -11081.14,
+            "max": 50734.09,
+            "positive": 188
+          },
+          "meanDrawdown": 7.13
+        },
+        "balanced": {
+          "wealth": {
+            "mean": 151257.74,
+            "median": 151215.32,
+            "min": 124027.61,
+            "max": 176639.98,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 15057.74,
+            "median": 15015.32,
+            "min": -12172.39,
+            "max": 40439.98,
+            "positive": 188
+          },
+          "differenceFromCash": {
+            "mean": 15757.74,
+            "median": 15715.32,
+            "min": -11472.39,
+            "max": 41139.98,
+            "positive": 188
+          },
+          "meanDrawdown": 4.94
+        },
+        "rotate": {
+          "wealth": {
+            "mean": 150825.72,
+            "median": 151001.34,
+            "min": 91284.76,
+            "max": 180965.01,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 14625.72,
+            "median": 14801.34,
+            "min": -44915.24,
+            "max": 44765.01,
+            "positive": 171
+          },
+          "differenceFromCash": {
+            "mean": 15325.72,
+            "median": 15501.34,
+            "min": -44215.24,
+            "max": 45465.01,
+            "positive": 175
+          },
+          "meanDrawdown": 7.34
+        },
+        "random": {
+          "wealth": {
+            "mean": 138095.62,
+            "median": 140303.16,
+            "min": 90562.57,
+            "max": 169329.42,
+            "positive": 200
+          },
+          "investment": {
+            "mean": 1895.62,
+            "median": 4103.16,
+            "min": -45637.43,
+            "max": 33129.42,
+            "positive": 120
+          },
+          "differenceFromCash": {
+            "mean": 2595.62,
+            "median": 4803.16,
+            "min": -44937.43,
+            "max": 33829.42,
+            "positive": 121
+          },
+          "meanDrawdown": 10.73
+        }
+      }
+    }
+  },
+  "publicInformation500": {
+    "sampleSize": 500,
+    "method": "Seeds 1..N, same twelve-quarter story choices, no sides or borrowing. Each non-cash policy buys one company for 10000 each quarter, sells next quarter, and reserves a hypothetical net sale at the final quote. Real fees, slippage, received dividends and recorded research costs included. All policies pay the same quarter-nine research cost; the cash policy therefore has investment P/L of -700 under market v3. Public policy uses notice wording direction, published cash/revenue, debt and quote growth relative to disclosed revenue growth; accountsOnly omits notices. Synthetic benchmark, not a promise of player profit.",
+    "strategies": {
+      "informed": {
+        "mean": 2216.03,
+        "min": -7640.97,
+        "max": 9230,
+        "positive": 412
+      },
+      "accountsOnly": {
+        "mean": 2224.84,
+        "min": -7382.09,
+        "max": 8642.78,
+        "positive": 432
+      },
+      "random": {
+        "mean": -131.07,
+        "min": -7791.12,
+        "max": 7444.75,
+        "positive": 255
+      },
+      "cash": {
+        "mean": -700,
+        "min": -700,
+        "max": -700,
+        "positive": 0
+      }
+    },
+    "informedMinusRandom": {
+      "mean": 2347.11,
+      "approx95PercentInterval": [
+        2096.56,
+        2597.65
+      ]
+    },
+    "informedMinusAccountsOnly": {
+      "mean": -8.81,
+      "approx95PercentInterval": [
+        -205.83,
+        188.21
+      ]
+    }
+  }
+}

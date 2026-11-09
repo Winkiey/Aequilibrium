@@ -17,7 +17,7 @@ function next(game){
 }
 test('all six entry notices survive serialization; viewing public news does not draw or change a result',()=>{
  const game=createGame(100),snapshot=structuredClone(game);
- assert.equal(game.market.version,2);
+ assert.equal(game.market.version,3);
  for(const a of game.assets){const first=companyNews(a);assert.equal(first.business.notice.quarter,1);assert.ok(first.business.notice.fact&&first.business.notice.uncertainty);assert.deepEqual(companyNews(a),first);}
  assert.deepEqual(game,snapshot);assert.ok(validateSave(JSON.parse(JSON.stringify(game))));
  const privateChange=structuredClone(game);
@@ -71,7 +71,7 @@ test('bookshop settlement and cycle remain exactly equal under new and legacy st
 });
 test('damaged or future-dated market data is rejected without invalidating genuine legacy saves',()=>{
  const game=createGame(31);assert.ok(validateSave(legacy(game)));
- for(const change of [s=>s.market.version=3,s=>s.assets[0].business.notice.quarter=13,s=>s.assets[0].business.referenceRevenue=0,s=>s.assets[0].business.outcomes=[{quarter:1}],s=>delete s.assets[0].business]){
+ for(const change of [s=>s.market.version=99,s=>s.assets[0].business.notice.quarter=13,s=>s.assets[0].business.referenceRevenue=0,s=>s.assets[0].business.outcomes=[{quarter:1}],s=>delete s.assets[0].business]){
   const broken=structuredClone(game);change(broken);assert.equal(validateSave(broken),false);
  }
 });

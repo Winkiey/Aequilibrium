@@ -18,3 +18,5 @@ React19、TypeScript与Vite。游戏状态转换集中在lib/game/engine.ts；�
 发布使用现有Winkiey/Aequilibrium与GitHub Pages工作流。不要另建站点或改变原Sites访问范围。未完成验收的内容应在制作状态中标记，不能用静态检查代替实际浏览器体验。
 
 证券市场第一批机制与旧档过渡见 [市场v2](MARKET_V2.md)。`node scripts/benchmark-market.mjs 500` 用公开信息、相同种子及真实交易费用对照策略，汇总记录在 [策略实验](MARKET_BENCHMARK.json)。书店经营按用户要求保持原样。
+
+核验档案、现金留存、分红除息和投资贡献见 [判断与回报](JUDGMENT_AND_RETURNS.md)。`node scripts/benchmark-wealth.mjs 200 [源码目录]` 可使用同本金对照旧版与当前版；[收益实验](RETURNS_BENCHMARK.json)保留源码指纹与真实方法。旧市场v2文档和数据是当时版本的历史记录，不作为当前结果。

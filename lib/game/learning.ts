@@ -1,4 +1,5 @@
 import {money,quoteTrade,type Asset,type Game,type Option} from './engine';
+import {effectiveCash,evidenceFor,researchTarget} from './research';
 export const orderMoney=(n:number)=>n.toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
 /** Public facts and hypothetical orders only. Never read the hidden price model. */
 export function tradePractice(game:Game,id:string,budget:number,change:number){
@@ -17,8 +18,9 @@ export function companyObservation(a:Asset){
   question:a.debtRatio>=55?'债务较重，后续偿付与融资条件要继续核对。':a.cashflow<=0?'先查清现金流出是短期投入还是经营困难。':'仍要关注设备投入、回款和下一期经营是否延续。'};
 }
 export function decisionFacts(option:Option,game?:Game){
- const e=option.effects,now=(e.cash??0)-(e.buy?.budget??0),facts:{label:string;text:string}[]=[];
+ const e=option.effects,now=(game?effectiveCash(game,e):e.cash??0)-(e.buy?.budget??0),facts:{label:string;text:string}[]=[];
  facts.push({label:'现在',text:e.sell?'会卖出部分持仓，净到账按成交回单核对':now<0?`支付 ¥${money(-now)}`:now>0?`收到 ¥${money(now)}`:'没有即时现金收支'});
+ if(e.research&&game){const id=researchTarget(game,e.research);facts.push({label:'材料',text:evidenceFor(game,id)?'本季同一份材料已核验，不重复收费':`核验 ${game.assets.find(a=>a.id===id)?.name??id} 本季材料，文件会保存在公司资料中`});}
  if(e.buy)facts.push({label:'投入',text:`其中 ¥${money(e.buy.budget)} 用于买入股份，之后会随价格变化`});
  for(const p of e.promises??[])facts.push({label:'以后',text:`第${p.due}季${p.kind==='payment'?'须付':'预计收回'} ¥${money(p.amount)} · ${p.label}${p.kind==='receipt'&&(p.chance??.7)<1?'（可能无法收回）':''}`});
  for(const p of game?.promises??[])if(p.status==='pending'&&p.kind==='payment'&&p.due<=game!.quarter&&!(e.cancelPayment&&p.id.includes(e.cancelPayment)))facts.push({label:'已约定',text:`本季结算仍须付 ¥${money(p.amount)} · ${p.label}`});

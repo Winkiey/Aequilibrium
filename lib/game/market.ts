@@ -1,10 +1,11 @@
 import type {Asset,Game} from './engine';
+import {validTerms,type BusinessTerms} from './research';
 
 export type BusinessKind='orders'|'collection'|'cost'|'credit';
 export type BusinessNotice={quarter:number;kind:BusinessKind;direction:1|-1;title:string;fact:string;uncertainty:string;check:string};
-export type BusinessOutcome={quarter:number;title:string;description:string;revenueChange:number;cashChange:number;debtChange:number;priceChange:number};
-export type CompanyBusiness={referenceRevenue:number;referenceCashRatio:number;referenceDebt:number;referencePrice:number;notice:BusinessNotice;outcomes:BusinessOutcome[]};
-export type MarketState={version:2;startedQuarter:number};
+export type BusinessOutcome={quarter:number;title:string;description:string;revenueChange:number;cashChange:number;debtChange:number;priceChange:number;fact?:string;dividendPerUnit?:number;cumDividendPrice?:number;retainedPerUnit?:number};
+export type CompanyBusiness={referenceRevenue:number;referenceCashRatio:number;referenceDebt:number;referencePrice:number;notice:BusinessNotice;outcomes:BusinessOutcome[];capital?:number;terms?:BusinessTerms};
+export type MarketState={version:2|3;startedQuarter:number;upgradedQuarter?:number};
 type Entropy=(seed:number,quarter:number,channel:string)=>number;
 const bound=(value:number,min:number,max:number)=>Math.max(min,Math.min(max,value));
 const round=(value:number)=>Math.round(value*100)/100;
@@ -30,25 +31,38 @@ function notice(seed:number,quarter:number,id:string,random:Entropy):BusinessNot
  return {quarter,kind:selectedKind,direction,title,fact:`${profile.activity}：${fact}`,uncertainty,check};
 }
 
+function businessTerms(seed:number,quarter:number,id:string,kind:BusinessKind,random:Entropy):BusinessTerms{
+ const value=random(seed,quarter,id+'-document-conditions');
+ const status:BusinessTerms['status']=value<.35?'confirmed':value<.75?'conditional':'unconfirmed';
+ const source={orders:'订单确认函与验收条款',collection:'客户对账单与付款条件',cost:'采购报价单与适用范围',credit:'授信审查材料与附加条件'}[kind];
+ return {quarter,status,coverage:40+Math.floor(random(seed,quarter,id+'-document-coverage')*6)*10,source};
+}
+
 /** Called at a new game's entry, or only after a legacy quarter has closed. */
 export function openMarketQuarter(game:Game,random:Entropy){
- const migrating=!game.market;
- game.market??={version:2,startedQuarter:game.quarter};
+ const migrating=game.market?.version!==3;
+ const startedQuarter=game.market?.startedQuarter??game.quarter;
+ game.market={version:3,startedQuarter,upgradedQuarter:migrating?game.quarter:game.market!.upgradedQuarter};
  for(const asset of game.assets){
   asset.business??={referenceRevenue:asset.revenue,referenceCashRatio:bound(asset.cashflow/asset.revenue,.02,.2),referenceDebt:asset.debtRatio,referencePrice:asset.price,notice:notice(game.seed,game.quarter,asset.id,random),outcomes:[]};
+  if(migrating){asset.business.referenceRevenue=asset.revenue;asset.business.referenceCashRatio=bound(asset.cashflow/asset.revenue,.02,.2);asset.business.referenceDebt=asset.debtRatio;asset.business.referencePrice=asset.price;asset.business.capital=0;}
   asset.business.notice=notice(game.seed,game.quarter,asset.id,random);
+  asset.business.terms=businessTerms(game.seed,game.quarter,asset.id,asset.business.notice.kind,random);
  }
  return migrating;
 }
 
 /** One shared business outcome changes accounts, valuation and the closing quote. */
-export function settleCompany(asset:Asset,seed:number,quarter:number,regime:number,random:Entropy){
+export function settleCompany(asset:Asset,seed:number,quarter:number,regime:number,random:Entropy,version:2|3=3){
  const business=asset.business!,item=business.notice.quarter===quarter?business.notice:notice(seed,quarter,asset.id,random),profile=PROFILES[asset.id];
  const before={revenue:asset.revenue,cash:asset.cashflow,debt:asset.debtRatio,price:asset.price};
  const macro=[.012,.027,.038,-.055][regime];
  // The notice is known; completion and unrelated shocks are not known at entry.
- const completed=random(seed,quarter,asset.id+'-business-completion')<.72;
- const effect=item.direction*(completed?1:.15);
+ const terms=business.terms?.quarter===quarter?business.terms:businessTerms(seed,quarter,asset.id,item.kind,random);
+ const chance=version===2?.72:terms.status==='confirmed'?.88:terms.status==='conditional'?.62:.35;
+ const completed=random(seed,quarter,asset.id+'-business-completion')<chance;
+ const coverage=version===2?1:terms.coverage/100;
+ const effect=item.direction*(completed?1:.15)*coverage;
  const surprise=(random(seed,quarter,asset.id+'-business-operations')-.5)*.12;
  const growth=macro*profile.exposure+surprise+(item.kind==='orders'?effect*.09:item.kind==='collection'&&item.direction<0?.015:0);
  asset.revenue=round(Math.max(100,asset.revenue*(1+growth)));
@@ -62,14 +76,28 @@ export function settleCompany(asset:Asset,seed:number,quarter:number,regime:numb
  const relativeRevenue=asset.revenue/business.referenceRevenue;
  const cashRatio=asset.cashflow/asset.revenue;
  asset.fundamental=Math.max(.1,business.referencePrice*Math.pow(relativeRevenue,.6)*Math.exp((cashRatio-business.referenceCashRatio)*1.8-(asset.debtRatio-business.referenceDebt)*.006));
- const repricing=Math.log(asset.fundamental/asset.price)*.22;
+ const previousCapital=business.capital??0;
+ const freeCashShare=({harbor:.55,power:.65,retail:.65,medical:.7,signal:.4,urban:.35} as Record<string,number>)[asset.id]??.5;
+ const generated=version===3?business.referencePrice*asset.cashflow/business.referenceRevenue*.26*freeCashShare:0;
+ if(version===3){asset.fundamental+=previousCapital;business.capital=previousCapital+generated;}
+ const repricing=Math.log(Math.max(.1,asset.fundamental)/asset.price)*.22;
  const noise=(random(seed,quarter,asset.id+'price')-.5)*.14;
  const tail=random(seed,quarter,asset.id+'tail')<.09?(random(seed,quarter,asset.id+'jump')-.65)*.55:0;
- asset.price=Math.max(.1,round(asset.price*Math.exp(bound(repricing+macro*.35+noise+tail,-.65,.4))));
+ const cumDividendPrice=Math.max(.1,round(Math.max(.1,asset.price+generated)*Math.exp(bound(repricing+macro*.35+noise+tail,-.65,.4))));
+ let dividendPerUnit:number|undefined;
+ asset.price=cumDividendPrice;
+ if(version===3){
+  const ratio=asset.debtRatio>=70?0:asset.debtRatio>=55?.2:asset.id==='power'?.55:.35;
+  dividendPerUnit=Math.max(0,Math.floor(Math.min(Math.max(0,Math.min(generated,previousCapital+generated))*ratio,cumDividendPrice-.1)*100+1e-8)/100);
+  asset.price=round(cumDividendPrice-dividendPerUnit);
+  business.capital=(business.capital??0)-dividendPerUnit;
+  asset.fundamental=Math.max(.1,asset.fundamental+generated-dividendPerUnit);
+ }
  asset.history.push(asset.price);
  asset.disclosures=[...(asset.disclosures??[]),{quarter,price:asset.price,revenue:asset.revenue,cashflow:asset.cashflow,debtRatio:asset.debtRatio}];
  const result=completed?(item.direction>0?'部分有利条件在本季落实，经营数字仍包括其他业务与成本。':'本季受到这项压力影响，经营数字同时反映其他业务的变化。'):'季初所述条件未完全落实，本季影响较小；实际经营结果还包括其他业务与成本。';
- business.outcomes.push({quarter,title:item.title,description:result,revenueChange:round(asset.revenue-before.revenue),cashChange:round(asset.cashflow-before.cash),debtChange:round(asset.debtRatio-before.debt),priceChange:round((asset.price/before.price-1)*100)});
+ business.outcomes.push({quarter,title:item.title,description:result,revenueChange:round(asset.revenue-before.revenue),cashChange:round(asset.cashflow-before.cash),debtChange:round(asset.debtRatio-before.debt),priceChange:round((asset.price/before.price-1)*100),...(version===3?{fact:`${terms.source}覆盖这项计划的${terms.coverage}%；本季${completed?'按所列条件落实':'未全部落实，实际影响有限'}。`,dividendPerUnit,cumDividendPrice,retainedPerUnit:round(generated-(dividendPerUnit??0))}:{})});
+ return dividendPerUnit;
 }
 
 /** This view reads only entry notices and already-published closing outcomes. */
@@ -79,11 +107,13 @@ export function publicBusiness(asset:Asset){
 }
 export function validMarket(game:Game){
  if(game.market===undefined)return game.assets.every(a=>a.business===undefined);
- if(game.market?.version!==2||!Number.isInteger(game.market.startedQuarter)||game.market.startedQuarter<1||game.market.startedQuarter>game.quarter)return false;
+ if(![2,3].includes(game.market?.version)||!Number.isInteger(game.market.startedQuarter)||game.market.startedQuarter<1||game.market.startedQuarter>game.quarter)return false;
+ if(game.market.version===3&&(!Number.isInteger(game.market.upgradedQuarter)||game.market.upgradedQuarter!<game.market.startedQuarter||game.market.upgradedQuarter!>game.quarter))return false;
  return game.assets.every(asset=>{
   const b=asset.business;if(!b||![b.referenceRevenue,b.referenceCashRatio,b.referenceDebt,b.referencePrice].every(Number.isFinite)||b.referenceRevenue<=0||b.referencePrice<=0||b.referenceCashRatio<.02||b.referenceCashRatio>.2||b.referenceDebt<5||b.referenceDebt>95)return false;
+  if(game.market!.version===3&&(!Number.isFinite(b.capital)||!b.terms||!validTerms(b.terms,b.notice?.quarter)))return false;
   const n=b.notice;
   if(!n||!Number.isInteger(n.quarter)||n.quarter<game.market!.startedQuarter||n.quarter>game.quarter||!['orders','collection','cost','credit'].includes(n.kind)||![1,-1].includes(n.direction)||!['title','fact','uncertainty','check'].every(k=>typeof n[k as keyof BusinessNotice]==='string'))return false;
-  return Array.isArray(b.outcomes)&&b.outcomes.length<=12&&b.outcomes.every((o,index,list)=>o&&Number.isInteger(o.quarter)&&o.quarter>=game.market!.startedQuarter&&o.quarter<=game.quarter&&(index===0||o.quarter>list[index-1].quarter)&&typeof o.title==='string'&&typeof o.description==='string'&&[o.revenueChange,o.cashChange,o.debtChange,o.priceChange].every(Number.isFinite));
+  return Array.isArray(b.outcomes)&&b.outcomes.length<=12&&b.outcomes.every((o,index,list)=>o&&Number.isInteger(o.quarter)&&o.quarter>=game.market!.startedQuarter&&o.quarter<=game.quarter&&(index===0||o.quarter>list[index-1].quarter)&&typeof o.title==='string'&&typeof o.description==='string'&&[o.revenueChange,o.cashChange,o.debtChange,o.priceChange].every(Number.isFinite)&&(o.fact===undefined||typeof o.fact==='string')&&(o.dividendPerUnit===undefined||Number.isFinite(o.dividendPerUnit)&&o.dividendPerUnit>=0)&&(o.cumDividendPrice===undefined||Number.isFinite(o.cumDividendPrice)&&o.cumDividendPrice>=.1)&&(o.retainedPerUnit===undefined||Number.isFinite(o.retainedPerUnit)));
  });
 }
