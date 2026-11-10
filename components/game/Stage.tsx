@@ -1,5 +1,6 @@
 'use client';
-import {useEffect,useRef,useState,type CSSProperties,type ReactNode} from 'react';
+import {useContext,useEffect,useRef,useState,type CSSProperties,type ReactNode} from 'react';
+import {SoundscapeContext} from './Soundscape';
 import {CAST,OBJECTS,SCENES,type Focus} from '@/lib/game/visuals';
 import {assetSource,coverFrame,imageURL,prepareImage,scenePaths,invalidateImage} from '@/lib/game/assets';
 import type {ActorMark,StageDirection} from '@/lib/game/staging';
@@ -28,6 +29,8 @@ function Material({scene,focus,companion=false,rotate=0,action='still'}:{scene:S
 }
 export function Stage({scene,quarter=1,cast=[],speaker,pose=0,camera='wide',focus,emotion='quiet',shotId,showObject=false,sceneLayer,children,onReadyChange,framing='center',staging}:{scene:SceneId;quarter?:number;cast?:CastId[];speaker?:Beat['speaker'];pose?:number;camera?:Beat['camera'];focus?:Focus;emotion?:Beat['emotion'];shotId:string;showObject?:boolean;sceneLayer?:ReactNode;children?:ReactNode;onReadyChange?:(ready:boolean)=>void;framing?:'center'|'desk';staging?:StageDirection}){
  const info=SCENES[scene],point=focus?sceneFocusPoint(scene,focus):info.origin,source=assetSource(info.image),layout=SCENE_LAYOUTS[scene];
+ const soundscape=useContext(SoundscapeContext);
+ useEffect(()=>{const place=SEASON_PLACEMENTS[scene];soundscape?.({season:quarter-1,rain:info.weather==='rain',outdoors:place.outdoors,night:!!place.night});},[soundscape,scene,quarter,info.weather]);
  const cameraRef=useRef<HTMLDivElement>(null),rootRef=useRef<HTMLElement>(null),pointerFrame=useRef<number|null>(null),displayFailures=useRef(0),backgroundLoading=useRef(true);
  const [size,setSize]=useState({width:typeof window==='undefined'?1672:window.innerWidth*1.02,height:typeof window==='undefined'?941:window.innerHeight*1.02});
  const [painted,setPainted]=useState(''),[backplate,setBackplate]=useState(recentPainting),[error,setError]=useState(false),[retry,setRetry]=useState(0),[renderAttempt,setRenderAttempt]=useState(0),[,refreshSprites]=useState(0);

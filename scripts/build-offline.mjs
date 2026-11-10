@@ -1,5 +1,5 @@
 import {createHash} from 'node:crypto';
-import {readFile,writeFile,readdir,realpath,stat} from 'node:fs/promises';
+import {readFile,writeFile,readdir,realpath,stat,mkdir} from 'node:fs/promises';
 import {resolve,relative,sep,join,isAbsolute} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -69,9 +69,16 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
   const updated=html.includes('</head>')?html.replace('</head>',meta+'</head>'):html+meta;
   await writeFile(path,updated);const entry=files.find(file=>file.url===base+page),body=await readFile(path);entry.bytes=body.byteLength;entry.sha256=digest(body);
  }
- const version=digest(JSON.stringify({base,buildId,files,worker:digest(template)})).slice(0,20);
+ // Runtime WebP files are already compressed. Group their exact bytes into a
+ // few immutable delivery blocks; extracted files retain individual SHA-256s.
+ const bundles=[],folder=resolve(output,'offline');await mkdir(folder,{recursive:true});
+ if(!inside(output,await realpath(folder)))throw new Error('Offline blocks escaped output');
+ let members=[],size=0;
+ async function flush(){if(!members.length)return;const data=Buffer.concat(await Promise.all(members.map(f=>readFile(resolve(output,f.url.slice(base.length))))));const hash=digest(data),url=base+'offline/art-'+hash.slice(0,20)+'.bin';let offset=0;const entries=members.map(f=>{const entry={url:f.url,offset};offset+=f.bytes;return entry;});await writeFile(resolve(output,url.slice(base.length)),data);bundles.push({url,bytes:data.byteLength,sha256:hash,files:entries});members=[];size=0;}
+ for(const file of files.filter(f=>f.group==='media'&&f.url.endsWith('.webp'))){if(size&&size+file.bytes>2*1024*1024)await flush();members.push(file);size+=file.bytes;}await flush();
+ const version=digest(JSON.stringify({base,buildId,files,bundles,worker:digest(template)})).slice(0,20);
  const cachePrefix=`aequilibrium:${encodeURIComponent(base)}:`;
- const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files};
+ const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files,bundles};
  await writeFile(resolve(output,'offline-manifest.json'),JSON.stringify(result,null,2)+'\n');
  // Deliberately absent from files: an old cached manifest cannot hide this release.
  await writeFile(resolve(output,'release.json'),JSON.stringify(result,null,2)+'\n');

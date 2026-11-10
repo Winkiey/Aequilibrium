@@ -1,0 +1,154 @@
+{
+  "date": "2026-11-10",
+  "baselineCommit": "e948355791fdbf3b01b2dfcc3cd94a5708bebdf6",
+  "benchmark": {
+    "old": {
+      "resourceRequests": 121,
+      "responseBytes": 17213582,
+      "firstRequest": 1794303491.621592,
+      "lastResponse": 1794303550.0492249,
+      "packageBytes": 17213582,
+      "files": 121,
+      "bundleCount": 0,
+      "version": "c97cfc41fc701f9784d4",
+      "resourceSpanSeconds": 58.4276328086853
+    },
+    "new": {
+      "resourceRequests": 30,
+      "responseBytes": 13893958,
+      "firstRequest": 1794303497.6032665,
+      "lastResponse": 1794303522.0367806,
+      "packageBytes": 13893958,
+      "files": 121,
+      "bundleCount": 4,
+      "version": "deeb0479c1898f04967f",
+      "resourceSpanSeconds": 24.43351411819458
+    },
+    "conditions": {
+      "latencyPerRequestSeconds": 0.12,
+      "bytesPerSecondPerRequest": 262144,
+      "browser": "Chromium IAB",
+      "freshCacheOrigins": [
+        5194,
+        5195
+      ],
+      "timing": "server log from first resource request to last resource response; UI completion observed separately",
+      "note": "Per-request shaping, not a shared aggregate bandwidth cap or nationwide speed guarantee."
+    },
+    "resourceSpanReduction": 0.5818157788764202
+  },
+  "browser": {
+    "legacy": {
+      "seed": 635959059,
+      "quarter": 2,
+      "cash": 121000,
+      "allExportFieldsIdentical": true,
+      "validateSave": true,
+      "reading": {
+        "eventId": "main-2",
+        "phase": "story",
+        "index": 1,
+        "choice": null,
+        "inspected": false
+      },
+      "oldEntry": "main-hzVTN_CN.js",
+      "newEntry": "main-BtvjMnQL.js",
+      "offlineContinuedAfterServerStopped": true,
+      "versionAtUpgrade": "01e73871633ed0e34edc"
+    },
+    "downloads": {
+      "finalVersion": "eb0ff6ebac4a57165ca5",
+      "finalBuildId": "73f33c95577d01bbcd58",
+      "files": 121,
+      "bytes": 13898187,
+      "oldBytes": 17213582,
+      "reduction": 0.19260343373041122,
+      "bundles": 4,
+      "pauseProgressObserved": 33,
+      "resumeInitialObserved": 48,
+      "completedIndividualPathsRedownloaded": 0,
+      "bundleMayContainSomePreviouslySavedBytes": true,
+      "failedBlocksFallBackToIndividualFiles": true,
+      "viewports": [
+        "1280x720",
+        "667x375"
+      ],
+      "prePauseFullResponsePaths": 57,
+      "pauseNote": "33 complete at pause; installer independently finished more shell files; resume initially verified 48. Whole blocks may retransmit a minority of already saved artwork bytes. Network overlap excludes the later distinct-version installation."
+    },
+    "soundtrack": {
+      "renderer": "Real RoomAudio graph / browser OfflineAudioContext",
+      "order": "autumn winter spring summer",
+      "duration": 96,
+      "musicLevel": 0.42,
+      "environmentLevel": 0.35,
+      "rain": false,
+      "clips": [
+        {
+          "season": "秋 · 纸窗",
+          "seconds": 24,
+          "sampleRate": 24000,
+          "channels": 2,
+          "peak": 0.04727649688720703,
+          "rmsDbFS": -41.17326263341874,
+          "nonFinite": 0
+        },
+        {
+          "season": "冬 · 炉边",
+          "seconds": 24,
+          "sampleRate": 24000,
+          "channels": 2,
+          "peak": 0.04760560020804405,
+          "rmsDbFS": -41.56874912722772,
+          "nonFinite": 0
+        },
+        {
+          "season": "春 · 新枝",
+          "seconds": 24,
+          "sampleRate": 24000,
+          "channels": 2,
+          "peak": 0.05147814005613327,
+          "rmsDbFS": -41.290137018671835,
+          "nonFinite": 0
+        },
+        {
+          "season": "夏 · 树影",
+          "seconds": 24,
+          "sampleRate": 24000,
+          "channels": 2,
+          "peak": 0.04867063835263252,
+          "rmsDbFS": -41.38517845701649,
+          "nonFinite": 0
+        }
+      ],
+      "listenerReview": "Not claimed; user should audition for comfort",
+      "sceneControllerTests": 5
+    },
+    "sourceFingerprint": "41d5997a97d4cc45af98fe3237e7a9b323dc4aae48b9f4551482a0d0ea65813b"
+  },
+  "video": {
+    "originalBytes": 8791605,
+    "optimizedBytes": 5467177,
+    "ssim": 0.979241,
+    "seconds": 33,
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "fps": 24,
+    "audioTracks": 0,
+    "content": "Same existing film, encoding only"
+  },
+  "checks": {
+    "typecheck": true,
+    "tests": 325,
+    "pagesBuild": true,
+    "workerBuild": true
+  },
+  "limits": [
+    "Shaping was per-request, not aggregate bandwidth; no regional speed guarantee.",
+    "Benchmark build preceded the soundtrack by about 4 KB; timings are for the recorded build IDs, not rerun timings for the final release.",
+    "No physical Safari or particular GPU/ISP coverage claimed.",
+    "No fresh 12-quarter balance run in this resource/audio batch; previous full run is recorded separately."
+  ]
+}

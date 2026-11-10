@@ -17,12 +17,14 @@ async function validateResponse(response,entry){
 
 async function installShell(){
  const cache=await caches.open(OFFLINE.shellCache);
- for(const entry of OFFLINE.files.filter(file=>file.group==='shell')){
+ const entries=OFFLINE.files.filter(file=>file.group==='shell');let next=0;
+ async function worker(){while(next<entries.length){const entry=entries[next++];
   const url=absolute(entry.url),existing=await cache.match(url);
   if(existing){try{await validateResponse(existing.clone(),entry);continue;}catch{/* Repair only this incomplete version's entry. */}}
   const response=await fetch(new Request(url,{cache:'reload',credentials:'same-origin'}));
   await cache.put(url,await validateResponse(response,entry));
- }
+ }}
+ await Promise.all(Array.from({length:Math.min(4,entries.length)},worker));
 }
 self.addEventListener('install',event=>{event.waitUntil(installShell());});
 // No install-time takeover, cache deletion or save manipulation.
