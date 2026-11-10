@@ -45,5 +45,50 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1, Node 24
         id: deployment
+      - name: Inspect Pages API after a failed deployment
+        if: failure()
+        continue-on-error: true
+        env:
+          PAGES_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, urllib.request, urllib.error
+          repo = os.environ.get('GITHUB_REPOSITORY', '')
+          sha = os.environ.get('GITHUB_SHA', '')
+          if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repo) or not re.fullmatch(r'[a-f0-9]{40}', sha):
+              print('Pages diagnostic inputs are unavailable.')
+              raise SystemExit(0)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, *args, **kwargs):
+                  return None
+          request = urllib.request.Request(
+              'https://api.github.com/repos/' + repo + '/pages/deployments/' + sha,
+              headers={
+                  'Authorization': 'Bearer ' + os.environ['PAGES_TOKEN'],
+                  'Accept': 'application/vnd.github+json',
+                  'X-GitHub-Api-Version': '2022-11-28',
+                  'User-Agent': 'Aequilibrium-Pages-diagnostic',
+                  'Cache-Control': 'no-cache',
+              },
+          )
+          def report(code, payload, headers):
+              result = {'http': code, 'requestId': headers.get('x-github-request-id', '')}
+              if isinstance(payload, dict):
+                  result.update(status=payload.get('status', '<missing>'), keys=sorted(payload), message=str(payload.get('message', ''))[:240])
+              else:
+                  result['payloadType'] = type(payload).__name__
+              print(json.dumps(result))
+          try:
+              with urllib.request.build_opener(NoRedirect()).open(request, timeout=30) as response:
+                  report(response.status, json.load(response), response.headers)
+          except urllib.error.HTTPError as error:
+              try:
+                  payload = json.loads(error.read())
+              except Exception:
+                  payload = {}
+              report(error.code, payload, error.headers)
+          except Exception as error:
+              print('Pages diagnostic request failed: ' + type(error).__name__)
+          PY
