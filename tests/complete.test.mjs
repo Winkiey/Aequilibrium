@@ -6,7 +6,7 @@ import {createGame,choose,trade,endQuarter,validateSave,validStoryOpening} from 
 import {mainEvent,materialize} from '../.sites-runtime/test-modules/stories.mjs';
 import {STORYBOARDS} from '../.sites-runtime/test-modules/cinematic-content.mjs';
 import {MAIN_REVISED_BEATS,EVENT_CONTEXTS,CAST_ENTRANCES} from '../.sites-runtime/test-modules/narrative-content.mjs';
-import {prepareNarrative} from '../.sites-runtime/test-modules/narrative.mjs';
+import {prepareNarrative,previousAnswer} from '../.sites-runtime/test-modules/narrative.mjs';
 import {tradePractice,decisionFacts} from '../.sites-runtime/test-modules/learning.mjs';
 import {rememberIntro,readCollection,freshCollection,collectionReplay} from '../.sites-runtime/test-modules/collection.mjs';
 import {freshPresentation,validPresentation} from '../.sites-runtime/test-modules/presentation.mjs';
@@ -28,7 +28,7 @@ test('new openings keep real prior choices and remain immutable in cross-run col
  const memory=readCollection(rememberIntro(freshCollection(),fresh));assert.deepEqual(collectionReplay(memory,old.id).opening,fresh.opening);
  assert.equal(prepareNarrative(game,old,1),old,'legacy reading indexes retain their original script');
  const next=endQuarter(choose(game,fresh,0,'main'));const second=prepareNarrative(next,materialize(mainEvent(next),next),2);
- assert.ok(second.opening[0].text.includes(old.title));assert.ok(second.opening.some(b=>b.text.includes(old.options[0].label)));
+ assert.equal(previousAnswer(next,second).title,old.title);assert.equal(previousAnswer(next,second).choice,old.options[0].label);assert.ok(second.opening.every(b=>!b.text.startsWith('上次在「')));
  const ui=freshPresentation(game);assert.equal(ui.storyRevision,2);const legacy={...ui};delete legacy.storyRevision;assert.ok(validPresentation(legacy,game));
  assert.equal(validStoryOpening([{speaker:'unknown',text:'bad'}]),false);
 });
@@ -72,7 +72,7 @@ test('a loan follow-up recalls the actual loan rather than a newer unrelated enc
  const loan={...first,id:'main-3',title:'没有盖章的订单',atQuarter:3};
  game.history=[{...game.history[0],quarter:3,eventId:'main-3',title:loan.title,choice:'借出两万元，写清还款日期'},{...game.history[0],quarter:4,eventId:'side-2',title:'不再出版的一本书',choice:'保留给来店的人'}];
  game.quarter=7;const current=materialize(mainEvent(game),game),opened=prepareNarrative(game,current,2);
- assert.ok(opened.opening[0].text.includes(loan.title));assert.ok(opened.opening.some(b=>b.text.includes('借出两万元')));
+ assert.equal(previousAnswer(game,current).title,loan.title);assert.ok(previousAnswer(game,current).choice.includes('借出两万元'));assert.ok(opened.opening.every(b=>!b.text.startsWith('上次在「')));
 });
 
 test('real quarterly newspaper and tutorial never present daily timestamps',()=>{

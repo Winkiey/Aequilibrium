@@ -73,3 +73,5 @@ export function collectionReplay(collection:Collection,id:string,branch?:0|1):St
  const memory=collection.stories[id];return branch===undefined?memory?.intro:memory?.branches[branch];
 }
 export function collectionStats(collection:Collection){return{stories:Object.keys(collection.stories).length,branches:Object.values(collection.stories).reduce((n,m)=>n+Object.keys(m.branches).length,0),endings:Object.keys(collection.endings).length};}
+/** A branch index alone is insufficient after an option is rewritten. */
+export function rememberedOptions(collection:Collection,event:StoryEvent):readonly boolean[]{return event.options.map((option,i)=>collection.stories[event.id]?.branches[i as 0|1]?.options[i].label===option.label);}

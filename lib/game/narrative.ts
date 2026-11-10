@@ -20,8 +20,6 @@ export function prepareNarrative(game:Game,event:StoryEvent,revision:number):Sto
  if(revision<2||event.opening||!STORYBOARDS[event.id])return event;
  const script=STORYBOARDS[event.id],context=EVENT_CONTEXTS[event.id],opening:Beat[]=[];
  const add=(text:string)=>{for(const line of shortLines(text))opening.push({speaker:'narrator',text:line,camera:'wide',emotion:'quiet'});};
- const previous=previousAnswer(game,event);
- if(previous)add(`上次在「${previous.title}」，你的答复是：${previous.choice}。`);
  if(!MAIN_REVISED_BEATS[event.id]){
   add(context.bridge);
   const met=new Set(game.history.flatMap(h=>{const id=historyEventId(h);return id?STORYBOARDS[id]?.cast??[]:[];}));
@@ -29,6 +27,12 @@ export function prepareNarrative(game:Game,event:StoryEvent,revision:number):Sto
  }
  opening.push(...(MAIN_REVISED_BEATS[event.id]??script.beats).map(b=>({...b})));
  return{...event,opening};
+}
+/** Saved openings keep their raw indices. Only the old machine-style reminder
+ * is skipped on screen; later dialogue and saved cursors never shift. */
+export function openingReminderLength(beats:Beat[]){
+ if(beats[0]?.speaker!=='narrator'||!/^上次在「.+」，/u.test(beats[0].text))return 0;
+ let text='';for(let n=0;n<Math.min(4,beats.length-1);n++){if(beats[n].speaker!=='narrator')return 0;text+=beats[n].text;if(/[。！？]$/u.test(text))return text.includes('你的答复是：')?n+1:0;}return 0;
 }
 export function currentThread(game:Game,event:StoryEvent){
  if(game.finished)return '十二季已经走完。可以回看三年，也能翻阅书柜留下的人与事。';

@@ -9,6 +9,7 @@ import "./library.css";
 import "./composition.css";
 import "./complete.css";
 import "./mobile.css";
+import "./folio.css";
 
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 

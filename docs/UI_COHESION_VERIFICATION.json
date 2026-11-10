@@ -1,0 +1,198 @@
+{
+  "date": "2026-11-10",
+  "legacy": {
+    "seed": 790428301,
+    "cash": 121000,
+    "gameIdentical": true,
+    "collectionIdentical": true,
+    "reading": {
+      "eventId": "main-2",
+      "phase": "story",
+      "index": 1,
+      "choice": null,
+      "inspected": false
+    },
+    "oldEntry": "main-jz0KISQJ.js",
+    "upgradedEntry": "main-zoBwjJqV.js",
+    "ordinaryRefreshRetainedOldEntry": true,
+    "offlineContinuedAfterServerStop": true
+  },
+  "playthrough": {
+    "origin": "http://127.0.0.1:5192/Aequilibrium/playtest/",
+    "seed": 1198978107,
+    "ending": "泊灯长明",
+    "netAssets": 114746.47665533022,
+    "cash": 97284.26,
+    "investmentNet": -178.29334466977662,
+    "dividends": 340.64,
+    "transactions": [
+      {
+        "quarter": 1,
+        "asset": "power",
+        "side": "buy",
+        "amount": 3000,
+        "fee": 5.99,
+        "slippage": 3.69,
+        "units": 182.89445907745397
+      },
+      {
+        "quarter": 2,
+        "asset": "power",
+        "side": "sell",
+        "amount": 718.85,
+        "fee": 1.44,
+        "slippage": 0.77,
+        "units": 45.72361476936349,
+        "realized": -31.15
+      }
+    ],
+    "choices": [
+      {
+        "quarter": 1,
+        "eventId": "main-1",
+        "choice": "接过钥匙，试着经营这家店"
+      },
+      {
+        "quarter": 2,
+        "eventId": "main-2",
+        "choice": "添几把椅子，把这个晚上留下"
+      },
+      {
+        "quarter": 2,
+        "eventId": "chapter-2",
+        "choice": "把周六留出来，先写自己的名字"
+      },
+      {
+        "quarter": 3,
+        "eventId": "main-3",
+        "choice": "不借钱，帮他把订单再核对一次"
+      },
+      {
+        "quarter": 3,
+        "eventId": "s30",
+        "choice": "读完附注"
+      },
+      {
+        "quarter": 4,
+        "eventId": "main-4",
+        "choice": "留着现金，替我向大家问好"
+      },
+      {
+        "quarter": 4,
+        "eventId": "chapter-4",
+        "choice": "一起把账期与责任写清楚，再各自回家"
+      },
+      {
+        "quarter": 5,
+        "eventId": "main-5",
+        "choice": "按约定把屋顶整修好"
+      },
+      {
+        "quarter": 6,
+        "eventId": "main-6",
+        "choice": "把余下的租期签下来"
+      },
+      {
+        "quarter": 7,
+        "eventId": "main-7",
+        "choice": "不出借，陪他去看看别的工作"
+      },
+      {
+        "quarter": 7,
+        "eventId": "chapter-7",
+        "choice": "说明错处，重做这一页校样"
+      },
+      {
+        "quarter": 8,
+        "eventId": "main-8",
+        "choice": "把手机收起来，周末一起去"
+      },
+      {
+        "quarter": 9,
+        "eventId": "main-9",
+        "choice": "放下旧报价，重新核对公司的资料"
+      },
+      {
+        "quarter": 10,
+        "eventId": "main-10",
+        "choice": "带走原始凭证，按真实情况办理"
+      },
+      {
+        "quarter": 10,
+        "eventId": "chapter-10",
+        "choice": "一起制定轮值规则，交出两把钥匙"
+      },
+      {
+        "quarter": 11,
+        "eventId": "main-11",
+        "choice": "留一点钱，把书店继续做下去"
+      },
+      {
+        "quarter": 12,
+        "eventId": "main-12",
+        "choice": "留下来，把这顿晚饭一起吃完"
+      }
+    ],
+    "collection": {
+      "stories": 17,
+      "branches": 17,
+      "endings": 1
+    }
+  },
+  "rendering": {
+    "desktop": true,
+    "landscape": [
+      [
+        844,
+        390
+      ],
+      [
+        667,
+        375
+      ]
+    ],
+    "backgroundFailure": "Two 503 responses, then known fingerprinted alternate; previous painting retained; no manual retry",
+    "memoryMark": {
+      "text": "曾选",
+      "width": 16.640625,
+      "height": 10.59375
+    },
+    "multiwindow": "Update stopped with one other game page, then succeeded after close and retry",
+    "audioAndVideoUnchanged": true,
+    "finalMobileGraphs": {
+      "viewport": [
+        667,
+        375
+      ],
+      "visible": 6,
+      "eachSize": [
+        60,
+        25
+      ],
+      "listTop": 149.140625,
+      "listBottom": 311,
+      "lastGraphBottom": 297.8125
+    },
+    "finalOrder": {
+      "viewport": [
+        667,
+        375
+      ],
+      "chartSize": [
+        258.234375,
+        28
+      ],
+      "confirmTop": 299,
+      "confirmBottom": 337,
+      "cashVisible": true
+    },
+    "desktopOrderTwoColumns": true,
+    "declineOpeningOutcomeLines": 3
+  },
+  "limitations": [
+    "Chromium IAB; no physical Safari or GPU-driver matrix tested",
+    "The full run tests the presentation update, not investment balance changes",
+    "Final small CSS spacing fixes are separately checked; the run is not repeated for those styles"
+  ],
+  "engineSourceUnchanged": true
+}
