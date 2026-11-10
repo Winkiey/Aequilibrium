@@ -28,7 +28,9 @@ export class RoomAudio {
    const ctx=new AudioContext();this.context=ctx;
    const master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);this.master=master;
    this.environment=ctx.createGain();this.environment.gain.value=0;this.environment.connect(master);
-   this.music=ctx.createGain();this.music.gain.value=0;this.music.connect(master);
+   this.music=ctx.createGain();this.music.gain.value=0;
+   const musicCut=ctx.createBiquadFilter();musicCut.type='highpass';musicCut.frequency.value=250;musicCut.Q.value=.45;
+   this.music.connect(musicCut);musicCut.connect(master);
    this.buses=SEASON_SCORES.map(()=>{const bus=ctx.createGain();bus.gain.value=0;bus.connect(this.music!);return bus;});
    const buffer=ctx.createBuffer(2,ctx.sampleRate*6,ctx.sampleRate);
    for(let c=0;c<2;c++){
@@ -41,10 +43,11 @@ export class RoomAudio {
    }
    const noise=ctx.createBufferSource();noise.buffer=buffer;noise.loop=true;
    const rainFilter=ctx.createBiquadFilter();rainFilter.type='highpass';rainFilter.frequency.value=750;rainFilter.Q.value=.3;
-   const airFilter=ctx.createBiquadFilter();airFilter.type='lowpass';airFilter.frequency.value=650;airFilter.Q.value=.35;
+   const airCut=ctx.createBiquadFilter();airCut.type='highpass';airCut.frequency.value=220;airCut.Q.value=.45;
+   const airFilter=ctx.createBiquadFilter();airFilter.type='lowpass';airFilter.frequency.value=950;airFilter.Q.value=.35;
    this.rain=ctx.createGain();this.rain.gain.value=0;this.rain.connect(this.environment);
    this.air=ctx.createGain();this.air.gain.value=0;this.air.connect(this.environment);
-   noise.connect(rainFilter);rainFilter.connect(this.rain);noise.connect(airFilter);airFilter.connect(this.air);
+   noise.connect(rainFilter);rainFilter.connect(this.rain);noise.connect(airCut);airCut.connect(airFilter);airFilter.connect(this.air);
    noise.start();this.persistent.push(noise);
   }
   const ctx=this.context;await ctx.resume();if(epoch!==this.epoch||ctx!==this.context)return;
@@ -79,17 +82,11 @@ export class RoomAudio {
   const ctx=this.context!;
   [1,2,3].forEach((harmonic,i)=>{
    const osc=ctx.createOscillator(),env=ctx.createGain();osc.type='sine';osc.frequency.value=noteHz(midi)*harmonic;
-   env.gain.setValueAtTime(0,at);env.gain.linearRampToValueAtTime(level*[1,.16,.035][i],at+.012);
-   env.gain.exponentialRampToValueAtTime(.00001,at+3.8-i*.65);
-   osc.connect(env);env.connect(bus);this.track(osc,env);osc.start(at);osc.stop(at+4);
-  });
- }
- private pad(chord:number[],at:number,bus:GainNode,duration:number){
-  const ctx=this.context!;
-  chord.forEach((midi,i)=>{
-   const osc=ctx.createOscillator(),env=ctx.createGain();osc.type='sine';osc.frequency.value=noteHz(midi);osc.detune.value=i%2?3:-3;
-   env.gain.setValueAtTime(0,at);env.gain.linearRampToValueAtTime(.025,at+2.5);env.gain.setValueAtTime(.025,at+duration-1);
-   env.gain.linearRampToValueAtTime(0,at+duration+2.5);osc.connect(env);env.connect(bus);this.track(osc,env);osc.start(at);osc.stop(at+duration+2.6);
+   const peak=level*[1,.12,.015][i];
+   env.gain.setValueAtTime(0,at);env.gain.linearRampToValueAtTime(peak,at+.04);
+   env.gain.exponentialRampToValueAtTime(peak*.3,at+.7-i*.12);
+   env.gain.exponentialRampToValueAtTime(.00001,at+2.25-i*.3);
+   osc.connect(env);env.connect(bus);this.track(osc,env);osc.start(at);osc.stop(at+2.4);
   });
  }
  private nature(at:number){
@@ -107,15 +104,17 @@ export class RoomAudio {
   if(this.nextNote<now-.5)this.nextNote=now+.1;
   while(this.nextNote<now+.5){
    const at=this.nextNote,index=this.step%score.melody.length,chord=score.chords[Math.floor(index/4)];
-   if(index%4===0){this.pad(chord,at,bus,score.pace*4);this.piano(chord[0]+12,at,bus,.055);}
-   const note=score.melody[index];if(note!==null)this.piano(note,at,bus,.105);
+   // Short right-hand arpeggios leave air between phrases. No sustained bass
+   // or detuned drone beneath the dialogue.
+   if(index%4===0)chord.forEach((note,i)=>this.piano(note,at+i*.48,bus,.024));
+   const note=score.melody[index];if(note!==null)this.piano(note,at,bus,.095);
    this.step++;this.nextNote+=score.pace;
   }
   if(this.nextNature<now+.5){this.nature(Math.max(now+.02,this.nextNature));this.nextNature=now+17+(this.step%3)*4;}
  }
  page(){
-  if(!this.context||!this.on)return;const ctx=this.context,osc=ctx.createOscillator(),env=ctx.createGain();osc.type='triangle';osc.frequency.value=90;
-  env.gain.setValueAtTime(.012,ctx.currentTime);env.gain.exponentialRampToValueAtTime(.00001,ctx.currentTime+.06);
+  if(!this.context||!this.on)return;const ctx=this.context,osc=ctx.createOscillator(),env=ctx.createGain();osc.type='triangle';osc.frequency.value=660;
+  env.gain.setValueAtTime(0,ctx.currentTime);env.gain.linearRampToValueAtTime(.0035,ctx.currentTime+.006);env.gain.exponentialRampToValueAtTime(.00001,ctx.currentTime+.06);
   osc.connect(env);env.connect(this.master!);this.track(osc,env);osc.start();osc.stop(ctx.currentTime+.07);
  }
  async pause(){

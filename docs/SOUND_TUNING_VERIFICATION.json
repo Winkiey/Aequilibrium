@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-10",
+  "baselineCommit": "cb503b4758f638007fbe5b728206476e9cdbd9f4",
+  "method": "Actual browser RoomAudio / OfflineAudioContext, 24 seconds per season, 24kHz stereo. Hann-window FFT band fractions are independent of overall gain; same -25 dBFS RMS listening normalization as prior preview. RMS is not a perceptual loudness or comfort test.",
+  "renderer": {
+    "renderer": "Real RoomAudio graph / browser OfflineAudioContext",
+    "order": "autumn winter spring summer",
+    "duration": 96,
+    "musicLevel": 0.42,
+    "environmentLevel": 0.35,
+    "rain": false,
+    "clips": [
+      {
+        "season": "秋 · 纸窗",
+        "seconds": 24,
+        "sampleRate": 24000,
+        "channels": 2,
+        "peak": 0.038243651390075684,
+        "rmsDbFS": -47.67320008148687,
+        "nonFinite": 0
+      },
+      {
+        "season": "冬 · 炉边",
+        "seconds": 24,
+        "sampleRate": 24000,
+        "channels": 2,
+        "peak": 0.03825168311595917,
+        "rmsDbFS": -49.63649513956251,
+        "nonFinite": 0
+      },
+      {
+        "season": "春 · 新枝",
+        "seconds": 24,
+        "sampleRate": 24000,
+        "channels": 2,
+        "peak": 0.03710845857858658,
+        "rmsDbFS": -47.16061774741088,
+        "nonFinite": 0
+      },
+      {
+        "season": "夏 · 树影",
+        "seconds": 24,
+        "sampleRate": 24000,
+        "channels": 2,
+        "peak": 0.034980613738298416,
+        "rmsDbFS": -49.30339844869856,
+        "nonFinite": 0
+      }
+    ]
+  },
+  "spectra": [
+    {
+      "season": "秋 · 纸窗",
+      "old": {
+        "below180Fraction": 0.24092355950978264,
+        "below250Fraction": 0.4532397880795461,
+        "above2000Fraction": 7.975650602266158e-07,
+        "rmsDbFS": -41.34014892578125,
+        "peak": 0.047271728515625
+      },
+      "new": {
+        "below180Fraction": 0.0001678062440928744,
+        "below250Fraction": 0.0004795185061487627,
+        "above2000Fraction": 3.573557355086074e-06,
+        "rmsDbFS": -47.674034118652344,
+        "peak": 0.038238525390625
+      },
+      "relativeBelow180FractionReduction": 0.9993034876106167
+    },
+    {
+      "season": "冬 · 炉边",
+      "old": {
+        "below180Fraction": 0.41653917325239,
+        "below250Fraction": 0.6449216370840775,
+        "above2000Fraction": 7.885639497649097e-07,
+        "rmsDbFS": -41.7514762878418,
+        "peak": 0.047607421875
+      },
+      "new": {
+        "below180Fraction": 0.00014364272997658187,
+        "below250Fraction": 0.0003766439885169502,
+        "above2000Fraction": 4.278665321936628e-06,
+        "rmsDbFS": -49.63740921020508,
+        "peak": 0.038238525390625
+      },
+      "relativeBelow180FractionReduction": 0.9996551519299973
+    },
+    {
+      "season": "春 · 新枝",
+      "old": {
+        "below180Fraction": 0.19270184735205625,
+        "below250Fraction": 0.3935615778740996,
+        "above2000Fraction": 0.00010055421197900687,
+        "rmsDbFS": -41.387451171875,
+        "peak": 0.051483154296875
+      },
+      "new": {
+        "below180Fraction": 0.00013991272697937732,
+        "below250Fraction": 0.0003994329813634096,
+        "above2000Fraction": 0.00011083650803813959,
+        "rmsDbFS": -47.449642181396484,
+        "peak": 0.037109375
+      },
+      "relativeBelow180FractionReduction": 0.9992739419528046
+    },
+    {
+      "season": "夏 · 树影",
+      "old": {
+        "below180Fraction": 0.3877805872581569,
+        "below250Fraction": 0.7762000949750365,
+        "above2000Fraction": 4.275506734678507e-06,
+        "rmsDbFS": -41.560916900634766,
+        "peak": 0.048675537109375
+      },
+      "new": {
+        "below180Fraction": 0.00012588282756536404,
+        "below250Fraction": 0.00033897003424849983,
+        "above2000Fraction": 2.2533607595787488e-05,
+        "rmsDbFS": -49.30427932739258,
+        "peak": 0.03497314453125
+      },
+      "relativeBelow180FractionReduction": 0.9996753761490346
+    }
+  ],
+  "previews": [
+    {
+      "file": "four-seasons-light.mp3",
+      "seconds": 96.0,
+      "gainDb": 23.41014835954248,
+      "rmsDbFS": -25.000003814697266,
+      "peak": 0.5662504434585571,
+      "sha256": "3d1d491638ff85e3f11c58d0b3ed4621633f49bbe476b64f0664eff891625402"
+    },
+    {
+      "file": "light-autumn-winter-24s.mp3",
+      "seconds": 24.0,
+      "gainDb": 26.458664821300207,
+      "rmsDbFS": -25.0,
+      "peak": 0.6066177487373352,
+      "sha256": "45845fdfd2338660eff4b64dd97446d9288cb6474f04d2b66c113169ff113f4b"
+    }
+  ],
+  "sourceFingerprint": "4152045650d1d38feaca8c17685090959e25108079a7423e2ca09d63a384bf99",
+  "listenerReview": "Comfort remains for user audition; no claim of listening approval.",
+  "browser": {
+    "build": "5e4cd97232742cca1544",
+    "controls": [
+      {
+        "height": 22,
+        "value": "35",
+        "width": 277.5,
+        "x": 33,
+        "y": 169
+      },
+      {
+        "height": 22,
+        "value": "42",
+        "width": 277.5,
+        "x": 33,
+        "y": 229
+      }
+    ],
+    "gameLogs": [],
+    "renderLogs": []
+  },
+  "checks": {
+    "tests": 326,
+    "typecheck": true,
+    "pagesBuild": true,
+    "workerBuild": true
+  },
+  "localBuild": {
+    "version": "706f0a41fe22b72b4bf0",
+    "buildId": "5e4cd97232742cca1544",
+    "files": 121,
+    "bytes": 13898067
+  },
+  "auditionsOnly": "MP3 listening copies are local review artifacts, not added to the downloaded game pack."
+}
