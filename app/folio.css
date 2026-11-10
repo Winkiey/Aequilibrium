@@ -204,3 +204,6 @@
 }
 @media(max-width:650px) and (orientation:portrait){.resource-folio{grid-template-columns:1fr}.resource-intro{border-right:0;border-bottom:1px solid var(--folio-rule)}.bookshelf-index .shelf-catalog{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.stage-painting{transition:none!important}.shelf-catalog>button:hover{transform:none}}
+
+/* Local sound preferences stay on the same paper as the other controls. */
+.audio-preference-note{font:10px/1.7 var(--serif);color:var(--folio-muted,#686b5f);margin:8px 0 12px;letter-spacing:.015em}

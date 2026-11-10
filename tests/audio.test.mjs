@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {RoomAudio} from '../.sites-runtime/test-modules/audio.mjs';
 import {SEASON_SCORES,ambienceFor,seasonIndex,noteHz} from '../.sites-runtime/test-modules/soundtrack.mjs';
+import {audioPreferenceKey,defaultAudioPreferences,normalizeAudioPreferences,loadAudioPreferences,storeAudioPreferences,readingAudioPanel} from '../.sites-runtime/test-modules/audio-settings.mjs';
 
 function rig(){
  const prior={AudioContext:globalThis.AudioContext,setInterval:globalThis.setInterval,clearInterval:globalThis.clearInterval};
  const contexts=[],timers=new Set();let resumeGate=null;
- class Param{value=0;events=[];setValueAtTime(v,t){this.events.push({kind:'set',v,t});this.value=v;}setTargetAtTime(v,t,tau){this.events.push({kind:'target',v,t,tau});this.value=v;}linearRampToValueAtTime(v,t){this.events.push({kind:'linear',v,t});}exponentialRampToValueAtTime(v,t){assert.ok(v>0);this.events.push({kind:'exponential',v,t});}}
+ class Param{value=0;events=[];cancelAndHoldAtTime(t){this.events.push({kind:'hold',t});}cancelScheduledValues(t){this.events.push({kind:'cancel',t});}setValueAtTime(v,t){this.events.push({kind:'set',v,t});this.value=v;}setTargetAtTime(v,t,tau){this.events.push({kind:'target',v,t,tau});this.value=v;}linearRampToValueAtTime(v,t){this.events.push({kind:'linear',v,t});}exponentialRampToValueAtTime(v,t){assert.ok(v>0);this.events.push({kind:'exponential',v,t});}}
  class Node{gain=new Param();frequency=new Param();Q=new Param();detune=new Param();connections=[];stopped=false;connect(n){this.connections.push(n);return n;}disconnect(){this.connections=[];}start(t=0){this.startAt=Math.max(t,this.currentContext.currentTime);}stop(t=0){this.stopAt=t;this.stopped=t===0;}}
  class Context{currentTime=0;sampleRate=100;destination={};nodes=[];state='suspended';constructor(){contexts.push(this);}node(){const n=new Node();n.currentContext=this;this.nodes.push(n);return n;}createGain(){return this.node();}createOscillator(){const n=this.node();n.oscillator=true;return n;}createBiquadFilter(){return this.node();}createBufferSource(){const n=this.node();n.bufferSource=true;return n;}createBuffer(c,n){return{getChannelData:()=>new Float32Array(n)};}async resume(){if(resumeGate)await resumeGate;this.state='running';}async suspend(){this.state='suspended';}async close(){this.state='closed';}}
  globalThis.AudioContext=Context;globalThis.setInterval=fn=>{timers.add(fn);return fn;};globalThis.clearInterval=fn=>timers.delete(fn);
@@ -39,14 +40,14 @@ test('pause/resume does not duplicate timers or replay queued voices, close rele
  const r=rig(),audio=new RoomAudio();try{
   await audio.start();await audio.start();assert.equal(r.timers.size,1);assert.equal(r.contexts.length,1);
   r.tick(2);await audio.pause();assert.equal(r.timers.size,0);assert.equal(r.contexts[0].state,'suspended');
-  const oscillators=r.contexts[0].nodes.filter(n=>n.oscillator);assert.ok(oscillators.every(n=>n.stopped||n.ended));
+  const oscillators=r.contexts[0].nodes.filter(n=>n.oscillator);assert.ok(oscillators.every(n=>n.connections.length===0));
   await audio.start();assert.equal(r.timers.size,1);assert.equal(r.contexts.length,1);r.tick(20);
   await audio.close();assert.equal(r.timers.size,0);assert.equal(r.contexts[0].state,'closed');assert.ok(r.contexts[0].nodes.filter(n=>n.bufferSource).every(n=>n.stopped));
  }finally{await audio.close();r.restore();}
 });
 test('pause during pending browser audio unlock cannot start a hidden soundtrack afterwards',async()=>{
  const r=rig(),audio=new RoomAudio();let unlock;try{
-  r.setResumeGate(new Promise(resolve=>{unlock=resolve;}));const pending=audio.start();await audio.pause();unlock();await pending;assert.equal(r.timers.size,0);assert.ok(r.contexts[0].nodes.every(n=>!n.oscillator));
+  r.setResumeGate(new Promise(resolve=>{unlock=resolve;}));const pending=audio.start();await audio.pause();unlock();await pending;assert.equal(r.timers.size,0);assert.ok(r.contexts[0].nodes.every(n=>!n.oscillator));assert.equal(r.contexts[0].state,'suspended');
  }finally{await audio.close();r.restore();}
 });
 test('all four seasons avoid low-pitched drones and long sustained oscillators, including page feedback',async()=>{
@@ -59,4 +60,52 @@ test('all four seasons avoid low-pitched drones and long sustained oscillators, 
    const cuts=r.contexts[0].nodes.filter(n=>n.type==='highpass').map(n=>n.frequency.value);assert.ok(cuts.includes(250)&&cuts.includes(220),'Music and air both reject low-frequency rumble');
   }finally{await audio.close();r.restore();}
  }
+});
+test('volume preferences keep zero, reject unsafe values independently and never restore autoplay',()=>{
+ assert.deepEqual(normalizeAudioPreferences({version:1,environment:0,music:0,enabled:true}),{version:1,environment:0,music:0});
+ for(const bad of [-1,101,NaN,Infinity,'70',null])assert.deepEqual(normalizeAudioPreferences({version:1,environment:bad,music:18}),{version:1,environment:35,music:18});
+ for(const bad of [null,[],{},'{', {version:2,environment:80,music:80}])assert.deepEqual(normalizeAudioPreferences(bad),defaultAudioPreferences());
+});
+test('volume storage isolates playtest, reloads exact values, and leaves game/collection data untouched',()=>{
+ const game='{"cash":120000,"reading":"unchanged"}',collection='{"branches":[]}';
+ const data=new Map([['aequilibrium.save.v2',game],['aequilibrium.collection.v1',collection]]),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
+ assert.ok(storeAudioPreferences(storage,audioPreferenceKey(),{version:1,environment:13,music:0}));
+ assert.ok(storeAudioPreferences(storage,audioPreferenceKey(true),{version:1,environment:0,music:27}));
+ assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey()),{version:1,environment:13,music:0});
+ assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey(true)),{version:1,environment:0,music:27});
+ assert.equal(storeAudioPreferences(storage,'aequilibrium.save.v2',{version:1,environment:90,music:90}),false);
+ assert.equal(data.get('aequilibrium.save.v2'),game);assert.equal(data.get('aequilibrium.collection.v1'),collection);
+});
+test('blocked or corrupt preference storage remains usable and is reported without touching other keys',()=>{
+ assert.deepEqual(loadAudioPreferences({getItem:()=>'{broken'},audioPreferenceKey()),defaultAudioPreferences());
+ assert.deepEqual(loadAudioPreferences({getItem:()=>{throw Error('blocked');}},audioPreferenceKey()),defaultAudioPreferences());
+ assert.equal(storeAudioPreferences({setItem:()=>{throw Error('full');}},audioPreferenceKey(),defaultAudioPreferences()),false);
+ assert.equal(storeAudioPreferences(null,audioPreferenceKey(),defaultAudioPreferences()),false);
+ let reads=0;loadAudioPreferences({getItem:()=>{reads++;return '{}';}},'foreign-key');assert.equal(reads,0);
+});
+test('reading gently reduces selected levels, restores them once, and never unmutes zero or film silence',async()=>{
+ for(const p of ['news','library','research','ledger','trade'])assert.ok(readingAudioPanel(p));
+ for(const p of [null,'pause','offline','reset','end'])assert.equal(readingAudioPanel(p),false);
+ const r=rig(),audio=new RoomAudio();try{
+  await audio.start();audio.levels(.4,.5);const ctx=r.contexts[0],environment=ctx.nodes.find(n=>n.gain.value===.4),music=ctx.nodes.find(n=>n.gain.value===.5);assert.ok(environment&&music);
+  audio.reading(true);assert.equal(environment.gain.value,.4*.78);assert.equal(music.gain.value,.5*.62);
+  audio.reading(true);assert.equal(music.gain.value,.5*.62);audio.reading(false);assert.equal(music.gain.value,.5);
+  audio.levels(0,0);audio.reading(true);assert.equal(environment.gain.value,0);assert.equal(music.gain.value,0);
+  audio.duck(0);audio.reading(false);assert.equal(ctx.nodes[0].gain.value,0);
+ }finally{await audio.close();r.restore();}
+});
+test('pause fades output and resumes the next phrase instead of the first note',async()=>{
+ const r=rig(),audio=new RoomAudio();try{
+  audio.scene({season:2,rain:false,outdoors:false,night:false});await audio.start();r.tick(1);
+  await audio.pause();const ctx=r.contexts[0];assert.ok(ctx.nodes[0].gain.events.some(e=>e.kind==='linear'&&e.v===0&&e.t>1&&e.t<1.1));
+  const count=ctx.nodes.filter(n=>n.oscillator).length;await audio.start();r.tick(2.6);
+  const resumed=ctx.nodes.filter(n=>n.oscillator).slice(count);assert.equal(resumed.length,3);assert.ok(Math.abs(resumed[0].frequency.value-noteHz(76))<.001);
+ }finally{await audio.close();r.restore();}
+});
+test('a rapid restart wins over an older fade-out and cannot be suspended by its completion',async()=>{
+ const r=rig(),audio=new RoomAudio();try{
+  await audio.start();const pendingPause=audio.pause();await audio.start();await pendingPause;
+  assert.equal(r.contexts[0].state,'running');assert.equal(r.timers.size,1);
+  await audio.pause();assert.equal(r.contexts[0].state,'suspended');assert.equal(r.timers.size,0);
+ }finally{await audio.close();r.restore();}
 });

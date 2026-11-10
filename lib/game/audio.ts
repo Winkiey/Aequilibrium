@@ -1,5 +1,10 @@
 import {ambienceFor,noteHz,seasonIndex,SEASON_SCORES,type AudioScene} from './soundtrack';
 
+function holdGain(param:AudioParam,at:number){
+ if(typeof param.cancelAndHoldAtTime==='function')param.cancelAndHoldAtTime(at);
+ else{const value=param.value;param.cancelScheduledValues(at);param.setValueAtTime(value,at);}
+}
+
 // Local synthesis: no audio downloads, external API or game RNG.
 export class RoomAudio {
  private context:AudioContext|null=null;
@@ -10,7 +15,7 @@ export class RoomAudio {
  private air:GainNode|null=null;
  private buses:GainNode[]=[];
  private persistent:AudioScheduledSourceNode[]=[];
- private voices=new Set<AudioScheduledSourceNode>();
+ private voices=new Map<AudioScheduledSourceNode,()=>void>();
  private timer:ReturnType<typeof setInterval>|null=null;
  private cue:AudioScene={season:0,rain:true,outdoors:false,night:true};
  private duckLevel=1;
@@ -21,8 +26,14 @@ export class RoomAudio {
  private step=0;
  private nextNature=0;
  private epoch=0;
+ private wantsPlayback=false;
+ private closed=false;
+ private readingMode=false;
+ private noteWait=.12;
+ private natureWait=4;
 
  async start(){
+  if(this.closed)return;this.wantsPlayback=true;
   const epoch=++this.epoch;
   if(!this.context){
    const ctx=new AudioContext();this.context=ctx;
@@ -50,8 +61,9 @@ export class RoomAudio {
    noise.connect(rainFilter);rainFilter.connect(this.rain);noise.connect(airCut);airCut.connect(airFilter);airFilter.connect(this.air);
    noise.start();this.persistent.push(noise);
   }
-  const ctx=this.context;await ctx.resume();if(epoch!==this.epoch||ctx!==this.context)return;
-  if(this.on)return;this.on=true;this.nextNote=ctx.currentTime+.12;this.nextNature=ctx.currentTime+4;this.step=0;
+  const ctx=this.context;await ctx.resume();if(epoch!==this.epoch||ctx!==this.context){if(!this.wantsPlayback&&ctx===this.context)await ctx.suspend();return;}
+  if(this.on)return;this.on=true;this.nextNote=ctx.currentTime+this.noteWait;this.nextNature=ctx.currentTime+this.natureWait;
+  holdGain(this.master!.gain,ctx.currentTime);
   this.master!.gain.setTargetAtTime(.6*this.duckLevel,ctx.currentTime,1.2);
   this.levels(this.environmentLevel,this.musicLevel);this.applyScene();this.schedule();
   this.timer=setInterval(()=>this.schedule(),200);
@@ -60,12 +72,13 @@ export class RoomAudio {
   const clamp=(n:number)=>Number.isFinite(n)?Math.max(0,Math.min(1,n)):0;
   this.environmentLevel=clamp(environment);this.musicLevel=clamp(music);
   if(!this.context||!this.on)return;
-  this.environment?.gain.setTargetAtTime(this.environmentLevel,this.context.currentTime,1.2);
-  this.music?.gain.setTargetAtTime(this.musicLevel,this.context.currentTime,1.2);
+  this.environment?.gain.setTargetAtTime(this.environmentLevel*(this.readingMode ? .78 : 1),this.context.currentTime,1.2);
+  this.music?.gain.setTargetAtTime(this.musicLevel*(this.readingMode ? .62 : 1),this.context.currentTime,1.2);
  }
+ reading(active:boolean){if(this.readingMode===active)return;this.readingMode=active;this.levels(this.environmentLevel,this.musicLevel);}
  scene(cue:AudioScene){
   const next={...cue,season:seasonIndex(cue.season)},changed=next.season!==this.cue.season;
-  this.cue=next;if(changed&&this.context&&this.on){this.step=0;this.nextNote=this.context.currentTime+.2;}
+  this.cue=next;if(changed){this.step=0;this.noteWait=.2;this.natureWait=4;if(this.context&&this.on){this.nextNote=this.context.currentTime+.2;this.nextNature=this.context.currentTime+4;}}
   this.applyScene();
  }
  season(index:number){this.scene({...this.cue,season:index});}
@@ -76,7 +89,7 @@ export class RoomAudio {
  }
  duck(level:number){this.duckLevel=Number.isFinite(level)?Math.max(0,Math.min(1,level)):0;if(this.context&&this.on)this.master?.gain.setTargetAtTime(.6*this.duckLevel,this.context.currentTime,.45);}
  private track(source:AudioScheduledSourceNode,env:GainNode){
-  this.voices.add(source);source.onended=()=>{this.voices.delete(source);source.disconnect();env.disconnect();};
+  const cleanup=()=>{source.onended=null;this.voices.delete(source);source.disconnect();env.disconnect();};this.voices.set(source,cleanup);source.onended=cleanup;
  }
  private piano(midi:number,at:number,bus:GainNode,level=.1){
   const ctx=this.context!;
@@ -118,11 +131,18 @@ export class RoomAudio {
   osc.connect(env);env.connect(this.master!);this.track(osc,env);osc.start();osc.stop(ctx.currentTime+.07);
  }
  async pause(){
-  ++this.epoch;if(this.timer){clearInterval(this.timer);this.timer=null;}this.on=false;
-  for(const source of this.voices){try{source.stop();}catch{}source.disconnect();}this.voices.clear();
-  if(this.master)this.master.gain.value=0;await this.context?.suspend();
+  const epoch=++this.epoch;this.wantsPlayback=false;if(this.timer){clearInterval(this.timer);this.timer=null;}
+  const ctx=this.context,wasOn=this.on;this.on=false;if(!ctx)return;
+  const now=ctx.currentTime;if(wasOn){this.noteWait=Math.max(.12,Math.min(this.nextNote-now,SEASON_SCORES[this.cue.season].pace));this.natureWait=Math.max(1,Math.min(this.nextNature-now,25));}
+  const stopping=[...this.voices.keys()];
+  if(this.master){holdGain(this.master.gain,now);if(wasOn)this.master.gain.linearRampToValueAtTime(0,now+.08);else this.master.gain.setValueAtTime(0,now);}
+  for(const source of stopping){try{source.stop(wasOn?now+.08:now);}catch{}}
+  if(wasOn)await new Promise<void>(resolve=>setTimeout(resolve,100));
+  for(const source of stopping)this.voices.get(source)?.();
+  if(epoch===this.epoch&&ctx===this.context&&!this.wantsPlayback){if(this.master){holdGain(this.master.gain,ctx.currentTime);this.master.gain.setValueAtTime(0,ctx.currentTime);}await ctx.suspend();}
  }
  async close(){
+  this.closed=true;
   await this.pause();for(const source of this.persistent){try{source.stop();}catch{}source.disconnect();}this.persistent=[];
   await this.context?.close();this.context=null;this.master=null;this.music=null;this.environment=null;this.air=null;this.rain=null;this.buses=[];
  }

@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-10",
+  "baselineCommit": "cc617d4ae743b014a8d66d05d6827b93737d96f5",
+  "browser": {
+    "nonzero": [
+      "10",
+      "30"
+    ],
+    "autoplayAfterReload": false,
+    "zero": [
+      "0",
+      "0"
+    ],
+    "rapidRestart": "true",
+    "mainDefaults": [
+      "35",
+      "42"
+    ],
+    "mobile": {
+      "controls": [
+        {
+          "height": 22,
+          "value": "35",
+          "width": 277.5,
+          "x": 33,
+          "y": 169
+        },
+        {
+          "height": 22,
+          "value": "42",
+          "width": 277.5,
+          "x": 33,
+          "y": 229
+        }
+      ],
+      "note": "音量已留在本机。阅读时，配乐会自动放轻。"
+    },
+    "build": "eefc405b5f3398276b37",
+    "newsOpened": true,
+    "bookshelfOpened": true,
+    "gameLogs": [],
+    "mainLogs": [],
+    "flowLogs": []
+  },
+  "flow": {
+    "renderer": "Actual RoomAudio / OfflineAudioContext",
+    "seconds": 32,
+    "sampleRate": 24000,
+    "channels": 2,
+    "readingFrom6To12": true,
+    "pauseFrom16To18": true,
+    "pausedRms": 0,
+    "resumedRms": 0.004367374995922241,
+    "peak": 0.03714027628302574,
+    "nonFinite": 0
+  },
+  "saveComparison": {
+    "allFieldsIdentical": true,
+    "bothValidateSave": true,
+    "seed": 2106828588,
+    "quarter": 1,
+    "cash": 120000
+  },
+  "preferences": {
+    "keys": [
+      "aequilibrium.audio.v1",
+      "aequilibrium.playtest.audio.v1"
+    ],
+    "onlyVolumePersisted": true,
+    "autoplayRemembered": false,
+    "exportedWithGameSave": false
+  },
+  "checks": {
+    "tests": 332,
+    "typecheck": true,
+    "pagesBuild": true,
+    "workerBuild": true,
+    "fontCoverage": true
+  },
+  "localBuild": {
+    "version": "2350e57f035717d0e103",
+    "buildId": "eefc405b5f3398276b37",
+    "files": 121,
+    "bytes": 13900990
+  },
+  "sourceFingerprint": "8c086ba79008eabd966df744bc3c1c871f9543d1ffcb24450e74c4e0936b38b0",
+  "limits": [
+    "Audio character remains the prior light revision. Waveform checks do not certify subjective comfort.",
+    "This batch does not alter save/cache protocols or rerun the earlier 12-quarter and download-speed tests.",
+    "Stored volumes are device/browser preferences, not carried by game save export."
+  ]
+}
