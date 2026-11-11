@@ -100,7 +100,7 @@ import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
 import {normalizeAudioPreferences,loadAudioPreferences,storeAudioPreferences,audioPreferenceKey} from '../.sites-runtime/test-modules/audio-settings.mjs';
 import {CharacterSpeech} from '../.sites-runtime/test-modules/CharacterSpeech.mjs';
-const require=createRequire('C:/Users/王智睿/gptworkplace/Aequilibrium/aequilibrium/package.json');
+const require=createRequire(new URL('../package.json',import.meta.url));
 const {createElement}=await import(pathToFileURL(require.resolve('react')));
 const {renderToStaticMarkup}=await import(pathToFileURL(require.resolve('react-dom/server')));
 const settingsCue={key:'cheng + exact full text',src:'/audio/dialogue/test.mp3'};
