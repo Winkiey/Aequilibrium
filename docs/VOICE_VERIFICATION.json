@@ -1,0 +1,107 @@
+{
+  "date": "2026-11-11",
+  "baseline": "7dd5c3030136043d7f172fe7e8f5ad9f15a74241",
+  "scope": {
+    "actors": 10,
+    "clips": 264,
+    "events": 76,
+    "outcomes": 152,
+    "endings": 12,
+    "conditionalVariants": 1824,
+    "bankGreeting": true
+  },
+  "checks": {
+    "tests": 358,
+    "pass": 358,
+    "typescript": true,
+    "pages": true,
+    "worker": true,
+    "decodableMp3": 264,
+    "independentAsr": 264,
+    "revisedDeliveries": 9,
+    "subjectiveAuditoryApproval": false
+  },
+  "build": {
+    "version": "b6a07bf1b6dc6d9304fd",
+    "buildId": "1aab07dfb66ae8a103bd",
+    "totalBytes": 14314788
+  },
+  "voicePack": {
+    "version": "54880e88b4a89e035d92",
+    "totalBytes": 20411136
+  },
+  "realBrowser": {
+    "engine": "IAB Chromium, desktop and 667x375 viewport; not a physical-phone claim",
+    "openingBothBranches": true,
+    "caretakerReplyOnce": true,
+    "gallerySpeechPlaying": true,
+    "nineStepTutorialAndFirstBuy": {
+      "beforeFirstBuyCash": 120000,
+      "afterFirstBuyCash": 117000,
+      "transactions": 1,
+      "buy": {
+        "quarter": 1,
+        "asset": "power",
+        "side": "buy",
+        "amount": 3000,
+        "fee": 5.99,
+        "slippage": 3.69,
+        "units": 182.89445907745397
+      }
+    },
+    "legacyMigration": {
+      "oldBuild": "eefc405b5f3398276b37",
+      "newBuild": "eec13359c445996942de",
+      "ordinaryReloadKeptOld": true,
+      "explicitUpdateCompleted": true,
+      "allExportFieldsEqual": true,
+      "validGameAndPresentationSaves": 4,
+      "reading": {
+        "eventId": "main-1",
+        "phase": "story",
+        "index": 2,
+        "choice": null,
+        "inspected": false
+      },
+      "oldAmbientMusicVolumes": [
+        0,
+        0
+      ],
+      "newVoiceDefault": 70,
+      "noAutoplay": true
+    },
+    "optionalVoicesPausedAndResumed": true,
+    "offlineServerStopped": true,
+    "unvisitedBankOptionalVoicePlayedOffline": true,
+    "actualBankPauseStatus": "paused",
+    "zeroVolumeStatus": "ready",
+    "mobileRanges": [
+      {
+        "bottom": 194.0914306640625,
+        "top": 172.0914306640625,
+        "value": "0",
+        "width": 277.5
+      },
+      {
+        "bottom": 254.0914306640625,
+        "top": 232.0914306640625,
+        "value": "0",
+        "width": 277.5
+      },
+      {
+        "bottom": 314.0914306640625,
+        "top": 292.0914306640625,
+        "value": "70",
+        "width": 277.5
+      }
+    ],
+    "consoleWarnings": [],
+    "consoleErrors": []
+  },
+  "limits": [
+    "Automatic transcription/decoding do not certify acting naturalness.",
+    "No new full twelve-season browser playthrough in this audio-only change.",
+    "The migration used the full-voice build before final bank visit readiness and small spacing refinement; update/cache protocol remained identical."
+  ],
+  "preservation": "Formal saves, existing playtest saves, original user port5203 preview and Sites identity/access unchanged."
+}

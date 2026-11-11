@@ -48,6 +48,21 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
  const videos=[...opening.matchAll(/publicPath\(\s*['"](\/video\/[^'"]+\.mp4)['"]\s*\)/g)].map(m=>m[1]);
  if(videos.length===0)throw new Error('Opening film path must be explicitly listed for offline playback');
  for(const video of videos)add(video,'media');
+ // Spoken clips are content-addressed. Only the short opening belongs to the
+ // base package; the complete cast can be saved independently and reused later.
+ let clips=[];
+ try{
+  const source=await readFile(resolve(root,'lib/game/voice-assets.generated.ts'),'utf8');
+  const voiceMatch=source.match(/export\s+const\s+SPOKEN_CLIPS\s*=\s*(\[[\s\S]*\])\s+as\s+const\s+satisfies/);
+  if(!voiceMatch)throw new Error('Voice registry format was not recognised');
+  clips=JSON.parse(voiceMatch[1]);
+ }catch(error){if(error.code!=='ENOENT')throw error;}
+ const voicePaths=new Set(),voiceKeys=new Set();
+ for(const clip of clips){
+  if(!clip||typeof clip.speaker!=='string'||!clip.text?.trim()||!/^\/audio\/dialogue\/[a-z]+\.[a-f0-9]{12}\.[a-f0-9]{12}\.mp3$/.test(clip.src))throw new Error('Unsafe spoken clip registry');
+  const key=JSON.stringify([clip.speaker,clip.text]);if(voiceKeys.has(key)||voicePaths.has(clip.src))throw new Error('Duplicate spoken clip');
+  voiceKeys.add(key);voicePaths.add(clip.src);if(clip.essential===true)add(clip.src,'media');
+ }
  for(const file of await walk(resolve(output,'assets')))if(/\.(?:m?js|css)$/.test(file))add('/'+relative(output,file).split(sep).join('/'),'shell');
  for(const file of await walk(resolve(output,'fonts')))add('/'+relative(output,file).split(sep).join('/'),'shell');
  add('/favicon.svg','shell');add('/index.html','shell');add('/playtest/index.html','shell');
@@ -63,7 +78,15 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
   if(!(await stat(actual)).isFile())throw new Error('Offline resource is not a file');
   const body=await readFile(actual);files.push({url:base+path,bytes:body.byteLength,sha256:digest(body),group});
  }
- const buildId=digest(JSON.stringify({base,files,worker:digest(template)})).slice(0,20);
+ const voiceFiles=[];
+ for(const path of [...voicePaths].sort()){
+  const actual=await realpath(resolve(output,resourcePath(path)));if(!inside(output,actual)||!(await stat(actual)).isFile())throw new Error('Voice resource escaped deployment directory');
+  const body=await readFile(actual);if(!path.endsWith('.'+digest(body).slice(0,12)+'.mp3'))throw new Error('Voice filename hash mismatch');
+  voiceFiles.push({url:base+resourcePath(path),bytes:body.byteLength,sha256:digest(body),group:'media'});
+ }
+ const cachePrefix=`aequilibrium:${encodeURIComponent(base)}:`;
+ const voice=voiceFiles.length?{version:digest(JSON.stringify(voiceFiles)).slice(0,20),cache:cachePrefix+'voice-v1',marker:base+'__voice_complete__',totalBytes:voiceFiles.reduce((n,f)=>n+f.bytes,0),files:voiceFiles}:undefined;
+ const buildId=digest(JSON.stringify({base,files,...(voice?{voice}:{}),worker:digest(template)})).slice(0,20);
  for(const page of pagePaths){
   const path=resolve(output,page),html=await readFile(path,'utf8'),meta=`<meta name="aequilibrium-build" content="${buildId}">`;
   const updated=html.includes('</head>')?html.replace('</head>',meta+'</head>'):html+meta;
@@ -76,9 +99,8 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
  let members=[],size=0;
  async function flush(){if(!members.length)return;const data=Buffer.concat(await Promise.all(members.map(f=>readFile(resolve(output,f.url.slice(base.length))))));const hash=digest(data),url=base+'offline/art-'+hash.slice(0,20)+'.bin';let offset=0;const entries=members.map(f=>{const entry={url:f.url,offset};offset+=f.bytes;return entry;});await writeFile(resolve(output,url.slice(base.length)),data);bundles.push({url,bytes:data.byteLength,sha256:hash,files:entries});members=[];size=0;}
  for(const file of files.filter(f=>f.group==='media'&&f.url.endsWith('.webp'))){if(size&&size+file.bytes>2*1024*1024)await flush();members.push(file);size+=file.bytes;}await flush();
- const version=digest(JSON.stringify({base,buildId,files,bundles,worker:digest(template)})).slice(0,20);
- const cachePrefix=`aequilibrium:${encodeURIComponent(base)}:`;
- const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files,bundles};
+ const version=digest(JSON.stringify({base,buildId,files,bundles,...(voice?{voice}:{}),worker:digest(template)})).slice(0,20);
+ const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files,bundles,...(voice?{voice}:{})};
  await writeFile(resolve(output,'offline-manifest.json'),JSON.stringify(result,null,2)+'\n');
  // Deliberately absent from files: an old cached manifest cannot hide this release.
  await writeFile(resolve(output,'release.json'),JSON.stringify(result,null,2)+'\n');

@@ -3,11 +3,20 @@ import {useEffect,useRef,useState} from 'react';
 import {Download,ArrowRight,RefreshCw} from 'lucide-react';
 import {hasOfflinePack,offlineManifest,prepareOffline,registerOffline,type OfflineManifest,type DownloadProgress} from '@/lib/game/offline';
 import {imageURL} from '@/lib/game/assets';
+import {hasVoicePack,prepareVoices} from '@/lib/game/voice-pack';
 
 type InstallEvent=Event&{prompt:()=>Promise<void>;userChoice:Promise<{outcome:string}>};
 export default function OfflinePack({onContinue,onUpdate,update}:{onContinue:()=>void;onUpdate:(apply:boolean)=>void;update?:OfflineManifest|null}){
  const [manifest,setManifest]=useState<OfflineManifest|null>(null),[phase,setPhase]=useState<'checking'|'available'|'downloading'|'ready'|'error'>('checking'),[error,setError]=useState(''),[progress,setProgress]=useState<DownloadProgress|null>(null),[waiting,setWaiting]=useState(false),[controlled,setControlled]=useState(false),[install,setInstall]=useState<InstallEvent|null>(null),[persistent,setPersistent]=useState(false);
  const controller=useRef<AbortController|null>(null);
+ const voiceController=useRef<AbortController|null>(null);
+ const [voicePhase,setVoicePhase]=useState<'available'|'downloading'|'ready'>('available'),[voiceProgress,setVoiceProgress]=useState<DownloadProgress|null>(null),[voiceError,setVoiceError]=useState('');
+ useEffect(()=>{let live=true;if(manifest?.voice)void hasVoicePack(manifest).then(ready=>{if(live)setVoicePhase(ready?'ready':'available');});return()=>{live=false;voiceController.current?.abort();};},[manifest]);
+ async function downloadVoices(){if(!manifest||phase!=='ready'||voiceController.current)return;const current=new AbortController();voiceController.current=current;setVoiceError('');setVoicePhase('downloading');
+  try{await prepareVoices(manifest,current.signal,setVoiceProgress);if(!current.signal.aborted)setVoicePhase('ready');}
+  catch(e){setVoicePhase('available');setVoiceError(e instanceof DOMException&&e.name==='AbortError'?'已暂停，完成的对白会留着。':e instanceof Error&&e.name==='QuotaExceededError'?'本机空间不足，仍可在线听取对白。':(e as Error).message);}
+  finally{if(voiceController.current===current)voiceController.current=null;}
+ }
  useEffect(()=>{let live=true;void offlineManifest().then(async m=>{const ready=await hasOfflinePack(m);if(live){setManifest(m);setPhase(ready?'ready':'available');setControlled(!!navigator.serviceWorker.controller);}}).catch(e=>{if(live){setError(e.message);setPhase('error');}});const prompt=(e:Event)=>{e.preventDefault();setInstall(e as InstallEvent);};window.addEventListener('beforeinstallprompt',prompt);return()=>{live=false;controller.current?.abort();window.removeEventListener('beforeinstallprompt',prompt);};},[]);
  async function download(){if(!manifest||controller.current)return;setError('');setPhase('downloading');const current=new AbortController();controller.current=current;
   try{const entry=registerOffline();const kept=await prepareOffline(manifest,current.signal,setProgress,{shellReady:entry});const reg=await entry;current.signal.throwIfAborted();setPersistent(kept);setWaiting(!!reg.active&&!!reg.waiting);setControlled(!!navigator.serviceWorker.controller);setPhase('ready');}
@@ -27,7 +36,8 @@ export default function OfflinePack({onContinue,onUpdate,update}:{onContinue:()=
    <div className="resource-actions">{manifest&&phase!=='downloading'&&<button className="ink-button full" onClick={()=>void download()}>{phase==='ready'?<RefreshCw size={15}/>:<Download size={15}/ >}<span>{phase==='ready'?'检查本版完整性 / 修复缺失':phase==='error'?'接着下载 / 重试':'下载完整资源'}</span></button>}
    {phase==='ready'&&!controlled&&!waiting&&<button className="ink-button full resource-enable" onClick={()=>window.location.reload()}>启用离线入口 · 重新载入<ArrowRight size={15}/></button>}
    <button className="paper-back-link resource-continue" disabled={phase==='downloading'} onClick={onContinue}>{phase==='ready'?'进入游戏':'先在线开始，之后再下载'}<ArrowRight size={15}/></button></div>
-   <footer className="resource-utilities"><button className="paper-back-link" onClick={()=>onUpdate(false)}>检查游戏更新<RefreshCw size={13}/></button>{install&&<button className="paper-back-link" onClick={async()=>{await install.prompt();await install.userChoice;setInstall(null);}}>添加到桌面 / 安装游戏</button>}</footer>
+   {manifest?.voice&&<section className="resource-voice" aria-label="可选人物语音包"><header><div><h4>人物对白 <small>可选</small></h4><p>{manifest.voice.files.length} 段 · {(manifest.voice.totalBytes/1024/1024).toFixed(1)} MB</p></div>{voicePhase==='downloading'?<button className="paper-back-link" onClick={()=>voiceController.current?.abort()}>暂停</button>:<button className="paper-back-link" disabled={phase!=='ready'||!!controller.current} onClick={()=>void downloadVoices()}>{voicePhase==='ready'?'检查 / 修复':'保存语音'}<Download size={13}/></button>}</header>{voicePhase==='downloading'&&<div role="status"><progress aria-label="人物语音下载进度" max={voiceProgress?.totalBytes??1} value={voiceProgress?.bytes??0}/><small>{voiceProgress?.completed??0} / {manifest.voice.files.length} 段</small></div>}<p role="status">{voiceError|| (voicePhase==='ready'?'对白已收好，可离线聆听。':phase==='ready'?'也可边玩边听，开启声音后随人物出场播放。':'先收好基础资源，再选择保存完整对白。')}</p></section>}
+   <footer className="resource-utilities"><button className="paper-back-link" disabled={voicePhase==='downloading'} onClick={()=>onUpdate(false)}>检查游戏更新<RefreshCw size={13}/></button>{install&&<button className="paper-back-link" onClick={async()=>{await install.prompt();await install.userChoice;setInstall(null);}}>添加到桌面 / 安装游戏</button>}</footer>
    <details className="resource-storage-note"><summary>手机安装与资源保存</summary><p>支持安装的浏览器会显示添加按钮。iPhone/iPad 可用浏览器分享菜单“添加到主屏幕”；若有“作为网页 App 打开”，可开启它。安卓浏览器也可从菜单查找安装入口。</p><p>下载与存档是两件事。更新资源不会清除存档；主动清理站点数据会影响保存内容，请先导出进度。新版准备完成前不会删除旧资源。</p></details>
   </section>
  </div>;

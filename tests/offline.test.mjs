@@ -4,7 +4,7 @@ import {mkdtemp,mkdir,writeFile,readFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve,sep,basename} from 'node:path';
 import vm from 'node:vm';
-import {webcrypto} from 'node:crypto';
+import {webcrypto,createHash} from 'node:crypto';
 import {buildOffline} from '../scripts/build-offline.mjs';
 
 const origin='https://offline-test.invalid';
@@ -126,4 +126,23 @@ test('release discovery always reaches the network without replacing the current
  const current=await(await w.request('/Aequilibrium/offline-manifest.json')).json();assert.equal(current.version,f.manifest.version);
  const again=await buildOffline(f.root);assert.equal(again.buildId,f.manifest.buildId);assert.equal(again.version,f.manifest.version);
  assert.ok(!again.files.some(f=>f.url.endsWith('release.json')||f.url.endsWith('update/index.html')));
+});
+
+test('complete spoken cast stays optional; content-addressed voices support offline MP3 ranges',async t=>{
+ const f=await fixture(t),body=Buffer.from('0123456789abcdef'),sha=createHash('sha256').update(body).digest('hex');
+ const src='/audio/dialogue/cheng.'+'a'.repeat(12)+'.'+sha.slice(0,12)+'.mp3';
+ const registry=[{speaker:'cheng',text:'这是开局。',src,essential:true}];
+ await mkdir(join(f.root,'dist-pages/audio/dialogue'),{recursive:true});await writeFile(join(f.root,'dist-pages',src),body);
+ const path=join(f.root,'lib/game/voice-assets.generated.ts');
+ await writeFile(path,`export const SPOKEN_CLIPS = ${JSON.stringify(registry)} as const satisfies readonly SpokenClip[];`);
+ const m=await buildOffline(f.root),sw=await readFile(join(f.root,'dist-pages/sw.js'),'utf8');
+ assert.equal(m.voice.files.length,1);assert.equal(m.voice.totalBytes,body.length);assert.ok(m.files.some(file=>file.url===m.base+src.slice(1)));
+ const w=await worker({...f,manifest:m,sw},{networkAvailable:false}),cache=await w.caches.open(m.voice.cache),url=m.voice.files[0].url;
+ await cache.put(url,new Response(body,{headers:{'Content-Type':'audio/mpeg'}}));
+ const range=await w.request(url,{range:'bytes=2-5'});assert.equal(range.status,206);assert.equal(range.headers.get('Content-Type'),'audio/mpeg');assert.equal(range.headers.get('Content-Range'),'bytes 2-5/16');assert.equal(await range.text(),'2345');
+ const head=await w.request(url,{range:'bytes=-4',method:'HEAD'});assert.equal(head.status,206);assert.equal(head.headers.get('Content-Length'),'4');assert.equal(await head.text(),'');
+ const bad=await w.request(url,{range:'bytes=99-'});assert.equal(bad.status,416);
+ registry[0].essential=false;await writeFile(path,`export const SPOKEN_CLIPS = ${JSON.stringify(registry)} as const satisfies readonly SpokenClip[];`);
+ const next=await buildOffline(f.root);assert.equal(next.voice.version,m.voice.version);assert.equal(next.voice.cache,m.voice.cache);assert.ok(!next.files.some(file=>file.url===url),'nonessential cast is absent from base completeness');
+ registry[0].src='/audio/dialogue/../../escape.mp3';await writeFile(path,`export const SPOKEN_CLIPS = ${JSON.stringify(registry)} as const satisfies readonly SpokenClip[];`);await assert.rejects(buildOffline(f.root),/Unsafe/);
 });

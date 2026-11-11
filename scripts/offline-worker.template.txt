@@ -2,7 +2,7 @@
 'use strict';
 const OFFLINE = /*__OFFLINE_MANIFEST__*/;
 const ORIGIN = self.location.origin;
-const ENTRY_BY_PATH = new Map(OFFLINE.files.map(file=>[file.url,file]));
+const ENTRY_BY_PATH = new Map([...OFFLINE.files,...(OFFLINE.voice?.files??[]).map(file=>({...file,voice:true}))].map(file=>[file.url,file]));
 const absolute = path => new URL(path,ORIGIN).href;
 const toHex = value => [...new Uint8Array(value)].map(n=>n.toString(16).padStart(2,'0')).join('');
 
@@ -81,6 +81,7 @@ async function rangedResponse(response,request){
 }
 function headOnly(response){return new Response(null,{status:response.status,statusText:response.statusText,headers:response.headers});}
 async function cached(entry){
+ if(entry.voice){const response=await(await caches.open(OFFLINE.voice.cache)).match(absolute(entry.url));if(response?.status===200)return response;}
  const cache=await caches.open(entry.group==='shell'?OFFLINE.shellCache:OFFLINE.mediaCache);
  const response=await cache.match(absolute(entry.url));return response?.status===200?response:undefined;
 }

@@ -207,3 +207,17 @@
 
 /* Local sound preferences stay on the same paper as the other controls. */
 .audio-preference-note{font:10px/1.7 var(--serif);color:var(--folio-muted,#686b5f);margin:8px 0 12px;letter-spacing:.015em}
+
+.dialogue-voice-button{margin-left:auto;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:4px 2px 4px 12px;border:0;background:none;color:inherit;opacity:.72;font:10px/1.4 var(--serif);letter-spacing:.025em;cursor:pointer;white-space:nowrap}.dialogue-voice-button:hover,.dialogue-voice-button:focus-visible{opacity:1}.dialogue-voice-button:focus-visible{outline:1px solid currentColor;outline-offset:3px}.dialogue-voice-button:disabled{opacity:.4;cursor:default}.dialogue-voice-button[data-voice-status="playing"]{opacity:.9}
+.pause-preferences .range-pref input{box-sizing:border-box;max-width:100%;margin-inline:0}
+
+/* Optional voices share the resource folio's paper and quiet rules. */
+.resource-voice{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--paper-line,rgba(61,64,53,.18))}
+.resource-voice>header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.resource-voice h4{margin:0;font:inherit;font-weight:600;letter-spacing:.04em}
+.resource-voice h4 small{margin-left:.5em;font-size:.7em;font-weight:400;opacity:.65}
+.resource-voice p,.resource-voice>div small{margin:.35rem 0 0;font-size:.75rem;line-height:1.6;color:var(--ink-muted,#687068)}
+.resource-voice progress{width:100%;height:3px;margin:.65rem 0 .2rem;accent-color:#65745e}
+.resource-voice button{flex-shrink:0;white-space:nowrap}
+
+.place-caption .dialogue-voice-button{margin:0 .75rem 0 0;padding-left:0;vertical-align:middle}

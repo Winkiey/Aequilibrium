@@ -62,17 +62,17 @@ test('all four seasons avoid low-pitched drones and long sustained oscillators, 
  }
 });
 test('volume preferences keep zero, reject unsafe values independently and never restore autoplay',()=>{
- assert.deepEqual(normalizeAudioPreferences({version:1,environment:0,music:0,enabled:true}),{version:1,environment:0,music:0});
- for(const bad of [-1,101,NaN,Infinity,'70',null])assert.deepEqual(normalizeAudioPreferences({version:1,environment:bad,music:18}),{version:1,environment:35,music:18});
+ assert.deepEqual(normalizeAudioPreferences({version:1,environment:0,music:0,enabled:true}),{version:1,environment:0,music:0,voice:70});
+ for(const bad of [-1,101,NaN,Infinity,'70',null])assert.deepEqual(normalizeAudioPreferences({version:1,environment:bad,music:18}),{version:1,environment:35,music:18,voice:70});
  for(const bad of [null,[],{},'{', {version:2,environment:80,music:80}])assert.deepEqual(normalizeAudioPreferences(bad),defaultAudioPreferences());
 });
 test('volume storage isolates playtest, reloads exact values, and leaves game/collection data untouched',()=>{
  const game='{"cash":120000,"reading":"unchanged"}',collection='{"branches":[]}';
  const data=new Map([['aequilibrium.save.v2',game],['aequilibrium.collection.v1',collection]]),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
- assert.ok(storeAudioPreferences(storage,audioPreferenceKey(),{version:1,environment:13,music:0}));
- assert.ok(storeAudioPreferences(storage,audioPreferenceKey(true),{version:1,environment:0,music:27}));
- assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey()),{version:1,environment:13,music:0});
- assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey(true)),{version:1,environment:0,music:27});
+ assert.ok(storeAudioPreferences(storage,audioPreferenceKey(),{version:1,environment:13,music:0,voice:0}));
+ assert.ok(storeAudioPreferences(storage,audioPreferenceKey(true),{version:1,environment:0,music:27,voice:88}));
+ assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey()),{version:1,environment:13,music:0,voice:0});
+ assert.deepEqual(loadAudioPreferences(storage,audioPreferenceKey(true)),{version:1,environment:0,music:27,voice:88});
  assert.equal(storeAudioPreferences(storage,'aequilibrium.save.v2',{version:1,environment:90,music:90}),false);
  assert.equal(data.get('aequilibrium.save.v2'),game);assert.equal(data.get('aequilibrium.collection.v1'),collection);
 });
