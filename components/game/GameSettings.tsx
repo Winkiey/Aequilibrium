@@ -4,7 +4,7 @@ import {ArrowRight,Download,Upload,Film,BookOpen,Volume2,VolumeX} from 'lucide-r
 
 export type SettingsTab='sound'|'save'|'resources';
 const tabs=[{id:'sound',name:'声音与阅读',note:'听与读的节奏'},{id:'save',name:'存档与回看',note:'留住这一程'},{id:'resources',name:'版本与资源',note:'整理本机行囊'}] as const;
-type Props={tab:SettingsTab;onTab:(tab:SettingsTab)=>void;sound:boolean;rain:number;music:number;voice:number;onSound:()=>void;onRain:(value:number)=>void;onMusic:(value:number)=>void;onVoice:(value:number)=>void;speed:number;reducedMotion:boolean;onSpeed:(value:number)=>void;onMotion:(value:boolean)=>void;saved:boolean|null;inTitle:boolean;quarter:string;hasUpdate:boolean;saveError:boolean;onExport:()=>void;onImport:()=>void;onRestore:()=>void;onOpening:()=>void;onMemories:()=>void;onGuide:()=>void;onReset:()=>void;resources:ReactNode};
+type Props={tab:SettingsTab;onTab:(tab:SettingsTab)=>void;sound:boolean;rain:number;music:number;voice:number;onSound:()=>void;onRain:(value:number)=>void;onMusic:(value:number)=>void;onVoice:(value:number)=>void;speed:number;reducedMotion:boolean;instantText?:boolean;onInstantText?:(value:boolean)=>void;onSpeed:(value:number)=>void;onMotion:(value:boolean)=>void;saved:boolean|null;inTitle:boolean;quarter:string;hasUpdate:boolean;saveError:boolean;onExport:()=>void;onImport:()=>void;onRestore:()=>void;onOpening:()=>void;onMemories:()=>void;onGuide:()=>void;onReset:()=>void;resources:ReactNode};
 
 export function GameSettings(p:Props){
  const selected=tabs.find(t=>t.id===p.tab)!;
@@ -20,7 +20,7 @@ export function GameSettings(p:Props){
     </section>
     <section className="reading-preferences" aria-label="阅读设置"><h3>读得从容一些</h3>
      <label className="reading-preference"><span>对白出现速度</span><select aria-label="对白出现速度" value={p.speed} onChange={e=>p.onSpeed(Number(e.target.value))}><option value={50}>慢一点</option><option value={30}>自然</option><option value={15}>快一点</option></select></label>
-     <label className="reading-preference motion-preference"><span>直接显示全句<small>同时减少画面动画</small></span><input type="checkbox" checked={p.reducedMotion} onChange={e=>p.onMotion(e.target.checked)}/></label>
+     <label className="reading-preference motion-preference"><span>减少画面动画<small>不改变剧情与阅读位置</small></span><input type="checkbox" checked={p.reducedMotion} onChange={e=>p.onMotion(e.target.checked)}/></label><label className="reading-preference"><span>文字直接显示<small>每句一次点击继续，保留画面演出</small></span><input type="checkbox" checked={p.instantText??p.reducedMotion} onChange={e=>p.onInstantText?.(e.target.checked)}/></label>
      <p className="settings-margin-note">进入游戏时会开启声音。若想安静游玩，可在这里关闭；设为零的音量会继续保留。</p>
      {p.saved!==null&&<p className="settings-persistence" role="status">{p.saved?'音量已保存在本机。阅读与对白播放时，配乐会自动放轻。':'音量本次有效，浏览器暂未保存设置。'}</p>}
     </section>

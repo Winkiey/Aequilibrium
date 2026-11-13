@@ -12,6 +12,7 @@ import '../app/complete.css';
 import '../app/mobile.css';
 import '../app/folio.css';
 import '../app/settings.css';
+import '../app/player-flow.css';
 import type {} from '../lib/game/public-path';
 
 window.__AEQUILIBRIUM_ASSET_BASE__=import.meta.env.BASE_URL;

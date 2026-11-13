@@ -4,12 +4,13 @@ import type { CastId } from './cinematic-content';
 export type Encounter={quarter:number;events:string[]};
 export type ReadingProgress={eventId:string;phase:'story'|'choice'|'outcome';index:number;choice:0|1|null;inspected:boolean;outcomeRevision?:2};
 export const PRESENTATION_KEY='aequilibrium.presentation.v2';
-export type Presentation={version:2;storyRevision?:1|2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;reading:ReadingProgress|null;seenScenes:string[];place?:'hub'|'street'|'broker'|'bank';lesson?:Lesson;lessonAsset?:string;lessonAmount?:number;people?:Partial<Record<CastId,Encounter>>;readingPage?:number};
+export type Presentation={version:2;storyRevision?:1|2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;instantText?:boolean;reading:ReadingProgress|null;seenScenes:string[];place?:'hub'|'street'|'broker'|'bank';lesson?:Lesson;lessonAsset?:string;lessonAmount?:number;people?:Partial<Record<CastId,Encounter>>;readingPage?:number};
 export function freshPresentation(game:Game):Presentation{const tutorial=game.quarter>1||game.finished?6:game.mainChoice!==null?3:0;return{version:2,storyRevision:2,seed:game.seed,introSeen:game.history.length>0,tutorial,lesson:initialLesson(game,tutorial),speed:30,reducedMotion:false,reading:null,seenScenes:[],people:{},readingPage:0,place:'hub'};}
-export function restartPresentation(game:Game,previous:Presentation):Presentation{return{...freshPresentation(game),introSeen:false,speed:previous.speed,reducedMotion:previous.reducedMotion};}
+export function restartPresentation(game:Game,previous:Presentation):Presentation{return{...freshPresentation(game),introSeen:false,speed:previous.speed,reducedMotion:previous.reducedMotion,...(previous.instantText===undefined?{}:{instantText:previous.instantText})};}
 export function validPresentation(value:unknown,game:Game):value is Presentation{
  if(!value||typeof value!=='object')return false;const p=value as Presentation;
  if(p.version!==2||p.seed!==game.seed||typeof p.introSeen!=='boolean'||!Number.isInteger(p.tutorial)||p.tutorial<0||p.tutorial>6||![15,30,50].includes(p.speed)||typeof p.reducedMotion!=='boolean'||!Array.isArray(p.seenScenes)||!p.seenScenes.every(s=>typeof s==='string'))return false;
+ if(p.instantText!==undefined&&typeof p.instantText!=='boolean')return false;
  if(p.reading!==null&&(!p.reading||typeof p.reading!=='object'||!['story','choice','outcome'].includes(p.reading.phase)||!Number.isInteger(p.reading.index)||p.reading.index<0||typeof p.reading.eventId!=='string'||![null,0,1].includes(p.reading.choice)||typeof p.reading.inspected!=='boolean'))return false;
  if(p.reading?.outcomeRevision!==undefined&&p.reading.outcomeRevision!==2)return false;
  if(p.storyRevision!==undefined&&![1,2].includes(p.storyRevision))return false;

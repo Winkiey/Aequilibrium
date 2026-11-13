@@ -11,6 +11,7 @@ import "./complete.css";
 import "./mobile.css";
 import "./folio.css";
 import "./settings.css";
+import "./player-flow.css";
 
 export const viewport:Viewport={width:'device-width',initialScale:1,viewportFit:'cover'};
 
