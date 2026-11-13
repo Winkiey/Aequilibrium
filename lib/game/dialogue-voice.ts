@@ -1,7 +1,9 @@
+import type {VoiceTreatment} from './voice-effects';
+
 /** Optional pre-generated character speech. It never controls story progress. */
 export type VoiceCue=Readonly<{key:string;src:string}>;
 export type VoiceStatus='idle'|'ready'|'loading'|'playing'|'paused'|'ended'|'blocked'|'unavailable';
-export type VoiceOptions=Readonly<{enabled:boolean;paused:boolean;volume:number}>;
+export type VoiceOptions=Readonly<{enabled:boolean;paused:boolean;volume:number;treatment?:VoiceTreatment}>;
 export type SpokenClip=Readonly<{speaker:string;text:string;src:string;essential?:boolean}>;
 
 /** Match the actor AND entire displayed beat, never its changing array index. */

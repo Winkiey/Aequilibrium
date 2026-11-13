@@ -1,5 +1,6 @@
 import type {VoiceCue,VoiceOptions,VoiceStatus} from './dialogue-voice';
 import {publicPath} from './public-path';
+import {connectVoiceTreatment} from './voice-effects';
 
 /** Content-addressed clips can be kept independently of the complete-pack marker. */
 export async function fetchVoiceClip(src:string,signal:AbortSignal):Promise<ArrayBuffer>{
@@ -153,6 +154,7 @@ export class BufferedVoice{
  private options:VoiceOptions={enabled:false,paused:false,volume:.7};
  private source:AudioBufferSourceNode|null=null;
  private gain:GainNode|null=null;
+ private releaseEffect:(()=>void)|null=null;
  private ticket=0;
  private offset=0;
  private started=0;
@@ -167,12 +169,15 @@ export class BufferedVoice{
   ++this.ticket;
   if(remember&&this.source&&this.session.context)this.offset+=Math.max(0,this.session.context.currentTime-this.started);
   if(this.source){this.source.onended=null;try{this.source.stop();}catch{}this.source.disconnect();this.source=null;}
+  this.releaseEffect?.();this.releaseEffect=null;
   this.gain?.disconnect();this.gain=null;
  }
  set(cue:VoiceCue|null,options:VoiceOptions){
   if(this.closed)return;
   const changed=cue?.key!==this.cue?.key||cue?.src!==this.cue?.src;
+  const treatmentChanged=(options.treatment??'natural')!==(this.options.treatment??'natural');
   if(changed){this.retire();this.offset=0;this.startupMs=null;this.cue=cue;this.report(cue?'ready':'idle');}
+  else if(treatmentChanged&&this.source){this.retire(true);this.report('paused');}
   this.options={...options,volume:Number.isFinite(options.volume)?Math.max(0,Math.min(1,options.volume)):0};
   if(!cue)return;
   if(!this.wanted){
@@ -194,9 +199,10 @@ export class BufferedVoice{
    if(ctx.state!=='running')throw denied();
    if(this.offset>=buffer.duration){this.report('ended');return;}
    const source=ctx.createBufferSource(),gain=ctx.createGain();
-   source.buffer=buffer;gain.gain.value=this.options.volume;source.connect(gain);gain.connect(ctx.destination);
+   source.buffer=buffer;gain.gain.value=this.options.volume;
    this.source=source;this.gain=gain;this.started=ctx.currentTime;
-   source.onended=()=>{if(current()&&this.source===source){this.source=null;source.disconnect();this.gain?.disconnect();this.gain=null;this.offset=0;this.report('ended');}};
+   this.releaseEffect=connectVoiceTreatment(ctx,source,gain,this.options.treatment??'natural');gain.connect(ctx.destination);
+   source.onended=()=>{if(current()&&this.source===source){this.source=null;source.disconnect();this.releaseEffect?.();this.releaseEffect=null;this.gain?.disconnect();this.gain=null;this.offset=0;this.report('ended');}};
    source.start(0,this.offset);this.startupMs=Math.max(0,Math.round(this.session.now()-since));this.report('playing');
   }).catch(error=>{
    if(!current())return;

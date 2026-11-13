@@ -13,7 +13,30 @@ import {createGame} from '../.sites-runtime/test-modules/engine.mjs';
 import {mainEvent,materialize,SIDE_EVENTS,CHAPTER_EVENTS} from '../.sites-runtime/test-modules/stories.mjs';
 import {prepareNarrative} from '../.sites-runtime/test-modules/narrative.mjs';
 import {EPILOGUES,epilogueScript} from '../.sites-runtime/test-modules/epilogues.mjs';
+import {resolveStaging} from '../.sites-runtime/test-modules/staging.mjs';
+import {OUTCOME_REVISION,outcomeScene} from '../.sites-runtime/test-modules/visuals.mjs';
+import {CinematicPlayer} from '../.sites-runtime/test-modules/CinematicPlayer.mjs';
+import {createElement as h} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
 const key=b=>JSON.stringify([b.speaker,b.text]);
+
+test('the real player passes the staged voice treatment through every opening and both authored outcomes',()=>{
+ const counts={telephone:0,letter:0,room:0},noop=()=>{};
+ for(const id of Object.keys(STORYBOARDS)){
+  const game=createGame(20261108);game.quarter=id.startsWith('main-')?Number(id.slice(5)):id.startsWith('chapter-')?Number(id.slice(8)):5;
+  const raw=id.startsWith('main-')?mainEvent(game):[...CHAPTER_EVENTS,...SIDE_EVENTS].find(e=>e.id===id),event=prepareNarrative(game,materialize(raw,game),2),script=getScript(event);
+  for(const phase of ['story','outcome'])for(const branch of phase==='story'?[0]:[0,1]){
+   const beats=phase==='story'?(event.opening??script.beats):outcomeBeats(event,script,branch),index=beats.findIndex(b=>!!spokenCue(SPOKEN_CLIPS,b.speaker,b.text));
+   const cursor=Math.max(0,index);
+   const direction=resolveStaging({eventId:id,phase,branch,beat:beats[cursor],index:cursor,script,scene:phase==='outcome'?outcomeScene(id,branch,script.scene,event):script.scene}),expected=direction.channel==='phone'?'telephone':'natural';
+   const html=renderToStaticMarkup(h(CinematicPlayer,{game,event,answered:phase==='outcome'?branch:null,progress:{eventId:id,phase,index:cursor,choice:phase==='outcome'?branch:null,inspected:false,outcomeRevision:OUTCOME_REVISION},sound:true,onChoose:()=>false,onFinish:noop,onLedger:noop,onProgress:noop}));
+   if(index<0){assert.ok(beats.every(b=>['narrator','self'].includes(b.speaker)),`${id}: do not silently accept missing actor recordings`);assert.ok(!html.includes('data-voice-treatment='),'unvoiced narration has no playback button');continue;}
+   assert.ok(html.includes(`data-voice-treatment="${expected}"`),`${id}/${phase}/${branch} must use ${expected}`);
+   counts[expected==='telephone'?'telephone':direction.channel]++;
+  }
+ }
+ for(const [channel,count] of Object.entries(counts))assert.ok(count>0,`${channel}: the staged recordings must exercise this channel`);
+});
 test('all main, daily, conditional, legacy and ending character beats have exact voice coverage',()=>{
  const required=new Map(),collect=beats=>{for(const beat of beats){if(['narrator','self'].includes(beat.speaker))continue;required.set(key(beat),beat);assert.ok(spokenCue(SPOKEN_CLIPS,beat.speaker,beat.text),key(beat));}};
  for(const script of Object.values(STORYBOARDS)){collect(script.beats);script.outcomes.forEach(collect);}

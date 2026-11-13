@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash,webcrypto} from 'node:crypto';
 import {VoiceSession,fetchVoiceClip} from '../.sites-runtime/test-modules/voice-session.mjs';
+import {connectVoiceTreatment,voiceTreatmentFor} from '../.sites-runtime/test-modules/voice-effects.mjs';
 
 const on={enabled:true,paused:false,volume:.7},a={key:'first full performance',src:'/a.mp3'},b={key:'next full performance',src:'/b.mp3'};
 const tick=()=>new Promise(resolve=>setImmediate(resolve));
@@ -9,17 +10,18 @@ const gate=()=>{let resolve,reject;const promise=new Promise((yes,no)=>{resolve=
 function rig({fetchClip,maxDecodedBytes}={}){
  const contexts=[],fetches=[];let clock=0,resumeGate=null;
  class Node{
-  connections=[];gain={value:0};buffer=null;onended=null;
+  connections=[];gain={value:0};frequency={value:0};Q={value:0};buffer=null;onended=null;
   connect(other){this.connections.push(other);return other;}
   disconnect(){this.connections=[];}
   start(at=0,offset=0){this.started=true;this.at=at;this.offset=offset;}
   stop(){this.stopped=true;}
  }
  class Context{
-  currentTime=0;sampleRate=48000;state='suspended';destination={};nodes=[];decodes=0;resumes=0;
+  currentTime=0;sampleRate=48000;state='suspended';destination={};nodes=[];filters=[];decodes=0;resumes=0;
   constructor(){contexts.push(this);}
   createBufferSource(){const n=new Node();this.nodes.push(n);return n;}
   createGain(){return new Node();}
+  createBiquadFilter(){const n=new Node();this.filters.push(n);return n;}
   createBuffer(channels,length,rate){return{numberOfChannels:channels,length,duration:length/rate};}
   async resume(){this.resumes++;if(resumeGate)await resumeGate;this.state='running';}
   async suspend(){this.state='suspended';}
@@ -121,6 +123,83 @@ test('a stalled decoder times out too; its late result cannot start speech or en
   assert.equal(p.status,'unavailable');assert.equal(timers.size,0);
   decoding.resolve({length:100,numberOfChannels:1,duration:10});await tick();assert.equal(r.spoken().length,0);assert.equal(r.session.cachedClips,0);
  }finally{await r.session.dispose();Object.assign(globalThis,original);}
+});
+
+test('receiver routing narrows speech gently and folds it to mono without bypassing the voice volume',async()=>{
+ const r=rig();await r.session.unlock();const ctx=r.contexts[0],source=ctx.createBufferSource(),output=ctx.createGain();
+ const cleanup=connectVoiceTreatment(ctx,source,output,'telephone'),[high,low]=ctx.filters;
+ assert.equal(ctx.filters.length,2);assert.equal(high.type,'highpass');assert.equal(high.frequency.value,300);assert.equal(high.Q.value,.55);
+ assert.equal(low.type,'lowpass');assert.equal(low.frequency.value,3500);assert.equal(low.Q.value,.55);
+ assert.equal(high.channelCount,1);assert.equal(high.channelCountMode,'explicit');
+ assert.deepEqual(source.connections,[high]);assert.deepEqual(high.connections,[low]);assert.deepEqual(low.connections,[output]);
+ cleanup();cleanup();assert.deepEqual(high.connections,[]);assert.deepEqual(low.connections,[]);await r.session.dispose();
+});
+
+test('letters and in-room voices use the original direct path without allocating filters',async()=>{
+ assert.equal(voiceTreatmentFor('letter'),'natural');assert.equal(voiceTreatmentFor('room'),'natural');assert.equal(voiceTreatmentFor('phone'),'telephone');
+ const r=rig();await r.session.unlock();const ctx=r.contexts[0],source=ctx.createBufferSource(),output=ctx.createGain();
+ connectVoiceTreatment(ctx,source,output,'natural')();assert.equal(ctx.filters.length,0);assert.deepEqual(source.connections,[output]);await r.session.dispose();
+});
+
+test('telephone and room performances reuse the exact same decoded clip and persisted URL',async()=>{
+ const r=rig();await r.session.unlock();const p=r.session.createChannel();p.set(a,{...on,treatment:'telephone'});await tick();
+ const phone=r.spoken()[0],ctx=r.contexts[0],output=ctx.filters[1].connections[0];assert.equal(output.gain.value,on.volume);assert.deepEqual(output.connections,[ctx.destination]);
+ for(let i=0;i<25;i++)p.set({...a},{...on,treatment:'telephone',volume:.4});
+ assert.equal(r.spoken().length,1);assert.equal(output.gain.value,.4);assert.equal(ctx.filters.length,2);
+ p.dispose();assert.deepEqual(ctx.filters.map(n=>n.connections),[[],[]]);assert.deepEqual(output.connections,[]);
+ const room=r.session.createChannel();room.set(a,on);await tick();assert.equal(r.spoken()[1].buffer,phone.buffer);assert.equal(ctx.filters.length,2);
+ assert.deepEqual(r.fetches.map(f=>f.src),[a.src]);assert.equal(ctx.decodes,1);await r.session.dispose();
+});
+
+test('pausing a phone line releases its filters; resume retains the cursor and replay starts at zero',async()=>{
+ const r=rig();await r.session.unlock();const p=r.session.createChannel(),phone={...on,treatment:'telephone'};p.set(a,phone);await tick();
+ const ctx=r.contexts[0];ctx.currentTime=2.25;p.set(a,{...phone,paused:true});assert.equal(p.status,'paused');assert.ok(r.spoken()[0].stopped);assert.ok(ctx.filters.every(n=>!n.connections.length));
+ p.set(a,phone);await tick();assert.equal(r.spoken()[1].offset,2.25);assert.equal(ctx.filters.length,4);assert.equal(r.fetches.length,1);
+ p.replay();await tick();assert.equal(r.spoken()[2].offset,0);assert.equal(r.fetches.length,1);assert.ok(ctx.filters.slice(0,4).every(n=>!n.connections.length));await r.session.dispose();assert.ok(ctx.filters.every(n=>!n.connections.length));
+});
+
+test('switching the channel of the same clip keeps its position and cannot leak the receiver into a room',async()=>{
+ const r=rig();await r.session.unlock();const p=r.session.createChannel();p.set(a,on);await tick();const ctx=r.contexts[0];ctx.currentTime=1.5;
+ p.set(a,{...on,treatment:'telephone'});await tick();assert.equal(r.spoken()[1].offset,1.5);assert.ok(r.spoken()[0].stopped);
+ const oldEnded=r.spoken()[1].onended;ctx.currentTime=2;p.set(a,on);await tick();const room=r.spoken()[2];assert.equal(room.offset,2);assert.equal(room.connections[0].gain.value,on.volume);
+ assert.ok(ctx.filters.every(n=>!n.connections.length));oldEnded();assert.equal(p.status,'playing');assert.equal(room.stopped,undefined);assert.equal(r.fetches.length,1);await r.session.dispose();
+});
+
+test('a naturally ended phone line disconnects its whole graph and replay rebuilds it from memory',async()=>{
+ const r=rig();await r.session.unlock();const p=r.session.createChannel();p.set(a,{...on,treatment:'telephone'});await tick();const source=r.spoken()[0],ctx=r.contexts[0],output=ctx.filters[1].connections[0];
+ source.onended();assert.equal(p.status,'ended');assert.deepEqual(source.connections,[]);assert.ok(ctx.filters.every(n=>!n.connections.length));assert.deepEqual(output.connections,[]);
+ p.replay();await tick();assert.equal(p.status,'playing');assert.equal(r.spoken()[1].offset,0);assert.equal(r.fetches.length,1);await r.session.dispose();
+});
+
+test('skipping a loading phone line never builds its old filters or overlays the next room voice',async()=>{
+ const slow=gate(),r=rig({fetchClip:src=>src===a.src?slow.promise:Promise.resolve(new ArrayBuffer(1))});await r.session.unlock();const p=r.session.createChannel();
+ p.set(a,{...on,treatment:'telephone'});p.set(b,on);await tick();assert.equal(p.status,'playing');slow.resolve(new ArrayBuffer(1));await tick();
+ assert.equal(r.spoken().length,1);assert.equal(r.contexts[0].filters.length,0);assert.equal(p.status,'playing');await r.session.dispose();
+});
+
+test('a channel change while loading applies only the latest treatment without another request',async()=>{
+ const slow=gate(),r=rig({fetchClip:()=>slow.promise});await r.session.unlock();const p=r.session.createChannel();p.set(a,{...on,treatment:'telephone'});p.set(a,on);
+ slow.resolve(new ArrayBuffer(1));await tick();assert.equal(p.status,'playing');assert.equal(r.contexts[0].filters.length,0);assert.equal(r.fetches.length,1);await r.session.dispose();
+});
+
+test('muting or disabling a playing phone line clears every filter, and zero volume cannot replay it',async()=>{
+ for(const change of [{volume:0},{enabled:false}]){
+  const r=rig();await r.session.unlock();const p=r.session.createChannel(),phone={...on,treatment:'telephone'};p.set(a,phone);await tick();const source=r.spoken()[0],ended=source.onended;
+  p.set(a,{...phone,...change});assert.equal(p.status,'ready');assert.ok(source.stopped);assert.ok(r.contexts[0].filters.every(n=>!n.connections.length));assert.equal(p.replay(),false);ended();assert.equal(p.status,'ready');await r.session.dispose();
+ }
+});
+
+test('hiding, portrait suspension and unmount cannot leave a telephone graph or revive its old ended callback',async()=>{
+ const r=rig();await r.session.unlock();const p=r.session.createChannel();p.set(a,{...on,treatment:'telephone'});await tick();const ended=r.spoken()[0].onended;
+ await r.session.suspend();assert.equal(p.status,'idle');assert.ok(r.spoken()[0].stopped);assert.ok(r.contexts[0].filters.every(n=>!n.connections.length));
+ await r.session.unlock();p.set(b,on);await tick();ended();assert.equal(p.status,'playing');assert.equal(r.spoken().length,2);p.dispose();assert.ok(r.spoken()[1].stopped);await r.session.dispose();
+});
+
+test('partial receiver setup failure releases its nodes and remains a non-blocking, manually retryable failure',async()=>{
+ const r=rig();await r.session.unlock();const ctx=r.contexts[0],create=ctx.createBiquadFilter.bind(ctx);ctx.createBiquadFilter=()=>{if(ctx.filters.length===1)throw new Error('node allocation');return create();};
+ const p=r.session.createChannel();p.set(a,{...on,treatment:'telephone'});await tick();assert.equal(p.status,'unavailable');assert.equal(r.spoken().length,0);assert.ok(ctx.filters.every(n=>!n.connections.length));
+ for(let i=0;i<10;i++)p.set(a,{...on,treatment:'telephone'});assert.equal(ctx.filters.length,1);
+ ctx.createBiquadFilter=create;p.replay();await tick();assert.equal(p.status,'playing');assert.equal(r.fetches.length,1);await r.session.dispose();
 });
 
 function cacheRig(t,body){
