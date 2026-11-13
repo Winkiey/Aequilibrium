@@ -15,4 +15,4 @@ export function loadAudioPreferences(storage:Pick<Storage,'getItem'>|null,key:Au
 export function storeAudioPreferences(storage:Pick<Storage,'setItem'>|null,key:AudioPreferenceKey,p:AudioPreferences){
  if(!storage||!validKey(key))return false;try{storage.setItem(key,JSON.stringify(normalizeAudioPreferences(p)));return true;}catch{return false;}
 }
-export const readingAudioPanel=(panel:string|null)=>panel!==null&&['library','people','news','market','ledger','letters','trade','borrow','repay','research','shop','report','receipt','settlement','guide'].includes(panel);
+export const readingAudioPanel=(panel:string|null)=>panel!==null&&['library','people','news','market','ledger','letters','trade','borrow','repay','research','research-offer','shop','report','receipt','settlement','guide'].includes(panel);

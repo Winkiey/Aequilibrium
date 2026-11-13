@@ -4,9 +4,41 @@
 .paper-fixed-action{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0;padding:14px 28px;border-top:1px solid var(--folio-rule);background:var(--folio-paper);position:relative;z-index:2}
 .paper-fixed-action>span{font:12px/1.8 var(--serif);color:var(--folio-muted)}
 .paper-fixed-action>.ink-button{min-width:160px}
+.decision-terms{display:grid;gap:0;margin-top:13px;border-top:1px solid #c8c5a64d}
+.decision-term{display:grid;grid-template-columns:70px minmax(0,1fr);gap:9px;padding:9px 0;border-bottom:1px solid #c8c5a628;font:12px/1.8 var(--serif);color:#d5d9c6}
+.decision-term-label{color:#b9c4ac;font-size:11px;letter-spacing:.06em}
+.decision-term em{display:block;font:inherit;font-style:normal;margin:0 0 3px}
+.decision-term b{font:inherit;font-weight:400}
+.decision-term-now em{font-size:15px;color:#f5e8c8}
+.decision-term-due em{color:#e7d4b3}
+.decision-term small{font:11px/1.8 var(--serif);color:#b4bda9}
+.research-subject{font:16px/1.9 var(--serif);color:var(--folio-muted);margin:0 0 16px}
+.research-offer-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.research-offer h3{font:400 17px/1.7 var(--serif);margin:0 0 12px}
+.research-offer ul{padding-left:18px;margin:0;font:13px/1.9 var(--serif);color:var(--folio-muted)}
+.research-offer li{margin:8px 0}
+.research-offer-price{margin:22px 0 12px;border-top:1px solid var(--folio-rule);border-bottom:1px solid var(--folio-rule)}
+.research-offer-price>div{display:flex;justify-content:space-between;gap:20px;padding:10px 0;font:13px/1.8 var(--serif)}
+.research-offer-price dd{margin:0;font-family:var(--mono)}
+.research-offer-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px}
+.research-offer-error{font:12px/1.8 var(--serif);color:#885c47}
 @media(orientation:landscape) and (max-height:600px){
  .paper-fixed-action{padding:8px 18px;min-height:52px;gap:12px}
  .paper-fixed-action>span{font-size:11px}
  .paper-fixed-action>.ink-button{min-height:36px;font-size:13px;padding:8px 14px;min-width:140px}
  .reading-mode-tool{font-size:11px!important;min-width:36px}
+ .decision-terms{margin-top:8px}
+ .decision-term{grid-template-columns:60px minmax(0,1fr);gap:7px;padding:6px 0;font-size:11px;line-height:1.65}
+ .decision-term-now em{font-size:14px}
+ .decision-term-label,.decision-term small{font-size:10px}
+ .research-offer .paper-title{font-size:21px;margin:6px 0}
+ .research-subject{font-size:13px;margin-bottom:6px}
+ .research-offer .paper-intro{margin:8px 0;font-size:12px}
+ .research-offer-columns{gap:20px}
+ .research-offer h3{font-size:14px;margin:4px 0}
+ .research-offer ul{font-size:12px;line-height:1.7}
+ .research-offer li{margin:4px 0}
+ .research-offer-price{display:flex;gap:22px;margin-top:13px}
+ .research-offer-price>div{flex:1;display:block;font-size:12px;padding:8px 0}
+ .research-offer-actions{margin-top:10px}
 }
