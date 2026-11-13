@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readingKey,sideInvitation} from '../.sites-runtime/test-modules/reading-controls.mjs';
-import {freshPresentation,restartPresentation,validPresentation} from '../.sites-runtime/test-modules/presentation.mjs';
+import {freshPresentation,restartPresentation,validPresentation,motionPreferences} from '../.sites-runtime/test-modules/presentation.mjs';
 import {createGame} from '../.sites-runtime/test-modules/engine.mjs';
 import {SettlementAction} from '../.sites-runtime/test-modules/SettlementAction.mjs';
 import {createRequire} from 'node:module';
@@ -37,4 +37,9 @@ test('the final-quarter primary action remains outside scrolling summary content
  const button=node.props.children.find(c=>c?.type==='button');button.props.onClick();assert.equal(opened,1);
  const html=renderToStaticMarkup(createElement(SettlementAction,{finished:true,onContinue:()=>{}}));assert.match(html,/回望这三年/);
  assert.match(renderToStaticMarkup(createElement(SettlementAction,{finished:false,onContinue:()=>{}})),/走进下一季/);
+});
+test('the first motion toggle in a legacy save preserves its prior text behavior and reading cursor',()=>{
+ const game=createGame(4),old={...freshPresentation(game),reducedMotion:true,reading:{eventId:'main-1',phase:'story',index:3,choice:null,inspected:false}};
+ const changed={...old,...motionPreferences(old,false)};assert.equal(changed.instantText,true);assert.equal(changed.reducedMotion,false);assert.deepEqual(changed.reading,old.reading);assert.equal(validPresentation(changed,game),true);
+ assert.deepEqual(motionPreferences({instantText:false,reducedMotion:true},false),{instantText:false,reducedMotion:false});
 });

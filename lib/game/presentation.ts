@@ -4,6 +4,8 @@ import type { CastId } from './cinematic-content';
 export type Encounter={quarter:number;events:string[]};
 export type ReadingProgress={eventId:string;phase:'story'|'choice'|'outcome';index:number;choice:0|1|null;inspected:boolean;outcomeRevision?:2};
 export const PRESENTATION_KEY='aequilibrium.presentation.v2';
+/** Freeze the effective legacy text preference before changing scene motion. */
+export function motionPreferences(p:{instantText?:boolean;reducedMotion:boolean},reducedMotion:boolean){return{reducedMotion,instantText:p.instantText??p.reducedMotion};}
 export type Presentation={version:2;storyRevision?:1|2;seed:number;introSeen:boolean;tutorial:number;speed:number;reducedMotion:boolean;instantText?:boolean;reading:ReadingProgress|null;seenScenes:string[];place?:'hub'|'street'|'broker'|'bank';lesson?:Lesson;lessonAsset?:string;lessonAmount?:number;people?:Partial<Record<CastId,Encounter>>;readingPage?:number};
 export function freshPresentation(game:Game):Presentation{const tutorial=game.quarter>1||game.finished?6:game.mainChoice!==null?3:0;return{version:2,storyRevision:2,seed:game.seed,introSeen:game.history.length>0,tutorial,lesson:initialLesson(game,tutorial),speed:30,reducedMotion:false,reading:null,seenScenes:[],people:{},readingPage:0,place:'hub'};}
 export function restartPresentation(game:Game,previous:Presentation):Presentation{return{...freshPresentation(game),introSeen:false,speed:previous.speed,reducedMotion:previous.reducedMotion,...(previous.instantText===undefined?{}:{instantText:previous.instantText})};}
