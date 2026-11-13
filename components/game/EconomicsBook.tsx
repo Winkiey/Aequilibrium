@@ -9,6 +9,12 @@ import ReadingFigure from './ReadingFigure';
 const chapterIndex=(id:string)=>READING_CHAPTERS.findIndex(c=>c.id===id);
 const TABS=[['case','例与图'],['ideas','概念辨析'],['sources','原著札记']] as const;
 type Tab=typeof TABS[number][0];
+type Section='principles'|Tab;
+
+/** Direct access on a short screen; the desktop keeps its two facing pages. */
+export function ReadingSections({active,onSelect}:{active:Section;onSelect:(section:Section)=>void}){
+ return <nav className="reader-sections" aria-label="本章阅读分区">{([['principles','正文'],...TABS] as const).map(([id,label])=><button key={id} aria-pressed={active===id} aria-controls={id==='principles'?'reader-principles-page':'reader-notes-page'} onClick={()=>onSelect(id)}>{label}</button>)}</nav>;
+}
 
 function PageHeader({chapter,side}:{chapter:ReadingChapter;side:'left'|'right'}){
  const volume=READING_VOLUMES.find(v=>v.chapters.some(id=>id===chapter.id))!;
@@ -16,7 +22,7 @@ function PageHeader({chapter,side}:{chapter:ReadingChapter;side:'left'|'right'})
 }
 function PrinciplesPage({chapter,ordinal}:{chapter:ReadingChapter;ordinal:number}){
  const study=READING_STUDY[chapter.id];
- return <article className="book-page left reader-principles" aria-label={`${chapter.title}，正文`} tabIndex={0}>
+ return <article id="reader-principles-page" className="book-page left reader-principles" aria-label={`${chapter.title}，正文`} tabIndex={0}>
   <PageHeader chapter={chapter} side="left"/>
   <div className="reader-title"><span className="reader-chapter-no">{String(ordinal+1).padStart(2,'0')}</span><div><p className="reader-eyebrow">{chapter.subtitle}</p><h2>{chapter.title}</h2></div></div>
   <p className="reader-opening">{study.opening}</p>
@@ -28,7 +34,7 @@ function PrinciplesPage({chapter,ordinal}:{chapter:ReadingChapter;ordinal:number
 function NotesPage({chapter,ordinal,tab,onTab,onRelated}:{chapter:ReadingChapter;ordinal:number;tab:Tab;onTab:(tab:Tab)=>void;onRelated:(id:string)=>void}){
  const study=READING_STUDY[chapter.id];
  const tabs=useRef<(HTMLButtonElement|null)[]>([]);
- return <article className="book-page right reader-notes" aria-label={`${chapter.title}，阅读札记`} tabIndex={0}>
+ return <article id="reader-notes-page" className="book-page right reader-notes" aria-label={`${chapter.title}，阅读札记`} tabIndex={0}>
   <PageHeader chapter={chapter} side="right"/>
   <div role="tablist" aria-label="本章阅读札记" className="reader-tabs" onKeyDown={e=>{const i=TABS.findIndex(([id])=>id===tab);let next=i;if(e.key==='ArrowRight')next=(i+1)%TABS.length;else if(e.key==='ArrowLeft')next=(i+TABS.length-1)%TABS.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=TABS.length-1;else return;e.preventDefault();e.stopPropagation();onTab(TABS[next][0]);tabs.current[next]?.focus();}}>
    {TABS.map(([id,label],i)=><button key={id} ref={el=>{tabs.current[i]=el;}} id={`reader-tab-${id}`} role="tab" aria-selected={tab===id} aria-controls={`reader-panel-${id}`} tabIndex={tab===id?0:-1} onClick={()=>onTab(id)}>{label}</button>)}
@@ -53,6 +59,7 @@ export default function EconomicsBook({page,onPage,reducedMotion}:{page:number;o
  useEffect(()=>()=>{if(timer.current)clearTimeout(timer.current);},[]);
  useEffect(()=>{if(contents)search.current?.focus();else if(wasContents.current)catalogButton.current?.focus();wasContents.current=contents;},[contents]);
  useEffect(()=>{for(const p of book.current?.querySelectorAll('.book-page')??[])p.scrollTop=0;},[index]);
+ useEffect(()=>{const notes=book.current?.querySelector('.reader-notes');if(notes)notes.scrollTop=0;},[tab]);
  function closeContents(){setContents(false);}
  function go(to:number){
   if(turn||to<0||to>=READING_CHAPTERS.length)return;
@@ -61,18 +68,18 @@ export default function EconomicsBook({page,onPage,reducedMotion}:{page:number;o
   setTab('case');setSide('left');onPage(to);
  }
  function adjacent(delta:number){const id=READING_ORDER[ordinal+delta];if(id)go(chapterIndex(id));}
- useEffect(()=>{const handler=(e:KeyboardEvent)=>{if(e.defaultPrevented||contents||e.altKey||e.ctrlKey||e.metaKey||(e.target as HTMLElement)?.closest('input,select,textarea,[role="tablist"],[contenteditable="true"]'))return;if(e.key==='ArrowRight'){e.preventDefault();adjacent(1);}if(e.key==='ArrowLeft'){e.preventDefault();adjacent(-1);}};document.addEventListener('keydown',handler);return()=>document.removeEventListener('keydown',handler);});
+ useEffect(()=>{const handler=(e:KeyboardEvent)=>{if(e.defaultPrevented||contents||e.altKey||e.ctrlKey||e.metaKey||(e.target as HTMLElement)?.closest('input,select,textarea,[role="tablist"],.reader-sections,[contenteditable="true"]'))return;if(e.key==='ArrowRight'){e.preventDefault();adjacent(1);}if(e.key==='ArrowLeft'){e.preventDefault();adjacent(-1);}};document.addEventListener('keydown',handler);return()=>document.removeEventListener('keydown',handler);});
  const old=turn?READING_CHAPTERS[turn.from]:chapter;
  const matching=READING_CHAPTERS.filter(c=>readingMatches(c.id,query,c.title,c.terms));
  return <div className="reading-book library-reader" data-visible-page={side}>
-  <header className="book-toolbar reader-toolbar" inert={contents}><button ref={catalogButton} onClick={()=>{setQuery('');setContents(!contents);}} aria-expanded={contents} aria-controls="reader-contents"><List size={16}/><span>六卷目录</span></button><span className="reader-volume-title">卷{volume.number} · {volume.title}</span><div className="reader-side-switch" aria-label="选择阅读页"><button aria-pressed={side==='left'} onClick={()=>setSide('left')}>正文</button><button aria-pressed={side==='right'} onClick={()=>setSide('right')}>札记</button></div><span className="reader-bookmark"><Bookmark size={12}/>书签留在本章</span></header>
+  <header className="book-toolbar reader-toolbar" inert={contents}><button ref={catalogButton} onClick={()=>{setQuery('');setContents(!contents);}} aria-expanded={contents} aria-controls="reader-contents"><List size={16}/><span>六卷目录</span></button><span className="reader-volume-title">卷{volume.number} · {volume.title}</span><span className="reader-current-chapter"><small>第{String(ordinal+1).padStart(2,'0')}章</small><strong>{chapter.title}</strong></span><ReadingSections active={side==='left'?'principles':tab} onSelect={section=>{setSide(section==='principles'?'left':'right');if(section!=='principles')setTab(section);}}/><span className="reader-bookmark"><Bookmark size={12}/>书签留在本章</span></header>
   <div className="reader-desk" inert={contents}><nav className="reader-volume-rail" aria-label="六卷导航">{READING_VOLUMES.map(v=><button key={v.id} title={`卷${v.number} · ${v.title}`} aria-label={`卷${v.number}，${v.title}`} aria-current={v.id===volume.id?'page':undefined} onClick={()=>go(chapterIndex(v.chapters[0]))}><span>{v.number}</span><strong>{v.title}</strong></button>)}</nav>
-   <div className="book-spread" ref={book} data-book-chapter={chapter.id}>
+   <div className="book-spread" ref={book} data-book-chapter={chapter.id} data-turning={turn?turn.direction===1?'forward':'backward':undefined}>
     <PrinciplesPage chapter={chapter} ordinal={ordinal}/><NotesPage chapter={chapter} ordinal={ordinal} tab={tab} onTab={setTab} onRelated={id=>go(chapterIndex(id))}/><div className="book-spine"/>
     {turn&&<div aria-hidden="true" inert className={`book-turn ${turn.direction===1?'forward':'backward'}`}><div className="book-leaf-front"><div className="book-page reader-turn-page"><p className="reader-eyebrow">泊灯书屋 · 阅读册</p><h2>{old.title}</h2><p>{old.example[0]}</p></div></div><div className="book-leaf-back"><div className="book-page reader-turn-page"><p className="reader-eyebrow">{chapter.subtitle}</p><h2>{chapter.title}</h2><p>{chapter.summary[0]}</p></div></div></div>}
    </div>
   </div>
-  <footer className="book-pagination reader-pagination" inert={contents}><button disabled={ordinal===0||!!turn} onClick={()=>adjacent(-1)}><ArrowLeft size={16}/><span>上一章</span></button><span><b>{String(ordinal+1).padStart(2,'0')}</b> / {READING_CHAPTERS.length} 章 <i>·</i> {ordinal*2+1}—{ordinal*2+2} 页</span><button disabled={ordinal===READING_ORDER.length-1||!!turn} onClick={()=>adjacent(1)}><span>下一章</span><ArrowRight size={16}/></button></footer>
+  <footer className="book-pagination reader-pagination" inert={contents}><button disabled={ordinal===0||!!turn} onClick={()=>adjacent(-1)}><ArrowLeft size={16}/><span>上一章</span></button><span><b>{String(ordinal+1).padStart(2,'0')}</b> / {READING_CHAPTERS.length} 章 <span className="reader-page-range"><i>·</i> {ordinal*2+1}—{ordinal*2+2} 页</span></span><button disabled={ordinal===READING_ORDER.length-1||!!turn} onClick={()=>adjacent(1)}><span>下一章</span><ArrowRight size={16}/></button></footer>
   <span className="sr-only" role="status" aria-live="polite">卷{volume.number}，第{ordinal+1}章，{chapter.title}</span>
   {contents&&<nav ref={catalog} id="reader-contents" className="reader-contents" aria-label="阅读册目录" onKeyDown={e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();closeContents();}if(e.key==='Tab'){e.stopPropagation();const items=catalog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input');if(!items?.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}}}>
    <header><div><p className="reader-eyebrow">泊灯书屋 / 藏书札记</p><h2>钱与日子的六卷书</h2><p>从一个问题开始，沿着线索慢慢读。</p></div><button onClick={closeContents} aria-label="合上目录"><X size={20}/></button></header>

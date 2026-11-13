@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
-import EconomicsBook from '../.sites-runtime/test-modules/EconomicsBook.mjs';
+import EconomicsBook,{ReadingSections} from '../.sites-runtime/test-modules/EconomicsBook.mjs';
 import {READING_CHAPTERS,READING_SOURCES} from '../.sites-runtime/test-modules/reading.mjs';
 import {READING_ORDER,READING_VOLUMES,READING_STUDY,readingMatches} from '../.sites-runtime/test-modules/reading-study.mjs';
 import {READING_SOURCE_NOTES} from '../.sites-runtime/test-modules/reading-sources.mjs';
@@ -32,4 +32,25 @@ test('all actual book spreads render their correct legacy chapter and unique acc
   assert.doesNotMatch(html,/<a\s/);assert.ok(html.includes('role="tablist"'));
  }
  const invalid=renderToStaticMarkup(createElement(EconomicsBook,{page:Number.NaN,onPage:()=>{},reducedMotion:true}));assert.ok(invalid.includes('data-book-chapter="choice"'));
+});
+
+test('the short-screen navigation offers all four reading sections directly and reports the selected section',()=>{
+ const sections=['principles','case','ideas','sources'],calls=[];
+ for(const active of sections){
+  const tree=ReadingSections({active,onSelect:id=>calls.push(id)}),buttons=tree.props.children;
+  assert.equal(buttons.length,4);assert.equal(buttons.filter(b=>b.props['aria-pressed']).length,1);
+  assert.deepEqual(buttons.map(b=>b.props.children),['正文','例与图','概念辨析','原著札记']);
+  const selected=buttons.find(b=>b.props['aria-pressed']);selected.props.onClick();
+  assert.equal(selected.props['aria-controls'],active==='principles'?'reader-principles-page':'reader-notes-page');
+ }
+ assert.deepEqual(calls,sections);
+});
+
+test('each saved chapter keeps its title beside the reading sections and both target pages remain mounted',()=>{
+ for(let page=0;page<READING_CHAPTERS.length;page++){
+  const chapter=READING_CHAPTERS[page],html=renderToStaticMarkup(createElement(EconomicsBook,{page,onPage:()=>{throw Error('Reading the book must not move its bookmark');},reducedMotion:true}));
+  const margin=html.match(/<span class="reader-current-chapter">([\s\S]*?)<\/strong><\/span>/)?.[1];assert.ok(margin?.includes(chapter.title));
+  for(const target of ['reader-principles-page','reader-notes-page']){assert.ok(html.includes(`id="${target}"`));assert.ok(html.includes(`aria-controls="${target}"`));}
+  assert.ok(html.includes('aria-label="本章阅读分区"'));assert.ok(html.includes('aria-label="本章阅读札记"'),'desktop note tabs remain available');
+ }
 });
