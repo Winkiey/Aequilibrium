@@ -128,8 +128,10 @@ test('a stalled decoder times out too; its late result cannot start speech or en
 test('receiver routing narrows speech gently and folds it to mono without bypassing the voice volume',async()=>{
  const r=rig();await r.session.unlock();const ctx=r.contexts[0],source=ctx.createBufferSource(),output=ctx.createGain();
  const cleanup=connectVoiceTreatment(ctx,source,output,'telephone'),[high,low]=ctx.filters;
- assert.equal(ctx.filters.length,2);assert.equal(high.type,'highpass');assert.equal(high.frequency.value,300);assert.equal(high.Q.value,.55);
- assert.equal(low.type,'lowpass');assert.equal(low.frequency.value,3500);assert.equal(low.Q.value,.55);
+ assert.equal(ctx.filters.length,2);assert.equal(high.type,'highpass');assert.equal(high.frequency.value,300);
+ assert.equal(low.type,'lowpass');assert.equal(low.frequency.value,3500);
+ // Per Web Audio, low/highpass resonance is in dB, unlike the linear-Q preview.
+ for(const filter of [high,low])assert.ok(Math.abs(10**(filter.Q.value/20)-.55)<1e-7,'runtime response must match the approved preview, without a resonant peak');
  assert.equal(high.channelCount,1);assert.equal(high.channelCountMode,'explicit');
  assert.deepEqual(source.connections,[high]);assert.deepEqual(high.connections,[low]);assert.deepEqual(low.connections,[output]);
  cleanup();cleanup();assert.deepEqual(high.connections,[]);assert.deepEqual(low.connections,[]);await r.session.dispose();

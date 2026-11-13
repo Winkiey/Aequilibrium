@@ -14,11 +14,13 @@ export function connectVoiceTreatment(ctx:BaseAudioContext,source:AudioNode,outp
  const filters:BiquadFilterNode[]=[];
  const disconnect=()=>{for(const filter of filters)filter.disconnect();};
  try{
+  // Web Audio low/highpass Q is in dB; the approved preview uses linear Q=.55.
+  const receiverQDb=20*Math.log10(.55);
   const high=ctx.createBiquadFilter();filters.push(high);
-  high.type='highpass';high.frequency.value=300;high.Q.value=.55;
+  high.type='highpass';high.frequency.value=300;high.Q.value=receiverQDb;
   high.channelCount=1;high.channelCountMode='explicit';
   const low=ctx.createBiquadFilter();filters.push(low);
-  low.type='lowpass';low.frequency.value=3500;low.Q.value=.55;
+  low.type='lowpass';low.frequency.value=3500;low.Q.value=receiverQDb;
   source.connect(high);high.connect(low);low.connect(output);
   return disconnect;
  }catch(error){disconnect();throw error;}
