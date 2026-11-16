@@ -2,18 +2,22 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash,webcrypto} from 'node:crypto';
 import {prepareOffline,validOfflineManifest,hasOfflinePack} from '../.sites-runtime/test-modules/offline.mjs';
-import {fetchOfflineBytes} from '../.sites-runtime/test-modules/offline-transfer.mjs';
+import {fetchOfflineBytes,offlineConcurrency} from '../.sites-runtime/test-modules/offline-transfer.mjs';
+import {prepareFilm,hasFilmPack} from '../.sites-runtime/test-modules/film-pack.mjs';
+import{FilmPackCard}from'../.sites-runtime/test-modules/OfflinePack.mjs';
+import React from'react';
+import{renderToStaticMarkup}from'react-dom/server';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 function setup(t,{bundle=true,count=12}={}){
  const bodies=new Map(Array.from({length:count},(_,i)=>[`/art/runtime/scene-${i}.webp`,Buffer.from(('image-'+i+'-').repeat(10))]));
  const files=[...bodies].map(([url,b])=>({url,bytes:b.length,sha256:hash(b),group:'media'})),version='6'.repeat(20),m={buildId:'7'.repeat(20),version,base:'/',totalBytes:files.reduce((n,f)=>n+f.bytes,0),shellCache:'aequilibrium:%2F:shell:'+version,mediaCache:'aequilibrium:%2F:media:'+version,completeMarker:'/__offline_complete__',files};
  const packed=Buffer.concat([...bodies.values()]);let offset=0;
  if(bundle){m.bundles=[{url:'/offline/art-'+hash(packed).slice(0,20)+'.bin',sha256:hash(packed),bytes:packed.length,files:files.map(f=>{const r={url:f.url,offset};offset+=f.bytes;return r;})}];bodies.set(m.bundles[0].url,packed);}
- const stores=new Map(),fetches=[];let active=0,peak=0,mode='normal';
- const caches={async keys(){return [...stores.keys()];},async open(name){if(!stores.has(name))stores.set(name,new Map());const data=stores.get(name);return{async match(url){return data.get(url)?.clone();},async put(url,response){data.set(url,response.clone());},async delete(url){return data.delete(url);},async keys(){return[...data.keys()].map(url=>new Request('https://test.invalid'+url));}};}};
+ const stores=new Map(),fetches=[],puts=[];let active=0,peak=0,mode='normal';
+ const caches={async keys(){return [...stores.keys()];},async open(name){if(!stores.has(name))stores.set(name,new Map());const data=stores.get(name);return{async match(url){return data.get(url)?.clone();},async put(url,response){puts.push({cache:name,url});data.set(url,response.clone());},async delete(url){return data.delete(url);},async keys(){return[...data.keys()].map(url=>new Request('https://test.invalid'+url));}};}};
  const fetch=async(url,init)=>{fetches.push(url);active++;peak=Math.max(peak,active);await new Promise(r=>setTimeout(r,mode==='slow'?100:3));active--;if(mode==='bad-bundle'&&url.endsWith('.bin'))return new Response(Buffer.alloc(packed.length));if(mode==='bad-everything')return new Response(Buffer.alloc(bodies.get(url).length));init.signal.throwIfAborted();return new Response(bodies.get(url));};
  for(const [key,value]of Object.entries({window:{caches},caches,crypto:webcrypto,navigator:{storage:{persist:async()=>false}},fetch})){const d=Object.getOwnPropertyDescriptor(globalThis,key);Object.defineProperty(globalThis,key,{configurable:true,value});t.after(()=>d?Object.defineProperty(globalThis,key,d):delete globalThis[key]);}
- return{m,bodies,stores,fetches,caches,setMode:v=>mode=v,peak:()=>peak};
+ return{m,bodies,stores,fetches,puts,caches,setMode:v=>mode=v,peak:()=>peak};
 }
 test('new artwork blocks save individually verified resources with one network request',async t=>{
  const f=setup(t),progress=[];assert.ok(validOfflineManifest(f.m));await prepareOffline(f.m,new AbortController().signal,p=>progress.push(p));assert.deepEqual(f.fetches,[f.m.bundles[0].url]);assert.equal(progress.at(-1).completed,12);assert.equal(progress.at(-1).bytes,f.m.totalBytes);assert.ok(await hasOfflinePack(f.m));
@@ -41,4 +45,41 @@ test('entry installation failure aborts preparation without writing a complete m
 });
 test('stream progress advances inside a file and transient failures retry automatically',async t=>{
  setup(t,{bundle:false,count:1});let requests=0;Object.defineProperty(globalThis,'fetch',{configurable:true,value:async()=>{requests++;if(requests===1)return new Response('busy',{status:503});return new Response(new ReadableStream({start(c){c.enqueue(new Uint8Array([1,2]));setTimeout(()=>{c.enqueue(new Uint8Array([3,4]));c.close();},10);}}));}});const values=[];const body=await fetchOfflineBytes('/stream.bin',4,new AbortController().signal,n=>values.push(n));assert.deepEqual([...body],[1,2,3,4]);assert.equal(requests,2);assert.ok(values.includes(2)&&values.includes(4));
+});
+test('checking a complete version hashes existing files without rewriting their data',async t=>{
+ const f=setup(t);await prepareOffline(f.m,new AbortController().signal,()=>{});f.puts.length=0;f.fetches.length=0;
+ await prepareOffline(f.m,new AbortController().signal,()=>{});assert.equal(f.fetches.length,0);assert.deepEqual(f.puts.map(p=>p.url),[f.m.completeMarker]);assert.equal(await hasOfflinePack(f.m),true);
+ const file=f.m.files[0];f.stores.get(f.m.mediaCache).set(file.url,new Response(f.bodies.get(file.url),{headers:{'Content-Type':'text/plain'}}));f.puts.length=0;await prepareOffline(f.m,new AbortController().signal,()=>{});assert.deepEqual(f.puts.filter(p=>p.url!==f.m.completeMarker).map(p=>p.url),[file.url]);assert.equal(f.fetches.length,0);assert.equal(f.stores.get(f.m.mediaCache).get(file.url).headers.get('Content-Type'),'image/webp');
+});
+test('phones use two concurrent transfers and keep progress cancellable',async t=>{
+ const f=setup(t,{bundle:false,count:12});Object.defineProperty(globalThis,'navigator',{configurable:true,value:{userAgent:'Mozilla/5.0 (iPhone)',storage:{persist:async()=>false}}});assert.equal(offlineConcurrency(),2);
+ await prepareOffline(f.m,new AbortController().signal,()=>{});assert.ok(f.peak()<=2);assert.equal(await hasOfflinePack(f.m),true);
+});
+function addFilm(f){
+ const files=['/video/opening.123.mp4','/video/opening.123.webp'].map((url,i)=>{const body=Buffer.from(('film-'+i).repeat(100));f.bodies.set(url,body);return{url,bytes:body.length,sha256:hash(body),group:'media'};});
+ f.m.film={version:'a'.repeat(20),cache:'aequilibrium:%2F:film-v1',marker:'/__film_complete__',files,totalBytes:files.reduce((n,x)=>n+x.bytes,0)};return f.m.film;
+}
+test('base preparation never requests optional 2K film and can complete without it',async t=>{
+ const f=setup(t);addFilm(f);assert.ok(validOfflineManifest(f.m));await prepareOffline(f.m,new AbortController().signal,()=>{});assert.ok(await hasOfflinePack(f.m));assert.equal(await hasFilmPack(f.m),false);assert.ok(f.fetches.every(url=>!url.includes('/video/')));
+ const html=renderToStaticMarkup(React.createElement(FilmPackCard,{pack:f.m.film,phase:'available',progress:null,error:'',disabled:false,onDownload(){},onPause(){}}));assert.match(html,/2K原画/);assert.match(html,/更新与继续游戏不必等它/);assert.match(html,/保存片头/);
+});
+test('optional film reuses old full-quality bytes, repairs corruption and survives base-only updates',async t=>{
+ const f=setup(t);const pack=addFilm(f),old=await f.caches.open('aequilibrium:%2F:media:older');for(const file of pack.files)await old.put(file.url,new Response(f.bodies.get(file.url)));
+ await prepareFilm(f.m,new AbortController().signal,()=>{});assert.equal(f.fetches.length,0);assert.ok(await hasFilmPack(f.m));
+ for(const file of pack.files){const response=f.stores.get(pack.cache).get(file.url);assert.equal(response.headers.get('content-type'),file.url.endsWith('.mp4')?'video/mp4':'image/webp');assert.equal(hash(Buffer.from(await response.clone().arrayBuffer())),file.sha256);}
+ f.puts.length=0;const newer=structuredClone(f.m);newer.version='b'.repeat(20);newer.mediaCache='aequilibrium:%2F:media:'+newer.version;newer.shellCache='aequilibrium:%2F:shell:'+newer.version;await prepareFilm(newer,new AbortController().signal,()=>{});assert.deepEqual(f.puts.map(p=>p.url),[pack.marker]);
+ const broken=pack.files[0];f.stores.get(pack.cache).set(broken.url,new Response('broken'));f.stores.get('aequilibrium:%2F:media:older').delete(broken.url);await prepareFilm(newer,new AbortController().signal,()=>{});assert.deepEqual(f.fetches,[broken.url]);
+});
+test('pausing optional film keeps complete files and does not create a completion marker',async t=>{
+ const f=setup(t);const pack=addFilm(f),signal=new AbortController();await assert.rejects(prepareFilm(f.m,signal.signal,p=>{if(p.completed===1)signal.abort();}),/abort/i);assert.equal(await hasFilmPack(f.m),false);assert.equal(f.stores.get(pack.cache).size,1);
+ f.fetches.length=0;await prepareFilm(f.m,new AbortController().signal,()=>{});assert.equal(f.fetches.length,1);assert.ok(await hasFilmPack(f.m));
+});
+test('optional film metadata rejects foreign caches, unsafe URLs and mismatched totals',t=>{
+ const f=setup(t);addFilm(f);for(const change of [p=>p.cache='foreign',p=>p.marker='/foreign',p=>p.files[0].url='/video/../secret.mp4',p=>p.totalBytes++,p=>p.files.push(p.files[0])]){const m=structuredClone(f.m);change(m.film);assert.equal(validOfflineManifest(m),false);}
+ const onlyPoster=structuredClone(f.m);onlyPoster.film.files=onlyPoster.film.files.filter(f=>f.url.endsWith('.webp'));onlyPoster.film.totalBytes=onlyPoster.film.files[0].bytes;assert.equal(validOfflineManifest(onlyPoster),false);
+});
+test('bounded streamed allocation rejects short and oversized bodies rather than caching zero padding',async t=>{
+ setup(t,{bundle:false,count:1});for(const data of [new Uint8Array([1,2,3]),new Uint8Array([1,2,3,4,5])]){
+  let requests=0;Object.defineProperty(globalThis,'fetch',{configurable:true,value:async()=>{requests++;return new Response(data);}});await assert.rejects(fetchOfflineBytes('/size.bin',4,new AbortController().signal,()=>{}),/完整|大小/);assert.equal(requests,2);
+ }
 });

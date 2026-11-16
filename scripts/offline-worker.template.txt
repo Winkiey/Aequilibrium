@@ -2,27 +2,31 @@
 'use strict';
 const OFFLINE = /*__OFFLINE_MANIFEST__*/;
 const ORIGIN = self.location.origin;
-const ENTRY_BY_PATH = new Map([...OFFLINE.files,...(OFFLINE.voice?.files??[]).map(file=>({...file,voice:true}))].map(file=>[file.url,file]));
+const ENTRY_BY_PATH = new Map([...OFFLINE.files,...(OFFLINE.voice?.files??[]).map(file=>({...file,voice:true})),...(OFFLINE.film?.files??[]).map(file=>({...file,film:true}))].map(file=>[file.url,file]));
 const absolute = path => new URL(path,ORIGIN).href;
 const toHex = value => [...new Uint8Array(value)].map(n=>n.toString(16).padStart(2,'0')).join('');
+const contentType = url => ({mp4:'video/mp4',webp:'image/webp',mp3:'audio/mpeg',js:'text/javascript',css:'text/css',html:'text/html; charset=utf-8',woff2:'font/woff2',svg:'image/svg+xml',txt:'text/plain; charset=utf-8',webmanifest:'application/manifest+json'}[url.slice(url.lastIndexOf('.')+1)]??'application/octet-stream');
 
 async function validateResponse(response,entry){
  if(response.status!==200||response.type==='opaque')throw new Error('Offline download did not return a complete response');
  const buffer=await response.arrayBuffer();
  if(buffer.byteLength!==entry.bytes||toHex(await crypto.subtle.digest('SHA-256',buffer))!==entry.sha256)throw new Error('Offline resource failed integrity check');
  // fetch() exposes a decoded body; never retain transfer encoding or compressed size.
- const headers=new Headers(response.headers);headers.delete('Content-Encoding');headers.delete('Transfer-Encoding');headers.set('Content-Length',String(buffer.byteLength));
+ const headers=new Headers(response.headers);headers.delete('Content-Encoding');headers.delete('Transfer-Encoding');headers.set('Content-Length',String(buffer.byteLength));headers.set('Content-Type',contentType(entry.url));
  return new Response(buffer,{status:200,headers});
 }
 
 async function installShell(){
  const cache=await caches.open(OFFLINE.shellCache);
+ const prefix=OFFLINE.shellCache.slice(0,OFFLINE.shellCache.lastIndexOf('shell:'));
+ const prior=await Promise.all((await caches.keys()).filter(name=>name.startsWith(prefix+'shell:')&&name!==OFFLINE.shellCache).reverse().map(name=>caches.open(name)));
  const entries=OFFLINE.files.filter(file=>file.group==='shell');let next=0;
  async function worker(){while(next<entries.length){const entry=entries[next++];
   const url=absolute(entry.url),existing=await cache.match(url);
-  if(existing){try{await validateResponse(existing.clone(),entry);continue;}catch{/* Repair only this incomplete version's entry. */}}
-  const response=await fetch(new Request(url,{cache:'reload',credentials:'same-origin'}));
-  await cache.put(url,await validateResponse(response,entry));
+  if(existing){try{await validateResponse(existing,entry);continue;}catch{/* Repair only this incomplete version's entry. */}}
+  let reused=false;
+  for(const older of prior){const saved=await older.match(url);if(!saved)continue;let checked;try{checked=await validateResponse(saved,entry);}catch{continue;}await cache.put(url,checked);reused=true;break;}
+  if(!reused){const response=await fetch(new Request(url,{cache:'reload',credentials:'same-origin'}));await cache.put(url,await validateResponse(response,entry));}
  }}
  await Promise.all(Array.from({length:Math.min(4,entries.length)},worker));
 }
@@ -72,16 +76,33 @@ function parseRange(value,size){
  else{start=Number(match[1]);end=match[2]?Number(match[2]):size-1;if(!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start>=size||end<start)return null;end=Math.min(size-1,end);}
  return{start,end};
 }
-async function rangedResponse(response,request){
- const body=await response.arrayBuffer(),range=parseRange(request.headers.get('Range'),body.byteLength);
+async function rangedResponse(response,request,size){
+ const range=parseRange(request.headers.get('Range'),size);
  const headers=new Headers(response.headers);headers.delete('Content-Encoding');headers.delete('Transfer-Encoding');headers.set('Accept-Ranges','bytes');
- if(!range){headers.set('Content-Range',`bytes */${body.byteLength}`);headers.set('Content-Length','0');return new Response(null,{status:416,headers});}
- const {start,end}=range;headers.set('Content-Range',`bytes ${start}-${end}/${body.byteLength}`);headers.set('Content-Length',String(end-start+1));
- return new Response(request.method==='HEAD'?null:body.slice(start,end+1),{status:206,headers});
+ if(!range){headers.set('Content-Range',`bytes */${size}`);headers.set('Content-Length','0');return new Response(null,{status:416,headers});}
+ const {start,end}=range;headers.set('Content-Range',`bytes ${start}-${end}/${size}`);headers.set('Content-Length',String(end-start+1));
+ if(request.method==='HEAD')return new Response(null,{status:206,headers});
+ // Blob slicing avoids copying the complete movie into a JS ArrayBuffer for
+ // each mobile range probe. HEAD and invalid ranges never read the body.
+ const body=await response.blob();if(body.size!==size)return new Response(null,{status:503});
+ return new Response(body.slice(start,end+1),{status:206,headers});
 }
 function headOnly(response){return new Response(null,{status:response.status,statusText:response.statusText,headers:response.headers});}
 async function cached(entry){
  if(entry.voice){const response=await(await caches.open(OFFLINE.voice.cache)).match(absolute(entry.url));if(response?.status===200)return response;}
+ if(entry.film){
+  const film=await caches.open(OFFLINE.film.cache),saved=await film.match(absolute(entry.url));if(saved?.status===200)return saved;
+  const prefix=OFFLINE.mediaCache.slice(0,OFFLINE.mediaCache.lastIndexOf('media:'))+'media:';
+  for(const name of (await caches.keys()).filter(name=>name.startsWith(prefix)).reverse()){
+   const older=await caches.open(name),old=await older.match(absolute(entry.url));if(!old)continue;
+   let checked;try{checked=await validateResponse(old,entry);}catch{continue;}
+   try{await film.put(absolute(entry.url),checked);return await film.match(absolute(entry.url));}
+   catch{/* A full device can still play the verified old copy without another download. */
+    const kept=await older.match(absolute(entry.url));if(kept){const headers=new Headers(kept.headers);headers.set('Content-Type',contentType(entry.url));return new Response(kept.body,{status:200,headers});}
+   }
+  }
+  return;
+ }
  const cache=await caches.open(entry.group==='shell'?OFFLINE.shellCache:OFFLINE.mediaCache);
  const response=await cache.match(absolute(entry.url));return response?.status===200?response:undefined;
 }
@@ -98,7 +119,7 @@ async function respond(request,url){
  const entry=ENTRY_BY_PATH.get(nav??url.pathname);
  if(entry){
   const response=await cached(entry);
-  if(response){if(request.headers.has('Range'))return rangedResponse(response,request);return request.method==='HEAD'?headOnly(response):response;}
+  if(response){if(request.headers.has('Range'))return rangedResponse(response,request,entry.bytes);return request.method==='HEAD'?headOnly(response):response;}
  }
  try{return await fetch(request);}catch{
   // Missing media/scripts must not receive the app HTML masquerading as success.

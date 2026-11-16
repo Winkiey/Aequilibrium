@@ -1,0 +1,63 @@
+{
+  "kind": "controlled Node integration using two actual production builds; not browser/phone testing",
+  "baseline_version": "bceb867ff2004c88b7fb",
+  "new_version": "70bdd24f3e7a6559f4c0",
+  "baselineCold": {
+    "network_requests": 34,
+    "uncompressed_network_bytes": 22787115,
+    "data_cache_writes": 151,
+    "data_cache_write_bytes": 24240299,
+    "film_requests": 1
+  },
+  "newCold": {
+    "network_requests": 33,
+    "uncompressed_network_bytes": 8899912,
+    "data_cache_writes": 124,
+    "data_cache_write_bytes": 8899912,
+    "film_requests": 0
+  },
+  "baselineRepair": {
+    "network_requests": 0,
+    "uncompressed_network_bytes": 0,
+    "data_cache_writes": 126,
+    "data_cache_write_bytes": 22787115,
+    "film_requests": 0
+  },
+  "newRepair": {
+    "network_requests": 0,
+    "uncompressed_network_bytes": 0,
+    "data_cache_writes": 0,
+    "data_cache_write_bytes": 0,
+    "film_requests": 0
+  },
+  "warmUpgrade": {
+    "network_requests": 18,
+    "uncompressed_network_bytes": 902663,
+    "data_cache_writes": 124,
+    "data_cache_write_bytes": 8899912,
+    "film_requests": 0
+  },
+  "mandatory_before": 22787115,
+  "mandatory_after": 8899912,
+  "optional_film_bytes": 13894371,
+  "film_sha256": "d562332a46c3bffb90a90561385e0362133875633280f388a3c50a367164198f",
+  "byte_reduction_fraction": 0.6094322602927137,
+  "pause_resume": true,
+  "backup_preserved": true,
+  "reading_cursor_preserved": true,
+  "independent_playtest_preserved": true,
+  "collection_preserved": true,
+  "multi_window_guard": true,
+  "no_early_activation": true,
+  "old_caches_preserved": true,
+  "offline_shell": true,
+  "offline_film_range_206": true,
+  "old_film_migration_no_network": true,
+  "tests": 441,
+  "tests_passed": 441,
+  "typecheck": "passed",
+  "builds": [
+    "Pages",
+    "Worker"
+  ]
+}

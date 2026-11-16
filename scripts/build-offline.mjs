@@ -52,10 +52,11 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
   if(!match)throw new Error('Film asset registry format was not recognised');
   registeredOpening=JSON.parse(match[1]).opening;
  }catch(error){if(error.code!=='ENOENT')throw error;}
+ const optionalFilms=[];
  const videos=registeredOpening?[registeredOpening.src]:[...opening.matchAll(/publicPath\(\s*['"](\/video\/[^'"]+\.mp4)['"]\s*\)/g)].map(m=>m[1]);
  if(videos.length===0)throw new Error('Opening film path must be explicitly listed for offline playback');
- for(const video of videos){if(typeof video!=='string'||!/^\/video\/(?!.*\.\.)[\w./-]+\.mp4$/.test(video))throw new Error('Unsafe film asset path');add(video,'media');}
- if(registeredOpening?.poster){if(!/^\/video\/(?!.*\.\.)[\w./-]+\.webp$/.test(registeredOpening.poster))throw new Error('Unsafe film poster path');add(registeredOpening.poster,'media');}
+ for(const video of videos){if(typeof video!=='string'||!/^\/video\/(?!.*\.\.)[\w./-]+\.mp4$/.test(video))throw new Error('Unsafe film asset path');if(registeredOpening)optionalFilms.push(video);else add(video,'media');}
+ if(registeredOpening?.poster){if(!/^\/video\/(?!.*\.\.)[\w./-]+\.webp$/.test(registeredOpening.poster))throw new Error('Unsafe film poster path');optionalFilms.push(registeredOpening.poster);}
  // Spoken clips are content-addressed. Only the short opening belongs to the
  // base package; the complete cast can be saved independently and reused later.
  let clips=[];
@@ -92,9 +93,15 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
   const body=await readFile(actual);if(!path.endsWith('.'+digest(body).slice(0,12)+'.mp3'))throw new Error('Voice filename hash mismatch');
   voiceFiles.push({url:base+resourcePath(path),bytes:body.byteLength,sha256:digest(body),group:'media'});
  }
+ const filmFiles=[];
+ for(const path of optionalFilms.sort()){
+  const actual=await realpath(resolve(output,resourcePath(path)));if(!inside(output,actual)||!(await stat(actual)).isFile())throw new Error('Film resource escaped deployment directory');
+  const body=await readFile(actual);filmFiles.push({url:base+resourcePath(path),bytes:body.byteLength,sha256:digest(body),group:'media'});
+ }
  const cachePrefix=`aequilibrium:${encodeURIComponent(base)}:`;
  const voice=voiceFiles.length?{version:digest(JSON.stringify(voiceFiles)).slice(0,20),cache:cachePrefix+'voice-v1',marker:base+'__voice_complete__',totalBytes:voiceFiles.reduce((n,f)=>n+f.bytes,0),files:voiceFiles}:undefined;
- const buildId=digest(JSON.stringify({base,files,...(voice?{voice}:{}),worker:digest(template)})).slice(0,20);
+ const film=filmFiles.length?{version:digest(JSON.stringify(filmFiles)).slice(0,20),cache:cachePrefix+'film-v1',marker:base+'__film_complete__',totalBytes:filmFiles.reduce((n,f)=>n+f.bytes,0),files:filmFiles}:undefined;
+ const buildId=digest(JSON.stringify({base,files,...(voice?{voice}:{}),...(film?{film}:{}),worker:digest(template)})).slice(0,20);
  for(const page of pagePaths){
   const path=resolve(output,page),html=await readFile(path,'utf8'),meta=`<meta name="aequilibrium-build" content="${buildId}">`;
   const updated=html.includes('</head>')?html.replace('</head>',meta+'</head>'):html+meta;
@@ -107,8 +114,8 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
  let members=[],size=0;
  async function flush(){if(!members.length)return;const data=Buffer.concat(await Promise.all(members.map(f=>readFile(resolve(output,f.url.slice(base.length))))));const hash=digest(data),url=base+'offline/art-'+hash.slice(0,20)+'.bin';let offset=0;const entries=members.map(f=>{const entry={url:f.url,offset};offset+=f.bytes;return entry;});await writeFile(resolve(output,url.slice(base.length)),data);bundles.push({url,bytes:data.byteLength,sha256:hash,files:entries});members=[];size=0;}
  for(const file of files.filter(f=>f.group==='media'&&f.url.endsWith('.webp'))){if(size&&size+file.bytes>2*1024*1024)await flush();members.push(file);size+=file.bytes;}await flush();
- const version=digest(JSON.stringify({base,buildId,files,bundles,...(voice?{voice}:{}),worker:digest(template)})).slice(0,20);
- const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files,bundles,...(voice?{voice}:{})};
+ const version=digest(JSON.stringify({base,buildId,files,bundles,...(voice?{voice}:{}),...(film?{film}:{}),worker:digest(template)})).slice(0,20);
+ const result={buildId,version,base,totalBytes:files.reduce((sum,f)=>sum+f.bytes,0),cachePrefix,shellCache:cachePrefix+'shell:'+version,mediaCache:cachePrefix+'media:'+version,completeMarker:base+'__offline_complete__',files,bundles,...(voice?{voice}:{}),...(film?{film}:{})};
  await writeFile(resolve(output,'offline-manifest.json'),JSON.stringify(result,null,2)+'\n');
  // Deliberately absent from files: an old cached manifest cannot hide this release.
  await writeFile(resolve(output,'release.json'),JSON.stringify(result,null,2)+'\n');

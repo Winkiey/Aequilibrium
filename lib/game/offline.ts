@@ -1,9 +1,10 @@
 import {publicPath} from './public-path';
-import {fetchOfflineBytes,offlineHash} from './offline-transfer';
+import {fetchOfflineBytes,offlineHash,offlineConcurrency,offlineYield,offlineMime} from './offline-transfer';
 export type OfflineFile={url:string;bytes:number;sha256:string;group:'shell'|'media'};
 export type OfflineBundle={url:string;bytes:number;sha256:string;files:{url:string;offset:number}[]};
-export type VoicePack={version:string;cache:string;marker:string;totalBytes:number;files:OfflineFile[]};
-export type OfflineManifest={buildId?:string;version:string;base:string;totalBytes:number;shellCache:string;mediaCache:string;completeMarker:string;files:OfflineFile[];bundles?:OfflineBundle[];voice?:VoicePack};
+export type OptionalMediaPack={version:string;cache:string;marker:string;totalBytes:number;files:OfflineFile[]};
+export type VoicePack=OptionalMediaPack;
+export type OfflineManifest={buildId?:string;version:string;base:string;totalBytes:number;shellCache:string;mediaCache:string;completeMarker:string;files:OfflineFile[];bundles?:OfflineBundle[];voice?:VoicePack;film?:OptionalMediaPack};
 export type DownloadProgress={completed:number;total:number;bytes:number;totalBytes:number;current:string;reused?:number;downloaded?:number};
 export function validOfflineManifest(value:unknown):value is OfflineManifest{
  if(!value||typeof value!=='object')return false;const m=value as OfflineManifest;
@@ -11,6 +12,8 @@ export function validOfflineManifest(value:unknown):value is OfflineManifest{
  const valid=(m.buildId===undefined||/^[a-f0-9]{20}$/.test(m.buildId))&&m.base===base&&/^[a-f0-9]{20}$/.test(m.version)&&m.shellCache===prefix+'shell:'+m.version&&m.mediaCache===prefix+'media:'+m.version&&m.completeMarker===base+'__offline_complete__'&&Array.isArray(m.files)&&m.files.length>0&&m.files.every(f=>f&&typeof f.url==='string'&&f.url.startsWith(base)&&!/[?#\\]/.test(f.url)&&!f.url.split('/').includes('..')&&!f.url.includes('%')&&Number.isSafeInteger(f.bytes)&&f.bytes>0&&/^[a-f0-9]{64}$/.test(f.sha256)&&['shell','media'].includes(f.group))&&m.totalBytes===m.files.reduce((n,f)=>n+f.bytes,0)&&new Set(m.files.map(f=>f.url)).size===m.files.length;
  if(!valid)return false;
  if(m.voice!==undefined){const v=m.voice;if(!v||!/^[a-f0-9]{20}$/.test(v.version)||v.cache!==prefix+'voice-v1'||v.marker!==base+'__voice_complete__'||!Array.isArray(v.files)||!v.files.length||!v.files.every(f=>f&&f.group==='media'&&typeof f.url==='string'&&f.url.startsWith(base+'audio/dialogue/')&&/^[a-z]+\.[a-f0-9]{12}\.[a-f0-9]{12}\.mp3$/.test(f.url.slice((base+'audio/dialogue/').length))&&Number.isSafeInteger(f.bytes)&&f.bytes>0&&/^[a-f0-9]{64}$/.test(f.sha256))||new Set(v.files.map(f=>f.url)).size!==v.files.length||v.totalBytes!==v.files.reduce((n,f)=>n+f.bytes,0))return false;for(const f of v.files){const core=m.files.find(c=>c.url===f.url);if(core&&(core.sha256!==f.sha256||core.bytes!==f.bytes))return false;}}
+ if(m.film!==undefined){const f=m.film;if(!f||!/^[a-f0-9]{20}$/.test(f.version)||f.cache!==prefix+'film-v1'||f.marker!==base+'__film_complete__'||!Array.isArray(f.files)||!f.files.length||!f.files.every(e=>e&&e.group==='media'&&typeof e.url==='string'&&e.url.startsWith(base+'video/')&&/^[\w.-]+\.(mp4|webp)$/.test(e.url.slice((base+'video/').length))&&!e.url.includes('..')&&Number.isSafeInteger(e.bytes)&&e.bytes>0&&/^[a-f0-9]{64}$/.test(e.sha256))||new Set(f.files.map(e=>e.url)).size!==f.files.length||f.totalBytes!==f.files.reduce((n,e)=>n+e.bytes,0))return false;for(const e of f.files){const core=m.files.find(c=>c.url===e.url);if(core&&(core.sha256!==e.sha256||core.bytes!==e.bytes))return false;}}
+ if(m.film&&!m.film.files.some(f=>f.url.endsWith('.mp4')))return false;
  if(m.bundles===undefined)return true;
  if(!Array.isArray(m.bundles)||m.bundles.length>m.files.length)return false;
  const files=new Map(m.files.map(f=>[f.url,f])),seen=new Set<string>(),urls=new Set<string>();
@@ -43,7 +46,7 @@ async function verified(response:Response|undefined,file:OfflineFile){
  const bytes=await response.arrayBuffer();if(bytes.byteLength!==file.bytes)return null;
  const hash=await offlineHash(new Uint8Array(bytes));
  if(hash!==file.sha256)return null;
- const headers=new Headers(response.headers);headers.delete('content-encoding');headers.delete('transfer-encoding');headers.set('content-length',String(bytes.byteLength));
+ const headers=new Headers(response.headers);headers.delete('content-encoding');headers.delete('transfer-encoding');headers.set('content-length',String(bytes.byteLength));headers.set('content-type',offlineMime(file.url));
  return new Response(bytes,{status:200,headers});
 }
 export async function prepareOffline(manifest:OfflineManifest,signal:AbortSignal,onProgress:(p:DownloadProgress)=>void,options:{shellReady?:Promise<unknown>}={}){
@@ -55,17 +58,17 @@ export async function prepareOffline(manifest:OfflineManifest,signal:AbortSignal
  // A stale complete marker cannot survive an interrupted repair.
  await media.delete(manifest.completeMarker);
  const namespace=`aequilibrium:${encodeURIComponent(manifest.base)}:`;
- const names=(await caches.keys()).filter(name=>name.startsWith(namespace)&&name!==manifest.shellCache&&name!==manifest.mediaCache).reverse();
+ const names=(await caches.keys()).filter(name=>(name.startsWith(namespace+'shell:')||name.startsWith(namespace+'media:'))&&name!==manifest.shellCache&&name!==manifest.mediaCache).reverse();
  const oldCaches=await Promise.all(names.map(async name=>{const cache=await caches.open(name);const urls=typeof cache.keys==='function'?new Set((await cache.keys()).map(r=>new URL(r.url).pathname)):null;return{name,cache,urls};}));
  let completed=0,bytes=0,reused=0,downloaded=0,lastReport=0;const total=manifest.files.length,inFlight=new Map<string,number>(),missing:OfflineFile[]=[];
  function report(current:string,force=false){if(!force&&Date.now()-lastReport<80&&completed!==total)return;lastReport=Date.now();onProgress({completed,total,bytes:Math.min(manifest.totalBytes,bytes+[...inFlight.values()].reduce((n,b)=>n+b,0)),totalBytes:manifest.totalBytes,current,reused,downloaded});}
- async function keep(file:OfflineFile,result:Response,wasReused:boolean){activeSignal.throwIfAborted();await(file.group==='shell'?shell:media).put(file.url,result);if(wasReused)reused++;else downloaded++;completed++;bytes+=file.bytes;}
- async function scan(file:OfflineFile){activeSignal.throwIfAborted();const cache=file.group==='shell'?shell:media;let result=await verified(await cache.match(file.url),file);
+ async function keep(file:OfflineFile,result:Response,wasReused:boolean,alreadyHere=false){activeSignal.throwIfAborted();if(!alreadyHere)await(file.group==='shell'?shell:media).put(file.url,result);if(wasReused)reused++;else downloaded++;completed++;bytes+=file.bytes;if(completed%4===0)await offlineYield(activeSignal);}
+ async function scan(file:OfflineFile){activeSignal.throwIfAborted();const cache=file.group==='shell'?shell:media,existing=await cache.match(file.url);let result=await verified(existing,file);const alreadyHere=!!result&&existing?.headers.get('content-type')===offlineMime(file.url);
   if(!result)for(const old of oldCaches.filter(c=>c.name.startsWith(namespace+file.group+':')&&(!c.urls||c.urls.has(file.url)))){activeSignal.throwIfAborted();result=await verified(await old.cache.match(file.url),file);if(result)break;}
-  if(result)await keep(file,result,true);else missing.push(file);report('核对本机已经保存的文件');
+  if(result)await keep(file,result,true,alreadyHere);else missing.push(file);report('核对本机已经保存的文件');
  }
  report('检查本机已有资源',true);
- let cursor=0;await Promise.all(Array.from({length:4},async()=>{while(cursor<total)await scan(manifest.files[cursor++]);}));
+ const concurrency=offlineConcurrency();let cursor=0;await Promise.all(Array.from({length:concurrency},async()=>{while(cursor<total)await scan(manifest.files[cursor++]);}));
  const remaining=new Map(missing.map(f=>[f.url,f])),bundled=new Set<string>(),jobs:(()=>Promise<void>)[]=[];
  async function one(file:OfflineFile){if(file.group==='shell')await gate;activeSignal.throwIfAborted();const label=file.url.endsWith('.mp3')?'下载人物对白':file.url.endsWith('.mp4')?'下载入场片头':file.group==='media'?'下载人物与场景':'准备游戏入口';
   let result:Response|null=null;for(let attempt=0;attempt<2&&!result;attempt++){const data=await fetchOfflineBytes(file.url,file.bytes,activeSignal,n=>{inFlight.set(file.url,n);report(label);});result=await verified(new Response(data as Uint8Array<ArrayBuffer>),file);}
@@ -85,8 +88,8 @@ export async function prepareOffline(manifest:OfflineManifest,signal:AbortSignal
   });
  }
  for(const file of missing.filter(f=>f.group==='media'&&!bundled.has(f.url)))jobs.push(()=>one(file));
- for(const file of missing.filter(f=>f.group==='shell'))jobs.push(async()=>{await gate;const stored=await verified(await shell.match(file.url),file);if(stored){await keep(file,stored,true);report('核对已备齐的入口');}else await one(file);});
- let next=0,failure:unknown;await Promise.allSettled(Array.from({length:4},async()=>{try{while(next<jobs.length){activeSignal.throwIfAborted();await jobs[next++]();}}catch(e){failure??=e;controller.abort(e);}}));
+ for(const file of missing.filter(f=>f.group==='shell'))jobs.push(async()=>{await gate;const existing=await shell.match(file.url),stored=await verified(existing,file);if(stored){await keep(file,stored,true,existing?.headers.get('content-type')===offlineMime(file.url));report('核对已备齐的入口');}else await one(file);});
+ let next=0,failure:unknown;await Promise.allSettled(Array.from({length:concurrency},async()=>{try{while(next<jobs.length){activeSignal.throwIfAborted();await jobs[next++]();}}catch(e){failure??=e;controller.abort(e);}}));
  if(failure)throw failure;await gate;activeSignal.throwIfAborted();
  await media.put(manifest.completeMarker,new Response(JSON.stringify({version:manifest.version,complete:true}),{headers:{'content-type':'application/json'}}));
  report('资源已全部核对并保存',true);

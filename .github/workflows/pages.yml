@@ -12,6 +12,8 @@ on:
       - 'package-lock.json'
       - 'vite.pages.config.ts'
       - 'scripts/build-pages.mjs'
+      - 'scripts/build-offline.mjs'
+      - 'scripts/offline-worker.template.txt'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 permissions:

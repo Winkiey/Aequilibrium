@@ -1,5 +1,5 @@
 import {validOfflineManifest,type OfflineManifest,type OfflineFile,type DownloadProgress} from './offline';
-import {fetchOfflineBytes,offlineHash} from './offline-transfer';
+import {fetchOfflineBytes,offlineHash,offlineConcurrency,offlineYield} from './offline-transfer';
 
 async function verified(response:Response|undefined,file:OfflineFile):Promise<Response|null>{
  if(!response||response.status!==200)return null;
@@ -22,13 +22,14 @@ export async function prepareVoices(manifest:OfflineManifest,signal:AbortSignal,
  const voice=manifest.voice,cache=await caches.open(voice.cache),core=await caches.open(manifest.mediaCache),own=new AbortController();
  const abort=()=>own.abort(signal.reason);signal.addEventListener('abort',abort,{once:true});if(signal.aborted)abort();
  let cursor=0,completed=0,bytes=0,reused=0,downloaded=0;const flying=new Map<string,number>();
- const report=(current:string)=>onProgress({completed,total:voice.files.length,bytes:Math.min(voice.totalBytes,bytes+[...flying.values()].reduce((n,v)=>n+v,0)),totalBytes:voice.totalBytes,current,reused,downloaded});
+ let lastReport=0,lastCompleted=-1;
+ const report=(current:string,force=false)=>{const checkpoint=completed!==lastCompleted&&(completed%4===0||completed===voice.files.length);if(!force&&!checkpoint&&Date.now()-lastReport<100)return;lastReport=Date.now();lastCompleted=completed;onProgress({completed,total:voice.files.length,bytes:Math.min(voice.totalBytes,bytes+[...flying.values()].reduce((n,v)=>n+v,0)),totalBytes:voice.totalBytes,current,reused,downloaded});};
  try{
   await cache.delete(voice.marker);report('核对已经保存的对白');
-  await Promise.all(Array.from({length:4},async()=>{
+  await Promise.all(Array.from({length:offlineConcurrency()},async()=>{
    while(cursor<voice.files.length){
     own.signal.throwIfAborted();const file=voice.files[cursor++];
-    let result=await verified(await cache.match(file.url),file)??await verified(await core.match(file.url),file),wasReused=!!result;
+    const existing=await cache.match(file.url);let result=await verified(existing,file);const here=!!result&&existing?.headers.get('content-type')==='audio/mpeg';result??=await verified(await core.match(file.url),file);const wasReused=!!result;
     if(!result){
      for(let attempt=0;attempt<2&&!result;attempt++){
       const data=await fetchOfflineBytes(file.url,file.bytes,own.signal,n=>{flying.set(file.url,n);report('收好人物对白');});
@@ -36,9 +37,9 @@ export async function prepareVoices(manifest:OfflineManifest,signal:AbortSignal,
      }
      if(!result)throw new Error('一段对白未通过校验，完成的语音仍保留，可以重试。');
     }
-    own.signal.throwIfAborted();await cache.put(file.url,result);flying.delete(file.url);completed++;bytes+=file.bytes;if(wasReused)reused++;else downloaded++;report('收好人物对白');
+    own.signal.throwIfAborted();if(!here)await cache.put(file.url,result);flying.delete(file.url);completed++;bytes+=file.bytes;if(wasReused)reused++;else downloaded++;report('收好人物对白');if(completed%4===0)await offlineYield(own.signal);
    }
   }));
-  own.signal.throwIfAborted();await cache.put(voice.marker,new Response(JSON.stringify({version:voice.version,complete:true}),{headers:{'Content-Type':'application/json'}}));report('人物对白已备齐');
+  own.signal.throwIfAborted();await cache.put(voice.marker,new Response(JSON.stringify({version:voice.version,complete:true}),{headers:{'Content-Type':'application/json'}}));report('人物对白已备齐',true);
  }catch(error){own.abort(error);throw error;}finally{signal.removeEventListener('abort',abort);}
 }

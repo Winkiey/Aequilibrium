@@ -27,12 +27,12 @@ async function fixture(t,registry){
  const manifest=await buildOffline(root);const sw=await readFile(join(root,'dist-pages/sw.js'),'utf8');
  return{root,manifest,sw};
 }
-async function worker(fixture,{broken,networkAvailable=true,windows=[],legacy=false}={}){
+async function worker(fixture,{broken,networkAvailable=true,windows=[],legacy=false,onBodyRead}={}){
  const handlers=new Map(),stores=new Map(),network=[],mutations=[],activation={skips:0,claims:0};
  const key=input=>new URL(typeof input==='string'?input:input.url,origin).href;
  const caches={
   async open(name){if(!stores.has(name))stores.set(name,new Map());const store=stores.get(name);return{
-   async match(input){return store.get(key(input))?.clone();},
+   async match(input){const response=store.get(key(input))?.clone();if(response&&onBodyRead)for(const method of ['arrayBuffer','blob']){const original=response[method].bind(response);response[method]=()=>{onBodyRead(key(input),method);return original();};}return response;},
    async put(input,response){assert.equal(response.status,200);await response.clone().arrayBuffer();store.set(key(input),response.clone());},
   };},
   async keys(){return[...stores.keys()];},async delete(name){mutations.push(name);throw new Error('Deleting cache is not authorised');},
@@ -75,15 +75,41 @@ test('offline build rejects external paths, encoded traversal and output travers
  const f=await fixture(t);await assert.rejects(buildOffline(f.root,{directory:'../escape'}),/Unsafe/);await assert.rejects(buildOffline(f.root,{base:'/Aequilibrium/../'}),/Invalid/);
 });
 
-test('registered voiced opening and poster replace the legacy video in the verified base pack',async t=>{
+test('registered voiced opening and poster have an optional verified pack without blocking the base',async t=>{
  const f=await fixture(t),src='/video/opening.hash.mp4',poster='/video/opening.hash.webp';
  await writeFile(join(f.root,'dist-pages',src),'new-voiced-film');await writeFile(join(f.root,'dist-pages',poster),'new-poster');
  await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS:Record<string,FilmMedia>=${JSON.stringify({opening:{src,poster}})};`);
- const manifest=await buildOffline(f.root);assert.ok(manifest.files.some(file=>file.url===manifest.base+src.slice(1)));assert.ok(manifest.files.some(file=>file.url===manifest.base+poster.slice(1)));assert.ok(!manifest.files.some(file=>file.url.endsWith('/video/prologue.mp4')));
+ const manifest=await buildOffline(f.root);assert.ok(manifest.film.files.some(file=>file.url===manifest.base+src.slice(1)));assert.ok(manifest.film.files.some(file=>file.url===manifest.base+poster.slice(1)));assert.ok(!manifest.files.some(file=>/\/video\//.test(file.url)));assert.ok(!manifest.files.some(file=>file.url.endsWith('/video/prologue.mp4')));
  const sw=await readFile(join(f.root,'dist-pages/sw.js'),'utf8'),w=await worker({...f,manifest,sw},{networkAvailable:false});
- const cache=await w.caches.open(manifest.mediaCache),url=manifest.base+src.slice(1);
+ const cache=await w.caches.open(manifest.film.cache),url=manifest.base+src.slice(1);
  await cache.put(origin+url,new Response('new-voiced-film',{headers:{'Content-Type':'video/mp4'}}));
  const response=await w.request(url,{range:'bytes=4-9'});assert.equal(response.status,206);assert.equal(await response.text(),'voiced');assert.equal(response.headers.get('Content-Type'),'video/mp4');
+});
+test('install reuses hash-verified shell chunks from older versions without deleting their caches',async t=>{
+ const f=await fixture(t),w=await worker(f),oldName=f.manifest.shellCache.replace(f.manifest.version,'a'.repeat(20)),old=await w.caches.open(oldName);
+ for(const file of f.manifest.files.filter(f=>f.group==='shell'))await old.put(file.url,new Response(await readFile(join(f.root,'dist-pages',file.url.slice(f.manifest.base.length)))));
+ await w.install();assert.equal(w.network.length,0);assert.equal(w.stores.get(oldName).size,f.manifest.files.filter(f=>f.group==='shell').length);assert.deepEqual(w.mutations,[]);
+});
+test('a full device does not turn a verified shell reuse into a redundant network download',async t=>{
+ const f=await fixture(t),w=await worker(f),oldName=f.manifest.shellCache.replace(f.manifest.version,'c'.repeat(20)),old=await w.caches.open(oldName);
+ for(const file of f.manifest.files.filter(f=>f.group==='shell'))await old.put(file.url,new Response(await readFile(join(f.root,'dist-pages',file.url.slice(f.manifest.base.length)))));
+ const open=w.caches.open.bind(w.caches);w.caches.open=async name=>{const cache=await open(name);return name===f.manifest.shellCache?{...cache,async put(){throw new DOMException('full','QuotaExceededError');}}:cache;};
+ await assert.rejects(w.install(),/full/);assert.equal(w.network.length,0);assert.ok(w.stores.get(oldName).size>0);
+});
+test('cached HEAD and invalid video ranges do not read a large body; GET slices a Blob',async t=>{
+ const f=await fixture(t),reads=[],w=await worker(f,{networkAvailable:false,onBodyRead:(url,method)=>reads.push(method)}),url=f.manifest.base+'video/prologue.mp4';
+ await(await w.caches.open(f.manifest.mediaCache)).put(url,new Response('abcdef012345',{headers:{'Content-Type':'video/mp4'}}));
+ assert.equal((await w.request(url,{method:'HEAD',range:'bytes=0-1'})).status,206);assert.equal((await w.request(url,{range:'bytes=999-'})).status,416);assert.deepEqual(reads,[]);
+ const response=await w.request(url,{range:'bytes=2-5'});assert.equal(await response.text(),'cdef');assert.deepEqual(reads,['blob']);
+});
+test('an optional film migrates from an old media cache only after checking its actual hash',async t=>{
+ const f=await fixture(t),src='/video/opening.hash.mp4',body='new-voiced-film';await writeFile(join(f.root,'dist-pages',src),body);
+ await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS=${JSON.stringify({opening:{src}})};`);
+ const manifest=await buildOffline(f.root),sw=await readFile(join(f.root,'dist-pages/sw.js'),'utf8'),w=await worker({...f,manifest,sw},{networkAvailable:false}),url=manifest.base+src.slice(1),oldName=manifest.mediaCache.replace(manifest.version,'b'.repeat(20)),old=await w.caches.open(oldName);
+ await old.put(url,new Response(body));const response=await w.request(url,{range:'bytes=0-2'});assert.equal(response.status,206);assert.equal(await response.text(),'new');assert.equal((await(await old.match(url)).text()),body);assert.ok(w.stores.get(manifest.film.cache).has(origin+url));assert.ok(!w.stores.get(manifest.film.cache).has(origin+manifest.film.marker));
+ const bad=await worker({...f,manifest,sw},{networkAvailable:false});await(await bad.caches.open(oldName)).put(url,new Response('bad-voiced-film'));assert.equal((await bad.request(url)).status,503);assert.ok(!bad.stores.get(manifest.film.cache).has(origin+url));
+ const full=await worker({...f,manifest,sw},{networkAvailable:false});await(await full.caches.open(oldName)).put(url,new Response(body));const open=full.caches.open.bind(full.caches);full.caches.open=async name=>{const cache=await open(name);return name===manifest.film.cache?{...cache,async put(){throw new DOMException('full','QuotaExceededError');}}:cache;};
+ const kept=await full.request(url,{range:'bytes=0-2'});assert.equal(kept.status,206);assert.equal(kept.headers.get('Content-Type'),'video/mp4');assert.equal(await kept.text(),'new');assert.equal(full.network.length,0);
 });
 test('registered film paths cannot escape the verified package',async t=>{
  const f=await fixture(t);
