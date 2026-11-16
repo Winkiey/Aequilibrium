@@ -147,5 +147,28 @@
     "subtitles": "separate player captions; never baked into the game MP4"
   },
   "originalModelsReused": true,
-  "newCloudRequestsForNarration": 0
+  "newCloudRequestsForNarration": 0,
+  "streamingRendition": {
+    "source_sha256": "d562332a46c3bffb90a90561385e0362133875633280f388a3c50a367164198f",
+    "stream": {
+      "src": "/video/opening-h3-720p.fa4e07aaef99.mp4",
+      "poster": "/video/opening-h3-720p.fa4e07aaef99.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fa4e07aaef9983c08908a86f3a291bd876bf004c62e7b9b34b68f6ade5608dcd"
+    },
+    "bytes": 2662609,
+    "posterBytes": 89694,
+    "posterSha256": "072de31b707ca1b5201a1cb19d8ee46c0ece712c479237a03a51b93087dcee95",
+    "frames": 552,
+    "audioPacketSha256": "0ed1fadc36f079fa4fb4616b0013d42b0f8f0d341f1323080e46c61f215be4fc",
+    "audioBitstreamCopied": true,
+    "cloudRequests": 0,
+    "encoding": "CPU H.264 constrained baseline, 1-second GOP, 900k maxrate, fast-start",
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "duration": 23.0,
+    "profile": "Constrained Baseline"
+  }
 }

@@ -1,0 +1,91 @@
+{
+  "tests": 450,
+  "tests_passed": 450,
+  "typecheck": "passed",
+  "builds": [
+    "Pages",
+    "Worker"
+  ],
+  "encoding": {
+    "source_sha256": "d562332a46c3bffb90a90561385e0362133875633280f388a3c50a367164198f",
+    "stream": {
+      "src": "/video/opening-h3-720p.fa4e07aaef99.mp4",
+      "poster": "/video/opening-h3-720p.fa4e07aaef99.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fa4e07aaef9983c08908a86f3a291bd876bf004c62e7b9b34b68f6ade5608dcd"
+    },
+    "bytes": 2662609,
+    "posterBytes": 89694,
+    "posterSha256": "072de31b707ca1b5201a1cb19d8ee46c0ece712c479237a03a51b93087dcee95",
+    "frames": 552,
+    "audioPacketSha256": "0ed1fadc36f079fa4fb4616b0013d42b0f8f0d341f1323080e46c61f215be4fc",
+    "audioBitstreamCopied": true,
+    "cloudRequests": 0,
+    "encoding": "CPU H.264 constrained baseline, 1-second GOP, 900k maxrate, fast-start",
+    "width": 1280,
+    "height": 720,
+    "fps": 24.0,
+    "duration": 23.0,
+    "profile": "Constrained Baseline"
+  },
+  "controlled_upgrade": {
+    "kind": "controlled Node integration using two actual production builds; not browser/phone testing",
+    "baseline_version": "70bdd24f3e7a6559f4c0",
+    "new_version": "a8a1763137b67b307e57",
+    "baselineCold": {
+      "network_requests": 33,
+      "uncompressed_network_bytes": 8899912,
+      "data_cache_writes": 124,
+      "data_cache_write_bytes": 8899912,
+      "film_requests": 0
+    },
+    "newCold": {
+      "network_requests": 33,
+      "uncompressed_network_bytes": 8905676,
+      "data_cache_writes": 124,
+      "data_cache_write_bytes": 8905676,
+      "film_requests": 0
+    },
+    "baselineRepair": {
+      "network_requests": 0,
+      "uncompressed_network_bytes": 0,
+      "data_cache_writes": 0,
+      "data_cache_write_bytes": 0,
+      "film_requests": 0
+    },
+    "newRepair": {
+      "network_requests": 0,
+      "uncompressed_network_bytes": 0,
+      "data_cache_writes": 0,
+      "data_cache_write_bytes": 0,
+      "film_requests": 0
+    },
+    "warmUpgrade": {
+      "network_requests": 14,
+      "uncompressed_network_bytes": 908050,
+      "data_cache_writes": 124,
+      "data_cache_write_bytes": 8905676,
+      "film_requests": 0
+    },
+    "mandatory_before": 8899912,
+    "mandatory_after": 8905676,
+    "optional_film_bytes": 16646674,
+    "film_sha256": "d562332a46c3bffb90a90561385e0362133875633280f388a3c50a367164198f",
+    "byte_reduction_fraction": -0.0006476468531373403,
+    "pause_resume": true,
+    "backup_preserved": true,
+    "reading_cursor_preserved": true,
+    "independent_playtest_preserved": true,
+    "collection_preserved": true,
+    "multi_window_guard": true,
+    "no_early_activation": true,
+    "old_caches_preserved": true,
+    "offline_shell": true,
+    "offline_film_range_206": true,
+    "old_original_reused": true,
+    "only_new_streaming_files_downloaded": true
+  },
+  "browser_testing": "not performed; existing origin restriction retained, no bypass",
+  "speed_measurement": "not claimed; file sizes and controlled transport only"
+}

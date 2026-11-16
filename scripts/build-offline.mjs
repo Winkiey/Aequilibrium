@@ -57,6 +57,7 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
  if(videos.length===0)throw new Error('Opening film path must be explicitly listed for offline playback');
  for(const video of videos){if(typeof video!=='string'||!/^\/video\/(?!.*\.\.)[\w./-]+\.mp4$/.test(video))throw new Error('Unsafe film asset path');if(registeredOpening)optionalFilms.push(video);else add(video,'media');}
  if(registeredOpening?.poster){if(!/^\/video\/(?!.*\.\.)[\w./-]+\.webp$/.test(registeredOpening.poster))throw new Error('Unsafe film poster path');optionalFilms.push(registeredOpening.poster);}
+ if(registeredOpening?.stream){const s=registeredOpening.stream;if(typeof s.src!=='string'||!/^\/video\/(?!.*\.\.)[\w.-]+\.mp4$/.test(s.src)||typeof s.poster!=='string'||!/^\/video\/(?!.*\.\.)[\w.-]+\.webp$/.test(s.poster)||optionalFilms.includes(s.src)||optionalFilms.includes(s.poster))throw new Error('Unsafe film streaming rendition');optionalFilms.push(s.src,s.poster);}
  // Spoken clips are content-addressed. Only the short opening belongs to the
  // base package; the complete cast can be saved independently and reused later.
  let clips=[];

@@ -7,10 +7,11 @@ import{renderToStaticMarkup}from'react-dom/server';
 import{FilmPlayer}from'../.sites-runtime/test-modules/FilmPlayer.mjs';
 import{FilmPlayer as FilmController}from'../.sites-runtime/test-modules/FilmPlayer.controller.mjs';
 import*as filmRuntime from'./film-player-runtime.mjs';
+import{FilmPlayback}from'../.sites-runtime/test-modules/film-playback.mjs';
 import{ALL_FILM_SCRIPTS,ENDING_FILM_SCRIPTS,OPENING_FILM_SCRIPT,filmCues}from'../.sites-runtime/test-modules/film-scripts.mjs';
 import{EPILOGUES}from'../.sites-runtime/test-modules/epilogues.mjs';
 import{SCENES,CAST}from'../.sites-runtime/test-modules/visuals.mjs';
-import{filmMedia,validFilmMedia,currentFilmCue,subtitlesForFilm,filmVoiceLevel}from'../.sites-runtime/test-modules/films.mjs';
+import{filmMedia,validFilmMedia,currentFilmCue,subtitlesForFilm,filmVoiceLevel,filmRendition}from'../.sites-runtime/test-modules/films.mjs';
 test('opening and all twelve endings have individually authored motion, identity and sound briefs',()=>{
  assert.equal(ALL_FILM_SCRIPTS.length,13);assert.deepEqual(Object.keys(ENDING_FILM_SCRIPTS).sort(),Object.keys(EPILOGUES).sort());assert.equal(OPENING_FILM_SCRIPT.duration,64);
  for(const f of ALL_FILM_SCRIPTS){assert.equal(f.duration,f.kind==='opening'?64:80);assert.equal(f.shots.length,f.kind==='opening'?8:10);for(const s of f.shots){assert.ok(SCENES[s.scene]);assert.ok(s.cast.every(id=>CAST[id]));assert.ok(s.action.trim().length>0);assert.ok(s.caption.trim().length>0&&s.caption.length<=60);assert.ok(s.sound.trim().length>0);}}
@@ -55,7 +56,7 @@ test('released opening bytes match their fingerprint and include progressive H26
  assert.ok(file.includes(Buffer.from('avc1')));assert.ok(file.includes(Buffer.from('mp4a')));assert.ok(file.includes(Buffer.from('soun')));
  const record=JSON.parse(readFileSync('docs/films/opening-short.production.json','utf8'));assert.equal(record.bytes,file.length);assert.equal(record.film.sha256,media.sha256);assert.equal(record.narration.cues.length,4);assert.equal(record.narration.sampleRate,48000);assert.equal(record.newCloudRequestsForNarration,0);
 });
-test('metadata-only film loading requests playback once, preserves zero volume and releases its decoder',async()=>{
+test('immediate film loading requests playback once, preserves zero volume and releases its decoder',async()=>{
  const previous=globalThis.document;globalThis.document={addEventListener(){},removeEventListener(){}};
  try{
   filmRuntime.reset();const props={media:filmMedia('opening'),script:OPENING_FILM_SCRIPT,sound:true,voiceVolume:0,onFinish(){},onFallback(){}};
@@ -63,8 +64,8 @@ test('metadata-only film loading requests playback once, preserves zero volume a
   const video={duration:23,paused:true,volume:1,play(){plays++;this.paused=false;return Promise.resolve();},pause(){pauses++;this.paused=true;},load(){loads++;},removeAttribute(name){assert.equal(name,'src');removed++;}};
   node.props.ref.current=video;const cleanups=filmRuntime.runEffects();assert.equal(video.volume,0);assert.equal(node.props.muted,true);
   node.props.onLoadedMetadata({currentTarget:video});assert.equal(plays,1,'do not wait for canplay to request data');node.props.onCanPlay();assert.equal(plays,1);await Promise.resolve();
-  node.props.onPause();filmRuntime.beginRender();const paused=FilmController(props);assert.ok(filmRuntime.find(paused,n=>n.type==='div'&&n.props.className==='film-play-prompt'),'even a pause at time zero exposes a play action');
-  for(const cleanup of cleanups)cleanup();assert.ok(pauses>=1);assert.equal(loads,1);assert.equal(removed,1);
+  video.pause();node.props.onPause();filmRuntime.beginRender();const paused=FilmController(props);assert.ok(filmRuntime.find(paused,n=>n.type==='div'&&n.props.className==='film-play-prompt'),'even a pause at time zero exposes a play action');
+  for(const cleanup of cleanups)cleanup();assert.ok(pauses>=1);assert.equal(loads,2,'initial source load and decoder disposal');assert.equal(removed,1);
  }finally{globalThis.document=previous;}
 });
 test('reduced motion and portrait pause keep metadata and canplay from starting the film',()=>{
@@ -77,4 +78,56 @@ test('reduced motion and portrait pause keep metadata and canplay from starting 
 });
 test('film metadata keeps the current ending title and only resolves the requested known ending',()=>{
  const ids=new Set();for(const[name,f]of Object.entries(ENDING_FILM_SCRIPTS)){assert.equal(f.title,name);assert.equal(Array.from(name).length,4);assert.ok(!ids.has(f.id));ids.add(f.id);}assert.equal(ENDING_FILM_SCRIPTS['unknown'],undefined);
+});
+
+function playbackFixture(t,play){
+ t.mock.timers.enable({apis:['setTimeout']});const state={},calls={play:0,pause:0,load:0};
+ const video={src:'',currentTime:0,duration:23,paused:true,play(){calls.play++;this.paused=false;return play?.()??Promise.resolve();},pause(){calls.pause++;this.paused=true;},load(){calls.load++;this.currentTime=0;},removeAttribute(){this.src='';}};
+ const session=new FilmPlayback(video,patch=>Object.assign(state,patch));t.after(()=>session.dispose());return{session,video,state,calls};
+}
+test('streaming rendition preserves the original, motion length, narration and immutable file hashes',()=>{
+ const media=filmMedia('opening'),stream=filmRendition(media);assert.equal(stream,media.stream);assert.equal(filmRendition(media,true),media);assert.equal(stream.width,1280);assert.equal(stream.height,720);
+ const file=readFileSync('public'+stream.src),record=JSON.parse(readFileSync('docs/films/opening-short.production.json','utf8')).streamingRendition;
+ assert.equal(createHash('sha256').update(file).digest('hex'),stream.sha256);assert.equal(file.length,record.bytes);assert.ok(file.length<3*1024*1024);assert.equal(record.frames,552);assert.equal(record.duration,media.duration);assert.equal(record.audioBitstreamCopied,true);assert.equal(record.cloudRequests,0);
+ const atoms=[];for(let offset=0;offset+8<=file.length;){const size=file.readUInt32BE(offset);assert.ok(size>=8&&offset+size<=file.length);atoms.push(file.toString('ascii',offset+4,offset+8));offset+=size;}assert.ok(atoms.indexOf('moov')<atoms.indexOf('mdat'));
+ assert.equal(createHash('sha256').update(readFileSync('public'+stream.poster)).digest('hex'),record.posterSha256);
+ for(const stream of [{...media.stream,src:'/video/../x.mp4'},{...media.stream,poster:'https://wrong.invalid/a.webp'},{...media.stream,sha256:'bad'},{...media.stream,width:4000},{...media.stream,src:media.src}])assert.equal(validFilmMedia({...media,stream}),false);
+});
+test('play requests start before metadata and a hanging request exposes bounded recovery',t=>{
+ const f=playbackFixture(t,()=>new Promise(()=>{}));f.session.source('/small.mp4');assert.equal(f.calls.play,1);assert.equal(f.state.buffering,true);
+ t.mock.timers.tick(7999);assert.equal(f.state.slow,false);f.session.waiting();t.mock.timers.tick(1);assert.equal(f.state.slow,true,'repeated waiting cannot postpone the deadline');assert.equal(f.state.buffering,false);
+ f.session.pause();t.mock.timers.tick(20000);assert.equal(f.state.slow,false);assert.equal(f.session.wantsPlayback,false);
+});
+test('source switching restores time, retains pause and ignores old play failures',async t=>{
+ let rejectFirst;let index=0;const f=playbackFixture(t,()=>++index===1?new Promise((_,reject)=>{rejectFirst=reject;}):Promise.resolve());
+ f.session.source('/small.mp4');f.video.currentTime=11.7;f.session.source('/2k.mp4',f.video.currentTime,f.session.wantsPlayback);f.session.metadata();assert.equal(f.video.currentTime,11.7);assert.equal(f.video.src,'/2k.mp4');assert.equal(f.calls.play,2);
+ rejectFirst(new DOMException('old request','NotAllowedError'));await Promise.resolve();await Promise.resolve();assert.equal(f.state.blocked,false);assert.equal(f.session.wantsPlayback,true);
+ f.session.pause();f.session.source('/small.mp4',11.7,f.session.wantsPlayback);f.session.metadata();assert.equal(f.calls.play,2);assert.equal(f.video.currentTime,11.7);assert.equal(f.state.blocked,true);
+});
+test('autoplay refusal offers explicit play and late promises cannot undo user pause',async t=>{
+ let mode='blocked',resolve;const f=playbackFixture(t,()=>mode==='blocked'?Promise.reject(new DOMException('gesture','NotAllowedError')):new Promise(done=>{resolve=done;}));
+ f.session.source('/small.mp4');await Promise.resolve();await Promise.resolve();assert.equal(f.state.blocked,true);assert.equal(f.state.error,false);t.mock.timers.tick(9000);assert.equal(f.state.slow,false);
+ mode='pending';f.session.play();f.session.pause();resolve();await Promise.resolve();assert.equal(f.video.paused,true);assert.equal(f.session.wantsPlayback,false);
+});
+test('portrait and hidden pauses stop loading deadlines and resume only the intended playback',async t=>{
+ const f=playbackFixture(t);f.session.suspend(true);f.session.source('/small.mp4');f.session.metadata();assert.equal(f.calls.play,0);t.mock.timers.tick(9000);assert.equal(f.state.slow,false);
+ f.session.suspend(false);assert.equal(f.calls.play,1);await Promise.resolve();f.session.playing();f.video.currentTime=3;f.session.progress();t.mock.timers.tick(4000);f.session.suspend(true);t.mock.timers.tick(9000);assert.equal(f.state.slow,false);
+ f.session.suspend(false);assert.equal(f.calls.play,2);f.session.pause();f.session.suspend(true);f.session.suspend(false);assert.equal(f.calls.play,2);
+});
+test('continued playback clears slow feedback, ending is once-only and disposal cancels all work',t=>{
+ const f=playbackFixture(t);f.session.source('/small.mp4');t.mock.timers.tick(8000);assert.equal(f.state.slow,true);f.session.playing();assert.equal(f.state.slow,false);f.video.currentTime=2;f.session.progress();t.mock.timers.tick(7000);assert.equal(f.state.slow,false);
+ assert.equal(f.session.ended(),true);assert.equal(f.session.ended(),false);f.session.dispose();const count=f.calls.play;t.mock.timers.tick(20000);f.session.play();assert.equal(f.calls.play,count);assert.equal(f.video.src,'');
+});
+test('film markup starts without a large src request and exposes a compact quality choice',()=>{
+ const html=renderToStaticMarkup(React.createElement(FilmPlayer,{media:filmMedia('opening'),script:OPENING_FILM_SCRIPT,onFinish(){},onFallback(){}}));
+ assert.doesNotMatch(html,/<video[^>]*\ssrc=/);assert.match(html,/720p/);assert.match(html,/2K/);assert.match(html,/preload="auto"/);assert.match(html,/opening-h3-720p/);assert.doesNotMatch(html,/opening-h3-2k/);
+});
+test('actual film component exposes retry and text continuation after a silent connection timeout',t=>{
+ const previous=globalThis.document;globalThis.document={addEventListener(){},removeEventListener(){}};t.mock.timers.enable({apis:['setTimeout']});
+ try{filmRuntime.reset();let continued=0;const props={media:filmMedia('opening'),script:OPENING_FILM_SCRIPT,onFinish(){},onFallback(){continued++;}};
+  let root=FilmController(props);const node=filmRuntime.find(root,n=>n.type==='video');const video={src:'',currentTime:0,duration:23,paused:true,play(){this.paused=false;return new Promise(()=>{});},pause(){this.paused=true;},load(){},removeAttribute(){}};
+  node.props.ref.current=video;const cleanups=filmRuntime.runEffects();assert.match(video.src,/720p/);t.mock.timers.tick(8000);
+  filmRuntime.beginRender();root=FilmController(props);const prompt=filmRuntime.find(root,n=>n.props?.className==='film-play-prompt film-load-help');assert.ok(prompt);assert.ok(filmRuntime.find(prompt,n=>n.type==='button'&&n.props.children?.[0]==='重新载入')||filmRuntime.find(prompt,n=>n.type==='button'));
+  const text=filmRuntime.find(prompt,n=>n.type==='button'&&n.props.onClick===props.onFallback);assert.ok(text);text.props.onClick();assert.equal(continued,1);cleanups.forEach(fn=>fn());
+ }finally{globalThis.document=previous;}
 });

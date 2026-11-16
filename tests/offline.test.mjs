@@ -118,6 +118,15 @@ test('registered film paths cannot escape the verified package',async t=>{
   await assert.rejects(buildOffline(f.root),/Unsafe film/);
  }
 });
+test('streaming and original film renditions are both optional and available offline after saving',async t=>{
+ const f=await fixture(t),src='/video/original.hash.mp4',poster='/video/original.hash.webp',stream={src:'/video/small.hash.mp4',poster:'/video/small.hash.webp'};
+ for(const path of [src,poster,stream.src,stream.poster])await writeFile(join(f.root,'dist-pages',path),path);
+ await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS=${JSON.stringify({opening:{src,poster,stream}})};`);
+ const manifest=await buildOffline(f.root);assert.equal(manifest.film.files.length,4);assert.ok(manifest.files.every(f=>!f.url.includes('/video/')));
+ const sw=await readFile(join(f.root,'dist-pages/sw.js'),'utf8'),w=await worker({...f,manifest,sw},{networkAvailable:false});const cache=await w.caches.open(manifest.film.cache);
+ for(const path of [src,stream.src]){await cache.put(origin+manifest.base+path.slice(1),new Response(path,{headers:{'Content-Type':'video/mp4'}}));const response=await w.request(manifest.base+path.slice(1),{range:'bytes=0-5'});assert.equal(response.status,206);assert.equal(await response.text(),path.slice(0,6));}
+ await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS=${JSON.stringify({opening:{src,poster,stream:{...stream,src:'/video/../secret.mp4'}}})};`);await assert.rejects(buildOffline(f.root),/Unsafe film streaming/);
+});
 test('service worker installs a verified shell only and failed integrity keeps old versions intact',async t=>{
  const f=await fixture(t),w=await worker(f);await w.install();assert.equal(w.stores.get(f.manifest.shellCache).size,f.manifest.files.filter(file=>file.group==='shell').length);assert.ok(!w.stores.has(f.manifest.mediaCache));
  await w.activate();assert.equal(w.activation.skips,0);assert.equal(w.activation.claims,0);assert.deepEqual(w.mutations,[]);

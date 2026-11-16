@@ -35,6 +35,13 @@ export const VIDEO_ASSETS:Record<string,FilmMedia>={
         "end": 19.8,
         "text": "她留下一封信，还有书屋三年的租约。"
       }
-    ]
+    ],
+    "stream": {
+      "src": "/video/opening-h3-720p.fa4e07aaef99.mp4",
+      "poster": "/video/opening-h3-720p.fa4e07aaef99.webp",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fa4e07aaef9983c08908a86f3a291bd876bf004c62e7b9b34b68f6ade5608dcd"
+    }
   }
 };
