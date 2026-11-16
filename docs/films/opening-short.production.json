@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "film": {
+    "id": "opening",
+    "src": "/video/opening-h3-2k.d562332a46c3.mp4",
+    "poster": "/video/opening-h3-2k.d562332a46c3.webp",
+    "duration": 23,
+    "width": 2560,
+    "height": 1440,
+    "fps": 24,
+    "hasAudio": true,
+    "sha256": "d562332a46c3bffb90a90561385e0362133875633280f388a3c50a367164198f",
+    "sourceType": "generated-scene-motion",
+    "provider": "MiniMax H3 native 2K; local Qwen3-TTS original narration and rain compositing",
+    "captionPlacement": "gutter",
+    "captions": [
+      {
+        "start": 0.25,
+        "end": 4.85,
+        "text": "澄港，初秋。今晚，书屋还亮着灯。"
+      },
+      {
+        "start": 5.25,
+        "end": 9.85,
+        "text": "白天，你在印刷厂校书，攒下了十二万元。"
+      },
+      {
+        "start": 10.25,
+        "end": 14.8,
+        "text": "程姨准备去南方住一阵。"
+      },
+      {
+        "start": 15.25,
+        "end": 19.8,
+        "text": "她留下一封信，还有书屋三年的租约。"
+      }
+    ]
+  },
+  "bytes": 13245317,
+  "posterSha256": "5d3600143262fe22e06eb612ee7dec60795bed4c65e015c6944e0914466ba155",
+  "videoEncoding": {
+    "codec": "H.264",
+    "pixelFormat": "yuv420p",
+    "crf": 22,
+    "fastStart": true
+  },
+  "narration": {
+    "speaker": "opening-narrator",
+    "kind": "original synthetic voice",
+    "role": "third-person opening narration, separate from the ten story characters",
+    "profile": "原创中文旁白，中国成年女性，约38岁。轻暖、清晰的自然中音，带一点真实的生活质感，音量适中。像在安静的书屋里向身旁一位读者讲一段刚发生的生活，平静、亲近，有自然的呼吸和语义重音，语速自然连贯，每秒约四至五个汉字。不一字一顿，不拖长句尾，不扮演画中人物，不用播音朗诵腔。不要刻意压低嗓音、气声、甜腻、煽情或戏剧化表演。数字读得清楚平实。干声，不要音乐和混响。",
+    "designModel": "Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+    "designRevision": "5ecdb67327fd37bb2e042aab12ff7391903235d3",
+    "designSeed": 2026111601,
+    "frozenReferenceSha256": "7d118643bc5d58dea7e57c73639baaf1793e0c6ff16e6ef6f749405f5277b27b",
+    "cloneModel": "Qwen3-TTS-12Hz-1.7B-Base",
+    "cloneRevision": "fd4b254389122332181a7c3db7f27e918eec64e3",
+    "masterSha256": "32ba3b3ab0a07fb4cc374fe1b98173d1c277362564cfe627817d539de7048138",
+    "audioCodec": "AAC-LC",
+    "sampleRate": 48000,
+    "channels": 1,
+    "processing": "one common gain, 5ms edge fades and 24-to-48kHz resampling; no pitch or time changes",
+    "cues": [
+      {
+        "index": 1,
+        "text": "澄港，初秋。今晚，书屋还亮着灯。",
+        "start": 0.25,
+        "end": 4.81,
+        "duration": 4.56,
+        "raw_sha256": "25abf88dbb7396e0a1f79d8fc2d4ac369f284dd9fae6566f1cdf7c777b821241"
+      },
+      {
+        "index": 2,
+        "text": "白天，你在印刷厂校书，攒下了十二万元。",
+        "start": 5.25,
+        "end": 9.809999999999999,
+        "duration": 4.56,
+        "raw_sha256": "d9f8e36c267c9ff599bddf51aa96bdcd85d904f905633c9fab2f6f7c8e9c72af"
+      },
+      {
+        "index": 3,
+        "text": "程姨准备去南方住一阵。",
+        "start": 10.25,
+        "end": 12.49,
+        "duration": 2.24,
+        "raw_sha256": "9843e16c7e5caea033fdd2e0e1de71daa06375a634e3a9ae6d045a1258df1ae7"
+      },
+      {
+        "index": 4,
+        "text": "她留下一封信，还有书屋三年的租约。",
+        "start": 15.25,
+        "end": 18.85,
+        "duration": 3.6,
+        "raw_sha256": "d77c8c0ac404689825152e5e4149cf6a3cd6aaddb3133c9daf25c9cc2b33e337"
+      }
+    ],
+    "verification": "independent offline transcription and waveform/timing checks; not a claim of auditory review"
+  },
+  "motionSources": [
+    {
+      "shot": "01-street",
+      "take": 1,
+      "original_sha256": "d5153ff7352a74d44f8d2821cda73324a0adfe2120dda0693d5c17b554f990c9",
+      "start": 0.0,
+      "end": 5.0,
+      "vfx": "locally composited rain streaks, eaves drips and puddle splashes"
+    },
+    {
+      "shot": "02-proofroom",
+      "take": 1,
+      "original_sha256": "3fb83e8827ff66633d93e0a28172bea242ae1456b726a6302b8f7c93d26aabb4",
+      "start": 5.0,
+      "end": 10.0,
+      "vfx": null
+    },
+    {
+      "shot": "03-cheng",
+      "take": 3,
+      "original_sha256": "ff8baa27dd9648c2a89f71d7977d4184b2a50814634975d830cab3d00afbd859",
+      "start": 10.0,
+      "end": 15.0,
+      "vfx": null
+    },
+    {
+      "shot": "04-letter",
+      "take": 1,
+      "original_sha256": "0a3744e3b1550d97ae1144c38075ce6f9ae8ceedf13d4c31457afa3ab8b464aa",
+      "start": 15.0,
+      "end": 20.0,
+      "vfx": null
+    }
+  ],
+  "composition": {
+    "picture": [
+      2336,
+      1314
+    ],
+    "origin": [
+      112,
+      10
+    ],
+    "output": [
+      2560,
+      1440
+    ],
+    "cropped": false,
+    "subtitles": "separate player captions; never baked into the game MP4"
+  },
+  "originalModelsReused": true,
+  "newCloudRequestsForNarration": 0
+}

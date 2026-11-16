@@ -74,6 +74,24 @@ test('offline build rejects external paths, encoded traversal and output travers
  }
  const f=await fixture(t);await assert.rejects(buildOffline(f.root,{directory:'../escape'}),/Unsafe/);await assert.rejects(buildOffline(f.root,{base:'/Aequilibrium/../'}),/Invalid/);
 });
+
+test('registered voiced opening and poster replace the legacy video in the verified base pack',async t=>{
+ const f=await fixture(t),src='/video/opening.hash.mp4',poster='/video/opening.hash.webp';
+ await writeFile(join(f.root,'dist-pages',src),'new-voiced-film');await writeFile(join(f.root,'dist-pages',poster),'new-poster');
+ await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS:Record<string,FilmMedia>=${JSON.stringify({opening:{src,poster}})};`);
+ const manifest=await buildOffline(f.root);assert.ok(manifest.files.some(file=>file.url===manifest.base+src.slice(1)));assert.ok(manifest.files.some(file=>file.url===manifest.base+poster.slice(1)));assert.ok(!manifest.files.some(file=>file.url.endsWith('/video/prologue.mp4')));
+ const sw=await readFile(join(f.root,'dist-pages/sw.js'),'utf8'),w=await worker({...f,manifest,sw},{networkAvailable:false});
+ const cache=await w.caches.open(manifest.mediaCache),url=manifest.base+src.slice(1);
+ await cache.put(origin+url,new Response('new-voiced-film',{headers:{'Content-Type':'video/mp4'}}));
+ const response=await w.request(url,{range:'bytes=4-9'});assert.equal(response.status,206);assert.equal(await response.text(),'voiced');assert.equal(response.headers.get('Content-Type'),'video/mp4');
+});
+test('registered film paths cannot escape the verified package',async t=>{
+ const f=await fixture(t);
+ for(const opening of [{src:'/video/../secret.mp4'},{src:'https://outside.invalid/a.mp4'},{src:'/video/a.mp4',poster:'/video/%2e%2e/secret.webp'}]){
+  await writeFile(join(f.root,'lib/game/video-assets.generated.ts'),`export const VIDEO_ASSETS=${JSON.stringify({opening})};`);
+  await assert.rejects(buildOffline(f.root),/Unsafe film/);
+ }
+});
 test('service worker installs a verified shell only and failed integrity keeps old versions intact',async t=>{
  const f=await fixture(t),w=await worker(f);await w.install();assert.equal(w.stores.get(f.manifest.shellCache).size,f.manifest.files.filter(file=>file.group==='shell').length);assert.ok(!w.stores.has(f.manifest.mediaCache));
  await w.activate();assert.equal(w.activation.skips,0);assert.equal(w.activation.claims,0);assert.deepEqual(w.mutations,[]);

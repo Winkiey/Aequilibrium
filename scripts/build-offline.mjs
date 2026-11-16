@@ -45,9 +45,17 @@ export async function buildOffline(root,{base='/Aequilibrium/',directory='dist-p
   }
  }
  const opening=await readFile(resolve(root,'components/game/OpeningFilm.tsx'),'utf8');
- const videos=[...opening.matchAll(/publicPath\(\s*['"](\/video\/[^'"]+\.mp4)['"]\s*\)/g)].map(m=>m[1]);
+ let registeredOpening;
+ try{
+  const source=await readFile(resolve(root,'lib/game/video-assets.generated.ts'),'utf8');
+  const match=source.match(/export\s+const\s+VIDEO_ASSETS(?:\s*:\s*[^=]+)?\s*=\s*(\{[\s\S]*\})\s*;/);
+  if(!match)throw new Error('Film asset registry format was not recognised');
+  registeredOpening=JSON.parse(match[1]).opening;
+ }catch(error){if(error.code!=='ENOENT')throw error;}
+ const videos=registeredOpening?[registeredOpening.src]:[...opening.matchAll(/publicPath\(\s*['"](\/video\/[^'"]+\.mp4)['"]\s*\)/g)].map(m=>m[1]);
  if(videos.length===0)throw new Error('Opening film path must be explicitly listed for offline playback');
- for(const video of videos)add(video,'media');
+ for(const video of videos){if(typeof video!=='string'||!/^\/video\/(?!.*\.\.)[\w./-]+\.mp4$/.test(video))throw new Error('Unsafe film asset path');add(video,'media');}
+ if(registeredOpening?.poster){if(!/^\/video\/(?!.*\.\.)[\w./-]+\.webp$/.test(registeredOpening.poster))throw new Error('Unsafe film poster path');add(registeredOpening.poster,'media');}
  // Spoken clips are content-addressed. Only the short opening belongs to the
  // base package; the complete cast can be saved independently and reused later.
  let clips=[];

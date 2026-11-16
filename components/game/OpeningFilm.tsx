@@ -5,7 +5,7 @@ import {imageURL,publicPath} from '@/lib/game/assets';
 import { INTRO_CAPTIONS } from '@/lib/game/visuals';
 import {filmMedia,OPENING_FILM_SCRIPT} from '@/lib/game/films';
 import {FilmPlayer} from './FilmPlayer';
-type OpeningProps={onFinish:()=>void;sound:boolean;onSound:()=>void;paused?:boolean;reducedMotion?:boolean;onAudioFocus?:(active:boolean)=>void};
+type OpeningProps={onFinish:()=>void;sound:boolean;onSound:()=>void;paused?:boolean;reducedMotion?:boolean;onAudioFocus?:(active:boolean)=>void;voiceVolume?:number};
 export function OpeningFilm(props:OpeningProps){const media=filmMedia('opening');return media?<FilmPlayer media={media} script={OPENING_FILM_SCRIPT} {...props} onFallback={props.onFinish}/>:<LegacyOpeningFilm {...props}/>;}
 function LegacyOpeningFilm({onFinish,sound,onSound,paused=false}:OpeningProps){
  const video=useRef<HTMLVideoElement>(null),[time,setTime]=useState(0),[playing,setPlaying]=useState(true),[error,setError]=useState(false);

@@ -9,7 +9,7 @@ export function EndingPlayer({game,name,recordedText,onFinish,speed,reducedMotio
  const [textFallback,setTextFallback]=useState(false);
  const end=ending(game),title=name??end.name;
  const script=filmForEnding(title),media=script&&filmMedia(script.id);
- if(script&&media&&!textFallback)return <FilmPlayer media={media} script={script} sound={sound} onSound={onSound} onAudioFocus={onAudioFocus} paused={paused} reducedMotion={reducedMotion} onFinish={onFinish} onFallback={()=>setTextFallback(true)}/>;
+ if(script&&media&&!textFallback)return <FilmPlayer voiceVolume={voiceVolume} media={media} script={script} sound={sound} onSound={onSound} onAudioFocus={onAudioFocus} paused={paused} reducedMotion={reducedMotion} onFinish={onFinish} onFallback={()=>setTextFallback(true)}/>;
  const event={id:`ending-${title}`,title,sender:'澄港，三年以后',atQuarter:EPILOGUES[title].quarter??game.quarter,paragraphs:[],options:[]} as unknown as StoryEvent;
  return <CinematicPlayer sound={sound} voiceVolume={voiceVolume} onSound={onSound} onVoiceActivity={onVoiceActivity} game={game} event={event} answered={null} speed={speed} reducedMotion={reducedMotion} preview={preview} paused={paused} epilogue scriptOverride={epilogueScript(game,title,recordedText)} onChoose={()=>false} onFinish={onFinish} onLedger={()=>{}} onProgress={()=>{}}/>;
 }

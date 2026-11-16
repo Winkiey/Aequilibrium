@@ -16,12 +16,16 @@ writeFileSync(`${output}/StoryboardGallery.mjs`,compiled.replace(/from '@\/lib\/
 writeFileSync(`${output}/collection-preview-stubs.mjs`,'export const CinematicPlayer=()=>null; export const EndingPlayer=()=>null; export const Prop=()=>null;');
 // SSR contracts exercise real lesson and story components, without claiming
 // that markup checks are browser clicks. Only the unrelated sparkline is stubbed.
-for(const file of ['EndingEvidence','DecisionTerms','ResearchOffer','ReadingPreferences','SettlementAction','GameSettings','TitleMenu','CharacterSpeech','Soundscape','ShopStatement','TradeLessonForm','LessonCoach','CinematicPlayer','Stage','SeasonalLayer','PaperViews','EconomicsBook','ReadingFigure','TradePractice','CompanyHistory','BusinessBrief','ResearchReceipt','InvestmentContribution','Bookshelf','OfflinePack','PeopleBook']){
+for(const file of ['FilmPlayer','OpeningFilm','EndingEvidence','DecisionTerms','ResearchOffer','ReadingPreferences','SettlementAction','GameSettings','TitleMenu','CharacterSpeech','Soundscape','ShopStatement','TradeLessonForm','LessonCoach','CinematicPlayer','Stage','SeasonalLayer','PaperViews','EconomicsBook','ReadingFigure','TradePractice','CompanyHistory','BusinessBrief','ResearchReceipt','InvestmentContribution','Bookshelf','OfflinePack','PeopleBook']){
  const source=readFileSync(`components/game/${file}.tsx`,'utf8');
  const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  writeFileSync(`${output}/${file}.mjs`,js.replace(/from '\.\/([^']+)'/g,"from './$1.mjs'").replace(/from '@\/lib\/game\/([^']+)'/g,"from './$1.mjs'"));
 }
 writeFileSync(`${output}/FinancialPanels.mjs`,'export const Sparkline=()=>null; export const News=()=>null;');
+// Exercise the real film event handlers with a tiny hook/element harness. This
+// verifies lifecycle calls without presenting it as browser autoplay testing.
+const filmController=ts.transpileModule(readFileSync('components/game/FilmPlayer.tsx','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
+writeFileSync(`${output}/FilmPlayer.controller.mjs`,filmController.replace(/from 'react(?:\/jsx-runtime)?'/g,"from '../../tests/film-player-runtime.mjs'").replace(/from '@\/lib\/game\/([^']+)'/g,"from './$1.mjs'"));
 // Exercise the real news copy as well as its surrounding quarterly paper.
 const financial=ts.transpileModule(readFileSync('components/game/FinancialPanels.tsx','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
 writeFileSync(`${output}/NewsPanels.mjs`,financial.replace(/from '\.\/([^']+)'/g,"from './$1.mjs'").replace(/from '@\/lib\/game\/([^']+)'/g,"from './$1.mjs'"));
